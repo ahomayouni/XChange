@@ -2,7 +2,15 @@
 
 CSC-444 group project
 
-Things you may want to cover:
+To get this project running, follow these steps: 
+
+1. On a terminal, clone this repository and cd into it. Then, enter the below commands into the terminal. 
+2. >bundle install 
+3. >rails server 
+4. Navigate to http://localhost:3000
+
+
+Things you need to cover:
 
 * Ruby version
 
