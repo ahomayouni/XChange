@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'contact_us/index'
   get 'users/new'
 
   get 'privacy_policy/index'
