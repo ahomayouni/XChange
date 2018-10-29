@@ -14,4 +14,5 @@ class User < ApplicationRecord
 	# including presence validations upon object creation and a validation requiring
 	# they match. Also comes with an authenticate method.
 	has_secure_password
+	validates :password, presence: true, length: { minimum: 5 }
 end
