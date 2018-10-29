@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'privacy_policy/index'
   get 'terms_of_service/index'
   get 'about/index'
   get 'home/index'
