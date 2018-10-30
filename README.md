@@ -2,6 +2,9 @@
 
 CSC-444 group project
 
+## Live Application
+* https://xchange-csc444.herokuapp.com
+
 ## Installation:
 To get this project running, follow these steps: 
 
@@ -19,6 +22,3 @@ To get this project running, follow these steps:
 ## IceBox (Required within the Bolen Docs):
 * Header (with top able to show/hide certain links whether someone is logged in)
 * Footer
-
-## Live Application
-* https://xchange-csc444.herokuapp.com
