@@ -15,7 +15,7 @@ To get this project running, follow these steps:
 
 
 ## TODO:
-* Peter - Authentication & Security (Login,Signup) , Create a forgot password feature
+* Peter - Account Activation, Create a forgot password feature
 * Adi - Item Listing
 * Maru - Overall Aesthetics
 * Arash - Deployment 
