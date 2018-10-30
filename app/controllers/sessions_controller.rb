@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    log_out
+    log_out if logged_in? # Do this to prevent bug when user have multiple browsers opened and logsout in one of them
     redirect_to root_path
   end
 end
