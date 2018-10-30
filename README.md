@@ -18,4 +18,7 @@ To get this project running, follow these steps:
 
 ## IceBox (Required within the Bolen Docs):
 * Header (with top able to show/hide certain links whether someone is logged in)
-* Footer 
+* Footer
+
+## Live Application
+* https://xchange-csc444.herokuapp.com
