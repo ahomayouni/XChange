@@ -4,7 +4,7 @@ module SessionsHelper
 	# Temp cookies created using the session method are automatically encrypted
 	# This is secure. No way for an attacker to use the session information to log in as user
 	def log_in(user)
-		session[:user_id] = user.user_id
+		session[:user_id] = user.id
 	end
 
 	# Returns a User object based on the session[:user_id] or current user logged in
@@ -14,6 +14,11 @@ module SessionsHelper
 		if session[:user_id]
 			@current_user ||= User.find_by(id: session[:user_id])
 		end
+	end
+
+	# Returns true if a user is logged in. 
+	def logged_in?
+		!current_user.nil?
 	end
 
 end
