@@ -8,13 +8,16 @@ Rails.application.routes.draw do
 
   get 'home/index'
 
-  # Session routes 
+  # Session routes
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  # Users routes 
+  # Users routes
   resources :users
-  
+
+  # Listing routes
+  resources :listings
+
   root 'home#index'
 end
