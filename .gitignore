@@ -3,3 +3,5 @@
 /log
 /tmp
 .DS_Store
+/.bundle
+/vendor/bundle
