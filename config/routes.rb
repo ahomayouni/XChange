@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
   get 'contact_us/index'
   get 'users/new'
   get 'privacy_policy/index'
@@ -6,7 +7,14 @@ Rails.application.routes.draw do
   get 'about/index'
 
   get 'home/index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # Session routes 
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy'
+
+  # Users routes 
   resources :users
+  
   root 'home#index'
 end
