@@ -12,6 +12,6 @@ To get this project running, follow these steps:
 
 
 ## TODO:
-Peter - Authentication & Security (Login,Signup) 
-Arnav - Item Listing
-...
+* Peter - Authentication & Security (Login,Signup) 
+* Arnav - Item Listing
+* ...
