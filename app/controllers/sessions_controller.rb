@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   	user = User.find_by(email: params[:session][:email].downcase) #make email string uniform as before_save in db
   	if user && user.authenticate(params[:session][:password])
   		log_in user #call function log_in provided in sessions_helper 
-      remember user
+      remember user #call function remember provided in sessions_helper
   		redirect_to user 
   	else
   		flash.now[:danger] = "Invalid email/password combination! Please try again"
