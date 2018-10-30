@@ -1,5 +1,2 @@
-<% if logged_in? %> 
-This will only show if a user is logged in .. Pretty cool huh? 
-<% end %>
-<br>
-<%= @user.name %>, <%= @user.email %>
+<h1> Hello <%=@user.name%> </h1>
+Your email address is: <%= @user.email %>

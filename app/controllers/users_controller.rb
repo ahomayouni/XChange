@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   	@user = User.new(user_params_validator)
   	if @user.save
   		flash[:success] = "Thanks for signing up with XChange!"
-  		redirect_to @user
+  		redirect_to login_path
   	else
   		render 'new'
   	end
