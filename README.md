@@ -10,22 +10,7 @@ To get this project running, follow these steps:
 3. >rails server 
 
 
-Things you need to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ..
+TODO:
+Peter - Authentication & Security (Login,Signup) 
+Arnav - Item Listing
+...
