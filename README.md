@@ -8,7 +8,7 @@ To get this project running, follow these steps:
 1. >bundle install 
 2. >rails db:migrate
 3. >rails server 
-Navigate to http://localhost:3000
+ Navigate to http://localhost:3000
 
 
 Things you need to cover:
