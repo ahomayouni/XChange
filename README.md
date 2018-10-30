@@ -6,7 +6,7 @@ CSC-444 group project
 To get this project running, follow these steps: 
 
  On a terminal, clone this repository and cd into it. Then, enter the below commands into the terminal. 
-1. >bundle install 
+1. >bundle install --without production 
 2. >rails db:migrate
 3. >rails server 
 
