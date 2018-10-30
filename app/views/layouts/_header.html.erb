@@ -1,8 +1,8 @@
 <% if logged_in? %>
-<%= "You are currently logged in as #{current_user.name}" %>
-<%= link_to "Log Out", logout_path , method: :delete %>
+	<%= "You are currently logged in as #{current_user.name}" %>
+	<%= link_to "Log Out", logout_path , method: :delete %>
 <%end%>
 
 <% if !logged_in? %>
-<%= link_to "Log In", login_path %>
+	<%= link_to "Log In", login_path %>
 <%end%>
