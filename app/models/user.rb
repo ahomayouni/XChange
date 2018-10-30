@@ -32,11 +32,16 @@ class User < ApplicationRecord
 	# Remembers a user in the database for use in persistent sessions
 	def remember
 		self.remember_token = User.new_token
-		update_attribute(:remember_digest, User.digest(remember_token))
+		update_attribute(:remember_digest, User.digest(remember_token)) #set the remember_digest in our db column
 	end
 
+	# Returns true if the given token matches the digest
 	def authenticated?(remember_token)
 		BCrypt::Password.new(remember_digest).is_password?(remember_token)
 	end
-	
+
+	def forget
+		update_attribute(:remember_digest,nil) #set the remember_digest in our db column to nil
+	end
+
 end

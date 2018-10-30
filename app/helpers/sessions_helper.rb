@@ -22,6 +22,22 @@ module SessionsHelper
 		end
 	end
 
+	### Cookies Helper Functions
+
+	# Set information to user column in database and set cookies
+	def remember(user)
+		user.remember
+		cookies.permanent.signed[:user_id] = user.id 
+		cookies.permanent[:remember_token] = user.remember_token	
+	end
+
+	# Set information to user column in database to nil and set cookies
+	def forget(user)
+		user.forget
+		cookies.delete(:user_id)
+		cookies.delete(:remember_token)
+	end
+
 	# Returns true if a user is logged in. 
 	def logged_in?
 		!current_user.nil?
@@ -29,13 +45,8 @@ module SessionsHelper
 
 	# Deletes current session and set @current_user to nil
 	def log_out
+		forget(current_user)
 		session.delete(:user_id)
 		@current_user = nil
-	end
-
-	def remember(user)
-		user.remember
-		cookies.permanent.signed[:user_id] = user.id 
-		cookies.permanent[:remember_token] = user.remember_token	
 	end
 end
