@@ -27,10 +27,10 @@ To get this project running, follow these steps:
 * Footer
 
 ## Deployment
-* Make sure you have the heroku CLI installed in your computer
+* Install heroku CLI installed on your computer
 * (For mac users and assuming you have the all amazing `homebrew` installed)
 1. >brew install heroku/brew/heroku
 
-* If you have made new migrations, remember to also run db:migrate on HEROKU
+* If you have made new migrations, remember to also run db:migrate on HEROKU. 
 
 1. >heroku run rails db:migrate
