@@ -16,8 +16,11 @@ To get this project running, follow these steps:
 
 ## TODO:
 * Peter - Authentication & Security (Login,Signup) , Create a forgot password feature
-* Arnav - Item Listing
-* ...
+* Adi - Item Listing
+* Maru - Overall Aesthetics
+* Arash - Deployment 
+* Arnav - Borrower Lender Ratings
+* KC - Help Arnav out and Overall Aesthetics
 
 ## IceBox (Required within the Bolen Docs):
 * Header (with top able to show/hide certain links whether someone is logged in)
