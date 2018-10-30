@@ -25,3 +25,12 @@ To get this project running, follow these steps:
 ## IceBox (Required within the Bolen Docs):
 * Header (with top able to show/hide certain links whether someone is logged in)
 * Footer
+
+## Deployment
+*Make sure you have the heroku CLI installed in your computer
+ ** (For mac users and assuming you have the all amazing `homebrew` installed)
+1. >brew install heroku/brew/heroku
+
+* If you have made new migrations, remember to also run db:migrate on HEROKU
+
+1. >heroku run rails db:migrate
