@@ -3,12 +3,13 @@ class SessionsController < ApplicationController
   end
 
   def create
-  	# We have downcase here since before saving to database we are downcasing the email address
-  	user = User.find_by(email: params[:session][:email].downcase)
+  	
+  	user = User.find_by(email: params[:session][:email].downcase) #make email string uniform as before_save in db
   	if user && user.authenticate(params[:session][:password])
+  		log_in user #call function log_in provided in sessions_helper 
   		redirect_to user 
   	else
-  		flash[:danger] = "Invalid email/password combination! Please try again"
+  		flash.now[:danger] = "Invalid email/password combination! Please try again"
   		render 'new'
   	end
 
