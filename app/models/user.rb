@@ -44,7 +44,10 @@ class User < ApplicationRecord
 	def forget
 		update_attribute(:remember_digest,nil) #set the remember_digest in our db column to nil
 	end
-
+	
+	def self.search(search)
+	  where("name LIKE ? OR email LIKE ?", "%#{search}%", "%#{search}%") 
+  end
 	private
 		def create_activation_digest
 			self.activation_token= User.new_token

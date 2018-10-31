@@ -6,6 +6,16 @@ class UsersController < ApplicationController
   def index
     # @users = User.all # Caution doing this might slow down some rendering in the future
     @users = User.paginate(page: params[:page])
+   
+    #Basic search functionality which will show the first user found
+    #TODO: show list of found users so the client can choose which to view
+    if params[:search]
+      @users = User.search(params[:search])
+      @user = @users[0]
+      render 'show'
+    else
+      @users = User.paginate(page: params[:page])
+    end
   end
   def new
   	@user = User.new

@@ -10,11 +10,11 @@
 <%= will_paginate %>
 
 
-<div class="col-md-3 col-md-offset-3">
-	<h4>Search for a user</h4>
-	<%= form_for(users_path, method: :get) do |f|  %>
-	  <%= f.label :name%>
-	  <%= f.text_field :name, class: 'form-control'%>
-	  <%= f.submit 'Search' , class: "btn btn-primary"%>
+<div class="col-md-6 col-md-offset-3">
+	<h4>Search for a user (by name or email)</h4>
+	<%= form_tag(users_path, method: :get) do %>
+	  <%= label_tag :keyword%>:
+	  <%= text_field_tag :search, params[:search]%>
+	  <%= submit_tag 'Search' , search: nil, class: "btn btn-primary"%>
 	<% end %>
 </div><br>
