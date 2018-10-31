@@ -2,7 +2,7 @@ class Listing < ActiveRecord::Base
   validates :title, presence: true, length: {maximum: 20}
   validates :description, presence: true, length: {minimum: 5, maximum: 50}
   validates :category, presence: true
-  validates :price_per_day, presence: true
+  validates :price_per_day, presence: true, numericality: {greater_than: 0, only_integer: true}
   validate :validateTimings
 
   def validateTimings
