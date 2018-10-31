@@ -4,4 +4,4 @@
 
 You're <b> almost </b> there! Click on the link below to <b> activate </b> your account and start borrowing/lending ! :)
 
-<%= edit_account_activation_path(@user.activation_token, email: @user.email) %> </p>
+<%= link_to "Activate", edit_account_activation_path(@user.activation_token, email: @user.email) %> </p>

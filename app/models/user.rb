@@ -47,7 +47,7 @@ class User < ApplicationRecord
 	
 	def self.search(search)
 	  where("name LIKE ? OR email LIKE ?", "%#{search}%", "%#{search}%") 
-  end
+  	end
 	private
 		def create_activation_digest
 			self.activation_token= User.new_token
