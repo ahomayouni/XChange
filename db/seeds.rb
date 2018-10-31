@@ -1,9 +1,10 @@
 
 # Create 100 Fake users. Also Template in how we can prepopulate the database.
-User.create!(name:  "Michael Stumm",
-             email: "example@michaelstumm.com",
-             password:              "aaaaaa",
-             password_confirmation: "aaaaaa")
+User.create!(name:  "admin",
+             email: "admin@admin.com",
+             password:              "admin",
+             password_confirmation: "admin",
+             admin: true)
 
 99.times do |n|
   name  = Faker::FunnyName.name
