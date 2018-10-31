@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :verify_logged_in_user, only: [:show,:edit,:update] # White listing
-  before_action :verify_correct_user, only: [:show,:edit,:update] # White listing
+  before_action :verify_correct_user, only: [:show,:edit,:update] 
 
   def new
   	@user = User.new
@@ -48,6 +48,7 @@ class UsersController < ApplicationController
 
     def verify_correct_user
       @user = User.find(params[:id])
+      # current_user is a function defined in sessions_helper
       if not @user == current_user
         flash[:danger] = "Unauthorized Access."
         redirect_to current_user
