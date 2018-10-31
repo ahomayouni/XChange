@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   before_action :verify_correct_user, only: [:edit,:update] 
 
   def index
-    @users = User.all # Caution doing this might slow down some rendering in the future
+    # @users = User.all # Caution doing this might slow down some rendering in the future
+    @users = User.paginate(page: params[:page])
   end
   def new
   	@user = User.new
