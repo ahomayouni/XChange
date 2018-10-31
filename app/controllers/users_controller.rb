@@ -38,6 +38,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:success] = "User has been successfully deleted"
+    redirect_to users_path #Reload page with another request
+  end
+
   private
 
     # Important to note that :admin is not included here. MEANING outsider are not allowed to send an admin
