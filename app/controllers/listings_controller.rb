@@ -38,8 +38,6 @@ class ListingsController < ApplicationController
     end
   end
 
-  def edit
-  end
 
  private
     def listing_params

@@ -1,6 +1,7 @@
 <h1>Create a Listing</h1>
+<%= render 'form' %>
 
-<% if @listing.errors.any? %>
+<!-- <% if @listing.errors.any? %>
  <h4>The following errors prevented the listing from saving:</h4>
  <ul>
  <% @listing.errors.full_messages.each do |message|%>
@@ -39,3 +40,4 @@
    <%= f.submit %>
  </p>
 <% end %>
+<%= link_to 'Back', listings_path %> -->

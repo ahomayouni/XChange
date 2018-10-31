@@ -7,3 +7,5 @@
   Start Lending Date: <%= @listing.start_lending %><br>
   End Lending Date: <%= @listing.end_lending %>
 </p>
+<%= link_to "Edit", edit_listing_path(@listing) %>
+<%= link_to 'Back', listings_path %>
