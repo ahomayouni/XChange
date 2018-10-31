@@ -1,3 +1,5 @@
+
+# Create 100 Fake users. Also Template in how we can prepopulate the database.
 User.create!(name:  "Michael Stumm",
              email: "example@michaelstumm.com",
              password:              "aaaaaa",
