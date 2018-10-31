@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   # Users routes
   resources :users
 
+  # Account Activation routes
+  resources :account_activations, only: [:edit]
+
   # Listing routes
   resources :listings
 
