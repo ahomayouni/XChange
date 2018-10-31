@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
-  before_action :verify_logged_in_user, only: [:show,:edit,:update] # White listing
-  before_action :verify_correct_user, only: [:show,:edit,:update] 
+  before_action :verify_logged_in_user, only: [:index,:edit,:update] # White listing
+  before_action :verify_correct_user, only: [:edit,:update] 
 
+  def index
+    @users = User.all # Caution doing this might slow down some rendering in the future
+  end
   def new
   	@user = User.new
   end
