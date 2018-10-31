@@ -1,5 +1,7 @@
-<h1>User#account_activation</h1>
+<h1> XChange </h1>
 
-<p>
-  <%= @greeting %>, find me in app/views/user_mailer/account_activation.html.erb
-</p>
+<p> Hello <%= @user.name %>,
+
+You're <b> almost </b> there! Click on the link below to <b> activate </b> your account and start borrowing/lending ! :)
+
+<%= edit_account_activation_path(@user.activation_token, email: @user.email) %> </p>
