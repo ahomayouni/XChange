@@ -1,0 +1,41 @@
+<h1>Editing a Listing</h1>
+
+<% if @listing.errors.any? %>
+ <h4>The following errors prevented the listing from saving:</h4>
+ <ul>
+ <% @listing.errors.full_messages.each do |message|%>
+ <li><%= message%></li>
+ <% end %>
+ </ul>
+<% end %>
+
+<%= form_for @listing do |f| %>
+ <p>
+   <%= f.label :title %>
+   <%= f.text_field :title, placeholder:"eg. Canon XF205" %>
+ </p>
+ <p>
+   <%= f.label :category %>
+   <%= f.select :category, ["Film & Photography","Audio Visual Equipment","Projectors & Screens","Drones","DJ Equipment","Transport","Storage","Electronics","Party & Events","Sports","Musical Instruments","Home / Office / Garden","Kids & Baby","Holiday & Travel","Clothing"] %>
+ </p>
+ <p>
+   <%= f.label :description%>
+   <%= f.text_area :description, placeholder:"eg. Shooting beautiful shots on film is made simple with the auto mode, but you're able to also switch that off and shoot in full manual! "%>
+ </p>
+ <p>
+   <%= f.label :price_per_day%>
+   <%= f.number_field :price_per_day, placeholder:"eg. $20"%>
+ </p>
+
+ <p>
+   <%= f.label :start_lending%>
+   <%= f.date_select :start_lending%>
+ </p>
+ <p>
+   <%= f.label :end_lending%>
+   <%= f.date_select :end_lending%>
+ </p>
+ <p>
+   <%= f.submit %>
+ </p>
+<% end %>

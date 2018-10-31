@@ -8,6 +8,21 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
   end
 
+  def edit
+    @listing = Listing.find(params[:id])
+  end
+
+  def update
+    @listing = Listing.find(params[:id])
+    if @listing.update(listing_params)
+     flash[:notice] = "Listing was updated"
+     redirect_to listing_path(@listing)
+    else
+     flash[:notice] = "Listing was not updated"
+     render 'edit'
+    end
+ end
+
   def create
     #render plain: params[:listing].inspect
     @listing = Listing.new(listing_params)
@@ -17,6 +32,9 @@ class ListingsController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def edit
   end
 
  private
