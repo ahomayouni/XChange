@@ -8,3 +8,13 @@
 </ul>
 
 <%= will_paginate %>
+
+
+<div class="col-md-3 col-md-offset-3">
+	<h4>Search for a user</h4>
+	<%= form_for(users_path, method: :get) do |f|  %>
+	  <%= f.label :name%>
+	  <%= f.text_field :name, class: 'form-control'%>
+	  <%= f.submit 'Search' , class: "btn btn-primary"%>
+	<% end %>
+</div><br>
