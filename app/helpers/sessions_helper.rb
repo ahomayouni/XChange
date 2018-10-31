@@ -8,8 +8,7 @@ module SessionsHelper
 	end
 
 	# Returns a User object based on the session[:user_id] or current user logged in
-	# This is handy because now we can simply do <%= current_user.name %> in views and
-	# redirect_to current_user within the controller
+	# This is handy because now we can simply do <%= current_user.name %> in views and other places
 	def current_user
 		if (user_id = session[:user_id])
 			@current_user ||= User.find_by(id: user_id)
