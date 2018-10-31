@@ -1,6 +1,7 @@
 <% if logged_in? %>
-	<%= "You are currently logged in as #{current_user.name}" %>
 	<!-- current_user is actually a function call living in sessions_helper.rb. Returns a @user object -->
+	<%= link_to "#{current_user.name.camelcase}", user_path(current_user) %>
+	<%= link_to "Users", users_path %>
 	<%= link_to "Settings", edit_user_path(current_user) %> 
 	<%= link_to "Log Out", logout_path , method: :delete %>
 <%end%>
