@@ -21,6 +21,9 @@ module SessionsHelper
 		end
 	end
 
+	def current_user?(user)
+		current_user == user
+	end
 	### Cookies Helper Functions
 
 	# Set information to user column in database and set cookies

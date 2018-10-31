@@ -1,4 +1,8 @@
 <li>
 	<%= user.name %>
 	<%= link_to "View Profile", user_path(user) %>
+	<!-- Checks if I am admin and also if this user is not admin-->
+	<% if current_user.admin? && !current_user?(user) %>
+	<%= link_to 'DELETE', user, method: :delete, data: {confirm: "Are You sure you want to delete #{user.name}? "}%>
+	<%end%>
 </li>

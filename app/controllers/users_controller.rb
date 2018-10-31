@@ -39,6 +39,9 @@ class UsersController < ApplicationController
   end
 
   private
+
+    # Important to note that :admin is not included here. MEANING outsider are not allowed to send an admin
+    # params here. It could only be set through with access to the heroku database. 
   	def user_params_validator
   		params.require(:user).permit(:name, :email,:password,:password_confirmation)
   	end
