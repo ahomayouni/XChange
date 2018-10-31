@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :verify_logged_in_user, only: [:index,:edit,:update] # White listing
   before_action :verify_correct_user, only: [:edit,:update] 
+  before_action :verify_admin_user, only: :destroy #only admin can issue a destroy command
 
   def index
     # @users = User.all # Caution doing this might slow down some rendering in the future
@@ -68,6 +69,12 @@ class UsersController < ApplicationController
         redirect_to current_user
       end
 
+    end
+
+    def verify_admin_user
+      if !current_user.admin?
+        redirect_to users_path
+      end
     end
 
 end
