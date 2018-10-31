@@ -1,4 +1,7 @@
 <h1>Listing all Listings</h1>
+<p>
+<%= link_to "Create new listing", new_listing_path %>
+</p>
 <table>
  <tr>
   <th>Title</th>
@@ -8,6 +11,8 @@
  <tr>
   <td><%= listing.title %></td>
   <td><%= listing.description %></td>
+  <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
+  <td><%= link_to 'Show', listing_path(listing) %></td>
  </tr>
  <% end %>
 </table>
