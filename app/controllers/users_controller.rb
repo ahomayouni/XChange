@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:show,:edit,:update] # White listing
+  before_action :verify_logged_in_user, only: [:show,:edit,:update] # White listing
+  before_action :verify_correct_user, only: [:show,:edit,:update] # White listing
 
   def new
   	@user = User.new
@@ -38,11 +39,20 @@ class UsersController < ApplicationController
   		params.require(:user).permit(:name, :email,:password,:password_confirmation)
   	end
 
-    def logged_in_user
+    def verify_logged_in_user
       unless logged_in? 
         flash[:danger] = "Unauthorized Access. Please log in."
         redirect_to login_path
       end
+    end
+
+    def verify_correct_user
+      @user = User.find(params[:id])
+      if not @user == current_user
+        flash[:danger] = "Unauthorized Access."
+        redirect_to current_user
+      end
+
     end
 
 end
