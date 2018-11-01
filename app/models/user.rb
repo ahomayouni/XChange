@@ -18,6 +18,13 @@ class User < ApplicationRecord
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 5 }
 
+
+	def authenticated?(attribute, token)
+    	digest = send("#{attribute}_digest")
+    	return false if digest.nil?
+    	BCrypt::Password.new(digest).is_password?(token)
+  	end
+
 	# Simply returns a hash of the given string using Bcrypt functions
 	def User.digest(string)
 		cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
@@ -36,10 +43,10 @@ class User < ApplicationRecord
 	end
 
 	# Returns true if the given token matches the digest
-	def authenticated?(remember_token)
-		return false if remember_digest.nil?
-		BCrypt::Password.new(remember_digest).is_password?(remember_token)
-	end
+	# def authenticated?(remember_token)
+	# 	return false if remember_digest.nil?
+	# 	BCrypt::Password.new(remember_digest).is_password?(remember_token)
+	# end
 
 	def forget
 		update_attribute(:remember_digest,nil) #set the remember_digest in our db column to nil

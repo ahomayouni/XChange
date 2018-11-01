@@ -2,4 +2,4 @@ Hello <%= @user.name %>,
 
 You're almost there! Click on the link to activate your account and start borrowing/lending ! :)
 
-<%= edit_account_activation_path(@user.activation_token, email: @user.email) %>
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>

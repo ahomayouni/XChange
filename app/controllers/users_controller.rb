@@ -28,8 +28,10 @@ class UsersController < ApplicationController
   def create
   	@user = User.new(user_params_validator)
   	if @user.save
-  		flash[:success] = "Thanks for signing up with XChange!"
-  		redirect_to login_path
+      UserMailer.account_activation(@user).deliver_now
+  		flash[:success] = "Thanks for signing up with XChange! Now please check your email to activate"
+  		# redirect_to login_path
+      redirect_to root_path
   	else
   		render 'new'
   	end
