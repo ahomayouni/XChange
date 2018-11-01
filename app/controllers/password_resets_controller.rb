@@ -28,20 +28,27 @@ class PasswordResetsController < ApplicationController
     if params[:user][:password].empty?
       @user.errors.add(:password, "Cannot be empty")
       render 'edit'
+    elsif @user.update_attributes(user_params_validator)
+      log_in @user
+      flash[:success] = "Password has been successfully reset."
+      redirect_to @user
+    else
+      render 'edit'
     end
   end
 
   private
+   
+    def user_params_validator
+      params.require(:user).permit(:password, :password_confirmation)
+    end
+
     # Since we know both edit and update requires the use of @user object. Might as well make it as a before action method.
     def get_user 
       @user = User.find_by(email: params[:email])
     end
 
     def valid_user
-      puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ money money money"
-      puts @user 
-      puts @user.activated?
-      puts @user.authenticated?(:reset,params[:id])
       unless (@user && @user.activated? && @user.authenticated?(:reset,params[:id]))
         redirect_to root_path
       end
