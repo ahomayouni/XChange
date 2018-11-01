@@ -16,6 +16,9 @@ class Listing < ActiveRecord::Base
   # creating an association betweeen the user and listings
   belongs_to :user
 
+  def self.search(search)
+    where("title LIKE ? OR description LIKE ?", "%#{search}%", "%#{search}%")
+  end
 end
 
 

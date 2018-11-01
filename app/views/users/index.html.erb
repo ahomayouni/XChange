@@ -24,6 +24,6 @@
 		<h4> Found <%= @users_found.count %> user(s) containing "<%= params[:search_users] %>"! </h4>
 		<%= render @users_found %> <br>
 	<% else %>
-		<p> No match found for <%= params[:search_users] %> </p>
+		<p> No users found for "<%= params[:search_users] %>" </p>
 	<% end %>
 <% end %>

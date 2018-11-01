@@ -5,6 +5,13 @@ class ListingsController < ApplicationController
 
   def index
     @listings = Listing.all
+    
+    # Search functionality for listings  
+    if params[:search_listings] and params[:search_listings] != ""
+      @listings_found = Listing.search(params[:search_listings])
+    else
+      nil
+    end
   end
 
   def new
