@@ -80,7 +80,6 @@ class UsersController < ApplicationController
         flash[:danger] = "Unauthorized Access."
         redirect_to current_user
       end
-
     end
 
     def verify_admin_user
