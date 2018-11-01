@@ -13,6 +13,7 @@ class Listing < ActiveRecord::Base
     end
   end
 
+  # creating an association betweeen the user and listings
   belongs_to :user
 
 end

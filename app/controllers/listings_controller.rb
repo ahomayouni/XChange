@@ -1,18 +1,20 @@
 class ListingsController < ApplicationController
 
+  before_action :find_user
+
   def index
     @listings = Listing.all
   end
 
   def new
-    # @listing = Listing.new
-    @listing = current_user.listings.build
+    @listing = Listing.new
+    #@listing = current_user.listings.build
   end
 
   def create
     #render plain: params[:listing].inspect
-    # @listing = Listing.new(listing_params)
-    @listing = current_user.listings.build(listing_params)
+    @listing = Listing.new(listing_params)
+    #@listing = current_user.listings.build(listing_params)
     if @listing.save
       flash[:notice] = "Listing was successfully created"
       redirect_to listing_path(@listing)
@@ -48,6 +50,13 @@ class ListingsController < ApplicationController
   end
 
  private
+
+     def find_user
+      if params[:user_id]
+        @user = User.find(params[:user_id])
+      end
+    end
+
     def listing_params
       params.require(:listing).permit(:title, :description, :category, :start_lending, :end_lending, :price_per_day)
     end
