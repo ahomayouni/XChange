@@ -2,6 +2,7 @@ class PasswordResetsController < ApplicationController
 
   before_action :get_user , only: [:edit,:update]
   before_action :valid_user , only: [:edit,:update]
+  before_action :check_expiration, only: [:edit,:update]
 
   def new
   end
@@ -23,6 +24,13 @@ class PasswordResetsController < ApplicationController
   def edit
   end
 
+  def update
+    if params[:user][:password].empty?
+      @user.errors.add(:password, "Cannot be empty")
+      render 'edit'
+    end
+  end
+
   private
     # Since we know both edit and update requires the use of @user object. Might as well make it as a before action method.
     def get_user 
@@ -30,11 +38,17 @@ class PasswordResetsController < ApplicationController
     end
 
     def valid_user
+      puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ money money money"
       puts @user 
-      puts params[:id]
+      puts @user.activated?
+      puts @user.authenticated?(:reset,params[:id])
       unless (@user && @user.activated? && @user.authenticated?(:reset,params[:id]))
         redirect_to root_path
       end
+    end
+
+    def check_expiration
+      true
     end
 
 end

@@ -53,6 +53,7 @@ class ListingsController < ApplicationController
 
      def find_user
       if params[:user_id]
+        puts params[:user_id]
         @user = User.find(params[:user_id])
       end
     end
