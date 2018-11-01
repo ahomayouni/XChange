@@ -1,4 +1,8 @@
 class PasswordResetsController < ApplicationController
+
+  before_action :get_user , only: [:edit,:update]
+  before_action :valid_user , only: [:edit,:update]
+
   def new
   end
 
@@ -18,4 +22,19 @@ class PasswordResetsController < ApplicationController
 
   def edit
   end
+
+  private
+    # Since we know both edit and update requires the use of @user object. Might as well make it as a before action method.
+    def get_user 
+      @user = User.find_by(email: params[:email])
+    end
+
+    def valid_user
+      puts @user 
+      puts params[:id]
+      unless (@user && @user.activated? && @user.authenticated?(:reset,params[:id]))
+        redirect_to root_path
+      end
+    end
+
 end
