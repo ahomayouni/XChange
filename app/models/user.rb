@@ -17,6 +17,9 @@ class User < ApplicationRecord
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 5 }
 
+	def password_reset_expired?
+		reset_sent_at < 2.hours.ago # Another beauty of rails :)
+	end
 
 	def authenticated?(attribute, token)
     	digest = send("#{attribute}_digest")
