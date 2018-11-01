@@ -4,6 +4,7 @@ CSC-444 group project
 
 ## Live Application
 * https://xchange-csc444.herokuapp.com
+* Use admin account: admin@admin.com password: admin
 
 ## Installation:
 To get this project running, follow these steps: 
@@ -12,7 +13,6 @@ To get this project running, follow these steps:
 1. >bundle install --without production 
 2. >rails db:migrate
 3. >rails server 
-
 
 ## TODO:
 * Peter - Account Activation, Create a forgot password feature
