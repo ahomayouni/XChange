@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+	# If you are confused about how sometimes we are using self.attribute versus just attribute.
+	# This is actually a ruby convention. And also why ruby is disgusting (sometimes)
+	# Check this out and hopefully you understand. If not ask me :) 
+	# https://stackoverflow.com/questions/5183664/why-isnt-self-always-needed-in-ruby-rails-activerecord
 	attr_accessor :remember_token, :activation_token, :reset_token
 
 	before_save { self.email = email.downcase }
