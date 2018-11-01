@@ -4,7 +4,7 @@ class Listing < ActiveRecord::Base
   validates :category, presence: true
   validates :price_per_day, presence: true, numericality: {greater_than: 0, only_integer: true}
   validate :validateTimings
-  validates :user_id, presence: true
+  #validates :user_id, presence: true
 
 
   def validateTimings

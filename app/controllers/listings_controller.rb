@@ -7,14 +7,14 @@ class ListingsController < ApplicationController
   end
 
   def new
-    @listing = Listing.new
-    #@listing = current_user.listings.build
+    #@listing = Listing.new
+    @listing = current_user.listings.build
   end
 
   def create
     #render plain: params[:listing].inspect
-    @listing = Listing.new(listing_params)
-    #@listing = current_user.listings.build(listing_params)
+    #@listing = Listing.new(listing_params)
+    @listing = current_user.listings.build(listing_params)
     if @listing.save
       flash[:notice] = "Listing was successfully created"
       redirect_to listing_path(@listing)
