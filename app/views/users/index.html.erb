@@ -14,7 +14,16 @@
 	<h4>Search for a user (by name or email)</h4>
 	<%= form_tag(users_path, method: :get) do %>
 	  <%= label_tag :keyword%>:
-	  <%= text_field_tag :search, params[:search]%>
-	  <%= submit_tag 'Search' , search: nil, class: "btn btn-primary"%>
+	  <%= text_field_tag :search_users, params[:search_users]%>
+	  <%= submit_tag 'Search' , search_users: nil, class: "btn btn-primary"%>
 	<% end %>
 </div><br>
+
+<% if params[:search_users] and params[:search_users] != "" %>
+	<% if @users_found.count > 0 %>
+		<h4> Found <%= @users_found.count %> user(s) containing "<%= params[:search_users] %>"! </h4>
+		<%= render @users_found %> <br>
+	<% else %>
+		<p> No match found for <%= params[:search_users] %> </p>
+	<% end %>
+<% end %>
