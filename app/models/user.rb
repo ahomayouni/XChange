@@ -11,10 +11,6 @@ class User < ApplicationRecord
 	
 	# Validate name field
 	validates :name, presence:true , length:{maximum: 50}
-
-	# Automatically two virtual attributes: password & password_confirmation
-	# including presence validations upon object creation and a validation requiring
-	# they match. Also comes with an authenticate method.
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 5 }
 
@@ -46,6 +42,16 @@ class User < ApplicationRecord
 		update_attribute(:remember_digest,nil) #set the remember_digest in our db column to nil
 	end
 	
+	def create_reset_digest
+		self.reset_token = User.new_token
+		update_attribute(:reset_digest , User.digest(reset_token))
+		update_attribute(:reset_sent_at, Time.zone.now)
+	end
+
+	def send_password_reset_email
+		UserMailer.password_reset(self).deliver_now # Amazing gem that has everything
+	end
+
 	def self.search(search)
 	  where("name LIKE ? OR email LIKE ?", "%#{search}%", "%#{search}%") 
   	end
