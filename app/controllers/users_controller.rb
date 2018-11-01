@@ -63,22 +63,6 @@ class UsersController < ApplicationController
   		params.require(:user).permit(:name, :email,:password,:password_confirmation)
   	end
 
-    def verify_logged_in_user
-      unless logged_in? 
-        flash[:danger] = "Unauthorized Access. Please log in."
-        redirect_to login_path
-      end
-    end
-
-    def verify_correct_user
-      @user = User.find(params[:id])
-      # current_user is a function defined in sessions_helper
-      if not @user == current_user
-        flash[:danger] = "Unauthorized Access."
-        redirect_to current_user
-      end
-    end
-
     def verify_admin_user
       if !current_user.admin?
         redirect_to users_path

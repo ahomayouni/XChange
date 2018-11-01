@@ -1,5 +1,6 @@
 class ListingsController < ApplicationController
 
+  before_action :verify_logged_in_user
   before_action :find_user
   before_action :verify_correct_user, only: [:edit,:update]
 
@@ -69,13 +70,5 @@ class ListingsController < ApplicationController
     def listing_params
       params.require(:listing).permit(:title, :description, :category, :start_lending, :end_lending, :price_per_day)
     end
-
-    def verify_correct_user
-      @user = User.find(params[:id])
-      # current_user is a function defined in sessions_helper
-      if not @user == current_user
-        flash[:danger] = "Unauthorized Access."
-        redirect_to listings_path
-      end
-    end
+    
 end
