@@ -5,10 +5,13 @@ class User < ApplicationRecord
 	before_create :create_activation_digest
 
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-	
+
+	# creating an association with users
+	has_many :listings
+
 	# Validate email field with regex
 	validates :email, presence:true , length:{maximum:255} , format:{with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
-	
+
 	# Validate name field
 	validates :name, presence:true , length:{maximum: 50}
 	has_secure_password
@@ -41,7 +44,7 @@ class User < ApplicationRecord
 	def forget
 		update_attribute(:remember_digest,nil) #set the remember_digest in our db column to nil
 	end
-	
+
 	def create_reset_digest
 		self.reset_token = User.new_token
 		update_attribute(:reset_digest , User.digest(reset_token))
@@ -53,7 +56,7 @@ class User < ApplicationRecord
 	end
 
 	def self.search(search)
-	  where("name LIKE ? OR email LIKE ?", "%#{search}%", "%#{search}%") 
+	  where("name LIKE ? OR email LIKE ?", "%#{search}%", "%#{search}%")
   	end
 	private
 		def create_activation_digest

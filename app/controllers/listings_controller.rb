@@ -5,7 +5,20 @@ class ListingsController < ApplicationController
   end
 
   def new
-    @listing = Listing.new
+    # @listing = Listing.new
+    @listing = current_user.listings.build
+  end
+
+  def create
+    #render plain: params[:listing].inspect
+    # @listing = Listing.new(listing_params)
+    @listing = current_user.listings.build(listing_params)
+    if @listing.save
+      flash[:notice] = "Listing was successfully created"
+      redirect_to listing_path(@listing)
+    else
+      render 'new'
+    end
   end
 
   def show
@@ -26,17 +39,6 @@ class ListingsController < ApplicationController
      render 'edit'
     end
  end
-
-  def create
-    #render plain: params[:listing].inspect
-    @listing = Listing.new(listing_params)
-    if @listing.save
-      flash[:notice] = "Listing was successfully created"
-      redirect_to listing_path(@listing)
-    else
-      render 'new'
-    end
-  end
 
   def destroy
     @listing = Listing.find(params[:id])

@@ -4,12 +4,16 @@ class Listing < ActiveRecord::Base
   validates :category, presence: true
   validates :price_per_day, presence: true, numericality: {greater_than: 0, only_integer: true}
   validate :validateTimings
+  validates :user_id, presence: true
+
 
   def validateTimings
     if self.start_lending && self.end_lending && self.start_lending > self.end_lending
       errors[:base] << "Start Time must be before End Time"
     end
   end
+
+  belongs_to :user
 
 end
 
