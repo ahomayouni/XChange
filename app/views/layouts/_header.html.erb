@@ -1,5 +1,3 @@
-<%= image_tag("logo_transparent.png", width: '300px', align: 'right') %><br>
-
 <% if logged_in? %>
 	<!-- current_user is actually a function call living in sessions_helper.rb. Returns a @user object -->
 	<%= link_to "#{current_user.name.camelcase}", user_path(current_user) %>
