@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   def create
   	@user = User.new(user_params_validator)
   	if @user.save
+      @user.create_person #Creating a person object associated with this user.
       UserMailer.account_activation(@user).deliver_now
   		flash[:success] = "Thanks for signing up with XChange! Now please check your email to activate"
   		# redirect_to login_path
@@ -40,7 +41,25 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params_validator)
+
+    
+
+    # params[:user].delete(:password) if params[:user][:password].blank?
+
+    if params[:password].blank?
+      params.delete(:password)
+      params.delete(:password_confirmation)
+    end
+
+    @user.name = params[:user][:name]
+    @user.email = params[:user][:email]
+    @user.person.address = params[:user][:address]
+
+    @user.password = ''
+    @user.password_confirmation = ''
+
+    if @user.save
+      @user.person.save
       flash[:success] = "Successfully updated your profile!"
       redirect_to @user
     else

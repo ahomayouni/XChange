@@ -10,8 +10,11 @@
 	      <%= f.text_field :name, class: 'form-control'%> 
 
 	      <%= f.label :email , "Email: "%>
-	      <%= f.email_field :email, class: 'form-control'%> 
-	      
+	      <%= f.email_field :email, class: 'form-control'%>
+
+	      <%= f.label :address , "Address: "%>
+	      <%= f.text_field :address , placeholder: "#{@user.person.address}", value: @user.person.address , class: 'form-control'%> 
+
 	      <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 	<% end %>
   </div>
