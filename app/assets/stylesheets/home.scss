@@ -5,9 +5,15 @@
     width: 930px;
     height: 360px;
   }
-.carousel-image {
-    z-index: -1; 
+
+.carousel-content {
+    position: absolute;
+    top: 35%;
+    left: 27%; 
+    z-index: 20;
+    color: white;
 }
+
 .footer {
     position: absolute;
     bottom: 0;
