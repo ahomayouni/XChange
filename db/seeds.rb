@@ -6,7 +6,12 @@ User.create!(name:  "admin",
              password_confirmation: "admin",
              admin: true,
              activated: true,
-             activated_at: Time.zone.now)
+             activated_at: Time.zone.now,
+             person: Person.create(
+              address: Faker::Address.street_address,
+              phone_number: '6471678732',
+              description: 'I am a bot created by the master Peter Tanugraha'
+             ))
 
 99.times do |n|
   name  = Faker::FunnyName.name
@@ -17,5 +22,10 @@ User.create!(name:  "admin",
                password:              password,
                password_confirmation: password,
                activated: true,
-               activated_at: Time.zone.now )
+               activated_at: Time.zone.now,
+               person: Person.create(
+                address: Faker::Address.street_address,
+                phone_number: '6471678732',
+                description: 'I am a bot created by the master Peter Tanugraha'
+               ))
 end
