@@ -1,20 +1,23 @@
 <%# Carousel %>
 <div class="container">
+
    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
       </ol>
       <div class="carousel-inner">
           <div class="carousel-item active">
               <%= image_tag("books.jpg", :class => "carousel-image")%>
+              <div class="carousel-content">
+                <h1 style="font-size:4.5rem;">Borrow Anything</h1>
+              </div>
           </div>
           <div class="carousel-item">
               <%= image_tag("tools.jpg") %>
-          </div>
-          <div class="carousel-item">
-              <%= image_tag("office.jpg") %>
+              <div class="carousel-content">
+                <h1 style="font-size:4.5rem;">Lend Anything</h1>
+              </div>
           </div>
       </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -26,8 +29,6 @@
           <span class="sr-only">Next</span>
         </a>
     </div>
-   
-    <h1>XChange</h1>
     <%#  <%= image_tag("logo_transparent.png", width: '300px') %>
     <button> <%= link_to 'Sign Up!', new_user_path, class: "btn btn-primary" %> </button> 
 </div>
