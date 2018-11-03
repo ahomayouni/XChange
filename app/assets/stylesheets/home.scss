@@ -16,10 +16,17 @@
   }
 .carousel-content {
     position: absolute;
-    top: 22%;
-    left: 33%; 
+    top: 18%;
+    left: 19%; 
     z-index: 20;
     color: white;
+    h1 {
+        font-size: 4.5rem; 
+    }
+    p {
+        font-size: 2rem; 
+        max-width: 800px; 
+    }
 }
 .xchange-footer {
     position: absolute;

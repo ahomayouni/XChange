@@ -8,13 +8,17 @@
           <div class="carousel-item active">
               <%= image_tag("books-bigger.jpg", :class => "carousel-image")%>
               <div class="carousel-content">
-                <h1 style="font-size:4.5rem;">Borrow Anything</h1>
+                <h1>Borrow Anything</h1>
+                <p>Need something that you'll only use once?
+                  We'll connect you with people that you can borrow it from at a lower cost. </p>
               </div>
           </div>
           <div class="carousel-item">
               <%= image_tag("tools-bigger.jpg") %>
               <div class="carousel-content">
-                <h1 style="font-size:4.5rem;">Lend Anything</h1>
+                <h1>Lend Anything</h1>
+                <p>Got something lying around that you only used once?
+                   Lend it out through XChange to give it a second life. </p>
               </div>
           </div>
       </div>
@@ -27,6 +31,7 @@
           <span class="sr-only">Next</span>
         </a>
     </div>
+
     <%#  <%= image_tag("logo_transparent.png", width: '300px') %>
     <% if !logged_in? %>
         <button> <%= link_to 'Sign Up!', new_user_path, class: "btn btn-primary" %> </button> 
