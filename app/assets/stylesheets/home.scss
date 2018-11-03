@@ -1,11 +1,19 @@
-// Place all the styles related to the Home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+//I'm putting styles for the home page, header and footer here. The header styles 
+//would be at the top of the file, the home page content styles would be next 
+//and the end will be footer styles.
+
+.xchange-header {
+    background-color: rgba(0, 0, 0, .85);
+}
+.xchange-header a {
+    color: #999;
+    transition: ease-in-out color .15s;
+}
+
 .carousel-inner {
     width: 930px;
     height: 360px;
   }
-
 .carousel-content {
     position: absolute;
     top: 35%;
@@ -13,8 +21,7 @@
     z-index: 20;
     color: white;
 }
-
-.footer {
+.xchange-footer {
     position: absolute;
     bottom: 0;
     width: 100%;

@@ -30,5 +30,7 @@
         </a>
     </div>
     <%#  <%= image_tag("logo_transparent.png", width: '300px') %>
-    <button> <%= link_to 'Sign Up!', new_user_path, class: "btn btn-primary" %> </button> 
+    <% if !logged_in? %>
+        <button> <%= link_to 'Sign Up!', new_user_path, class: "btn btn-primary" %> </button> 
+    <%end%>
 </div>
