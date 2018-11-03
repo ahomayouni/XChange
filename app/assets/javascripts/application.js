@@ -17,3 +17,14 @@
 //= require popper
 //= require bootstrap
 //= require_tree .
+
+function show_password(){
+	var x = document.getElementById("input_password");
+
+	if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+
+}

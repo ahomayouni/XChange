@@ -11,12 +11,15 @@
 <div class="row ml-1">
 	<div class="col-md-6 col-md-offset-3">
 		<%= form_for(:password_changes, url: user_password_changes_path) do |f| %>
+		
 			<%= f.label :new_password %>
-			<%= f.text_field :password, class:'form-control'%>
+			<%= f.password_field :password, class:'form-control' , id: 'input_password'%>
 
+			View password <input type="checkbox" onclick="show_password()">
+			<br>
 			<%= f.label :new_password_confirmation %>
-			<%= f.text_field :password_confirmation, class:'form-control'%>
-
+			<%= f.password_field :password_confirmation, class:'form-control'%>
+			
 			<%=f.submit "Submit", class: 'btn btn-primary' %>
 		<% end %>
 	</div>
