@@ -1,6 +1,7 @@
-
-<div class="container">
-	<div class="col-md-6 col-md-offset-3">
+<!--For now i just put everything in a container-fluid. Need some input into what else this page
+should have... will discuss with you guys-->
+<div class="container-fluid">
+	<div class="form-group">
 		<h4>Search for a user (by name or email)</h4>
 		<%= form_tag(users_path, method: :get) do %>
 		<%= label_tag :keyword%>:
@@ -11,24 +12,20 @@
 
 	<% if params[:search_users] and params[:search_users] != "" %>
 		<% if @users_found.count > 0 %>
-			<h4> Found <%= @users_found.count %> user(s) containing "<%= params[:search_users] %>"! </h4>
+			<h4> Found <%= @users_found.count %> user(s) containing "<%= params[:search_users] %>": </h4>
 			<%= render @users_found %> <br>
 		<% else %>
 			<p> No users found for "<%= params[:search_users] %>" </p>
 		<% end %>
 	<% end %>
-</div>
 
-<div class="container-fluid">
 	<%= provide(:title, 'All Users') %>
 	<h1> All Users </h1>
-
+	<%= will_paginate %>
+		<div class="all-users-cards-container">
+			<%= render @users %>
+		</div>
 	<%= will_paginate %>
 
-	<div class="all-users-cards-container">
-		<%= render @users %>
-	</div>
-
-	<%= will_paginate %>
 </div>
 
