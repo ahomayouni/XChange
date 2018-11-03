@@ -1,8 +1,10 @@
-<li>
-	<%= user.name %>
-	<%= link_to "View Profile", user_path(user) %>
-	<!-- Checks if I am admin and also if this user is not admin-->
+<div class="card" style="width: 12rem;">
+  <div class="card-body mt-5 justify-content-center">
+    <h5 class="card-title"><%= user.name%></h5>
+    <%= link_to "View Profile", user_path(user), class:"card-link" %>
 	<% if current_user.admin? && !current_user?(user) %>
-	<%= link_to 'DELETE', user, method: :delete, data: {confirm: "Are You sure you want to delete #{user.name}? "}%>
+	<%= link_to 'DELETE', user, method: :delete, data: {confirm: "Are You sure you want to delete #{user.name}? "},
+		class: "card-link" %>
 	<%end%>
-</li>
+  </div>
+</div>

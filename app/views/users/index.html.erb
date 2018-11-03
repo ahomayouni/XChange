@@ -1,29 +1,31 @@
-<%= provide(:title, 'All Users') %>
-<h1> All Users </h1>
 
-<%= will_paginate %>
+<div class="container">
+	<div class="col-md-6 col-md-offset-3">
+		<h4>Search for a user (by name or email)</h4>
+		<%= form_tag(users_path, method: :get) do %>
+		<%= label_tag :keyword%>:
+		<%= text_field_tag :search_users, params[:search_users]%>
+		<%= submit_tag 'Search' , search_users: nil, class: "btn btn-primary"%>
+		<% end %>
+	</div><br>
 
-<ul>
-	<%= render @users %>
-</ul>
-
-<%= will_paginate %>
-
-
-<div class="col-md-6 col-md-offset-3">
-	<h4>Search for a user (by name or email)</h4>
-	<%= form_tag(users_path, method: :get) do %>
-	  <%= label_tag :keyword%>:
-	  <%= text_field_tag :search_users, params[:search_users]%>
-	  <%= submit_tag 'Search' , search_users: nil, class: "btn btn-primary"%>
+	<% if params[:search_users] and params[:search_users] != "" %>
+		<% if @users_found.count > 0 %>
+			<h4> Found <%= @users_found.count %> user(s) containing "<%= params[:search_users] %>"! </h4>
+			<%= render @users_found %> <br>
+		<% else %>
+			<p> No users found for "<%= params[:search_users] %>" </p>
+		<% end %>
 	<% end %>
-</div><br>
 
-<% if params[:search_users] and params[:search_users] != "" %>
-	<% if @users_found.count > 0 %>
-		<h4> Found <%= @users_found.count %> user(s) containing "<%= params[:search_users] %>"! </h4>
-		<%= render @users_found %> <br>
-	<% else %>
-		<p> No users found for "<%= params[:search_users] %>" </p>
-	<% end %>
-<% end %>
+	<%= provide(:title, 'All Users') %>
+	<h1> All Users </h1>
+
+	<%= will_paginate %>
+
+	<div class="all-users-container">
+		<%= render @users %>
+	</div>
+
+	<%= will_paginate %>
+</div>
