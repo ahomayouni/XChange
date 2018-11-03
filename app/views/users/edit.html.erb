@@ -9,11 +9,13 @@
 	      <%= f.label :name , "Name: "%>
 	      <%= f.text_field :name, class: 'form-control'%> 
 
-	      <%= f.label :email , "Email: "%>
-	      <%= f.email_field :email, class: 'form-control'%>
-
 	      <%= f.label :address , "Address: "%>
 	      <%= f.text_field :address , placeholder: "#{@user.person.address}", value: @user.person.address , class: 'form-control'%> 
+
+	      <%= f.label :phone_number , "Phone Number: "%>
+	      <%= f.text_field :phone_number , placeholder: "#{@user.person.phone_number}", value: @user.person.phone_number , class: 'form-control'%> 
+	      <%= f.label :description , "Description: "%>
+	      <%= f.text_area :description , placeholder: "#{@user.person.description}", value: @user.person.description , class: 'form-control'%> 
 
 	      <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 	<% end %>

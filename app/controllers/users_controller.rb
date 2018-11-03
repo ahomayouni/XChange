@@ -42,18 +42,15 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
 
-    
-
-    # params[:user].delete(:password) if params[:user][:password].blank?
-
     if params[:password].blank?
       params.delete(:password)
       params.delete(:password_confirmation)
     end
 
     @user.name = params[:user][:name]
-    @user.email = params[:user][:email]
     @user.person.address = params[:user][:address]
+    @user.person.phone_number = params[:user][:phone_number]
+    @user.person.description = params[:user][:description]
 
     @user.password = ''
     @user.password_confirmation = ''

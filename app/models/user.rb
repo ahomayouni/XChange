@@ -11,7 +11,7 @@ class User < ApplicationRecord
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
 	# creating an association with listings
-	has_many :listings
+	has_many :listings , :dependent => :destroy
 	has_one :person , :dependent => :destroy
 
 	# Validate email field with regex
