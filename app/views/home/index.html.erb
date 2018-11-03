@@ -1,6 +1,4 @@
 <%# Carousel %>
-<div class="container">
-
    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -8,13 +6,13 @@
       </ol>
       <div class="carousel-inner">
           <div class="carousel-item active">
-              <%= image_tag("books.jpg", :class => "carousel-image")%>
+              <%= image_tag("books-bigger.jpg", :class => "carousel-image")%>
               <div class="carousel-content">
                 <h1 style="font-size:4.5rem;">Borrow Anything</h1>
               </div>
           </div>
           <div class="carousel-item">
-              <%= image_tag("tools.jpg") %>
+              <%= image_tag("tools-bigger.jpg") %>
               <div class="carousel-content">
                 <h1 style="font-size:4.5rem;">Lend Anything</h1>
               </div>
@@ -33,4 +31,3 @@
     <% if !logged_in? %>
         <button> <%= link_to 'Sign Up!', new_user_path, class: "btn btn-primary" %> </button> 
     <%end%>
-</div>
