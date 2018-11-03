@@ -2,7 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .all-users-container {
+    max-width: 750px; 
+}
+.all-users-cards-container {
     display: flex; 
     flex-direction: row; 
     flex-wrap: wrap; 
+}
+.user-card {
+    width: 12rem; 
+    margin-right:10px;
+    margin-bottom: 10px;
 }
