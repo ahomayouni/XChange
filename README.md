@@ -17,7 +17,7 @@ To get this project running, follow these steps:
 ## TODO:
 * Peter - Account Activation, Create a forgot password feature
 * Adi - Item Listing
-* Maru - Overall Aesthetics
+* Maru - Finish user page structure & move on to listing page structure.   
 * Arash - Deployment 
 * Arnav - Borrower Lender Ratings
 * KC - Help Arnav out and Overall Aesthetics
