@@ -8,6 +8,10 @@
 			<%= link_to "Listings", listings_path, class: "py-2 d-none d-md-inline-block" %>
 			<%= link_to "Settings", user_settings_path(current_user), class: "py-2 d-none d-md-inline-block" %> 
 			<%= link_to "Log Out", logout_path , method: :delete, class: "py-2 d-none d-md-inline-block" %>
+			<form class="form-inline"type="text" placeholder="Search.."> 
+				<input class="form-control type="text" placeholder="Search..">
+				<button class="btn btn-outline-success" type="submit">Search</button>
+			</form>
 		</div>
    	</nav>
 <%end%>
