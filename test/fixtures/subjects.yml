@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ref_id: 1
+  location: MyString
+  descrip: MyText
+  rating: 1.5
+
+two:
+  ref_id: 1
+  location: MyString
+  descrip: MyText
+  rating: 1.5
