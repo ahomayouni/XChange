@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/review'
   get 'password_resets/new'
   get 'password_resets/edit'
   get 'sessions/new'
@@ -7,7 +8,7 @@ Rails.application.routes.draw do
   get 'privacy_policy/index'
   get 'terms_of_service/index'
   get 'about/index'
-
+  
   get 'home/index'
 
   # Session routes
@@ -19,6 +20,14 @@ Rails.application.routes.draw do
   resources :users do
     resources :settings , only: [:index, :destroy]
     resources :password_changes, only: [:new, :create]
+  end
+
+  #Review routes
+  resources :subjects do
+    resources :comments
+  end
+  resources :comments do
+    resources :comments
   end
 
   # Account Activation routes
