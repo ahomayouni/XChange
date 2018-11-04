@@ -1,0 +1,10 @@
+<h1>Users Search Results</h1>
+
+<% if params[:users_q] and params[:users_q] != "" %>
+	<% if @users_found.count > 0 %>
+		<h4> Found <%= @users_found.count %> users(s) containing "<%= params[:users_q] %>": </h4>
+		<%= render @users_found %> <br>
+	<% else %>
+		<h3> No users found for "<%= params[:users_q] %>" </h3>
+	<% end %>
+<% end %>

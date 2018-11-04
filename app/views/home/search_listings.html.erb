@@ -1,0 +1,10 @@
+<h1>Listings Search Results</h1>
+
+<% if params[:listings_q] and params[:listings_q] != "" %>
+	<% if @listings_found.count > 0 %>
+		<h4> Found <%= @listings_found.count %> listing(s) containing "<%= params[:listings_q] %>": </h4>
+		<%= render @listings_found %> <br>
+	<% else %>
+		<h3> No listings found for "<%= params[:listings_q] %>" </h3>
+	<% end %>
+<% end %>

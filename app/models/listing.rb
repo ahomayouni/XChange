@@ -16,9 +16,10 @@ class Listing < ActiveRecord::Base
   # creating an association betweeen the user and listings
   belongs_to :user
 
-  def self.search(search)
-    where("title LIKE ? OR description LIKE ?", "%#{search}%", "%#{search}%")
-  end
+  #Not used anymore, using ransack instead in home_controller.rb
+  #def self.search(search)
+  #  where("title LIKE ? OR description LIKE ?", "%#{search}%", "%#{search}%")
+  #end
 end
 
 

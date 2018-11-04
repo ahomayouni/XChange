@@ -1,21 +1,9 @@
-<br><br>
-<div class="col-md-6 col-md-offset-3">
-	<h4>Search for listings (by title or description)</h4>
-	<%= form_tag(listings_path, method: :get) do %>
-	  <%= label_tag :keyword%>:
-	  <%= text_field_tag :search_listings, params[:search_listings]%>
-	  <%= submit_tag 'Search' , search_listings: nil, class: "btn btn-primary"%>
-	<% end %>
-</div><br>
+<%= form_with url: search_listings_path, local: true, method: :get, html: {class: "form-inline"} do |form| %>
+	<%= form.text_field :listings_q, placeholder: "Search for a listing..", data: { behaviour: "autocomplete_listings" }, class: "form-control" %>
+	<%= form.button "Search", class: "btn btn-outline-success" %>
+<% end %>	
 
-<% if params[:search_listings] and params[:search_listings] != "" %>
-	<% if @listings_found.count > 0 %>
-		<h4> Found <%= @listings_found.count %> listing(s) containing "<%= params[:search_listings] %>"! </h4>
-		<%= render @listings_found %> <br>
-	<% else %>
-		<p> No listings found for "<%= params[:search_listings] %>" </p>
-	<% end %>
-<% end %>
+
 
 
 <h1>Listing all Listings</h1>

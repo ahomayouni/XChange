@@ -38,7 +38,9 @@ Rails.application.routes.draw do
   # Listing routes
   resources :listings
 
-  get 'home/index', to: 'home#search'
-  get :search, controller: :home
+  # Search routes
+  get '/search_users', to: 'home#search_users'
+  get '/search_listings', to: 'home#search_listings'
+  
   root 'home#index'
 end

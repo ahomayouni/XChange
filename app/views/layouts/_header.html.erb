@@ -8,11 +8,6 @@
 			<%= link_to "Listings", listings_path, class: "py-2 d-none d-md-inline-block" %>
 			<%= link_to "Settings", user_settings_path(current_user), class: "py-2 d-none d-md-inline-block" %> 
 			<%= link_to "Log Out", logout_path , method: :delete, class: "py-2 d-none d-md-inline-block" %>
-			
-			<%= form_with url: search_path, local: true, method: :get, html: {class: "form-inline"} do |form| %>
-				<%= form.text_field :q, placeholder: "Search..", data: { behaviour: "autocomplete" }, class: "form-control" %>
-				<%= form.button "Search", class: "btn btn-outline-success" %>
-			<% end %>		
 		</div>
    	</nav>
 <%end%>

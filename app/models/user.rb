@@ -63,9 +63,10 @@ class User < ApplicationRecord
 		UserMailer.password_reset(self).deliver_now # Amazing gem that has everything
 	end
 
-	def self.search(search)
-	  where("name LIKE ? OR email LIKE ?", "%#{search}%", "%#{search}%")
-  end
+	#Not used anymore, using ransack instead in home_controller.rb
+	#def self.search(search)
+	#  where("name LIKE ? OR email LIKE ?", "%#{search}%", "%#{search}%")
+  #end
 	private
 		def create_activation_digest
 			self.activation_token= User.new_token
