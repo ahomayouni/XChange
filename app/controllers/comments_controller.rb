@@ -9,9 +9,11 @@ before_action :find_reply
         
         # temp message to ensure review save correctly
         if @comment.save
-        redirect_to :back, notice: 'Your review was successfully posted!'
+        #redirect_to :back, notice: 'Your review was successfully posted!'
+        redirect_back fallback_location: request.referrer, notice: 'Your review was successfully posted!'
         else
-        redirect_to :back, notice: "Your review wasn't posted!"
+        redirect_back fallback_location: request.referrer, notice: 'Your review was successfully posted!'
+        #redirect_to :back, notice: "Your review wasn't posted!"
         end
     end
     
