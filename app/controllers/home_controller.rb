@@ -3,10 +3,18 @@ class HomeController < ApplicationController
   
   def index
   end
-  
+    
   def search
-    @listings_found = Listing.ransack(params[:q]).result(distinct: true)
-    @users_found = User.ransack(params[:q]).result(distinct: true)
+    @listings_found = Listing.ransack(title_cont: params[:q]).result(distinct: true)
+    @users_found = User.ransack(name_cont: params[:q]).result(distinct: true)
+      
+    respond_to do |format|
+      format.html{}
+      format.json{
+        @listings_found = @listings_found.limit(5)
+        @users_found = @users_found.limit(5)
+      }
+    end
   end
   
   private 
