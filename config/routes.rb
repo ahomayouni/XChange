@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   # Listing routes
   resources :listings
 
+  get 'home/index', to: 'home#search'
   get :search, controller: :home
-  get :autocomplete, controller: :home
   root 'home#index'
 end
