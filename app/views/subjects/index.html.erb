@@ -1,0 +1,6 @@
+<h1>Inital Subject</h1>
+<% @subjects.each do |subject| %>
+  <p>
+    <%= link_to(subject.descrip, target: "_blank") %> - <%= link_to("Show User", subject) %>
+  </p>
+<% end %>
