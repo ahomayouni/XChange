@@ -38,5 +38,6 @@ Rails.application.routes.draw do
   # Listing routes
   resources :listings
 
+  get :search, controller: :home
   root 'home#index'
 end
