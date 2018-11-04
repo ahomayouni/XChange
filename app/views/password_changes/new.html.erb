@@ -16,11 +16,13 @@
 			<%= f.password_field :password,:required => 'required',class:'form-control' , id: 'input_password'%>
 
 			View password <input type="checkbox" onclick="show_password()">
+			<span class="glyphicon glyphicon-eye-open"> </span>
 			<br>
 			<%= f.label :new_password_confirmation %>
 			<%= f.password_field :password_confirmation, :required => 'required' ,class:'form-control'%>
 			
 			<%=f.submit "Submit", class: 'btn btn-primary' %>
 		<% end %>
+		
 	</div>
 </div>

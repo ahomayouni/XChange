@@ -28,3 +28,16 @@ function show_password(){
     }
 
 }
+
+// Jquery side of things
+$(document).ready(function() {
+	$(".settings_selector").mouseenter(function(){
+	    // alert("You entered testing!");
+	    $(".settings_selector").css({"background":"red"});
+	});
+	$(".settings_selector").mouseleave(function(){
+	    // alert("You entered testing!");
+	    $(".settings_selector").css({"background":"white"});
+	});
+})
+
