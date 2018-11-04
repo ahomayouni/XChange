@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_04_091706) do
+ActiveRecord::Schema.define(version: 2018_11_04_091918) do
+
+  create_table "comments", force: :cascade do |t|
+    t.text "body"
+    t.integer "rating"
+    t.integer "listing_id"
+    t.integer "reply_id"
+    t.string "reply_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "listings", force: :cascade do |t|
     t.string "title"
