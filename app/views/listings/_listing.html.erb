@@ -1,10 +1,7 @@
-<div class="card user-card">
-  <div class="card-body mt-5 justify-content-center">
-	<!--Was thinking we should put a profile picture around. need to look for placeholder images -->
-	<!--<img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" 
-	alt="Generic placeholder image" width="50" height="50">-->
-    <h5 class="card-title"><%= listing.title %></h5>
-	<p> <%= listing.description %> </p>
-    	<%= link_to "View Listing", listing_path(listing), class:"card-link" %>
-  </div>
-</div>
+<div class="card listing-card w-25 h-50 mr-2">
+    <div class="card-body mt-5 justify-content-center">
+      <h5 class="card-title"><%= listing.title %></h5>
+    <p> <%= listing.description %> </p>
+        <%= link_to "View Listing", listing_path(listing), class:"card-link" %>
+    </div>
+ </div>
