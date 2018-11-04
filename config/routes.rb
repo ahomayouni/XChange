@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/review'
   get 'password_resets/new'
   get 'password_resets/edit'
   get 'sessions/new'
