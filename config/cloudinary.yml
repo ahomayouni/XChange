@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dihtrmmvx
+  api_key: '388293886832513'
+  api_secret: 9_r_AVtaPiqEgYZnbyfKQXFLYTY
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: dihtrmmvx
+  api_key: '388293886832513'
+  api_secret: 9_r_AVtaPiqEgYZnbyfKQXFLYTY
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dihtrmmvx
+  api_key: '388293886832513'
+  api_secret: 9_r_AVtaPiqEgYZnbyfKQXFLYTY
+  enhance_image_tag: true
+  static_image_support: false
