@@ -2,17 +2,11 @@ class UsersController < ApplicationController
   before_action :verify_logged_in_user, only: [:index,:edit,:update] # White listing
   before_action :verify_correct_user, only: [:edit,:update] 
   before_action :verify_admin_user, only: :destroy #only admin can issue a destroy command
+  before_action :force_json, only: :autocomplete_users
 
   def index
     # @users = User.all # Caution doing this might slow down some rendering in the future
     @users = User.paginate(page: params[:page])
-   
-    # Search functionality for users  
-    if params[:search_users] and params[:search_users] != ""
-      @users_found = User.search(params[:search_users])
-    else
-      nil
-    end
   end
   def new
   	@user = User.new
@@ -71,6 +65,21 @@ class UsersController < ApplicationController
     redirect_to users_path #Reload page with another request
   end
 
+  def search_users
+      @users_found = User.ransack(name_cont: params[:users_q]).result(distinct: true)
+  end
+    
+  def autocomplete_users
+    @users_found = User.ransack(name_cont: params[:users_q]).result(distinct: true)
+
+      respond_to do |format|
+      format.html{}
+      format.json{
+        @users_found = @users_found.limit(5)
+      }
+    end
+  end
+  
   private
 
     # Important to note that :admin is not included here. MEANING outsider are not allowed to send an admin
@@ -83,6 +92,11 @@ class UsersController < ApplicationController
       if !current_user.admin?
         redirect_to users_path
       end
+    end
+    
+    #to ensure "/search_user" is allowed as well as "/search_user.json"
+    def force_json
+      request.format = :json
     end
 
 end

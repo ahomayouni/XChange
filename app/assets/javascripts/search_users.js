@@ -4,7 +4,7 @@ document.addEventListener("turbolinks:load", function() {
 	var options = {
 		getValue: "name",
 		url: function(phrase){
-			return "/search_users?q=" + phrase;
+			return "/search_users?users_q=" + phrase;
 		},
 		categories: [
 			{

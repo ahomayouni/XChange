@@ -3,16 +3,10 @@ class ListingsController < ApplicationController
   before_action :verify_logged_in_user
   before_action :find_user
   before_action :verify_correct_user, only: [:edit,:update]
-
+  before_action :force_json, only: :autocomplete_listings
+  
   def index
     @listings = Listing.all
-    
-    # Search functionality for listings  
-    if params[:search_listings] and params[:search_listings] != ""
-      @listings_found = Listing.search(params[:search_listings])
-    else
-      nil
-    end
   end
 
   def new
@@ -57,6 +51,20 @@ class ListingsController < ApplicationController
     flash[:notice] = "Listing was deleted"
     redirect_to listings_path
   end
+ 
+  def search_listings
+    @listings_found = Listing.ransack(title_cont: params[:listings_q]).result(distinct: true)
+  end
+
+  def autocomplete_listings
+      @listings_found = Listing.ransack(title_cont: params[:listings_q]).result(distinct: true)
+        respond_to do |format|
+        format.html{}
+        format.json{
+          @listings_found = @listings_found.limit(5)
+        }
+      end
+  end
 
  private
 
@@ -69,6 +77,11 @@ class ListingsController < ApplicationController
 
     def listing_params
       params.require(:listing).permit(:title, :description, :category, :start_lending, :end_lending, :price_per_day)
+    end
+    
+    #to ensure "/search_listings" is allowed as well as "/search_listings.json"
+    def force_json
+      request.format = :json
     end
     
 end

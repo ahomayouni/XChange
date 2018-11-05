@@ -39,8 +39,9 @@ Rails.application.routes.draw do
   resources :listings
 
   # Search routes
-  get '/search_users', to: 'home#search_users'
-  get '/search_listings', to: 'home#search_listings'
-  
+  get :autocomplete_users, controller: :users
+  get :autocomplete_listings, controller: :listings
+  get '/search_users', to: 'users#search_users'
+  get '/search_listings', to: 'listings#search_listings'
   root 'home#index'
 end
