@@ -1,5 +1,5 @@
-//I'm putting styles for the home page, header and footer here. The header styles 
-//would be at the top of the file, the home page content styles would be next 
+//I'm putting styles for the home page, header and footer here. The header styles
+//would be at the top of the file, the home page content styles would be next
 //and the end will be footer styles.
 html {
     position: relative;
@@ -7,42 +7,52 @@ html {
 }
 
 .xchange-header {
-    background-color: rgba(0, 0, 0, 0.90);
-    transition: ease-out 0.3s; 
+    width: 100%;
+    background-color: #1c1d28;
+    transition: ease-out 0.3s;
     a {
-        font-size: 1.3rem; 
         color: white;
         transition: ease-in-out color .25s;
     }
     .navbar-brand {
-        font-size: 1.6rem; 
-        color: #b7efff;
+        color: #17a2b8;
+    }
+    .logo {
+      font-size: 1.3rem;
+    }
+    .btn:hover {
+        background-color: transparent;
+        color: #17a2b8;
     }
 }
 
-
 .carousel-inner {
-    width: 930px;
-    height: 512px;
+    width: 100%;
+    max-height: 70vh;
   }
 .carousel-content {
-    
     position: absolute;
-    top: 18%;
-    left: 19%; 
+    top: 15%;
+    left: 19%;
     z-index: 20;
     color: white;
     h1 {
         font-size: 4.5rem;
     }
     p {
-        font-size: 2rem; 
-        max-width: 800px; 
+        font-size: 2rem;
+        max-width: 800px;
     }
 }
+
 .xchange-footer {
-    position: absolute;
     bottom: 0;
-    top: 1; 
     width: 100%;
+    .navbar {
+      background-color: #1c1d28;
+      a {
+        color: white;
+        text-decoration: none;
+      }
+    }
 }
