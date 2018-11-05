@@ -9,11 +9,13 @@ html {
 .xchange-header {
     background-color: rgba(0, 0, 0, 0.90);
     transition: ease-out 0.3s; 
+    a {
+        font-size: 1.3rem; 
+        color: white;
+        transition: ease-in-out color .25s;
+    }
 }
-.xchange-header a {
-    color: white;
-    transition: ease-in-out color .25s;
-}
+
 
 .carousel-inner {
     width: 930px;
