@@ -2,7 +2,7 @@
 	<!-- current_user is actually a function call living in sessions_helper.rb. Returns a @user object -->
 	 <nav class="xchange-header sticky-top py-3 c-fChange">
 		<div class="container d-flex flex-column flex-md-row justify-content-between">
-			<a class="navbar-brand font-weight-bold logo" href="#">XChange</a>
+			<%= link_to "XChange", user_path(current_user), class: "navbar-brand font-weight-bold logo" %>
 			<%= link_to "#{current_user.name.camelcase}", user_path(current_user), class: "py-2 d-none d-md-inline-block" %>
 			<%= link_to "Users", users_path, class: "py-2 d-none d-md-inline-block" %>
 			<%= link_to "Listings", listings_path, class: "py-2 d-none d-md-inline-block" %>
@@ -15,7 +15,7 @@
 <% if !logged_in? %>
 	<nav class="xchange-header sticky-top py-3 c-f">
 		<div class="container d-flex flex-column flex-md-row justify-content-between">
-			<a class="navbar-brand font-weight-bold logo" href="#">XChange</a>
+			<%= link_to "XChange", home_index_path, class: "navbar-brand font-weight-bold logo" %>
 			<div class="navbar-nav flex-md-row">
 				<%= link_to "Log In", login_path, class: "btn btn-info py-2 d-none d-md-inline-block", style:"margin-right:30px;"  %>
 				<%= link_to "Sign Up", new_user_path, class: "btn btn-info py-2 d-none d-md-inline-block" %>
