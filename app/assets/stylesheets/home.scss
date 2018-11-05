@@ -1,10 +1,13 @@
 //I'm putting styles for the home page, header and footer here. The header styles 
 //would be at the top of the file, the home page content styles would be next 
 //and the end will be footer styles.
-@import url(http://fonts.googleapis.com/css?family=Oswald:400,300,700);
 html {
     position: relative;
     min-height: 100%;
+}
+
+* {
+    font-family: 'Quicksand', sans-serif;
 }
 
 .xchange-header {
@@ -21,6 +24,7 @@ html {
     height: 512px;
   }
 .carousel-content {
+    
     position: absolute;
     top: 18%;
     left: 19%; 
