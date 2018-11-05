@@ -1,8 +1,8 @@
 <div class="container-fluid">
     <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
         <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-white overflow-hidden">
-            <h3> Name: <%=@user.name%> </h3>
-            <h3> Email: <%= @user.email %> </h3>
+            <h3> <%=@user.name%> </h3>
+            <h3> <%= @user.email %> </h3>
         </div>
        <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-white overflow-hidden">
              <h1> Your Dashboard </h1>
@@ -15,7 +15,7 @@
         <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 w-100 overflow-hidden">
 
          <h2> Your listings </h2>
-         <div class="d-flex flex-row flex-wrap">
+         <div class="d-flex flex-row flex-wrap w-100">
             <%= render @user.listings %>
          </div>
         </div>
