@@ -1,17 +1,19 @@
 //I'm putting styles for the home page, header and footer here. The header styles 
 //would be at the top of the file, the home page content styles would be next 
 //and the end will be footer styles.
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,300,700);
 html {
     position: relative;
     min-height: 100%;
 }
 
 .xchange-header {
-    background-color: rgba(0, 0, 0, .85);
+    background-color: rgba(0, 0, 0, 0.90);
+    transition: ease-out 0.3s; 
 }
 .xchange-header a {
     color: white;
-    transition: ease-in-out color .15s;
+    transition: ease-in-out color .25s;
 }
 
 .carousel-inner {
