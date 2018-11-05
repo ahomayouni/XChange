@@ -1,9 +1,14 @@
 <% provide(:title, "Edit user") %>
 <% provide(:button_text, 'Save Changes') %>
-<h1>Update your profile</h1>
+<div class="row">
+	<div class="offset-md-4" >
+		<h1>Update your profile</h1>
+	</div>
+</div>
+
 
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-6 offset-md-3">
     <%= form_for(@user) do |f| %>
 	    <%= render 'shared/error_messages' %> 
 	      <%= f.label :name , "Name: "%>
