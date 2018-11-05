@@ -40,7 +40,7 @@ gem 'bootstrap-will_paginate', '1.0.0'
 # gem 'mini_magick', '~> 4.8'
 
 # image processing
-#gem 'carrierwave'
+gem 'carrierwave'
 #gem 'cloudinary'
 
 # Use Capistrano for deployment
