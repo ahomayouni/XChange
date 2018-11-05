@@ -1,7 +1,9 @@
 <% provide(:title, "Change your password") %>
 
 <div class="row ml-1">
-	<h1> Modify Password </h1>
+	<div class="offset-md-5">
+		<h1> Modify Password </h1>
+	</div>
 </div>
 
 <div class="row ml-1">
@@ -9,7 +11,7 @@
 </div>
 
 <div class="row ml-1">
-	<div class="col-md-6 col-md-offset-3">
+	<div class="col-md-6 col-xs-12 offset-md-3">
 		<%= form_for(:password_changes, url: user_password_changes_path) do |f| %>
 		
 			<%= f.label :new_password %>
@@ -23,6 +25,6 @@
 			
 			<%=f.submit "Submit", class: 'btn btn-primary' %>
 		<% end %>
-		
+
 	</div>
 </div>
