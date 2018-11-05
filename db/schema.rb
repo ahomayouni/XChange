@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_04_091918) do
+ActiveRecord::Schema.define(version: 2018_11_05_100155) do
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
@@ -18,6 +18,13 @@ ActiveRecord::Schema.define(version: 2018_11_04_091918) do
     t.integer "listing_id"
     t.integer "reply_id"
     t.string "reply_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "listing_images", force: :cascade do |t|
+    t.integer "listing_id"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
