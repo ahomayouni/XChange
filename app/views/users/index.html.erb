@@ -1,19 +1,17 @@
 <div class="container-fluid">
 <!--For now i just put everything in a container-fluid. Need some input into what else this page
 should have... will discuss with you guys-->
-	<div class="row">
+	<div class="row justify-content-center">
 		<%= form_with url: search_users_path, local: true, method: :get, html: {class: "form-inline justify-content-center"} do |form| %>
 			<%= form.text_field :users_q, placeholder: "Search for a user..", data: { behaviour: "autocomplete_users" }, class: "form-control mt-3 ml-3" %>
 			<%= form.button "Search", class: "btn btn-outline-success mt-3 ml-3" %>
 		<% end %>		
 	</div>
-	<%= provide(:title, 'All Users') %>
 	<h1> All Users </h1>
-	<%= will_paginate %>
-		<div class="d-flex flex-row flex-wrap w-100">
+	<%= will_paginate html:{class:"justify-content-center"} %>
+		<div class="d-inline-flex flex-row flex-wrap w-100 justify-content-center">
 			<%= render @users %>
 		</div>
 	<%= will_paginate %>
-
 </div>
 
