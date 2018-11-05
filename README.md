@@ -15,16 +15,16 @@ To get this project running, follow these steps:
 3. >rails server 
 
 ## TODO:
-* Peter - Account Activation, Create a forgot password feature
-* Adi - Item Listing
-* Maru - Finish user page structure & move on to listing page structure.   
-* Arash - Deployment 
-* Arnav - Borrower Lender Ratings
-* KC - Help Arnav out and Overall Aesthetics
+* Peter - Primary Task: Help out Maru on frontend . Secondary Task: Incorporate User and Person Models with others
+* Adi - Finish up Item Listing and possibly some simple chat application (?)
+* Maru - Front End Lead 
+* Arash - Work on User Circles  
+* Arnav - Borrower Lender Ratings (should start finishing)
+* KC - Main Welcome Landing Page Design (Check slack messages for mentions)
 
 ## IceBox (Required within the Bolen Docs):
-* Header (with top able to show/hide certain links whether someone is logged in)
-* Footer
+* Simple Chat/Messaging Application
+* Push Notification (Say when I follow a User, I would be able to get notifications)
 
 ## Deployment
 * Install heroku CLI installed on your computer
@@ -34,3 +34,7 @@ To get this project running, follow these steps:
 * If you have made new migrations, remember to also run db:migrate on HEROKU. 
 
 1. >heroku run rails db:migrate
+
+## General Comments
+* Deadline : 4 weeks 
+* Status : Aim to finish MAIN functionality by next week. 
