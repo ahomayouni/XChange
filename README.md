@@ -20,7 +20,7 @@ To get this project running, follow these steps:
 * Maru - Front End Lead 
 * Arash - Work on User Circles  
 * Arnav - Borrower Lender Ratings (should start finishing)
-* KC - Main Welcome Landing Page Design (Check slack messages for mentions)
+* KC - Main Welcome Landing Page Design - Fix footer positioning, Fix header styles, and look through other websites to get inspiration for a modern looking webpage.
 
 ## IceBox (Required within the Bolen Docs):
 * Simple Chat/Messaging Application
