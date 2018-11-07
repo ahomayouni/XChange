@@ -18,6 +18,7 @@ class Listing < ActiveRecord::Base
 
   # create associations with pictures
   has_many :listing_images, dependent: :destroy
+  has_one_attached :image
 
   #Not used anymore, using ransack instead in home_controller.rb
   #def self.search(search)
