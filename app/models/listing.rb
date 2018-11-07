@@ -16,7 +16,9 @@ class Listing < ActiveRecord::Base
     end
   end
 
-
+def thumbnail image_index
+  return self.images[image_index].variant(resize: '300x300').processed
+end
 
   #Not used anymore, using ransack instead in home_controller.rb
   #def self.search(search)

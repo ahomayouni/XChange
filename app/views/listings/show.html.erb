@@ -1,7 +1,7 @@
 <h1> Showing your listing </h1>
 <p>
   <% (0...@listing.images.count).each do |image| %>
-  <%= image_tag(@listing.images[image])%>
+  <%= image_tag(@listing.thumbnail(image))%>
   <% end %>
   Title: <%= @listing.title %><br>
   Description: <%= @listing.description %><br>
