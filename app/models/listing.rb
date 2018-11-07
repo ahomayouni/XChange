@@ -8,6 +8,7 @@ class Listing < ActiveRecord::Base
   validates :category, presence: true
   validates :price_per_day, presence: true, numericality: {greater_than: 0, only_integer: true}
   validate :validateTimings
+  validate :image_type
 
 
   def validateTimings
@@ -20,6 +21,12 @@ def thumbnail image_index
   return self.images[image_index].variant(resize: '300x300').processed
 end
 
+private
+ def image_type
+   if images.attached? == false
+     errors.add(:images, "are missing!")
+   end
+ end
   #Not used anymore, using ransack instead in home_controller.rb
   #def self.search(search)
   #  where("title LIKE ? OR description LIKE ?", "%#{search}%", "%#{search}%")
