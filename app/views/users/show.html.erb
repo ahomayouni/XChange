@@ -1,22 +1,24 @@
 <div class="container-fluid">
-    <div class="row">
+    <div class="row flex-row">
         <div class="col-md-4">
-            <h3> <%=@user.name%> </h3>
-            <h3> <%= @user.email %> </h3>
+            <h3 class="mx-4 py-3"> <%=@user.name%> </h3>
+            <h3 class="mx-4 py-3"> <%= @user.email %> </h3>
         </div>
-        <div class="col-md-8">
-             <h1> Your Dashboard </h1>
-             <p> What I suggest is there should be an overview of the user's activity using pie charts
+        <div class="col-md-8 bg-secondary py-3">
+            <h1> Your Dashboard </h1>
+            <p> What I suggest is there should be an overview of the user's activity using pie charts
                 Ideally there will be summary of the user's listings, reviews, etc. It doesnt have to 
-                be a pie chart. just some easy way to convey infomration that looks good too </p>
+                    be a pie chart. just some easy way to convey infomration that looks good too </p>
         <div>
     </div>
 </div>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-             <h2> Your listings </h2>
-            <%= render @user.listings %>    
+             <h2 class="mx-4 py-3"> Your listings </h2>
+             <div class="d-flex flex-row">
+                <%= render @user.listings %>    
+            </div>
         </div>
     </div>
 </div>
