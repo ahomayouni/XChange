@@ -1,6 +1,6 @@
 <% if logged_in? %>
 	<!-- current_user is actually a function call living in sessions_helper.rb. Returns a @user object -->
-	 <nav class="xchange-header sticky-top py-3 c-fChange">
+	 <nav class="xchange-header py-3 c-fChange">
 		<div class="container d-flex flex-column flex-md-row justify-content-between">
 			<%= link_to "XChange", user_path(current_user), class: "navbar-brand font-weight-bold logo" %>
 			<%= link_to "#{current_user.name.camelcase}", user_path(current_user), class: "py-2 d-none d-md-inline-block" %>
