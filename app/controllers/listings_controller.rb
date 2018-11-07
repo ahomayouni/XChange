@@ -47,6 +47,7 @@ class ListingsController < ApplicationController
 
   def destroy
     @listing = Listing.find(params[:id])
+    @listing.images.purge
     @listing.destroy
     flash[:notice] = "Listing was deleted"
     redirect_to listings_path

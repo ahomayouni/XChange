@@ -26,6 +26,7 @@ private
    if images.attached? == false
      errors.add(:images, "are missing!")
    end
+
    images.each do |image|
      if !image.content_type.in?(%('image/jpeg image/png'))
        errors.add(:images, "needs to be JPEG or PNG")
