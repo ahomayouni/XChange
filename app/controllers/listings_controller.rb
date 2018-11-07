@@ -76,7 +76,7 @@ class ListingsController < ApplicationController
     end
 
     def listing_params
-      params.require(:listing).permit(:title, :description, :category, :start_lending, :end_lending, :price_per_day, :image)
+      params.require(:listing).permit(:title, :description, :category, :start_lending, :end_lending, :price_per_day, images: [])
     end
 
     #to ensure "/search_listings" is allowed as well as "/search_listings.json"

@@ -1,6 +1,8 @@
 <h1> Showing your listing </h1>
 <p>
-  <%= image_tag(@listing.image) %><br>
+  <% (0...@listing.images.count).each do |image| %>
+  <%= image_tag(@listing.images[image])%>
+  <% end %>
   Title: <%= @listing.title %><br>
   Description: <%= @listing.description %><br>
   Category: <%= @listing.category %><br>
