@@ -13,8 +13,7 @@
   </head>
 
   <body>
-    <div class="container-fluid">
-      <% if controller.controller_name == "home"%>
+       <% if controller.controller_name == "home"%>
         <%= render 'layouts/fixed_header' %>
       <% else %>
         <%= render 'layouts/header' %>
@@ -25,6 +24,5 @@
       <% end %>
       <%= yield %>
       <%= render 'layouts/footer' %>
-    </div>
   </body>
 </html>

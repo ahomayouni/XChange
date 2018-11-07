@@ -1,6 +1,6 @@
 <% if logged_in? %>
 	<!-- current_user is actually a function call living in sessions_helper.rb. Returns a @user object -->
-	 <nav class="xchange-header navbar navbar-expand-md sticky-top py-3 c-fChange">
+	 <nav class="xchange-header navbar navbar-expand-md py-3">
 		 <div class="container">
 			<%= link_to "XChange", user_path(current_user), class: "navbar-brand font-weight-bold logo" %>
 			<%# mobile display toggle  %>
@@ -33,7 +33,7 @@
 <%end%>
 
 <% if !logged_in? %>
-	<nav class="xchange-header navbar navbar-expand-md sticky-top py-3 c-f">
+	<nav class="xchange-header navbar navbar-expand-md sticky-top py-3">
 		<div class="container">
 			<%= link_to "XChange", home_index_path, class: "navbar-brand font-weight-bold logo" %>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu-nav" aria-controls="menu-nav" aria-expanded="false" aria-label="Toggle navigation">
