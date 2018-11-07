@@ -10,13 +10,13 @@
 				<%= link_to "Settings", user_settings_path(current_user), class: "py-2 d-none d-md-inline-block" %>
 				<%= link_to "Log Out", logout_path , method: :delete, class: "btn btn-info py-2 d-none d-md-inline-block" %>
 			</div>
-		</nav>
+		</div>
 	</div>
 <%end%>
 
 <% if !logged_in? %>
 	<div class="container-fluid">
-		<nav class="xchange-header sticky-top py-3">
+		<nav class="xchange-header sticky-top py-3 fixed-top">
 			<div class="container d-flex flex-column flex-md-row justify-content-between">
 				<%= link_to "XChange", home_index_path, class: "navbar-brand font-weight-bold logo" %>
 				<div class="navbar-nav flex-md-row">
