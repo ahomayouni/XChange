@@ -8,7 +8,7 @@ html {
 
 .xchange-header {
     width: 100%;
-    background-color: #1c1d28;
+    background-color: rgba(28, 29, 40, 0.7);
     transition: ease-out 0.3s;
     a {
         color: white;
@@ -24,6 +24,10 @@ html {
         background-color: transparent;
         color: #17a2b8;
     }
+}
+
+.fixed-top {
+  position: fixed !important;
 }
 
 .carousel-inner {
