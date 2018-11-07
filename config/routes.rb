@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   end
 
   #Review routes
-  resources :subjects do
+  resources :people do
     resources :comments
   end
   resources :comments do
