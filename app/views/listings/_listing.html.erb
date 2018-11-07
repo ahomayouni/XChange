@@ -1,11 +1,12 @@
-<div class="card listing-card w-25 h-50 mr-2">
-	<div class="card-body mt-5 justify-content-center">
-		<h5 class="card-title">
+<div class="card w-25 d-flex flex-row">
+  <img class="card-img-side" src=".../100px180/" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">
 			Title: <%= listing.title %>
 		</h5>
     	<p> 
     	Description: <%= listing.description %>
 		</p>
 		<%= link_to "View Listing", listing_path(listing), class:"card-link" %>
-    </div>
- </div>
+  </div>
+</div>
