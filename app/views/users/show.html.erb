@@ -1,8 +1,8 @@
 <div class="container-fluid">
     <div class="row flex-row">
         <div class="col-md-4">
-            <h3 class="mx-4 py-3"> <%=@user.name%> </h3>
-            <h3 class="mx-4 py-3"> <%= @user.email %> </h3>
+            <h3 class="ml-4 py-3"> <%=@user.name%> </h3>
+            <h3 class="ml-4 py-3"> <%= @user.email %> </h3>
         </div>
         <div class="col-md-8 bg-secondary py-3">
             <h1> Your Dashboard </h1>
@@ -14,9 +14,12 @@
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-12 mx-4">
-             <h2 class="py-3"> Your listings </h2>
-                <%= render @user.listings %>   
+        <div class="col-md-6 mx-4" style="overflow-y:scroll;">
+            <div class="d-flex flex-row mb-3 py-3">
+                <h2> Your listings </h2>
+                <%= link_to "Create new listing", new_listing_path, class:'btn btn-outline-info h-25 ml-4 mt-2' %>
+            </div>
+            <%= render @user.listings %>   
         </div>
     </div>
 </div>
