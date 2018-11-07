@@ -1,10 +1,14 @@
 class Listing < ActiveRecord::Base
+  belongs_to :user
+  # TODO: depreciate lsiitng_image controller, move to ActiveStorage
+  has_many :listing_images, dependent: :destroy
+  has_many_attached :images
   validates :title, presence: true, length: {maximum: 20}
   validates :description, presence: true, length: {minimum: 5, maximum: 50}
   validates :category, presence: true
   validates :price_per_day, presence: true, numericality: {greater_than: 0, only_integer: true}
   validate :validateTimings
-  #validates :user_id, presence: true
+  validate :image_type
 
 
   def validateTimings
@@ -13,12 +17,22 @@ class Listing < ActiveRecord::Base
     end
   end
 
-  # creating an association betweeen the user and listings
-  belongs_to :user
+def thumbnail image_index
+  return self.images[image_index].variant(resize: '300x300').processed
+end
 
-  # create associations with pictures
-  has_many :listing_images, dependent: :destroy
+private
+ def image_type
+   if images.attached? == false
+     errors.add(:images, "are missing!")
+   end
 
+   images.each do |image|
+     if !image.content_type.in?(%('image/jpeg image/png'))
+       errors.add(:images, "needs to be JPEG or PNG")
+     end
+   end
+ end
   #Not used anymore, using ransack instead in home_controller.rb
   #def self.search(search)
   #  where("title LIKE ? OR description LIKE ?", "%#{search}%", "%#{search}%")
