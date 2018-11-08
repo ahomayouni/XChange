@@ -1,13 +1,15 @@
-<div class="card user-card w-25 h-25 mr-2 mb-2">
-  <div class="card-body mt-5 justify-content-center">
-	<!--Was thinking we should put a profile picture around. need to look for placeholder images -->
-	<!--<img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" 
-	alt="Generic placeholder image" width="50" height="50">-->
-    <h5 class="card-title"><%= user.name%></h5>
-    <%= link_to "View Profile", user_path(user), class:"card-link" %>
-	<% if current_user.admin? && !current_user?(user) %>
-	<%= link_to 'DELETE', user, method: :delete, data: {confirm: "Are You sure you want to delete #{user.name}? "},
-		class: "card-link" %>
-	<%end%>
-  </div>
+<div class="col-md-4">
+	<div class="card user-card mb-2">
+		<div class="card-body mt-5">
+		<!--Was thinking we should put a profile picture around. need to look for placeholder images -->
+		<!--<img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" 
+		alt="Generic placeholder image" width="50" height="50">-->
+			<h5 class="card-title"><%= user.name%></h5>
+				<%= link_to "View Profile", user_path(user), class:"card-link" %>
+			<% if current_user.admin? && !current_user?(user) %>
+			<%= link_to 'DELETE', user, method: :delete, data: {confirm: "Are You sure you want to delete #{user.name}? "},
+			class: "card-link" %>
+		<%end%>
+		</div>
+	</div>
 </div>
