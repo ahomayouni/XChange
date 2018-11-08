@@ -37,4 +37,5 @@ To get this project running, follow these steps:
 
 ## General Comments
 * Deadline : 4 weeks
-* Status : Aim to finish MAIN functionality by next week.
+* Status : Aim to finish MAIN functionality by next week, Wednesday November the 14th.
+* Have not yet implemented Borrowing and Lending Functionality 
