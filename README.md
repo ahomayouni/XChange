@@ -16,11 +16,11 @@ To get this project running, follow these steps:
 
 ## TODO:
 * Peter - Primary Task: Help out Maru on frontend . Secondary Task: Incorporate User and Person Models with others
-* Adi - 1)Uploading multiple images 2)resizing images 3)Working on listings page frontend 4)Create models for requesting items if not in current inventory 5)Chat/messaging service
+* Adi - 1)Uploading multiple images 2)resizing images 3)Working on listings page frontend w/ Maru 4)Create models for requesting items if not in current inventory 5)Chat/messaging service
 * Maru - Front End Lead
-* Arash - Work on User Circles  
-* Arnav - Borrower Lender Ratings (should start finishing)
-* KC - Main Welcome Landing Page Design - Fix footer positioning, Fix header styles, and look through other websites to get inspiration for a modern looking webpage.
+* Arash - Work on User Circles
+* Arnav - Added comments for People - Linking comments to a listing as well - work with Maru on getting front end up & running
+* KC - 1) Push in the Users page layout 2) Improve Login in and sign up pages 3) About, Privacy Policy, Terms of Service, Settings pages  
 
 ## IceBox (Required within the Bolen Docs):
 * Simple Chat/Messaging Application
