@@ -1,25 +1,53 @@
 <% if logged_in? %>
-	<!-- current_user is actually a function call living in sessions_helper.rb. Returns a @user object -->
-	<nav class="xchange-header py-3">
-		<div class="container d-flex flex-column flex-md-row justify-content-between">
+	 <nav class="xchange-header navbar navbar-expand-md py-3 fixed-top">
+		 <div class="container">
 			<%= link_to "XChange", user_path(current_user), class: "navbar-brand font-weight-bold logo" %>
-			<%= link_to "#{current_user.name.camelcase}", user_path(current_user), class: "py-2 d-none d-md-inline-block" %>
-			<%= link_to "Users", users_path, class: "py-2 d-none d-md-inline-block" %>
-			<%= link_to "Listings", listings_path, class: "py-2 d-none d-md-inline-block" %>
-			<%= link_to "Settings", user_settings_path(current_user), class: "py-2 d-none d-md-inline-block" %>
-			<%= link_to "Log Out", logout_path , method: :delete, class: "btn btn-info py-2 d-none d-md-inline-block" %>
-		</div>
-	</nav>
+			<%# mobile display toggle  %>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu-nav" aria-controls="menu-nav" aria-expanded="false" aria-label="Toggle navigation">
+    		<span class="navbar-toggler-icon"><i class="material-icons">menu</i></span>
+  		</button>
+				<div class="collapse navbar-collapse" id="menu-nav">
+					<ul class="navbar-nav">
+						<li>
+							<%= link_to "#{current_user.name.camelcase}", user_path(current_user), class: "nav-link py-2 d-md-inline-block" %>
+						</li>
+						<li>
+							<%= link_to "Users", users_path, class: "nav-link" %>
+						</li>
+						<li>
+							<%= link_to "Listings", listings_path, class: "nav-link" %>
+						</li>
+						<li>
+							<%= link_to "Settings", user_settings_path(current_user), class: "nav-link" %>
+						</li>
+					</ul>
+					<ul class="navbar-nav ml-auto">
+						<li>
+							<%= link_to "Log Out", logout_path , method: :delete, class: "btn btn-info" %>
+						</li>
+					</ul>
+				</div>
+			</div>
+   	</nav>
 <%end%>
 
 <% if !logged_in? %>
-	<nav class="xchange-header sticky-top py-3 fixed-top">
-		<div class="container d-flex flex-column flex-md-row justify-content-between">
+	<nav class="xchange-header navbar navbar-expand-md sticky-top py-3 fixed-top">
+		<div class="container">
 			<%= link_to "XChange", home_index_path, class: "navbar-brand font-weight-bold logo" %>
-			<div class="navbar-nav flex-md-row">
-				<%= link_to "Log In", login_path, class: "btn btn-info py-2 d-none d-md-inline-block", style:"margin-right:30px;"  %>
-				<%= link_to "Sign Up", new_user_path, class: "btn btn-info py-2 d-none d-md-inline-block" %>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu-nav" aria-controls="menu-nav" aria-expanded="false" aria-label="Toggle navigation">
+    		<span class="navbar-toggler-icon"><i class="material-icons">menu</i></span>
+  		</button>
+			<div class="collapse navbar-collapse" id="menu-nav">
+				<ul class="navbar-nav ml-auto">
+					<li>
+						<%= link_to "Log In", login_path, class: "btn btn-info", style:"margin-right:30px;"  %>
+					</li>
+					<li>
+						<%= link_to "Sign Up", new_user_path, class: "btn btn-info" %>
+					</li>
+				</ul>
 			</div>
-		</div>
-	</nav>
+		</nav>
+	</div>
 <%end%>
