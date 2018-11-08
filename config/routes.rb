@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'groups/index'
+  get 'groups/show'
+  get 'groups/new'
   get 'password_resets/new'
   get 'password_resets/edit'
   get 'sessions/new'
