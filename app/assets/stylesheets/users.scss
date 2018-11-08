@@ -2,5 +2,43 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .user-card {
-    background-color: #e9e8ea !important; 
+    background-color: #e9e8ea !important;
+}
+
+.user-listing {
+  margin: 0.3rem;
+}
+.user-listings {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.user-icon {
+  // TODO: make it responsive
+  margin: auto;
+  width: 200px;
+}
+.small-container {
+  width: 100%;
+}
+.user-box {
+  position: relative;
+  margin: auto;
+  width: 90%;
+  border: 1px solid #17a2b8;
+  border-radius: 10px;
+  background-color: white;
+}
+.user-content {
+  margin: 5%;
+}
+.user-pfp {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  background-image: asset_url("empty-user-icon.png");
+  background-position: center;
+  background-size: 70%;
+  position: absolute;
+  top: -60px;
+  left: 30px;
 }
