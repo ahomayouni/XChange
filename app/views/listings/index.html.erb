@@ -1,11 +1,20 @@
 <div class="container-fluid">
-    <%= form_with url: search_listings_path, local: true, method: :get, html: {class: "form-inline"} do |form| %>
-        <%= form.text_field :listings_q, placeholder: "Search for a listing..", data: { behaviour: "autocomplete_listings" }, class: "form-control mt-3 ml-3" %>
-        <%= form.button "Search", class: "btn btn-outline-success mt-3 ml-3" %>
-    <% end %>	
-    
-    <h1>All Listings</h1>
-    <%= link_to "Create new listing", new_listing_path, class: "btn btn-outline-info mb-2" %>
+    <div class="row">
+        <div class="col-md-12 float-right">
+            <%= form_with url: search_listings_path, local: true, method: :get, html: {class: "form-inline float-right"} do |form| %>
+                <%= form.text_field :listings_q, placeholder: "Search for a listing..", data: { behaviour: "autocomplete_listings" }, class: "form-control mt-3 mx-2" %>
+                <%= form.button "Search", class: "btn btn-outline-success mt-3 mx-3" %>
+            <% end %>	
+        </div>
+    </div>
+    <div class="row d-flex flex-row">
+        <div class="col-md-3">
+            <h1>All Listings</h1>
+        </div>
+        <div class="col-md-9">
+             <%= link_to "Create new listing", new_listing_path, class: "btn btn-outline-info mt-2" %>
+        </div>
+    </div>
     <div class="row">
         <% @listings.each do |listing|%>
             <div class="col-md-9">
