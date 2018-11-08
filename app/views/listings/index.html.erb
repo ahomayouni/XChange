@@ -3,28 +3,26 @@
         <%= form.text_field :listings_q, placeholder: "Search for a listing..", data: { behaviour: "autocomplete_listings" }, class: "form-control mt-3 ml-3" %>
         <%= form.button "Search", class: "btn btn-outline-success mt-3 ml-3" %>
     <% end %>	
-
-
-
-
-    <h1>Listing all Listings</h1>
-        <p>
-        <%= link_to "Create new listing", new_listing_path %>
-        </p>
-    <table>
-    <tr>
-    <th>Title</th>
-    <th>Description</th>
-    </tr>
-    <% @listings.each do |listing| %>
-    <tr>
-    <td><%= listing.title %></td>
-    <td><%= listing.description %></td>
-    <td><%= listing.user.name %></td>
-    <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
-    <td><%= link_to 'Show', listing_path(listing) %></td>
-    <td><%= link_to 'Delete', listing_path(listing), method: :delete, data: {confirm: "Are you sure?"} %></td>
-    </tr>
-    <% end %>
-    </table>
+    
+    <h1>All Listings</h1>
+    <%= link_to "Create new listing", new_listing_path, class: "btn btn-outline-info mb-2" %>
+    <div class="row">
+        <% @listings.each do |listing|%>
+            <div class="col-md-9">
+                <div class="card d-flex flex-row mb-2">
+                    <div class="card-body">
+                        <h5 class="card-title text-bold">
+                            <%= listing.title %>
+                        </h5>
+                            <p> 
+                            <%= listing.description %>
+                            </p>
+                        <%= link_to 'Edit', edit_listing_path(listing), class:'card-link' %>
+                        <%= link_to 'Show', listing_path(listing), class:'card-link' %>
+                        <%= link_to 'Delete', listing_path(listing), method: :delete, data: {confirm: "Are you sure?"}, class:'card-link' %>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
 </div >
