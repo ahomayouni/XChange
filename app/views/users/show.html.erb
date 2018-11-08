@@ -12,7 +12,7 @@
                     be a pie chart. just some easy way to convey infomration that looks good too </p>
        </div>
     </div>
-    <div class="row">
+ 	<div class="row">
         <div class="col-md-6 mx-4">
             <div class="d-flex flex-row mb-3 py-3">
                 <h2> Your listings </h2>
@@ -22,6 +22,17 @@
     </div>
     <div class="user-listings">
       <%= render @user.listings %>
+    </div>
+	<div class="row">
+    	<div class="col-md-6 mx-4">
+            <div class="d-flex flex-row mb-3 py-3">
+                <h2> Your groups </h2>
+                <%= link_to "Create new group", new_group_path, class:'btn btn-outline-info h-25 ml-4 mt-2' %>
+            </div>
+        </div>
+    </div>
+    <div class="user-groups">
+      <%= render @user.groups %>
     </div>
     <!-- layout 2 I just did this for fun, not really mobile friendly tbh-->
     <div style="padding-bottom:100px; padding-top:20px;" class="big-container">
