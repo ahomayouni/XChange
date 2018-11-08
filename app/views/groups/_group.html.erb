@@ -1,9 +1,12 @@
 <div class="card user-group">
   <div class="card-body">
-		<h5 class="card-title">
-			Title: <%= group.name %>
-		</h5>
-    <p class="card-text">Description: <%= group.description %></p>
+		<h5 class="card-title">Name: <%= group.name %></h5>
+		<% if group.owner_id %>
+			<p class="card-text">Owner: <%= User.find_by(id:group.owner_id).name %></p>
+		<% else %>
+			<p class="card-text">Owner: Anonymous</p>
+		<% end %>
+    	<p class="card-text">Description: <%= group.description %></p>
 		<p class="card-text"><%= link_to "View Group", group_path(group), class:"card-link" %></p>
   </div>
 </div>

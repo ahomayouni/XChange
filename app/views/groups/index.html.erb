@@ -3,4 +3,9 @@
 	<div class="row">
 		<%= render @groups %>
 	</div>
+	
+	<h1> Your Groups </h1>
+	<div class="row">
+		<%= render current_user.groups.all %>
+	</div>
 </div>

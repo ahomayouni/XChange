@@ -5,10 +5,10 @@
     background-color: #e9e8ea !important;
 }
 
-.user-listing {
+.user-listing, .user-group {
   margin: 0.3rem;
 }
-.user-listings {
+.user-listings, .user-group{
   display: grid;
   grid-template-columns: 50% 50%;
 }
