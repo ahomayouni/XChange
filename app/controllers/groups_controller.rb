@@ -4,6 +4,7 @@ class GroupsController < ApplicationController
   end
 
   def show
+    @group = Group.find(params[:id])
   end
 
   def new
@@ -22,7 +23,14 @@ class GroupsController < ApplicationController
     end
   end
   
-  
+  def destroy
+    @group = Group.find(params[:id])
+    @group_users = @group.users
+    @group_users.destroy
+    @group.destroy
+    flash[:success] = "Group has been successfully deleted"
+    redirect_to groups_path 
+  end
   private
   
   def group_params_validator

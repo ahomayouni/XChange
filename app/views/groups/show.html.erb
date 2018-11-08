@@ -1,2 +1,30 @@
-<h1>Groups#show</h1>
-<p>Find me in app/views/groups/show.html.erb</p>
+<div class="container-fluid">
+    <!-- layout 1 -->
+    <div class="row">
+        <div class="col-md-9 py-3 px-3">
+            <h1 style="white-space: nowrap ; overflow: hidden; text-overflow: ellipsis;">  <%=@group.name%> Group Page</h1>
+            <h4> This group has <%= @group.users.count %> members </h4>
+            <h4> Privacy: <% if @group.isPublic %>Public<% else %>Private<%end%></p> </h4>
+       </div>
+    </div>
+    <div style="padding-bottom:100px; padding-top:20px;" class="big-container">
+      <div class="row">
+          <div class="col-md-3 d-flex flex-row">
+          </div>
+          <div class="col-md-9 py-3 px-3">
+              <h5 style="white-space: nowrap ; overflow: hidden; text-overflow: ellipsis;">  <%=@group.name%>'s Dashboard </h5>
+              <h5> This group has <%= @group.users.count %> members </h5>
+         </div>
+      </div>
+      <div class="small-container">
+        <div class="user-box">
+          <div class="user-content">
+            <div class="user-pfp"></div>
+            <div class="user-listings">
+              <%= render @group.users %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

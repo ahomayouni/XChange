@@ -6,7 +6,12 @@
 		<% else %>
 			<p class="card-text">Owner: Anonymous</p>
 		<% end %>
+		<p class="card-text">Privacy: <% if group.isPublic %>Public<% else %>Private<%end%></p>
     	<p class="card-text">Description: <%= group.description %></p>
 		<p class="card-text"><%= link_to "View Group", group_path(group), class:"card-link" %></p>
+		<% if current_user.admin? or current_user.id == group.owner_id %>
+			<%= link_to 'DELETE', group, method: :delete, data: {confirm: "Are You sure you want to delete #{group.name}? "},
+			class: "card-link" %>
+		<% end %>
   </div>
 </div>
