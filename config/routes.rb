@@ -40,6 +40,9 @@ Rails.application.routes.draw do
   
   # Listing routes
   resources :listings
+  
+  # Groups routes
+  resources :groups
 
   # Search routes
   get :autocomplete_users, controller: :users
