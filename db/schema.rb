@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_08_193526) do
+ActiveRecord::Schema.define(version: 2018_11_08_200102) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -44,6 +44,14 @@ ActiveRecord::Schema.define(version: 2018_11_08_193526) do
     t.integer "commenter_id"
   end
 
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.boolean "isPublic"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "listing_images", force: :cascade do |t|
     t.integer "listing_id"
     t.string "image"
@@ -59,6 +67,15 @@ ActiveRecord::Schema.define(version: 2018_11_08_193526) do
     t.datetime "start_lending"
     t.datetime "end_lending"
     t.integer "user_id"
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.integer "group_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_memberships_on_group_id"
+    t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
   create_table "people", force: :cascade do |t|
@@ -93,6 +110,7 @@ ActiveRecord::Schema.define(version: 2018_11_08_193526) do
     t.datetime "activated_at"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
+    t.string "owned_groups"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

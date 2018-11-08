@@ -10,6 +10,11 @@ class User < ApplicationRecord
 
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
+	# creating an association with groups
+  has_many :memberships
+  has_many :groups, through: :memberships
+  #has_many :owned_groups, class_name: 'Group', foreign_key: 'user_id'
+
 	# creating an association with listings
 	has_many :listings , :dependent => :destroy
 	has_one :person , :dependent => :destroy
