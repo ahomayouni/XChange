@@ -38,13 +38,13 @@
 // set background image for parallax effect
 .slide-1 {
   height: 80vh;
-  background-image: url('books-bigger.jpg');
+  background-image: asset_url('books-bigger.jpg');
   background-attachment: fixed !important;
 }
 
 .slide-2 {
   height: 80vh;
-  background-image: url('tools-bigger.jpg');
+  background-image: asset_url('tools-bigger.jpg');
   background-attachment: fixed !important;
 }
 
