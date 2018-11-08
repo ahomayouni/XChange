@@ -19,9 +19,14 @@
     .logo {
       font-size: 1.3rem;
     }
+    .btn {
+      border-color: #17a2b8;
+      color: #17a2b8
+    }
     .btn:hover {
-        background-color: transparent;
-        color: #17a2b8;
+        background-color: #17a2b8;
+        border-color: #17a2b8;
+        color: white;
     }
 }
 
