@@ -1,14 +1,24 @@
-<h1> Showing your listing </h1>
-<p>
-  <% (0...@listing.images.count).each do |image| %>
-  <%= image_tag(@listing.thumbnail(image))%>
-  <% end %>
-  Title: <%= @listing.title %><br>
-  Description: <%= @listing.description %><br>
-  Category: <%= @listing.category %><br>
-  Price Per Day: <%= @listing.price_per_day %><br>
-  Start Lending Date: <%= @listing.start_lending %><br>
-  End Lending Date: <%= @listing.end_lending %>
-</p>
-<%= link_to "Edit", edit_listing_path(@listing) %>
-<%= link_to 'Back', listings_path %>
+<div class="container-fluid">
+  <h1><%= @listing.title %></h1>
+  <div class="row">
+    <div class="col-md-4">
+      <% if @listing.images.count == 0%>
+        <h4> No images </h4>
+      <% end %>
+      <% (0...@listing.images.count).each do |image| %>
+      <%= image_tag(@listing.thumbnail(image))%>
+      <% end %>
+    </div>
+    <div class="col-md-8">
+      <h4> <%= @listing.title %> </h4>
+      Description: <%= @listing.description %><br>
+      Category: <%= @listing.category %><br>
+      Price Per Day: <%= @listing.price_per_day %><br>
+      Start Lending Date: <%= @listing.start_lending %><br>
+      End Lending Date: <%= @listing.end_lending %>
+
+     <%= link_to "Edit", edit_listing_path(@listing), class: 'btn btn-outline-info'%>
+     <%= link_to 'Back', listings_path, class: 'btn btn-outline-info' %>
+    </div>
+  </div>
+</div>
