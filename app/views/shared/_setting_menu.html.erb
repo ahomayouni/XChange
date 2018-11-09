@@ -1,0 +1,6 @@
+
+<div class="col-md-12">
+    <%= link_to 'Update Your Basic Information', edit_user_path(@user) ,class:'settings_selector'%> <br>
+    <%= link_to 'Change Password', new_user_password_change_path(@user)%> <br>
+    <%= link_to 'Deactivate Account' , user_setting_path(@user.id,0),method: :delete, data: {confirm: "We are sad to see you leave :( Are you sure you want to delete your account? This will delete all of your information from our database. ) "  }%>
+</div>

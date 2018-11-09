@@ -1,28 +1,48 @@
-<% provide(:title, "Edit user") %>
-<% provide(:button_text, 'Save Changes') %>
-<div class="row">
-	<div class="offset-md-4" >
-		<h1>Update your profile</h1>
+<div class="container-fluid" style="margin:3% 0 3% 0;">
+	<div class="row ml-1">
+	<h3 class="offset-md-5"> User Settings </h3> 
 	</div>
-</div>
+	<%# TODO: responsive font size %>
+	<div class="setting-container">
+		<div class="row">
+			<div class="col-4">
+				<%# menu part %>
+				<div class="setting-menu" id="setting-menu">
+					<%= render 'shared/setting_menu' %>
+				</div>
+			</div>
+			<div class="col-8">
+				<%# editting part %>
+				<div class="setting-item">
+					<% provide(:title, "Edit user") %>
+					<% provide(:button_text, 'Save Changes') %>
+					<div class="row">
+						<div class="offset-md-4" >
+							<h5>Update your profile</h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 offset-md-3">
+							<%= form_for @user, html: {class: "form-control-sm"} do |f| %>
+								<%= render 'shared/error_messages' %> 
+									<%= f.label :name , "Name: "%>
+									<%= f.text_field :name, class: 'form-control'%> 
 
+									<%= f.label :address , "Address: "%>
+									<%= f.text_field :address , placeholder: "#{@user.person.address}", value: @user.person.address , class: 'form-control'%> 
 
-<div class="row">
-  <div class="col-md-6 offset-md-3">
-    <%= form_for(@user) do |f| %>
-	    <%= render 'shared/error_messages' %> 
-	      <%= f.label :name , "Name: "%>
-	      <%= f.text_field :name, class: 'form-control'%> 
+									<%= f.label :phone_number , "Phone Number: "%>
+									<%= f.text_field :phone_number , placeholder: "#{@user.person.phone_number}", value: @user.person.phone_number , class: 'form-control'%> 
+									<%= f.label :description , "Description: "%>
+									<%= f.text_area :description , placeholder: "#{@user.person.description}", value: @user.person.description , class: 'form-control'%> 
 
-	      <%= f.label :address , "Address: "%>
-	      <%= f.text_field :address , placeholder: "#{@user.person.address}", value: @user.person.address , class: 'form-control'%> 
+									<%= f.submit yield(:button_text), class: "btn btn-primary mt-2" %>
+						<% end %>
+						</div>
 
-	      <%= f.label :phone_number , "Phone Number: "%>
-	      <%= f.text_field :phone_number , placeholder: "#{@user.person.phone_number}", value: @user.person.phone_number , class: 'form-control'%> 
-	      <%= f.label :description , "Description: "%>
-	      <%= f.text_area :description , placeholder: "#{@user.person.description}", value: @user.person.description , class: 'form-control'%> 
-
-	      <%= f.submit yield(:button_text), class: "btn btn-primary" %>
-	<% end %>
-  </div>
+					</div>
+				</div>
+			</div> 
+		</div>
+	</div>
 </div>
