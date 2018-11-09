@@ -26,6 +26,22 @@ html {
 body {
   //margin-bottom: 60px; /* Margin bottom by footer height */
 }
+input:not([type='submit']), textarea.form-control {
+  outline: 0;
+  border: 0;
+  background: #17a2b8;
+  box-sizing: border-box;
+ }
+.btn {
+  background-color: transparent;
+  border-color: #17a2b8;
+  color: #17a2b8 !important;
+}
+.btn:hover {
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+  color: white !important;
+}
 .footer {
   //position: absolute;
   bottom: 0;
