@@ -25,9 +25,9 @@
 					</li>
 				</ul>
 				<ul class="navbar-nav ml-auto">
-					 <li class="nav-item btn-group" data-behavior="notifications" data-notifications='<%= render template: "notifications/index", formats: [:json] %>'>
-			          <a class="dropdown-toggle nav-link" type="button" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			            <i class="material-icons"> notification_important </i> <span data-behavior="unread-count"></span>
+					 <li class="nav-item btn-group notification-button mr-2" data-behavior="notifications" data-notifications='<%= render template: "notifications/index", formats: [:json] %>'>
+			          <a class="dropdown-toggle nav-link" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			            <i class="tiny material-icons"> notification_important </i> <span data-behavior="unread-count"></span>
 			          </a>
 			          <div class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items">
 			            
