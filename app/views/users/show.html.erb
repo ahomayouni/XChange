@@ -36,27 +36,4 @@
     <div class="user-groups">
       <%= render @user.groups %>
     </div>
-
-    <!-- For now commenting this out, easier to work with one layout -->
-     <!-- layout 2 I just did this for fun, not really mobile friendly tbh-->
-        <!-- <div style="padding-bottom:100px; padding-top:20px;" class="big-container">
-        <div class="row">
-            <div class="col-md-3 d-flex flex-row">
-            </div>
-            <div class="col-md-9 py-3 px-3">
-                <h5 style="white-space: nowrap ; overflow: hidden; text-overflow: ellipsis;">  <%=@user.name%>'s Dashboard </h5>
-                <h5> Listings you've put up: <%= @user.listings.count %> </h5>
-            </div>
-        </div>
-        <div class="small-container">
-            <div class="user-box">
-            <div class="user-content">
-                <div class="user-pfp"></div>
-                <div class="user-listings">
-                <%= render @user.listings %>
-                </div>
-            </div>
-            </div>
-        </div>
-        </div> -->
 </div>
