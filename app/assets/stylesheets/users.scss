@@ -2,7 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .user-card {
-    background-color: #e9e8ea !important;
+   :hover {
+     background:#c7eae4 !important; 
+   }
 }
 
 .user-listing, .user-group {

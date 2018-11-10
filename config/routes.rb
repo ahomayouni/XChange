@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   get 'groups/index'
   get 'groups/show'
   get 'groups/new'
-  get 'groups/join'
-  get 'groups/leave'
+  post 'groups/join'
+  post 'groups/leave'
   get 'password_resets/new'
   get 'password_resets/edit'
   get 'sessions/new'
@@ -46,8 +46,8 @@ Rails.application.routes.draw do
   resources :groups
   get :join, controller: :groups
   get :leave, controller: :groups
-  get '/groups/join', to: 'group#join'
-  get '/groups/leave', to: 'group#leave'
+  post '/groups/join', to: 'group#join'
+  post '/groups/leave', to: 'group#leave'
 
 
   # Search routes
