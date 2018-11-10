@@ -4,6 +4,7 @@ class Listing < ActiveRecord::Base
   has_many :listing_images, dependent: :destroy
   has_many :comments, as: :reply
   has_many_attached :images
+  has_many :borrow_requests
   validates :title, presence: true, length: {maximum: 20}
   validates :description, presence: true, length: {minimum: 5, maximum: 50}
   validates :category, presence: true
