@@ -1,11 +1,20 @@
 <div class="container-fluid">
-	<h1> All Groups </h1>
 	<div class="row">
-		<%= render @groups %>
-	</div>
-	
-	<h1> Your Groups </h1>
-	<div class="row">
-		<%= render current_user.groups.all %>
-	</div>
+	  <div class="d-flex flex-row">
+		<div class="col-md-6 mx-4">
+            <div class="mb-3 py-3">
+            	<h1> All Groups </h1>
+                <%= link_to "Create new group", new_group_path, class:'btn btn-outline-info h-25 ml-4 mt-2' %>
+                <%= render @groups %>
+            </div>
+        </div>
+        
+        <div class="col-md-6 mx-4">
+            <div class="mb-3 py-3">
+                <h1> Your Groups </h1>
+                <%= render current_user.groups.all %>
+            </div>
+        </div>
+        </div>
+    </div>
 </div>

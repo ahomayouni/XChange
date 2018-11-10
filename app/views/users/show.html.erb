@@ -6,7 +6,7 @@
         </div>
         <div class="col-md-9 py-3 px-3">
             <h1>  <%=@user.name%>'s Dashboard </h1>
-            <h2> Listings you've put up: <%= @user.listings.count %> </h2>
+            <h2> Number of <%=@user.name%>'s listings: <%= @user.listings.count %> </h2>
             <p> What I suggest is there should be an overview of the user's activity using pie charts
                 Ideally there will be summary of the user's listings, reviews, etc. It doesnt have to
                     be a pie chart. just some easy way to convey infomration that looks good too </p>
@@ -15,23 +15,12 @@
  	<div class="row">
         <div class="col-md-6 mx-4">
             <div class="d-flex flex-row mt-3 py-3">
-                <h2> Your listings </h2>
+                <h2> <%=@user.name%>'s listings </h2>
                 <%= link_to "Create new listing", new_listing_path, class:'btn btn-outline-info h-25 ml-4 mt-2' %>
             </div>
         </div>
     </div>
     <div class="row">
         <%= render @user.listings %>
-    </div>
-	<div class="row">
-    	<div class="col-md-6 mx-4">
-            <div class="d-flex flex-row mb-3 py-3">
-                <h2> Your groups </h2>
-                <%= link_to "Create new group", new_group_path, class:'btn btn-outline-info h-25 ml-4 mt-2' %>
-            </div>
-        </div>
-    </div>
-    <div class="user-groups">
-      <%= render @user.groups %>
     </div>
 </div>
