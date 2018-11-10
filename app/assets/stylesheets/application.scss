@@ -19,23 +19,48 @@
 * {
     font-family: 'Catamaran', sans-serif;
 }
+
 @media (min-width: 544px) {  
-  *{font-size:1rem;} /*1rem = 16px*/
+  * {
+    font-size:1rem; /*1rem = 16px*/
+  } 
+  .card-img-top {
+    width:100%; 
+    height: 40vw;
+    object-fit: cover;
+  }
 }
  
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {  
-  * {font-size:1.1rem;} /*1rem = 16px*/
+  * {
+    font-size:1.1rem;
+  } 
+  .card-img-top {
+      width:100%; 
+      height: 35vw;
+      object-fit: cover;
+  }
 }
  
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) { 
   *{font-size:1.1rem;} /*1rem = 16px*/
+    .card-img-top {
+      width:100%; 
+      height: 20vw;
+      object-fit: cover;
+    }
 }
  
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {  
  *{font-size:1.2rem;} /*1rem = 16px*/    
+  .card-img-top {
+    width:100%; 
+    height: 20vw;
+    object-fit: cover;
+  }
 }
 
 html {

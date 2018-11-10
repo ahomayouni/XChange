@@ -17,10 +17,8 @@
     </div>
 
     <div class="row">
-        <div class="d-flex flex-row flex-wrap">
-            <% @listings.each do |listing| %>
-                <%= render listing %>
-            <%end %>
-        </div>
+        <% @listings.each do |listing| %>
+            <%= render listing %>
+        <%end %>
     </div>
 </div >
