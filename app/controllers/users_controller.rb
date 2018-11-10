@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   before_action :force_json, only: :autocomplete_users
 
   def index
-    # @users = User.all # Caution doing this might slow down some rendering in the future
     @users = User.paginate(page: params[:page])
   end
   def new

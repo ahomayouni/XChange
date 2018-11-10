@@ -1,7 +1,6 @@
 class Notifications
   constructor: ->
     @notifications = $("[data-behavior='notifications']")
-    console.log(@notifications)
     if @notifications.length > 0
       @handleSuccess @notifications.data("notifications")
       $("[data-behavior='notifications-link']").on "click", @handleClick
