@@ -67,6 +67,8 @@ class ListingsController < ApplicationController
       end
   end
 
+  
+
  private
 
      def find_user
@@ -84,5 +86,6 @@ class ListingsController < ApplicationController
     def force_json
       request.format = :json
     end
+
 
 end

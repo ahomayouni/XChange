@@ -16,7 +16,9 @@
       Price Per Day: <%= @listing.price_per_day %><br>
       Start Lending Date: <%= @listing.start_lending %><br>
       End Lending Date: <%= @listing.end_lending %><br>
-     <%= link_to "Request Item", borrow_requests_path(@listing), class: 'btn btn-outline-info'%>
+      <%if not_listing_owner%>
+        <%= link_to "Request Item", borrow_requests_path(@listing), class: 'btn btn-outline-info'%>
+      <%end%>
      <%= link_to "Edit", edit_listing_path(@listing), class: 'btn btn-outline-info'%>
      <%= link_to 'Back', listings_path, class: 'btn btn-outline-info' %>
     </div>
