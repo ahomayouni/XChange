@@ -5,6 +5,7 @@
 
 <%= form_for [@person, Comment.new] do |f| %>
 <%= f.text_area :body, placeholder: "Add a comment" %><br/>
+<%=  %>
 <%= f.submit "Add Comment" %>
 <% end %>
 
