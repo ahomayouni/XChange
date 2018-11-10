@@ -8,11 +8,9 @@ before_action :find_reply
     def edit
     end
 
-
     def create
         @comment = @reply.comments.new comment_params
         @comment.commenter_id = current_user.id
-        # TODO: add id to comments
 
         # temp message to ensure review save correctly
         if @comment.save
