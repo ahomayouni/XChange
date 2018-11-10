@@ -1,6 +1,8 @@
 <div class="col-md-4">
   <div class="card mx-2 mb-2">
-    <%= image_tag("empty-item-icon.jpg", :class => "card-img-top")%>
+      <% (0...listing.images.count).each do |image| %>
+        <%= image_tag(listing.thumbnail(image), :class => "card-img-top")%>
+      <% end %>
     <div class="card-body">
       <h5 class="card-title">
         Title: <%= listing.title %>

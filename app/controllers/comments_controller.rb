@@ -14,6 +14,17 @@ before_action :find_reply
         
         # temp message to ensure review save correctly
         if @comment.save
+            if @comment.reply_type == "Person"
+                @person = Person.find(@comment.subject_id)
+                if @person.review
+                    old_review = @person.review
+                    total_reviews = Comment.where(subject_id: @comment.comment_id, reply_type: "Person").length
+                    old_review *= total_reviews
+                    old_review += rating
+                    old_review /= total_reviews+1
+                    @person.write_attribute(:review, old_review)
+                end
+            end
         #redirect_to :back, notice: 'Your review was successfully posted!'
         redirect_back fallback_location: request.referrer, notice: 'Your review was successfully posted!'
         else
