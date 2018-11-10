@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  before_action :verify_logged_in_user
   def index
     @groups = Group.all
   end
