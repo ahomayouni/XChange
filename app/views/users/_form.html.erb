@@ -3,13 +3,13 @@
       <%= f.label :name , "Name: "%>
       <%= f.text_field :name, class: 'form-control'%> 
 
-      <%= f.label :email , "Email: "%>
+      <%= f.label :email , "Email: ", class: 'pt-2' %>
       <%= f.email_field :email, class: 'form-control'%> 
 
-      <%= f.label :password , "Password: "%>
+      <%= f.label :password , "Password: ", class: 'pt-2' %>
       <%= f.password_field :password, class: 'form-control'%> 
 
-      <%= f.label :password_confirmation, "Confirm Password: "%>
+      <%= f.label :password_confirmation, "Confirm Password: ", class: 'pt-2' %>
       <%= f.password_field :password_confirmation, class: 'form-control'%> <br>
 
       <%= f.submit yield(:button_text), class: "btn btn-primary" %>
