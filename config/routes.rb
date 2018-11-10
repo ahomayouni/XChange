@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'privacy_policy/index'
   get 'terms_of_service/index'
   get 'about/index'
-  
+  get '/borrow_requests/:listing_id', to: 'borrow_requests#send_request', as: 'borrow_requests'
   get 'home/index'
 
   # Session routes
@@ -37,10 +37,9 @@ Rails.application.routes.draw do
 
   # Password Reset Routes
   resources :password_resets, only: [:new,:create,:edit,:update]
-  
+
   # Listing routes
   resources :listings
-  
   # Groups routes
   resources :groups
 
@@ -50,11 +49,11 @@ Rails.application.routes.draw do
   get '/search_users', to: 'users#search_users'
   get '/search_listings', to: 'listings#search_listings'
 
-  resources :notifications do 
+  resources :notifications do
     collection do
       post :mark_as_read
     end
   end
-  
+
   root 'home#index'
 end
