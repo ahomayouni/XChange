@@ -61,6 +61,7 @@ before_action :find_reply
         @reply = Comment.find_by_id(params[:comment_id]) if params[:comment_id]
         #@reply = Subject.find_by_id(params[:subject_id]) if params[:subject_id]
         @reply = Person.find_by_id(params[:person_id]) if params[:person_id]
+        @reply = Person.find_by_id(params[:person_id]) if params[:listing_id]
     end
 
     def update_person

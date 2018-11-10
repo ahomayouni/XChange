@@ -1,4 +1,6 @@
 class Person < ApplicationRecord
+	attr_accessor
+	
 	# a person contains details of each user
 	belongs_to :user 
 

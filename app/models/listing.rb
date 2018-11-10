@@ -1,4 +1,5 @@
 class Listing < ActiveRecord::Base
+  attr_accessor
   belongs_to :user
   # TODO: depreciate lsiitng_image controller, move to ActiveStorage
   has_many :listing_images, dependent: :destroy
