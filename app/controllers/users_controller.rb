@@ -55,7 +55,7 @@ class UsersController < ApplicationController
     if @user.save
       @user.person.save
       flash[:success] = "Successfully updated your profile!"
-      redirect_to @user
+      redirect_to user_settings_path(@user)
     else
       render 'edit'
     end
