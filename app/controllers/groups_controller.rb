@@ -1,5 +1,7 @@
 class GroupsController < ApplicationController
   before_action :verify_logged_in_user
+  before_action :force_json, only: :autocomplete_groups
+
   def index
     @groups = Group.all
   end
@@ -57,6 +59,20 @@ class GroupsController < ApplicationController
       flash[:error] = "Couldn't leave the '#{@group.name}' group"
     end
     redirect_to groups_path
+  end
+  
+  def search_groups
+    @groups_found = Group.ransack(name_cont: params[:groups_q]).result(distinct: true)
+  end
+
+  def autocomplete_groups
+      @groups_found = Group.ransack(name_cont: params[:groups_q]).result(distinct: true)
+        respond_to do |format|
+        format.html{}
+        format.json{
+          @groups_found = @groups_found.limit(5)
+        }
+      end
   end
   private
   

@@ -1,16 +1,41 @@
 <div class="container-fluid">
-	<div class="row">
-		<%= link_to "Create new group", new_group_path, class:'btn btn-outline-info h-25 ml-4 mt-2' %>
+
+
+	
+	
+	
+	
+	
+	
+	<div class="d-flex flex-row">	
+		
+		<div class="col-md-3 ">
+			<div class="mb-3 mx-4 py-3 mt-3">
+				<%= link_to "Create new group", new_group_path, class:'btn btn-outline-info' %>
+			</div>
+        </div>  
+        
+        <div class="col-md-9">
+        	<div class="mb-6 mx-4 py-3">
+		        <div class="float-right">
+		            <%= form_with url: search_groups_path, local: true, method: :get, html: {class: "form-inline"} do |form| %>
+		                <%= form.text_field :groups_q, placeholder: "Search for a group..", data: { behaviour: "autocomplete_groups" }, class: "form-control mt-3 mx-2" %>
+		                <%= form.button "Search", class: "btn btn-outline-success mt-3 mx-3" %>
+		            <% end %>	
+		    	</div>
+		  	</div>  	
+    	</div>
     </div>
+    
     <div class="d-flex flex-row">
-		<div class="col-md-6 mx-4">
-           	<div class="mb-3 py-3">
+		<div class="col-md-6 ">
+           	<div class="mb-3 py-3 mx-4">
            		<h1> All Groups </h1>
                	<%= render @groups %>
            	</div>
         </div>     
-		<div class="col-md-6 mx-4">
-			<div class="mb-3 py-3">
+		<div class="col-md-6">
+			<div class="mb-3 py-3 mx-4">
                 <h1> Your Groups </h1>
             	<%= render current_user.groups.all %>
         	</div>

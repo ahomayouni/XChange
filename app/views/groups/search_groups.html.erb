@@ -1,0 +1,10 @@
+<h1>Groups Search Results</h1>
+
+<% if params[:groups_q] and params[:groups_q] != "" %>
+	<% if @groups_found.count > 0 %>
+		<h4> Found <%= @groups_found.count %> group(s) containing "<%= params[:groups_q] %>": </h4>
+		<%= render @groups_found %> <br>
+	<% else %>
+		<h3> No groups found for "<%= params[:groups_q] %>" </h3>
+	<% end %>
+<% end %>

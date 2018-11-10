@@ -42,6 +42,7 @@ Rails.application.routes.draw do
 
   # Listing routes
   resources :listings
+  
   # Groups routes
   resources :groups
   get :join, controller: :groups
@@ -49,12 +50,13 @@ Rails.application.routes.draw do
   post '/groups/join', to: 'group#join'
   post '/groups/leave', to: 'group#leave'
 
-
   # Search routes
   get :autocomplete_users, controller: :users
   get :autocomplete_listings, controller: :listings
+  get :autocomplete_groups, controller: :groups
   get '/search_users', to: 'users#search_users'
   get '/search_listings', to: 'listings#search_listings'
+  get '/search_groups', to: 'groups#search_groups'
 
   resources :notifications do
     collection do
