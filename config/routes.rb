@@ -49,5 +49,8 @@ Rails.application.routes.draw do
   get :autocomplete_listings, controller: :listings
   get '/search_users', to: 'users#search_users'
   get '/search_listings', to: 'listings#search_listings'
+
+  resources :notifications
+  
   root 'home#index'
 end
