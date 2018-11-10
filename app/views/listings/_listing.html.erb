@@ -9,6 +9,7 @@
       </h5>
       <p class="card-text">Description: <%= listing.description %></p>
       <p class="card-text"><%= link_to "View Listing", listing_path(listing), class:"card-link" %></p>
+      <p class="card-text"><%= link_to 'Delete', listing_path(listing), method: :delete, data: {confirm: "Are you sure?"}, class:'card-link' %></p>
     </div>
   </div>
 </div>
