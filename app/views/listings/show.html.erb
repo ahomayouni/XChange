@@ -1,26 +1,28 @@
 <div class="container-fluid">
-  <h1><%= @listing.title %></h1>
-  <div class="row">
-    <div class="col-md-4">
-      <% if @listing.images.count == 0%>
-        <h4> No images </h4>
-      <% end %>
-      <% (0...@listing.images.count).each do |image| %>
-      <%= image_tag(@listing.thumbnail(image))%>
-      <% end %>
-    </div>
-    <div class="col-md-8">
-      <h4> <%= @listing.title %> </h4>
-      Description: <%= @listing.description %><br>
-      Category: <%= @listing.category %><br>
-      Price Per Day: <%= @listing.price_per_day %><br>
-      Start Lending Date: <%= @listing.start_lending %><br>
-      End Lending Date: <%= @listing.end_lending %><br>
-      <%if not_listing_owner%>
-        <%= link_to "Request Item", borrow_requests_path(@listing), class: 'btn btn-outline-info'%>
-      <%end%>
-     <%= link_to "Edit", edit_listing_path(@listing), class: 'btn btn-outline-info'%>
-     <%= link_to 'Back', listings_path, class: 'btn btn-outline-info' %>
-    </div>
-  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+         <h1><%= @listing.title %></h1>
+         <h4> <%= @listing.category %> </h4>
+          <%= link_to "Edit", edit_listing_path(@listing), class: 'btn btn-outline-info'%>
+          <%= link_to 'Back', listings_path, class: 'btn btn-outline-info' %>
+            <%if not_listing_owner%>
+               <%= link_to "Request Item", borrow_requests_path(@listing), class: 'btn btn-outline-info'%>
+            <%end%>
+      </div>
+      <div class="col-lg-9 mb-5">
+        <div class="card mt-4">
+            <% (0...@listing.images.count).each do |image| %>
+              <%= image_tag(@listing.thumbnail(image), :class => "card-img-top")%>
+            <% end %>
+            <div class="card-body pb-3">
+              <h3 class="card-title"><%= @listing.title %></h3>
+              <p class="card-text"><%= @listing.description %></p>
+            </div>
+        </div>
+      </div>
+     </div>
+   </div>
 </div>
+
+
