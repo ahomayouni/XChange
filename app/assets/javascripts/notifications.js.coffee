@@ -32,14 +32,14 @@ class Notifications
   handleSuccess: (data) =>
     items = $.map data, (notification) ->
       notification.template
-    
+
     unread_count = 0
     $.each data, (i, notification) ->
       console.log(notification.read_at)
       if notification.unread
         unread_count += 1
 
-    console.log("Value of unreadcount is:")    
+    console.log("Value of unreadcount is:")
     console.log(unread_count)
 
     $("[data-behavior='unread-count']").text(unread_count)
