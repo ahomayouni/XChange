@@ -1,7 +1,11 @@
 class Group < ApplicationRecord
   has_many :memberships, :dependent => :delete_all 
   has_many :users, through: :memberships, :dependent => :delete_all 
-  #belongs_to :user, class_name: 'User', foreign_key: 'user_id'
+  
+  validates :name, presence: true, length: {minimum: 5}
+  validates :description, presence: true, length: {minimum: 5, maximum: 100}
+  validates :isPublic, presence: true
+    
   def member_exists(user)
     exists = false
     Membership.all.each do |membership|
