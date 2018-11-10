@@ -15,23 +15,12 @@
              <%= link_to "Create new listing", new_listing_path, class: "btn btn-outline-info mt-2" %>
         </div>
     </div>
+
     <div class="row">
-        <% @listings.each do |listing|%>
-            <div class="col-md-9">
-                <div class="card d-flex flex-row mb-2">
-                    <div class="card-body">
-                        <h5 class="card-title text-bold">
-                            <%= listing.title %>
-                        </h5>
-                            <p> 
-                            <%= listing.description %>
-                            </p>
-                        <%= link_to 'Edit', edit_listing_path(listing), class:'card-link' %>
-                        <%= link_to 'Show', listing_path(listing), class:'card-link' %>
-                        <%= link_to 'Delete', listing_path(listing), method: :delete, data: {confirm: "Are you sure?"}, class:'card-link' %>
-                    </div>
-                </div>
-            </div>
-        <% end %>
+        <div class="d-flex flex-row flex-wrap">
+            <% @listings.each do |listing| %>
+                <%= render listing %>
+            <%end %>
+        </div>
     </div>
 </div >

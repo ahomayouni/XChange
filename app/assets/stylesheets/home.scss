@@ -14,13 +14,25 @@
         }
     }
     i {
-      color: #390d7a;
+      color: white;
     }
     .navbar-brand {
         color: rgb(3,15,80);
     }
     .logo {
       font-size: 1.3rem;
+    }
+    .btn {
+      color: white !important;
+      border-color: white !important;
+    }
+    .btn:hover {
+      background-color: white;
+      color: rgb(104,214,205) !important;
+    }
+    .notification-button {
+      text-align: center;
+      color: white !important;
     }
 }
 
@@ -32,7 +44,8 @@
 // set background image for parallax effect
 .slide-1 {
   height: 80vh;
-  background-image: asset_url('books-bigger.jpg');
+  background-position: center;
+  background-image: asset_url('carousel-pattern.jpg');
   background-attachment: fixed !important;
 }
 
