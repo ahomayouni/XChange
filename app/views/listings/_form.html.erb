@@ -11,35 +11,35 @@
   <%= form_for @listing do |f| %> 
   <p>
     <%= f.label :title %>
-    <%= f.text_field :title, placeholder:"eg. Canon XF205" %>
+    <%= f.text_field :title, placeholder:"eg. Canon XF205" , class: 'form-control'%>
   </p>
   <p>
     <%= f.label :category %>
-    <%= f.select :category, ["Film & Photography","Audio Visual Equipment","Projectors & Screens","Drones","DJ Equipment","Transport","Storage","Electronics","Party & Events","Sports","Musical Instruments","Home / Office / Garden","Kids & Baby","Holiday & Travel","Clothing"] %>
+    <%= f.select :category, ["Film & Photography","Audio Visual Equipment","Projectors & Screens","Drones","DJ Equipment","Transport","Storage","Electronics","Party & Events","Sports","Musical Instruments","Home / Office / Garden","Kids & Baby","Holiday & Travel","Clothing"] , class: 'form-control'%>
   </p>
   <p>
     <%= f.label :description%>
-    <%= f.text_area :description, placeholder:"eg. Shooting beautiful shots on film is made simple with the auto mode, but you're able to also switch that off and shoot in full manual! "%>
+    <%= f.text_area :description, placeholder:"eg. Shooting beautiful shots on film is made simple with the auto mode, but you're able to also switch that off and shoot in full manual! ", class: 'form-control'%>
   </p>
   <p>
     <%= f.label :price_per_day%>
-    <%= f.number_field :price_per_day, placeholder:"eg. $20"%>
+    <%= f.number_field :price_per_day, placeholder:"eg. $20", class: 'form-control'%>
   </p>
 
   <p>
     <%= f.label :start_lending%>
-    <%= f.date_select :start_lending%>
+    <%= f.date_select :start_lending, class: 'form-control'%>
   </p>
   <p>
     <%= f.label :end_lending%>
-    <%= f.date_select :end_lending%>
+    <%= f.date_select :end_lending, class: 'form-control'%>
   </p>
   <p>
     <%= f.label :image %>
-    <%= f.file_field :images, multiple: true %>
+    <%= f.file_field :images, multiple: true , class: 'form-control'%>
   </p>
   <p>
-    <%= f.submit %>
+    <%= f.submit 'Create Listing', :class => "btn btn-primary"%>
   </p>
   <% end %>
   <%= link_to 'Back', listings_path %>
