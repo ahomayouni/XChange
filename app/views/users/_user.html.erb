@@ -5,11 +5,11 @@
 		<!--<img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" 
 		alt="Generic placeholder image" width="50" height="50">-->
 			<h5 class="card-title"><%= user.name%></h5>
-				<%= link_to "View Profile", user_path(user), class:"card-link" %>
-				<%= link_to "View Reviews", user_path(user), class:"card-link" %> <!-- change to people -->
+				<%= button_to "View Profile", user_path(user), class:"card-link btn btn-primary", :method => :get %>
+				<%= button_to "View Reviews", user_path(user), class:"card-link btn btn-primary", :method => :get %> <!-- change to people -->
 			<% if current_user.admin? && !current_user?(user) %>
-			<%= link_to 'DELETE', user, method: :delete, data: {confirm: "Are You sure you want to delete #{user.name}? "},
-			class: "card-link" %>
+			<%= button_to 'DELETE', user, method: :delete, data: {confirm: "Are You sure you want to delete #{user.name}? "},
+			class: "card-link btn btn-danger" %>
 		<%end%>
 		</div>
 	</div>
