@@ -21,6 +21,9 @@ class UsersController < ApplicationController
   	if @user.save
       @user.create_person #Creating a person object associated with this user.
       UserMailer.account_activation(@user).deliver_now
+
+      Notification.create(recipient: @user,actor: @user,action:"created_new_account",notifiable:@user)
+
   		flash[:success] = "Thanks for signing up with XChange! Now please check your email to activate"
   		# redirect_to login_path
       redirect_to root_path
