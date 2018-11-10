@@ -23,6 +23,8 @@ before_action :find_reply
                     old_review += rating
                     old_review /= total_reviews+1
                     @person.write_attribute(:review, old_review)
+                else
+                    @person.write_attribute(:review, @person.review)
                 end
             end
         #redirect_to :back, notice: 'Your review was successfully posted!'
