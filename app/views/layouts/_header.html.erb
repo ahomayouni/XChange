@@ -29,9 +29,7 @@
 			          <a class="dropdown-toggle nav-link" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			            <i class="tiny material-icons"> notification_important </i> <span data-behavior="unread-count"></span>
 			          </a>
-			          <div class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items">
-			        
-			          </div>
+			          <div class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items"> <!-- Dropdown Itemshere will be placed by the notification-items given by the javascript file in the form of html.erb --></div>
 			        </li>
 					<li>
 						<%= link_to "Log Out", logout_path , method: :delete, class: "btn btn-primary" %>
