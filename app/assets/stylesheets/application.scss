@@ -88,6 +88,26 @@ body {
   border-color: rgb(3,15,80);
   color: white !important;
 }
+.btn-danger:hover {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: white !important;
+}
+.btn-success:hover {
+  background-color: #28a745;
+  border-color: #28a745;
+  color: white !important;
+}
+.btn-secondary:hover {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: white !important;
+}
+.btn-warning:hover {
+  background-color: #ffc107;
+  border-color: #ffc107;
+  color: white !important;
+}
 .footer {
   //position: absolute;
   bottom: 0;

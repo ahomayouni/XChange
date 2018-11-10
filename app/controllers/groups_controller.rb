@@ -37,7 +37,7 @@ class GroupsController < ApplicationController
   
   def join
     @group = Group.find(params[:group])
-    @user = Group.find(params[:user])
+    @user = User.find(params[:user])
     @membership = Membership.new
     @membership.group_id = @group.id
     @membership.user_id = @user.id
@@ -51,7 +51,7 @@ class GroupsController < ApplicationController
   
   def leave
     @group = Group.find(params[:group])
-    @user = Group.find(params[:user])
+    @user = User.find(params[:user])
     @membership= Membership.find_by(user_id: @user.id, group_id: @group.id)
     if @membership.destroy
       flash[:success] = "Successfully left the '#{@group.name}' group"

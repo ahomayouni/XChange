@@ -10,9 +10,31 @@
 			<% end %>
             <h4> This group has <%= @group.users.count %> members </h4>
             <h4> Privacy: <% if @group.isPublic %>Public<% else %>Private<%end%></p> </h4>
+            <% if !@group.member_exists(current_user) %>
+				<p class="card-text"><%= button_to "Join Group", {:controller => "group", :action => "join", :group => @group, :user => current_user }, :method => :post, class:"card-link btn btn-success" %></p>
+			<% else %>
+				<p class="card-text"><%= button_to "Leave Group", {:controller => "group", :action => "leave", :group => @group, :user => current_user }, :method => :post, class:"card-link btn btn-warning" %></p>
+			<% end %>
+			
+			<% if current_user.admin? or current_user.id == group.owner_id %>
+				<%= button_to 'Delete Group', @group, method: :delete, data: {confirm: "Are You sure you want to delete #{@group.name}? "},
+				class: "card-link btn btn-danger" %>
+			<% end %>
        </div>
     </div>
-      <div class="row">
+
+	
+    <h4>Users in this group:</h4>	
+	<div class="row">
       	<%= render @group.users , {class:"justify-content-center"}%>
-      </div>
+	</div>
+	
+	<h4>Listings offered from all the users in this group:</h4>	
+	<div class="row">
+		<% @group.users.each do |user|%>
+			<% if user.listings %>
+				<%= render user.listings %>
+			<% end%>
+		<% end %>
+	</div>
 </div>

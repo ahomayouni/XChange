@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'groups/index'
   get 'groups/show'
+  post 'groups/show'
   get 'groups/new'
   post 'groups/join'
   post 'groups/leave'
