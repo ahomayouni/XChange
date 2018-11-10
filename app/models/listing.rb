@@ -2,7 +2,7 @@ class Listing < ActiveRecord::Base
   belongs_to :user
   # TODO: depreciate lsiitng_image controller, move to ActiveStorage
   has_many :listing_images, dependent: :destroy
-  has_many :comments, as :reply
+  #has_many :comments, as :reply
   has_many_attached :images
   validates :title, presence: true, length: {maximum: 20}
   validates :description, presence: true, length: {minimum: 5, maximum: 50}
