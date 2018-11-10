@@ -1,14 +1,14 @@
 <div class="card user-group">
   <div class="card-body">
 		<h5 class="card-title">Name: <%= group.name %></h5>
-		<% if group.owner_id %>
-			<p class="card-text">Owner: <%= User.find_by(id:group.owner_id).name %></p>
+		<% if !group.member_exists(current_user) %>
+			<p class="card-text"><%= link_to "Join Group", {:controller => "group", :action => "join", :group => group, :user => current_user }, class:"card-link" %></p>
 		<% else %>
-			<p class="card-text">Owner: Anonymous</p>
+			<p class="card-text"><%= link_to "Leave Group", {:controller => "group", :action => "leave", :group => group, :user => current_user }, class:"card-link" %></p>
 		<% end %>
 		<p class="card-text">Privacy: <% if group.isPublic %>Public<% else %>Private<%end%></p>
     	<p class="card-text">Description: <%= group.description %></p>
-		<p class="card-text"><%= link_to "View Group", group_path(group), class:"card-link" %></p>
+		<p class="card-text"><%= link_to "View Group", group_path(group), class:"card-link" %></p>	
 		<% if current_user.admin? or current_user.id == group.owner_id %>
 			<%= link_to 'DELETE', group, method: :delete, data: {confirm: "Are You sure you want to delete #{group.name}? "},
 			class: "card-link" %>

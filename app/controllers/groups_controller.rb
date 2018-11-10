@@ -32,6 +32,32 @@ class GroupsController < ApplicationController
     flash[:success] = "Group has been successfully deleted"
     redirect_to groups_path 
   end
+  
+  def join
+    @group = Group.find(params[:group])
+    @user = Group.find(params[:user])
+    @membership = Membership.new
+    @membership.group_id = @group.id
+    @membership.user_id = @user.id
+    if @membership.save
+      flash[:success] = "Successfully joined the '#{@group.name}' group"
+    else
+      flash[:error] = "Couldn't join the '#{@group.name}' group"
+    end
+    redirect_to groups_path
+  end
+  
+  def leave
+    @group = Group.find(params[:group])
+    @user = Group.find(params[:user])
+    @membership= Membership.find_by(user_id: @user.id, group_id: @group.id)
+    if @membership.destroy
+      flash[:success] = "Successfully left the '#{@group.name}' group"
+    else
+      flash[:error] = "Couldn't leave the '#{@group.name}' group"
+    end
+    redirect_to groups_path
+  end
   private
   
   def group_params_validator
