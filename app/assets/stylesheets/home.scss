@@ -4,26 +4,24 @@
 
 .xchange-header {
     width: 100%;
-    background-color: rgba(28, 29, 40, 1);
+    background-color: rgb(104,214,205);
     transition: ease-out 0.3s;
     a {
         color: white;
         transition: ease-in-out color .25s;
+        :hover {
+          color: black !important; 
+        }
     }
     i {
-      color: white;
+      color: #390d7a;
     }
     .navbar-brand {
-        color: #17a2b8;
+        color: rgb(3,15,80);
     }
     .logo {
       font-size: 1.3rem;
     }
-}
-
-.fixed-top {
-  background-color: rgba(28, 29, 40, 0.7);
-  position: fixed !important;
 }
 
 .carousel-inner {
@@ -64,7 +62,7 @@
       background-color: #1c1d28;
       a {
         color: white;
-        text-decoration: none;
+
       }
     }
 }

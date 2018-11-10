@@ -26,7 +26,7 @@
 				</ul>
 				<ul class="navbar-nav ml-auto">
 					<li>
-						<%= link_to "Log Out", logout_path , method: :delete, class: "btn btn-outline-primary" %>
+						<%= link_to "Log Out", logout_path , method: :delete, class: "btn btn-primary" %>
 					</li>
 				</ul>
 			</div>
@@ -35,7 +35,7 @@
 <%end%>
 
 <% if !logged_in? %>
-	<nav class="xchange-header navbar navbar-expand-md sticky-top py-3">
+	<nav class="xchange-header sticky-top navbar navbar-expand-md sticky-top py-3">
 		<div class="container">
 			<%= link_to "XChange", home_index_path, class: "navbar-brand font-weight-bold logo" %>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu-nav" aria-controls="menu-nav" aria-expanded="false" aria-label="Toggle navigation">
