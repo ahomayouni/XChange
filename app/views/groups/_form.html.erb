@@ -10,18 +10,19 @@
 <%= form_for @group do |f| %>
 	<p>
 		<%= f.label :name %>
-		<%= f.text_field :name, placeholder:"eg. Friends, Colleagues" %>
+		<%= f.text_field :name, placeholder:"eg. Friends, Colleagues", class: 'form-control' %>
 	</p>
  	<p>
 		<%= f.label :description%>
-		<%= f.text_area :description, placeholder:"eg. A group of trusted friends" %>
+		<%= f.text_area :description, placeholder:"eg. A group of trusted friends", class: 'form-control' %>
  	</p>
  	<p>
 		<%= f.label :isPublic, "Make the group public" %>
-		<%= f.check_box :isPublic %>
+		<%= f.select :isPublic, ["No", "Yes"], :selected => "No", class: 'form-control' %>
+
  	</p>
 	<p>
-		<%= f.submit %>
+		<%= f.submit 'Create Group', :class => "btn btn-outline-info" %>
 	</p>
 <% end %>
 
