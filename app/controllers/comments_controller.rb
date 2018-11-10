@@ -1,11 +1,17 @@
 class CommentsController < ApplicationController
 before_action :find_reply
+#before_action :update_person
     def new
         @comment = Comment.new
     end
     
+    def edit
+    end
+
+
     def create
         @comment = @reply.comments.new comment_params
+        @comment.commenter_id = current_user.id
         # TODO: add id to comments
 
         # temp message to ensure review save correctly
@@ -30,6 +36,10 @@ before_action :find_reply
         @reply = Comment.find_by_id(params[:comment_id]) if params[:comment_id]
         #@reply = Subject.find_by_id(params[:subject_id]) if params[:subject_id]
         @reply = Person.find_by_id(params[:person_id]) if params[:person_id]
+    end
+
+    def update_person
+        @person = Person.find_by_id(params[:commenter_id]) if params[:commenter_id]
     end
     
 end

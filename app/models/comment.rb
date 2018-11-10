@@ -4,5 +4,5 @@ class Comment < ApplicationRecord
     has_many :comments, as: :reply
 
     validates :body, length: {minimum: 1}
-
+    
 end
