@@ -23,7 +23,8 @@ To get this project running, follow these steps:
 * KC - 1) Push in the Users page layout 2) Improve Login in and sign up pages 3) About, Privacy Policy, Terms of Service, Settings pages  
 
 ## Current Bugs:
-* Anyone can delete anyone else's listing 
+* Anyone can edit anyone else's listing (Fixed by Maru)
+* Anyone can delete anyone else's listing (Fixed by Peter)
 
 ## IceBox (Required within the Bolen Docs):
 * Simple Chat/Messaging Application
