@@ -9,6 +9,7 @@ before_action :find_reply
     end
 
     def create
+        ## changes to >rails 4 code i.e https://stackoverflow.com/questions/24478246/rails-form-is-not-saving-input-to-the-database
         #start user with current id
         @comment = @reply.comments.new comment_params
         @comment.commenter_id = current_user.id
