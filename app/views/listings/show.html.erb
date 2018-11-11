@@ -1,13 +1,13 @@
 <div class="container-fluid">
   <div class="container">
     <div class="row">
-      <div class="col-lg-3">
+      <div class="col-lg-3 mt-3">
          <h1><%= @listing.title %></h1>
          <h4> <%= @listing.category %> </h4>
           <%= link_to "Edit", edit_listing_path(@listing), class: 'btn btn-outline-info'%>
           <%= link_to 'Back', listings_path, class: 'btn btn-outline-info' %>
             <%if not_listing_owner%>
-               <%= link_to "Request Item", borrow_requests_path(@listing), class: 'btn btn-outline-info'%>
+               <%= link_to "Request Item", borrow_requests_path(@listing), class: 'btn btn-outline-info mt-2'%>
             <%end%>
       </div>
       <div class="col-lg-9 mb-5">
@@ -20,8 +20,24 @@
               <p class="card-text"><%= @listing.description %></p>
             </div>
         </div>
-      </div>
+       <!-- Reviews go here  for now added s-->
+        <div class="card mt-4">
+            <div class="card-header">
+              Reviews
+            </div>
+            <div class="card-body border-bottom">
+              <h5 class="card-title">First Review</h5>
+              <p class="card-text">Loved it so much! great product..</p>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Second Review</h5>
+              <p class="card-text">I hated this thing so much. it was the worst thing to ever have been created. 
+                                   An abomination of nature itself!</p>
+            </div>
+        </div>
+      </div> 
      </div>
+
    </div>
 </div>
 

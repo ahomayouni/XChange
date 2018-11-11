@@ -48,7 +48,7 @@
   *{font-size:1.1rem;} /*1rem = 16px*/
     .card-img-top {
       width:100%; 
-      height: 20vw;
+      height: 25vw;
       object-fit: cover;
     }
 }
@@ -58,7 +58,7 @@
  *{font-size:1.2rem;} /*1rem = 16px*/    
   .card-img-top {
     width:100%; 
-    height: 20vw;
+    height: 25vw;
     object-fit: cover;
   }
 }
@@ -67,9 +67,7 @@ html {
     position: relative;
     min-height: 100%;
   }
-body {
-  //margin-bottom: 60px; /* Margin bottom by footer height */
-}
+  
 /*input:not([type='submit']), textarea.form-control {
   outline: 0;
   border: 0;
