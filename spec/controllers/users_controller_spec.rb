@@ -4,7 +4,7 @@ RSpec.describe UsersController, type: :controller do
 	context 'GET #index' do 
 		it 'returns a failed response since no user is logged in' do
 			get :index
-			expect(response).to_not be_success
+			expect(response).to_not be_successful
 		end
 	end
 
@@ -22,7 +22,7 @@ RSpec.describe UsersController, type: :controller do
 				              description: 'I am a bot created by the master Peter Tanugraha'
 				             ))
 			get :edit, params: {id:user.to_param}
-			expect(response).to_not be_success
+			expect(response).to_not be_successful
 		end
 	end
 
@@ -40,7 +40,7 @@ RSpec.describe UsersController, type: :controller do
 				              description: 'I am a bot created by the master Peter Tanugraha'
 				             ))
 			get :update, params: {id:user.to_param}
-			expect(response).to_not be_success
+			expect(response).to_not be_successful
 		end
 	end
 
