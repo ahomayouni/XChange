@@ -1,6 +1,5 @@
 ## genarate from rails if needed
 class PeopleController < ApplicationController
-  attr_accessor
   before_action :find_review
     #basic shows initial layout of subject
       def index
