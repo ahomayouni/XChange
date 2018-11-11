@@ -1,21 +1,24 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-12 float-right">
+        <div class="col-md-12 d-flex flex-row-reverse mt-2">
             <%= form_with url: search_listings_path, local: true, method: :get, html: {class: "form-inline float-right"} do |form| %>
-                <%= form.text_field :listings_q, placeholder: "Search for a listing..", data: { behaviour: "autocomplete_listings" }, class: "form-control mt-3 mx-2" %>
-                <%= form.button "Search", class: "btn btn-outline-success mt-3 mx-3" %>
-            <% end %>	
+                <%= form.text_field :listings_q, placeholder: "Search for a listing..", data: { behaviour: "autocomplete_listings" }, class: "form-control" %>
+                <%= form.button "Search", class: "btn btn-outline-success" %>
+            <% end %>
+            <!-- A dropdown for aesthetic. need to implement functionality for filtering -->
+            <div class="dropdown mr-2">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Filter by Category
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Film & Photography</a>
+                    <a class="dropdown-item" href="#">Home Garden and Office</a>
+                    <a class="dropdown-item" href="#">Equipment</a>
+                </div>
+            </div>
+            <%= link_to "Create new listing", new_listing_path, class: "btn btn-outline-info mr-2" %>
         </div>
     </div>
-    <div class="row d-flex flex-row">
-        <div class="col-md-3">
-            <h1>All Listings</h1>
-        </div>
-        <div class="col-md-9">
-             <%= link_to "Create new listing", new_listing_path, class: "btn btn-outline-info mt-2" %>
-        </div>
-    </div>
-
     <div class="row">
         <% @listings.each do |listing| %>
             <%= render listing %>
