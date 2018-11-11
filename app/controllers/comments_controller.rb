@@ -12,34 +12,35 @@ before_action :find_reply
         #start user with current id
         @comment = @reply.comments.new comment_params
         @comment.commenter_id = current_user.id
+        @comment.subject_id = @reply.id # remove subject id and replace with reply_id
         
         if @comment.save
             #when users reply to a person
             if @comment.reply_type == "Person"
                 @person = Person.find(@comment.subject_id)
-                if @person.review
-                    old_review = @person.review
-                    total_reviews = Comment.where(subject_id: @comment.comment_id, reply_type: "Person").length
+                if @person.rating != nil
+                    old_review = @person.rating
+                    total_reviews = Comment.where(subject_id: @comment.subject_id, reply_type: "Person").length
                     old_review *= total_reviews
-                    old_review += rating
+                    old_review += @comment.rating
                     old_review /= total_reviews+1
-                    @person.write_attribute(:review, old_review)
+                    @person.update_attribute(:rating, old_review)
                 else
-                    @person.write_attribute(:review, @person.review)
+                    @person.update_attribute(:rating, @comment.rating) #not working ?
                 end
             end
             #when you comment on listings
             if @comment.reply_type == "Listing"
-                @listing = Listing.find(listing_id)
-                if @listing.review
-                    old_review = @listing.review
-                    total_reviews = Comment.where(subject_id: @comment.comment_id, reply_type: "Listing").length
+                @listing = Listing.find(@comment.subject_id)
+                if @listing.rating
+                    old_review = @listing.rating
+                    total_reviews = Comment.where(subject_id: @comment.subject_id, reply_type: "Listing").length
                     old_review *= total_reviews
                     old_review += rating
                     old_review /= total_reviews+1
-                    @listing.write_attribute(:review, old_review)
+                    @listing.update_attribute(:rating, old_review)
                 else
-                    @listing.write_attribute(:review, @listing.review)
+                    @listing.update_attribute(:rating, @listing.rating)
                 end
             end
         #redirect_to :back, notice: 'Your review was successfully posted!'
@@ -61,7 +62,7 @@ before_action :find_reply
         @reply = Comment.find_by_id(params[:comment_id]) if params[:comment_id]
         #@reply = Subject.find_by_id(params[:subject_id]) if params[:subject_id]
         @reply = Person.find_by_id(params[:person_id]) if params[:person_id]
-        @reply = Person.find_by_id(params[:person_id]) if params[:listing_id]
+        @reply = Listing.find_by_id(params[:listing_id]) if params[:listing_id]
     end
 
     def update_person
