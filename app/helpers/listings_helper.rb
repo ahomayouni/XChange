@@ -16,4 +16,14 @@ module ListingsHelper
       return false
     end 
   end 
+
+  def is_listing_owner_with_params(listing_id)
+    @current_listing = Listing.find(listing_id)
+    if(@current_listing.user.id == current_user.id)
+      return true 
+    else  
+      return false
+    end 
+  end 
+
 end

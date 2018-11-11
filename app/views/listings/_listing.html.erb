@@ -9,7 +9,10 @@
       </h5>
       <p class="card-text">Description: <%= listing.description %></p>
       <p class="card-text"><%= button_to "View Listing", listing_path(listing), class:"card-link btn btn-primary", :method => :get %></p>
-      <p class="card-text"><%= button_to 'Delete', listing_path(listing), method: :delete, data: {confirm: "Are you sure?"}, class:'card-link btn btn-danger' %></p>
+      <p class="card-text">
+        <%if is_listing_owner_with_params(listing.id)%>
+          <%= button_to 'Delete', listing_path(listing), method: :delete, data: {confirm: "Are you sure?"}, class:'card-link btn btn-danger' %></p>
+        <%end%>
     </div>
   </div>
 </div>
