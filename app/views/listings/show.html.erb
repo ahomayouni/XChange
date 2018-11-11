@@ -41,7 +41,12 @@
             <div class="card-header">
               Reviews
             </div>
-            <div class="card-body border-bottom">
+            <%= form_for [@listing, Comment.new] do |f| %>
+            <%= f.text_area :body, placeholder: "Add a comment" %><br/>
+            <%= f.text_area :rating, placeholder: "Add rating" %><br/>
+            <%= f.submit "Add Comment" %>
+            <% end %>
+            <%# <div class="card-body border-bottom">
               <h5 class="card-title">First Review</h5>
               <p class="card-text">Loved it so much! great product..</p>
             </div>
@@ -49,7 +54,7 @@
               <h5 class="card-title">Second Review</h5>
               <p class="card-text">I hated this thing so much. it was the worst thing to ever have been created. 
                                    An abomination of nature itself!</p>
-            </div>
+            </div> %>
         </div>
       </div> 
      </div>

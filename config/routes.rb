@@ -31,6 +31,9 @@ Rails.application.routes.draw do
   resources :people do
     resources :comments
   end
+  resources :listings do
+    resources :comments
+  end
   resources :comments do
     resources :comments
   end
