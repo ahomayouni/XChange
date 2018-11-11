@@ -46,6 +46,10 @@
             <%= f.text_area :rating, placeholder: "Add rating" %><br/>
             <%= f.submit "Add Comment" %>
             <% end %>
+            <ul>
+            <%= render(partial: 'comments/comment', collection: @listing.comments) %>
+            </ul>
+
             <%# <div class="card-body border-bottom">
               <h5 class="card-title">First Review</h5>
               <p class="card-text">Loved it so much! great product..</p>
