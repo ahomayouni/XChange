@@ -6,18 +6,12 @@
      background:#c7eae4 !important; 
    }
 }
-
 .user-listing, .user-group {
   margin: 0.3rem;
 }
 .user-listings, .user-group{
   display: grid;
   grid-template-columns: 50% 50%;
-}
-.user-icon {
-  // TODO: make it responsive
-  margin: auto;
-  width: 200px;
 }
 .small-container {
   width: 100%;
