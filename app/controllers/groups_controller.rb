@@ -2,6 +2,7 @@ class GroupsController < ApplicationController
   before_action :verify_logged_in_user
   before_action :force_json, only: [:autocomplete_groups, :autocomplete_add_to_groups]
 
+
   def index
     @groups = Group.all
   end
