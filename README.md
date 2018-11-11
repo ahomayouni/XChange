@@ -11,7 +11,7 @@ To get this project running, follow these steps:
 3. >rails server
 
 ## TODO:
-* Peter - Primary Task: Help out Maru on frontend . Secondary Task: Incorporate User and Person Models with others
+* Peter - Implement testing framework with rspec and integrate notifications and authentication all around.
 * Adi - 1)Uploading multiple images 2)resizing images 3)Working on listings page frontend w/ Maru 4)Create models for requesting items if not in current inventory 5)Chat/messaging service
 * Maru - Front End Lead
 * Arash - Work on User Circles
