@@ -2,10 +2,6 @@
 
 CSC-444 group project
 
-## Live Application
-* https://xchange-csc444.herokuapp.com
-* Use admin account: admin@admin.com password: admin
-
 ## Installation:
 To get this project running, follow these steps:
 
