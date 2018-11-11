@@ -55,9 +55,13 @@ Rails.application.routes.draw do
   get :autocomplete_users, controller: :users
   get :autocomplete_listings, controller: :listings
   get :autocomplete_groups, controller: :groups
+  get :autocomplete_add_to_groups, controller: :groups
   get '/search_users', to: 'users#search_users'
   get '/search_listings', to: 'listings#search_listings'
   get '/search_groups', to: 'groups#search_groups'
+  get '/search_add_to_groups', to: 'groups#search_add_to_groups'
+  get '/add_to_group/:user_id', to: 'groups#add_to_group', as: 'add_to_group'
+
 
   resources :notifications do
     collection do

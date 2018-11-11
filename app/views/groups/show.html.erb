@@ -1,6 +1,14 @@
 <div class="container-fluid">
     <!-- layout 1 -->
     <div class="row">
+		<div class="col-md-12">
+			<%= form_with url: search_add_to_groups_path, local: true, method: :get, html: {class: "form-inline"} do |form| %>
+		    	<%= form.text_field :add_to_groups_q, placeholder: "Add users to this group..", data: { behaviour: "autocomplete_add_to_groups" }, class: "form-control mt-3 mx-2" %>
+		        <%= form.button "Search", class: "btn btn-outline-success mt-3 mx-3" %>
+		    <% end %>	
+		</div>	
+	</div>
+    <div class="row">
         <div class="col-md-9 py-3 px-3">
             <h1 style="white-space: nowrap ; overflow: hidden; text-overflow: ellipsis;">  '<%=@group.name%>' Group Page</h1>
 			<% if @group.owner_id %>

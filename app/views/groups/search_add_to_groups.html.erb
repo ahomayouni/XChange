@@ -1,0 +1,21 @@
+<h1>Found <%= @add_to_groups_found.count %> matches containing "<%= params[:add_to_groups_q] %>"</h1>
+
+<% if params[:add_to_groups_q] and params[:add_to_groups_q] != "" %>
+	<% if @add_to_groups_found.count > 0 %>
+		<h4> Choose a user to add to the '<%=@target_group.name %>' Group: </h4>
+		<% @add_to_groups_found.each do |cur_user| %>
+			<ul>
+				<li>
+					<h5 class="card-title"><%= cur_user.name%>
+					<% if !@target_group.member_exists(cur_user) %>
+						<p><%= button_to "Add to Group", add_to_group_path(cur_user.id), :method => :get, class:"btn btn-success" %></p>
+					<% else %>
+						<p><%= button_to "Leave Group", {:controller => "group", :action => "leave", :group => @group, :user => current_user }, :method => :post, class:"card-link btn btn-warning" %></p>
+					<% end %>
+				</li>
+			</ul>
+		<% end %>
+	<% else %>
+		<h3> No users found for "<%= params[:add_to_groups_q] %>" </h3>
+	<% end %>
+<% end %>

@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   before_action :verify_logged_in_user
-  before_action :force_json, only: :autocomplete_groups
+  before_action :force_json, only: [:autocomplete_groups, :autocomplete_add_to_groups]
 
   def index
     @groups = Group.all
@@ -8,6 +8,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @@shown_group = Group.find(params[:id])
   end
 
   def new
@@ -74,8 +75,42 @@ class GroupsController < ApplicationController
         }
       end
   end
-  private
   
+  def autocomplete_add_to_groups
+      @add_to_groups_found = User.ransack(name_cont: params[:add_to_groups_q]).result(distinct: true)
+        respond_to do |format|
+        format.html{}
+        format.json{
+          @add_to_groups_found = @add_to_groups_found.limit(5)
+        }
+      end
+  end
+  
+  def search_add_to_groups
+      @add_to_groups_found = User.ransack(name_cont: params[:add_to_groups_q]).result(distinct: true)
+      @target_group = @@shown_group
+  end
+  
+  def add_to_group
+    @user_id = params[:user_id]
+    @user = User.find(@user_id)
+    @target_group = @@shown_group
+    if !@target_group.member_exists(@user)
+      @membership = Membership.new
+      @membership.group_id = @target_group.id
+      @membership.user_id = @user_id
+      if @membership.save
+        flash[:success] = "Successfully added '#{@user.name}' to the '#{@target_group.name}' group"
+      else
+        flash[:error] = "Couldn't add '#{@user.name}' to the '#{@target_group.name}' group"
+      end
+    else
+      flash[:error] = "'#{@user.name}' is already a member of the '#{@target_group.name}' group"
+    end
+      redirect_to group_path(@target_group)
+  end
+  
+  private
   def group_params_validator
     params.require(:group).permit(:name, :description, :isPublic,:owner_id)
   end
