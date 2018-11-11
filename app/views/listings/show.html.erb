@@ -3,13 +3,14 @@
     <div class="row">
       <div class="col-lg-3 mt-3">
          <h1><%= @listing.title %></h1>
-         <h4> <%= @listing.category %> </h4>
+         <span class="badge badge-pill mb-2"><%= @listing.category %> </span> <br />
             <% if is_listing_owner %>
                <%= link_to "Edit", edit_listing_path(@listing), class: 'btn btn-outline-info'%>
             <% end %>
             <%if not_listing_owner%>
                <%= link_to "Request Item", borrow_requests_path(@listing), class: 'btn btn-outline-info mt-2'%>
             <%end%>
+          
       </div>
       <div class="col-lg-9 mb-5">
         <div class="card mt-4">
