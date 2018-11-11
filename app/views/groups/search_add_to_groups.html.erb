@@ -10,7 +10,7 @@
 					<% if !@target_group.member_exists(cur_user) %>
 						<p><%= button_to "Add to Group", add_to_group_path(cur_user.id), :method => :get, class:"btn btn-success" %></p>
 					<% else %>
-						<p><%= button_to "Leave Group", {:controller => "group", :action => "leave", :group => @group, :user => current_user }, :method => :post, class:"card-link btn btn-warning" %></p>
+						<p>Is already a member</p>
 					<% end %>
 				</li>
 			</ul>
