@@ -64,6 +64,22 @@ RSpec.describe User, type: :model do
 			expect(user_save_success).to eq(false)
 		end
 
+		it 'ensures email address with valid regex' do
+			@user = User.new(name:  "dodo",
+							 email: "this is not an email",
+				             password:              "1111111",
+				             password_confirmation: "1111111",
+				             activated: true,
+				             activated_at: Time.zone.now,
+				             person: Person.create(
+				              address: Faker::Address.street_address,
+				              phone_number: '6471678732',
+				              description: 'I am a bot created by the master Peter Tanugraha'
+				             ))
+			user_save_success = @user.save
+			expect(user_save_success).to eq(false)
+		end
+
 		it 'ensures user saves correctly, when valid data is present' do
 			@user = User.new(name:  "dodo",
 							 email: "dragonball@gmail.com",

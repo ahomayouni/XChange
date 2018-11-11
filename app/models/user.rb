@@ -15,9 +15,9 @@ class User < ApplicationRecord
 	has_many :borrow_requests
 
 	# creating an association with groups
-  has_many :memberships
-  has_many :groups, through: :memberships
-  #has_many :owned_groups, class_name: 'Group', foreign_key: 'user_id'
+  	has_many :memberships
+  	has_many :groups, through: :memberships
+  	#has_many :owned_groups, class_name: 'Group', foreign_key: 'user_id'
 
 	# creating an association with listings
 	has_many :listings , :dependent => :destroy
