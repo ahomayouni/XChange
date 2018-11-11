@@ -19,9 +19,24 @@
             <div class="card-body pb-3">
               <h3 class="card-title"><%= @listing.title %></h3>
               <p class="card-text"><%= @listing.description %></p>
+              <!-- TODO: once rating has been implemented, put this code into a helper 
+              view to generate the number of stars for the product rating-->
+              <p class="card-text">Rating:</p> 
+              <i class="material-icons">
+              grade
+              </i>
+               <i class="material-icons">
+              grade
+              </i>
+               <i class="material-icons">
+              grade
+              </i>
+               <i class="material-icons">
+              grade
+              </i>
             </div>
         </div>
-       <!-- Reviews go here  for now added s-->
+       <!-- Reviews go here, for now added stock reviews for UX Purposes -->
         <div class="card mt-4">
             <div class="card-header">
               Reviews
