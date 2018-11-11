@@ -22,6 +22,9 @@ To get this project running, follow these steps:
 * Arnav - Added comments for People - Linking comments to a listing as well - work with Maru on getting front end up & running
 * KC - 1) Push in the Users page layout 2) Improve Login in and sign up pages 3) About, Privacy Policy, Terms of Service, Settings pages  
 
+##Current Bugs
+* Anyone can delete anyone else's listing 
+
 ## IceBox (Required within the Bolen Docs):
 * Simple Chat/Messaging Application
 * Push Notification (Say when I follow a User, I would be able to get notifications)
