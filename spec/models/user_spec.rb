@@ -98,5 +98,21 @@ RSpec.describe User, type: :model do
 	end
 
 	context 'scope tests' do
+		it 'ensures that a person model is also created alongside with the creation of a user model' do
+			@user = User.new(name:  "dodo",
+							 email: "dragonball@gmail.com",
+				             password:              "satuikanasin",
+				             password_confirmation: "satuikanasin",
+				             activated: true,
+				             activated_at: Time.zone.now,
+				             person: Person.create(
+				              address: Faker::Address.street_address,
+				              phone_number: '6471678732',
+				              description: 'I am a bot created by the master Peter Tanugraha'
+				             ))
+
+			@user.save 
+			expect(@user.person.nil?).to eq(false)
+		end
 	end
 end
