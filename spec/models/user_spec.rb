@@ -29,7 +29,7 @@ RSpec.describe User, type: :model do
 				              description: 'I am a bot created by the master Peter Tanugraha'
 				             ))
 			user_save_success = @user.save
-			expect(user_save_success).to eq(true)
+			expect(user_save_success).to eq(false)
 		end
 
 		it 'ensures password matches' do
