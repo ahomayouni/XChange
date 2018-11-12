@@ -240,7 +240,7 @@ User.all.each_with_index do |u,index|
   end
   
   u.location = Location.create(
-  address:toronto_addresses[index],
+  address:toronto_addresses[index+1],
   latitude:lat,
   longitude:long)
 end
