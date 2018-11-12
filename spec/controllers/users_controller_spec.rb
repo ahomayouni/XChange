@@ -13,6 +13,23 @@ RSpec.describe UsersController, type: :controller do
 			get :index
 			expect(response).to_not be_successful
 		end
+
+		it 'must be able to index users when logged in ' do 
+			user = User.create!(name:  "dodo",
+							 email: "dragonball@gmail.com",
+				             password:              "satuikanasin",
+				             password_confirmation: "satuikanasin",
+				             activated: true,
+				             activated_at: Time.zone.now,
+				             person: Person.create(
+				              address: Faker::Address.street_address,
+				              phone_number: '6471678732',
+				              description: 'I am a bot created by the master Peter Tanugraha'
+				             ))
+			login(user)
+			get :index 
+			expect(response).to be_successful
+		end
 	end
 
 	context 'GET #edit' do 
