@@ -98,9 +98,18 @@ RSpec.describe UsersController, type: :controller do
 				expect(response).to redirect_to(root_path)    
 			end
 
-			it 'Should not be able to create a user successfully when given invalid params' do 
+			it 'Should not be able to create a user successfully when password do not match' do 
 				post :create, params: {user:{ name:  "dodo",
 							 email: "dragonball@gmail.com",
+				             password:              "111111",
+				             password_confirmation: "satuikanasin"}
+				         }
+				expect(response).to render_template(:new)    
+			end
+
+			it 'Should not be able to create a user successfully when invalid email is given' do 
+				post :create, params: {user:{ name:  "dodo",
+							 email: "thebrownfoxjumpoverthehill",
 				             password:              "111111",
 				             password_confirmation: "satuikanasin"}
 				         }
