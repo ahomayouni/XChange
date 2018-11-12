@@ -48,9 +48,9 @@
 			map.addMarker({
 			  lat: position.coords.latitude,
 			  lng: position.coords.longitude,
-			  title: 'Lima',
+			  title: 'My Location',
 			  click: function(e) {
-			    alert('You clicked in this marker');
+			    alert('My location is at [' + position.coords.latitude + ', '+position.coords.longitude+']');
 			  }
 			}); 
 		},
@@ -104,21 +104,28 @@
 	
 	<div class="row">
       <div class="col-lg-9 mb-5">
+		<% neaby_users = {} %>
+		
+		<% User.all.each do |u|%>		
+			<% if u.location.latitude != "-1" and u.location.longitude != "-1"%>
+				<% distance_miles = Geocoder::Calculations.distance_between(
+				[@location.latitude.to_f, @location.longitude	.to_f],
+				[u.location.latitude.to_f, u.location.longitude.to_f])%>
+				
+				<%distance_km = distance_miles * 1.609344 %>
+				<% neaby_users.store(u, distance_km) %>
+			<% end%>	
+		<% end%>
+			
+		<% neaby_users = neaby_users.sort_by {|_key, value| value} %>
 		<h3>Nearby users:<br><h3>
 		<ul>
-			<% User.all.each do |u|%>		
-				<% if u.location.latitude != "-1" and u.location.longitude != "-1"%>
-					<% distance_miles = Geocoder::Calculations.distance_between(
-					[@location.latitude.to_f, @location.longitude	.to_f],
-					[u.location.latitude.to_f, u.location.longitude.to_f])%>
-					
-					<%distance_km = distance_miles * 1.609344 %>
-					<li>	
-						'<%= u.name %>' is <b><%= distance_km.round(2) %> km</b> away
-					</li>
-				<% end%>	
-			<% end%>		
-		<ul>	
+			<% neaby_users.each do |user, distance| %>
+			<li>	
+				'<%= user.name %>' is <b><%= distance.round(2) %> km</b> away
+			</li>
+			<% end %>
+		</ul>	
       </div>
 	</div>
   </div>
