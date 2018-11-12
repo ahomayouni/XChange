@@ -68,8 +68,10 @@ Rails.application.routes.draw do
   get '/search_groups', to: 'groups#search_groups'
   get '/search_add_to_groups', to: 'groups#search_add_to_groups'
   get '/add_to_group/:user_id', to: 'groups#add_to_group', as: 'add_to_group'
-
-
+  
+  # Location routes
+  resources :locations
+  
   resources :notifications do
     collection do
       post :mark_as_read
