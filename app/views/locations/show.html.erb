@@ -1,0 +1,24 @@
+<div class="container-fluid">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 mt-3">
+         <h1>My Location</h1><br>
+	  </div>
+	</div>
+	<div class="row">
+      <div class="col-lg-9 mb-5">
+      	<h3>My saved Address: <%= current_user.person.address%></h3>
+      </div>
+	</div>
+	<div class="row">
+      <div class="col-lg-9 mb-5">
+		<h3>My last updated location:<br><h3>
+		<h4>
+		 Latitude: <%= @location.latitude%><br>
+		 Longitude: <%= @location.longitude%><br>
+		 Estimated address:	<%= @location.address%><br>
+		</h4>
+      </div>
+	</div>
+  </div>
+</div>

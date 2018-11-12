@@ -13,6 +13,8 @@ class Listing < ActiveRecord::Base
   validate :validateTimings
   validate :image_type
 
+  #For filtering a listing based on their category
+  scope :has_category, -> (category) { where category: category }
 
   def validateTimings
     if self.start_lending && self.end_lending && self.start_lending > self.end_lending

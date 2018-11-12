@@ -1,28 +1,36 @@
 <div class="container-fluid">
+    <!-- Top Toolbar -->
     <div class="row">
-        <div class="col-md-12 d-flex flex-row-reverse mt-2">
+        <div class="col-md-12 mt-2">
             <%= form_with url: search_listings_path, local: true, method: :get, html: {class: "form-inline float-right"} do |form| %>
                 <%= form.text_field :listings_q, placeholder: "Search for a listing..", data: { behaviour: "autocomplete_listings" }, class: "form-control" %>
                 <%= form.button "Search", class: "btn btn-outline-success" %>
             <% end %>
-            <!-- A dropdown for aesthetic. need to implement functionality for filtering -->
-            <div class="dropdown mr-2">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Filter by Category
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Film & Photography</a>
-                    <a class="dropdown-item" href="#">Home Garden and Office</a>
-                    <a class="dropdown-item" href="#">Equipment</a>
-                </div>
-            </div>
-            <%= link_to "Create new listing", new_listing_path, class: "btn btn-outline-info mr-2" %>
         </div>
     </div>
-    <h1> Browse Listings </h1>
-    <div class="row">
+    <%= link_to "Create new listing", new_listing_path, class: "btn btn-outline-info mr-2" %>
+
+    <%= form_tag listings_path, :method => 'get' do %>  
+        <%= select_tag "filter",
+            options_for_select(["Film & Photography","Audio Visual Equipment","Projectors & Screens","Drones","DJ Equipment","Transport","Storage","Electronics","Party & Events","Sports","Musical Instruments","Home / Office / Garden","Kids & Baby","Holiday & Travel","Clothing"], params[:filter]), 
+            class: 'my_filter',
+              data: {
+                remote: true,
+                url: '/listings/filter',
+                method: 'post'
+                }  %>
+    <% end %>
+
+
+    <div class="row mt-4">
         <% @listings.each do |listing| %>
             <%= render listing %>
         <%end %>
     </div>
 </div >
+
+ <!-- data: {
+                remote: true,
+                url: '/listings',
+                method: 'get'
+                } -->
