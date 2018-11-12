@@ -115,6 +115,15 @@ RSpec.describe UsersController, type: :controller do
 				         }
 				expect(response).to render_template(:new)    
 			end
+
+			it 'Should not be able to create a user successfully when no name is given' do 
+				post :create, params: {user:{
+							 email: "thebrownfoxjumpoverthehill",
+				             password:              "111111",
+				             password_confirmation: "satuikanasin"}
+				         }
+				expect(response).to render_template(:new)    
+			end
 		end
 
 
