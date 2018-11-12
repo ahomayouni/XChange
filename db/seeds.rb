@@ -230,7 +230,7 @@ end
 
 # Get corresponding longitude and latitude from user.peron.address and fill the location model
 User.all.each_with_index do |u,index|
-  results = Geocoder.search(toronto_addresses[index+1])
+  results = Geocoder.search(toronto_addresses[index])
   if results.first
     lat = "#{results.first.coordinates[0]}"
     long = "#{results.first.coordinates[1]}"
@@ -240,7 +240,7 @@ User.all.each_with_index do |u,index|
   end
   
   u.location = Location.create(
-  address:toronto_addresses[index+1],
+  address:toronto_addresses[index],
   latitude:lat,
   longitude:long)
 end
