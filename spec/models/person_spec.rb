@@ -42,4 +42,23 @@ RSpec.describe Notification, type: :model do
 	  	expect(@new_person_obj.phone_number).to eq('1111111111')
   	end
   end
+
+  context 'dependency tests' do 
+  	it 'when a user is destroyed the person info associated must also be destroyed ' do
+	  	@user = User.new(name:  "dodo",
+									 email: "dragonball@gmail.com",
+						             password:              "satuikanasin",
+						             password_confirmation: "satuikanasin",
+						             activated: true,
+						             activated_at: Time.zone.now,
+						             person: Person.create(
+						              address: Faker::Address.street_address,
+						              phone_number: '6471678732',
+						              description: 'I am a bot created by the master Peter Tanugraha'
+						             ))
+	  	@user.save 
+	  	@user.destroy 
+	  	expect(Person.all.count).to eq(0)
+	  end
+  	end
 end
