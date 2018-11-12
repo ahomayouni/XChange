@@ -1,7 +1,7 @@
 ## genarate from rails if needed
 class PeopleController < ApplicationController
-  before_action :find_review
-    #basic shows initial layout of subject
+
+      #basic shows initial layout of subject
       def index
         @people = Person.all
       end
@@ -9,16 +9,10 @@ class PeopleController < ApplicationController
       def update
         @reviews
       end
-
+      
       def show
         @person = Person.find(params[:id])
       end 
-
-      private
-
-      def find_review
-        #@reviews = Comment.where(id: @person.id)
-      end
 
       
 
