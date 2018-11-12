@@ -50,7 +50,7 @@ RSpec.describe UsersController, type: :controller do
 		end
 	end
 
-	context 'GET #update' do 
+	context 'POST #update' do 
 		it 'returns a failed response since no user is logged in' do
 			user = User.create!(name:  "dodo",
 							 email: "dragonball@gmail.com",
@@ -66,6 +66,29 @@ RSpec.describe UsersController, type: :controller do
 			get :update, params: {id:user.to_param}
 			expect(response).to_not be_successful
 		end
+
+		it 'Should be redirected successfully to the users settings page when update is succesfull' do
+			user = User.create!(name:  "dodo",
+							 email: "dragonball@gmail.com",
+				             password:              "satuikanasin",
+				             password_confirmation: "satuikanasin",
+				             activated: true,
+				             activated_at: Time.zone.now,
+				             person: Person.create(
+				              address: Faker::Address.street_address,
+				              phone_number: '6471678732',
+				              description: 'I am a bot created by the master Peter Tanugraha'
+				             ))
+			login(user)
+			put :update, params: { id:user.to_param,password:'123456',
+									password_confirmation:'123456',
+									user:{name:'dada',address:'dada',
+									phone_number:'dada',
+									description:'dada'}}
+			expect(response).to redirect_to(user_settings_path(user))
+		end
+
+
 	end
 
 
