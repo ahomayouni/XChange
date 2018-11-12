@@ -5,7 +5,15 @@ class ListingsController < ApplicationController
   before_action :force_json, only: :autocomplete_listings
 
   def index
-    @listings = Listing.all
+    if params[:filter].present?
+      if params[:filter] != "All"
+        @listings = Listing.has_category(params[:filter])
+      else
+        @listings = Listing.all
+      end
+    else
+      @listings = Listing.all
+    end
   end
 
   def new

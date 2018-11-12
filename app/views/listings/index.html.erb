@@ -10,15 +10,12 @@
     </div>
     <%= link_to "Create new listing", new_listing_path, class: "btn btn-outline-info mr-2" %>
 
+
+
     <%= form_tag listings_path, :method => 'get' do %>  
-        <%= select_tag "filter",
-            options_for_select(["Film & Photography","Audio Visual Equipment","Projectors & Screens","Drones","DJ Equipment","Transport","Storage","Electronics","Party & Events","Sports","Musical Instruments","Home / Office / Garden","Kids & Baby","Holiday & Travel","Clothing"], params[:filter]), 
-            class: 'my_filter',
-              data: {
-                remote: true,
-                url: '/listings/filter',
-                method: 'post'
-                }  %>
+        <%= select_tag :filter,
+            options_for_select(["All", "Film & Photography","Audio Visual Equipment","Projectors & Screens","Drones","DJ Equipment","Transport","Storage","Electronics","Party & Events","Sports","Musical Instruments","Home / Office / Garden","Kids & Baby","Holiday & Travel","Clothing"])%>
+         <%= submit_tag 'Filter' %>       
     <% end %>
 
 
