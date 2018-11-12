@@ -1,4 +1,4 @@
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAG4tWx7kUqZymglhMc6mRstD_RXXTEeMY&callback=initMap"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAG4tWx7kUqZymglhMc6mRstD_RXXTEeMY"></script>
 
 <div class="container-fluid">
   <div class="container">
@@ -18,7 +18,7 @@
 		<h4>
 		 Latitude: <div id='user-lat'><%= @location.latitude%></div>
 		 Longitude: <div id='user-long'><%= @location.longitude%></div>
-		 Estimated address:	<%= @location.address%><br>
+		 Estimated address:	<div id='user-address'><%= @location.address%></div><br>
 		</h4>
       </div>
 	</div>
@@ -45,6 +45,14 @@
 		GMaps.geolocate({
 			success: function(position) {
 			map.setCenter(position.coords.latitude, position.coords.longitude);
+			map.addMarker({
+			  lat: position.coords.latitude,
+			  lng: position.coords.longitude,
+			  title: 'Lima',
+			  click: function(e) {
+			    alert('You clicked in this marker');
+			  }
+			}); 
 		},
 		error: function(error) {
 			alert('Geolocation failed: '+error.message);
@@ -53,9 +61,45 @@
 			alert("Your browser does not support geolocation");
 		},
 		always: function() {
-			alert("Your location is updated!");
+			;
 		}
 		});
+		
+		navigator.geolocation.getCurrentPosition(function(p){
+		   localStorage.setItem("latitude", p.coords.latitude);
+		   localStorage.setItem("longitude", p.coords.longitude)
+		}, function(e){console.log(e)})
+
+		var calculated_address;
+		var geocoder  = new google.maps.Geocoder();             
+		var user_location  = new google.maps.LatLng(localStorage.latitude, localStorage.longitude);    // turn coordinates into an object          
+		geocoder.geocode({'latLng': user_location}, function (results, status) {
+			if(status == google.maps.GeocoderStatus.OK) {           // if geocode success
+			
+				var calculated_address=results[0].formatted_address;         // if address found, pass to processing function
+				document.getElementById("user-lat").innerHTML = localStorage.latitude;
+				document.getElementById("user-long").innerHTML = localStorage.longitude;
+				document.getElementById("user-address").innerHTML = calculated_address;
+				
+				var url_array = window.location.href.split("/");
+				var user_id;
+				
+				for(count = 0; count < url_array.length; count++)
+				{
+					if (url_array[count] == "locations")
+					{
+						user_id = url_array[count+1];
+					}
+				}
+				
+				$.ajax ({
+					url: "/locations/" + user_id + "/edit?lat=" + localStorage.latitude + "&long=" + localStorage.longitude + "&address=" + calculated_address,
+					type: 'get',
+					dataType: 'script',
+				});
+			}
+		});
+
 	</script>
 	
 	<div class="row">
