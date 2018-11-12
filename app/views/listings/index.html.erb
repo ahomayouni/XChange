@@ -1,33 +1,40 @@
 <div class="container-fluid">
-    <!-- Top Toolbar -->
-    <div class="row">
-        <div class="col-md-12 mt-2">
-            <%= form_with url: search_listings_path, local: true, method: :get, html: {class: "form-inline float-right"} do |form| %>
-                <%= form.text_field :listings_q, placeholder: "Search for a listing..", data: { behaviour: "autocomplete_listings" }, class: "form-control" %>
-                <%= form.button "Search", class: "btn btn-outline-success" %>
-            <% end %>
-        </div>
-    </div>
-    <%= link_to "Create new listing", new_listing_path, class: "btn btn-outline-info mr-2" %>
-
-
-
-    <%= form_tag listings_path, :method => 'get' do %>  
-        <%= select_tag :filter,
-            options_for_select(["All", "Film & Photography","Audio Visual Equipment","Projectors & Screens","Drones","DJ Equipment","Transport","Storage","Electronics","Party & Events","Sports","Musical Instruments","Home / Office / Garden","Kids & Baby","Holiday & Travel","Clothing"])%>
-         <%= submit_tag 'Filter' %>       
-    <% end %>
-
-
+    <!-- Top Listings Page Filter Toolbar -->
+    <nav class="navbar navbar-expand-md py-3">
+		<div class="container">
+		<%# mobile display toggle  %>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu-nav" aria-controls="menu-nav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon">Refine by:<i class="material-icons">menu</i></span>
+		</button>
+			<div class="collapse navbar-collapse" id="menu-nav">
+				<ul class="navbar-nav">
+                    <li class="d-flex flex-row mt-2">    
+                        <p class="mr-1">Filter by Category:</p>
+                        <%= form_tag listings_path, :method => 'get' do %>  
+                            <%= select_tag :filter,
+                                options_for_select(["All", "Film & Photography","Audio Visual Equipment","Projectors & Screens","Drones","DJ Equipment","Transport","Storage","Electronics","Party & Events","Sports","Musical Instruments","Home / Office / Garden","Kids & Baby","Holiday & Travel","Clothing"])
+                                 %>
+                            <%= submit_tag 'Filter', class: 'btn btn-outline-info' %>       
+                        <% end %>
+                    </li>
+				</ul>
+				<ul class="navbar-nav ml-auto">
+                    <li>
+                        <%= link_to "Create new listing", new_listing_path, class: "btn btn-outline-info mr-2" %>
+					</li>
+					<li>
+						<%= form_with url: search_listings_path, local: true, method: :get, html: {class: "form-inline float-right"} do |form| %>
+                            <%= form.text_field :listings_q, placeholder: "Search for a listing..", data: { behaviour: "autocomplete_listings" }, class: "form-control" %>
+                            <%= form.button "Search", class: "btn btn-outline-success" %>
+                        <% end %>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
     <div class="row mt-4">
         <% @listings.each do |listing| %>
             <%= render listing %>
         <%end %>
     </div>
 </div >
-
- <!-- data: {
-                remote: true,
-                url: '/listings',
-                method: 'get'
-                } -->
