@@ -29,3 +29,20 @@ User.create!(name:  "admin",
                 description: 'I am a bot created by the master Peter Tanugraha'
                ))
 end
+
+# Get corresponding longitude and latitude from user.peron.address and fill the location model
+User.all.each do |u|
+  results = Geocoder.search(u.person.address)
+  if results.first
+    lat = "#{results.first.coordinates[0]}"
+    long = "#{results.first.coordinates[1]}"
+  else
+    lat = "-1" 
+    long = "-1"
+  end
+  
+  u.location = Location.create(
+  address:u.person.address,
+  latitude:lat,
+  longitude:long)
+end
