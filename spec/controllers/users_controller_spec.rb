@@ -124,7 +124,52 @@ RSpec.describe UsersController, type: :controller do
 				         }
 				expect(response).to render_template(:new)    
 			end
+
+			it 'Should not be able to create a user when password is too little' do 
+				post :create, params: {user:{
+							 email: "dragonball@gmail.com",
+				             password:              "11",
+				             password_confirmation: "11"}
+				         }
+				expect(response).to render_template(:new)    
+			end
 		end
+
+		context 'GET #show' do
+			it 'Should not be able to show the user when not logged in' do
+				user = User.create!(name:  "dodo",
+							 email: "dragonball@gmail.com",
+				             password:              "satuikanasin",
+				             password_confirmation: "satuikanasin",
+				             activated: true,
+				             activated_at: Time.zone.now,
+				             person: Person.create(
+				              address: Faker::Address.street_address,
+				              phone_number: '6471678732',
+				              description: 'I am a bot created by the master Peter Tanugraha'
+				             ))
+				get :show, params:{id:user.id}
+				expect(response).to redirect_to(login_path)
+			end
+
+			it 'Should show the user information when logged in ' do
+				user = User.create!(name:  "dodo",
+							 email: "dragonball@gmail.com",
+				             password:              "satuikanasin",
+				             password_confirmation: "satuikanasin",
+				             activated: true,
+				             activated_at: Time.zone.now,
+				             person: Person.create(
+				              address: Faker::Address.street_address,
+				              phone_number: '6471678732',
+				              description: 'I am a bot created by the master Peter Tanugraha'
+				             ))
+				login(user)
+				get :show, params:{id:user.id}
+				expect(response).to be_successful
+			end
+		end
+
 
 
 	end

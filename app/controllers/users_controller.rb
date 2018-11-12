@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :verify_logged_in_user, only: [:index,:edit,:update] # White listing
+  before_action :verify_logged_in_user, only: [:index,:edit,:update,:show] # White listing
   before_action :verify_correct_user, only: [:edit,:update] 
   before_action :verify_admin_user, only: :destroy #only admin can issue a destroy command
   before_action :force_json, only: :autocomplete_users
