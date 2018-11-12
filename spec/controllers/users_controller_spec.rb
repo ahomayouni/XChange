@@ -50,7 +50,7 @@ RSpec.describe UsersController, type: :controller do
 		end
 	end
 
-	context 'POST #update' do 
+	context 'PUT #update' do 
 		it 'returns a failed response since no user is logged in' do
 			user = User.create!(name:  "dodo",
 							 email: "dragonball@gmail.com",
@@ -86,6 +86,26 @@ RSpec.describe UsersController, type: :controller do
 									phone_number:'dada',
 									description:'dada'}}
 			expect(response).to redirect_to(user_settings_path(user))
+		end
+
+		context "POST #create" do
+			it 'Should be able to create a user successfully when not logged in' do 
+				post :create, params: {user:{ name:  "dodo",
+							 email: "dragonball@gmail.com",
+				             password:              "satuikanasin",
+				             password_confirmation: "satuikanasin"}
+				         }
+				expect(response).to redirect_to(root_path)    
+			end
+
+			it 'Should not be able to create a user successfully when given invalid params' do 
+				post :create, params: {user:{ name:  "dodo",
+							 email: "dragonball@gmail.com",
+				             password:              "111111",
+				             password_confirmation: "satuikanasin"}
+				         }
+				expect(response).to render_template(:new)    
+			end
 		end
 
 
