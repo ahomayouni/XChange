@@ -88,7 +88,7 @@ RSpec.describe UsersController, type: :controller do
 			expect(response).to redirect_to(user_settings_path(user))
 		end
 
-		context "POST #create" do
+	context "POST #create" do
 			it 'Should be able to create a user successfully when not logged in' do 
 				post :create, params: {user:{ name:  "dodo",
 							 email: "dragonball@gmail.com",
@@ -135,7 +135,7 @@ RSpec.describe UsersController, type: :controller do
 			end
 		end
 
-		context 'GET #show' do
+	context 'GET #show' do
 			it 'Should not be able to show the user when not logged in' do
 				user = User.create!(name:  "dodo",
 							 email: "dragonball@gmail.com",
@@ -166,9 +166,65 @@ RSpec.describe UsersController, type: :controller do
 				             ))
 				login(user)
 				get :show, params:{id:user.id}
-				expect(response).to be_successful
+				expect(response)
 			end
 		end
+
+	context 'DELETE #destroy' do 
+		it 'non-admin members cannot delete a user account' do
+			normal_user = User.new(name:  "dodo",
+							 email: "dragonball@gmail.com",
+				             password:              "satuikanasin",
+				             password_confirmation: "satuikanasin",
+				             activated: true,
+				             activated_at: Time.zone.now,
+				             person: Person.create(
+				              address: Faker::Address.street_address,
+				              phone_number: '6471678732',
+				              description: 'I am a bot created by the master Peter Tanugraha'
+				             ))
+			normal_user.save 
+			login(normal_user)
+			delete :destroy, params:{id:normal_user.id}
+			expect(response).to redirect_to(users_path)
+
+		end
+
+		it 'admin members can delete anyones account ' do
+			admin = User.new(name:  "dodo",
+							 email: "dragonball@gmail.com",
+				             password:              "satuikanasin",
+				             password_confirmation: "satuikanasin",
+				             admin: true,
+				             activated: true,
+				             activated_at: Time.zone.now,
+				             person: Person.create(
+				              address: Faker::Address.street_address,
+				              phone_number: '6471678732',
+				              description: 'I am a bot created by the master Peter Tanugraha'
+				             ))
+
+			normal_user = User.new(name:  "dodo123",
+							 email: "dragonball123@gmail.com",
+				             password:              "satuikanasin",
+				             password_confirmation: "satuikanasin",
+				             activated: true,
+				             activated_at: Time.zone.now,
+				             person: Person.create(
+				              address: Faker::Address.street_address,
+				              phone_number: '6471678732',
+				              description: 'I am a bot created by the master Peter Tanugraha'
+				             ))
+
+			admin.save
+			normal_user.save
+
+			login(admin)
+			delete :destroy, params:{id:normal_user.id}
+			expect(response).to redirect_to(users_path)
+		end
+
+	end
 
 
 
