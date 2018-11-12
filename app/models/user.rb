@@ -22,7 +22,10 @@ class User < ApplicationRecord
 	# creating an association with listings
 	has_many :listings , :dependent => :destroy
 	has_one :person , :dependent => :destroy
-
+  
+	# creating a one-to-one association with location
+  has_one :location , :dependent => :destroy
+  
 	# Validate email field with regex
 	validates :email, presence:true , length:{maximum:255} , format:{with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
 
