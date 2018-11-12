@@ -1,12 +1,15 @@
 <div class="container-fluid">
     <!-- Top Listings Page Filter Toolbar -->
-    <nav class="navbar navbar-expand-md py-3">
+    <nav class="navbar navbar-expand-md py-3" >
 		<div class="container">
 		<%# mobile display toggle  %>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu-nav" aria-controls="menu-nav" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon">Refine by:<i class="material-icons">menu</i></span>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#listings-toolbar" aria-controls="listings-toolbar" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon w-100 d-flex flex-row">
+                <p>Refine by</p>
+                <i class="material-icons">apps</i>
+            </span>
 		</button>
-			<div class="collapse navbar-collapse" id="menu-nav">
+			<div class="collapse navbar-collapse" id="listings-toolbar">
 				<ul class="navbar-nav">
                     <li class="d-flex flex-row mt-2">    
                         <p class="mr-1">Filter by Category:</p>
