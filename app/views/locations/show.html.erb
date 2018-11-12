@@ -1,3 +1,6 @@
+<script src="http://maps.google.com/maps/api/js"></script>
+	
+
 <div class="container-fluid">
   <div class="container">
     <div class="row">
@@ -14,12 +17,48 @@
       <div class="col-lg-9 mb-5">
 		<h3>My last updated location:<br><h3>
 		<h4>
-		 Latitude: <%= @location.latitude%><br>
-		 Longitude: <%= @location.longitude%><br>
+		 Latitude: <div id='user-lat'><%= @location.latitude%></div>
+		 Longitude: <div id='user-long'><%= @location.longitude%></div>
 		 Estimated address:	<%= @location.address%><br>
 		</h4>
       </div>
 	</div>
+	
+	<div id="map">
+	</div>
+	
+	<style>
+	#map {
+	    width: 100%;
+	    height: 400px;
+	}
+	</style>
+	
+	<script>
+		var latitude =document.getElementById("user-lat").innerHTML;
+		var longitude =document.getElementById("user-long").innerHTML;
+		var map = new GMaps({
+		  el: '#map',
+		  lat: latitude,
+		  lng: longitude
+		});
+		
+		GMaps.geolocate({
+			success: function(position) {
+			map.setCenter(position.coords.latitude, position.coords.longitude);
+		},
+		error: function(error) {
+			alert('Geolocation failed: '+error.message);
+		},
+		not_supported: function() {
+			alert("Your browser does not support geolocation");
+		},
+		always: function() {
+			alert("Your location is updated!");
+		}
+		});
+	</script>
+	
 	<div class="row">
       <div class="col-lg-9 mb-5">
 		<h3>Nearby users:<br><h3>
