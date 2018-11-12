@@ -15,9 +15,7 @@ class LocationsController < ApplicationController
       @location.longitude = params[:long]
       @location.address = params[:address]
     end
-    if @location.save
-      flash[:success] = "Location updated"
-    else
+    if !@location.save
       flash[:error] = "Location could not be updated"
     end
   end

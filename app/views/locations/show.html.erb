@@ -109,7 +109,7 @@
 		<% User.all.each do |u|%>		
 			<% if u.location.latitude != "-1" and u.location.longitude != "-1"%>
 				<% distance_miles = Geocoder::Calculations.distance_between(
-				[@location.latitude.to_f, @location.longitude	.to_f],
+				[@location.latitude.to_f, @location.longitude.to_f],
 				[u.location.latitude.to_f, u.location.longitude.to_f])%>
 				
 				<%distance_km = distance_miles * 1.609344 %>
@@ -121,11 +121,35 @@
 		<h3>Nearby users:<br><h3>
 		<ul>
 			<% neaby_users.each do |user, distance| %>
+
 			<li>	
-				'<%= user.name %>' is <b><%= distance.round(2) %> km</b> away
+				'<%= user.name %>' is <b><%= distance.round(2) %> km</b> away 
+				<div name="hidden-lat" style="visibility: hidden"><%=user.location.latitude%></div>
+				<div name="hidden-long" style="visibility: hidden"><%=user.location.longitude%></div>
+				<div name="hidden-name" style="visibility: hidden"><%=user.name%></div>
 			</li>
+			
 			<% end %>
-		</ul>	
+		</ul>
+		
+		<script>
+
+		var lats = document.getElementsByName("hidden-lat");
+		var longs= document.getElementsByName("hidden-long");
+		var names= document.getElementsByName("hidden-name");
+		var i;
+		for(i = 0; i < names.length; i++)
+		{
+			map.addMarker({
+			lat: lats[i].innerHTML,
+			lng: longs[i].innerHTML,
+			title: names[i].innerHTML,
+		});
+		}
+		
+		
+		</script>
+		
       </div>
 	</div>
   </div>
