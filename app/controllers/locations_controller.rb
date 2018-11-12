@@ -18,9 +18,8 @@ class LocationsController < ApplicationController
           render 'new'
         end
   end
-  def destroy
+  def destoy
   end
-  
   private
   def location_params_validator
     params.require(:location).permit(:address, :latitude, :longitude)
