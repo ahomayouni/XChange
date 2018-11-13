@@ -39,19 +39,21 @@
               </p>               
             </div>
         </div>
-        
+        <!--  For adding a review -->
+        <div class="card mt-2">
+          <div class="card-header">Review this Item:</div>
+          <div class="card text p-3">
+           <%= form_for [@listing, Comment.new], class:"form-control" do |f| %>
+                <%= f.text_area :body, placeholder: "Add a comment", class:'form-group' %><br/>
+                <%= f.number_field :rating, placeholder: "Add rating" %><br/>
+                <%= f.submit "Add Comment", class:'btn btn-outline-info mt-2' %>
+              <% end %> 
+          </div>
+        </div>
+        <!-- Showing existing comments on the post  -->
         <%= render(partial: 'comments/comment', collection: @listing.comments) %>
-          
       </div> 
      </div>
 
    </div>
 </div>
-
-
-<!--
- <%= form_for [@listing, Comment.new], class:"form-control" do |f| %>
-                <%= f.text_area :body, placeholder: "Add a comment", class:'form-group' %><br/>
-                <%= f.number_field :rating, placeholder: "Add rating" %><br/>
-                <%= f.submit "Add Comment", class:'btn btn-outline-info' %>
-              <% end %> -->
