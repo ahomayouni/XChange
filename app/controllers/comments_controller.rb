@@ -39,9 +39,6 @@ before_action :find_reply
                     else
                         old_review += 0
                     end
-                    puts 'CONSOLE LOG'
-                    puts old_review
-                    puts total_reviews
                     old_review /= total_reviews
                     @listing.update_attribute(:rating, old_review)
 
