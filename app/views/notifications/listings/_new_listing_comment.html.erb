@@ -1,0 +1,2 @@
+<% @actor = User.find(notification.actor_id) %>
+<%= link_to " #{@actor.name} has commented on your recent post.", listing_path(notification.notifiable) %>

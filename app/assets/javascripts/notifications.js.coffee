@@ -38,9 +38,6 @@ class Notifications
       if notification.unread
         unread_count += 1
 
-    console.log("Value of unreadcount is:")
-    console.log(unread_count)
-
     $("[data-behavior='unread-count']").text(unread_count)
     $("[data-behavior='notification-items']").html(items)
 

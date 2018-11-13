@@ -29,7 +29,6 @@ before_action :find_reply
             end
             #when you comment on listings
             if @comment.reply_type == "Listing"
-                puts "INSIDE LISTINGGGGGGOAJOJOSJJAOJSOAJOJAOASJOSJOAJSOAJSOAJOSJOAJS"
                 @listing = Listing.find(@comment.subject_id)
                 if @listing.rating
                     old_review = @listing.rating
