@@ -28,7 +28,11 @@ module ListingsHelper
 
   def get_rounded_rating
     @current_lisitng = Listing.find(params[:id])
-    return @current_listing.rating.round
+    if @current_lisitng.rating.nil? 
+      return 0 
+    else 
+      return @current_listing.rating.round
+    end 
   end 
 
 end

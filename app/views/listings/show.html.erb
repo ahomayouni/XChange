@@ -26,10 +26,14 @@
               <p class="card-text"><%= @listing.description %></p>
               <p class="card-text">Rating:</p> 
               <p class="card-text">
+                <% if get_rounded_rating == 0 %>
+                    <p class="card-text"> No ratings yet </p>
+                <%else%>
                 <% for i in 1..get_rounded_rating do %>
                    <i class="material-icons">
                   grade
                   </i>
+                <%end%>
                 <% end %>
               </p>               
               <!-- TODO: once rating has been implemented, put this code into a helper 
