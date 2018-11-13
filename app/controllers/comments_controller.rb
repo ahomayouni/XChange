@@ -4,9 +4,6 @@ before_action :find_reply
     def new
         @comment = Comment.new
     end
-    
-    def edit
-    end
 
     def create
         ## changes to >rails 4 code i.e https://stackoverflow.com/questions/24478246/rails-form-is-not-saving-input-to-the-database
@@ -27,7 +24,7 @@ before_action :find_reply
                     old_review /= total_reviews+1
                     @person.update_attribute(:rating, old_review)
                 else
-                    @person.update_attribute(:rating, @comment.rating) #not working ?
+                    @person.update_attribute(:rating, @comment.rating) 
                 end
             end
             #when you comment on listings
