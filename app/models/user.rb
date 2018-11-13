@@ -34,6 +34,10 @@ class User < ApplicationRecord
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 5 }, :if => :password
 
+	# creating an association to start chat rooms
+	has_many :chat_rooms, dependent: :destroy
+	has_many :messages, dependent: :destroy
+
 	def password_reset_expired?
 		reset_sent_at < 2.hours.ago # Another beauty of rails :)
 	end
