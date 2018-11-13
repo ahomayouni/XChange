@@ -48,13 +48,6 @@
   background-image: asset_url('carousel-pattern.jpg');
   background-attachment: fixed !important;
 }
-
-.slide-2 {
-  height: 80vh;
-  background-image: asset_url('tools-bigger.jpg');
-  background-attachment: fixed !important;
-}
-
 .carousel-content {
     position: absolute;
     top: 25%;
@@ -69,16 +62,74 @@
         max-width: 800px;
     }
 }
+.carousel-caption {
+  top: 50% !important;
+  font-size: 8vw !important;
+  transform: translateY(-50%) !important;
+  bottom: 0 !important;
+  letter-spacing: 1rem;
+  font-weight: bold;
+  -webkit-animation: fadein 5s;
+}
+@keyframes fadein {
+  from { 
+    opacity: 0; 
+  }
+  to   { 
+    opacity: 1; 
+  }
+}
 
 .page-content {
   text-align: center;
+  .home-title {
+    font-size: 3.5vw !important;
+    letter-spacing: 1.3vw !important;
+    font-weight: 1000 !important;
+  }
+  .main-text {
+    font-size: 1.7vw !important;
+  }
   hr {
-    border: 1px solid rgb(104,214,205);
-    width: 20%;
+    border: 1.5px solid rgb(104,214,205);
+    width: 10%;
     margin-top: 0;
   }
   .small-hr {
     border: 0.5px solid rgb(104,214,205) !important;
     width: 10%;
+  }
+  .main-text {
+    width: 80%;
+  }
+  .sub-text {
+    width: 70%;
+  }
+  .divider {
+    height: 30vh;
+    width: 30;
+    background-position: center;
+    background-image: asset_url('carousel-pattern.jpg');
+    background-attachment: fixed !important;
+  }
+  .about-icons {
+    img {
+      width: 100%;
+    }
+  }
+  .btn {
+    width:30%;
+    background-color: rgb(3,15,80) !important;
+    a {
+      color: white !important;
+      text-decoration: none;
+    }
+  }
+  .btn:hover {
+    background-color: white !important;
+    a {
+    color: rgb(3,15,80) !important;
+
+    }
   }
 }

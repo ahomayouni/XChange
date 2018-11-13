@@ -7,10 +7,11 @@
   <div class="carousel-inner">
       <div class="carousel-item active">
           <div class="carousel-image slide-1"></div>
-          <div class="carousel-content">
-            <h1>Borrow Anything</h1>
-            <p>Need something that you'll only use once?
-              We'll connect you with people that you can borrow it from at a lower cost. </p>
+          <div class="carousel-caption">
+             XCHANGE 
+            <%# <h1>Borrow Anything</h1> %>
+            <%# <p>Need something that you'll only use once?
+              We'll connect you with people that you can borrow it from at a lower cost. </p> %>
           </div>
       </div>
       <%# <div class="carousel-item">
@@ -32,13 +33,82 @@
     </a> %>
 </div>
 
-<div class="page-content m-3">
-  <div class="items">
-  Listings
-  <hr>
-    <div style="height:20vw;">
-      <%# TODO: implement cards later just a white space for now%>
-    </div> 
+<div class="page-content my-4">
+  <%# only show info if not logged in %>
+  <% if !logged_in? %>
+    <div class="about pb-4">
+      <div class="home-title">ABOUT</div>
+      <hr>
+      <div class="home-details m-auto">
+        <div class="main-text text-center m-auto">XChange's philosophy is based on the idea that we often purchase things that we only use once. We want to help you save clutter and money in your home by
+              connecting you with the people who are willing to lend what you need.
+        </div>
+      </div>
+      <div class="about-icons m-3">
+        <div class="row">
+          <div class="col">
+          </div>
+          <div class="col-2">
+            <%= image_tag("about-1.png")%>
+          </div>
+          <div class="col-2">
+            <%= image_tag("about-2.png")%>
+          </div>
+          <div class="col-2">
+            <%= image_tag("about-3.png")%>
+          </div>
+          <div class="col">
+          </div>
+        </div>
+      </div>
+      <div class="btn">
+				<%= link_to 'About', controller: 'about' %>        
+      </div>
+    </div>
+    <div class="divider">
+    </div>
+  <% end %>
+  <div class="items py-4">
+    <div class="home-title"> LISTINGS </div>
+    <hr>
+      <div class="px-5">
+        <%# TODO: implement cards later just a white space for now%>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="card mx-2 my-2">
+              <%= image_tag("empty-item-icon.jpg", :class => "card-img-top")%>
+              <div class="card-body">
+                <p class="card-text">Listings</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card mx-2 my-2">
+              <%= image_tag("empty-item-icon.jpg", :class => "card-img-top")%>
+   
+              <div class="card-body">
+                <p class="card-text">Sample Listing</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card mx-2 my-2">
+              <%= image_tag("empty-item-icon.jpg", :class => "card-img-top")%>
+              <div class="card-body">
+                <p class="card-text">Sample Listing</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card mx-2 my-2">
+              <%= image_tag("empty-item-icon.jpg", :class => "card-img-top")%>
+              <div class="card-body">
+                <p class="card-text">Sample Listing</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
   </div>
 </div>
 
