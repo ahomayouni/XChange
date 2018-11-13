@@ -26,31 +26,17 @@
               <p class="card-text"><%= @listing.description %></p>
               <p class="card-text">Rating:</p> 
               <p class="card-text">
+                <!-- I know this isn't the cleanest looking erb code.. but it works -->
                 <% if get_rounded_rating == 0 %>
                     <p class="card-text"> No ratings yet </p>
-                <%else%>
-                <% for i in 1..get_rounded_rating do %>
-                   <i class="material-icons">
-                  grade
-                  </i>
-                <%end%>
+                <% else %>
+                  <% for i in 1..get_rounded_rating do %>
+                    <i class="material-icons">
+                    grade
+                    </i>
+                  <%end%>
                 <% end %>
               </p>               
-              <!-- TODO: once rating has been implemented, put this code into a helper 
-              view to generate the number of stars for the product rating
-              <p class="card-text">Rating:</p> 
-              <i class="material-icons">
-              grade
-              </i>
-               <i class="material-icons">
-              grade
-              </i>
-               <i class="material-icons">
-              grade
-              </i>
-               <i class="material-icons">
-              grade
-              </i> -->
             </div>
         </div>
         <div class="card mt-4">
@@ -58,8 +44,8 @@
               Reviews
             </div>
             <div class="card-body">
-              <%= form_for [@listing, Comment.new] do |f| %>
-              <%= f.text_area :body, placeholder: "Add a comment" %><br/>
+              <%= form_for [@listing, Comment.new], class:"form-control" do |f| %>
+              <%= f.text_area :body, placeholder: "Add a comment", class:'form-group' %><br/>
               <%= f.number_field :rating, placeholder: "Add rating" %><br/>
               <%= f.submit "Add Comment" %>
               <% end %>
