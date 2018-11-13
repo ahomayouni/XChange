@@ -9,6 +9,7 @@
             <p> What I suggest is there should be an overview of the user's activity using pie charts
                 Ideally there will be summary of the user's listings, reviews, etc. It doesnt have to
                     be a pie chart. just some easy way to convey infomration that looks good too </p>
+                    <%= pie_chart Listing.group(:category).count %>
        </div>
     </div>
  	<div class="row">

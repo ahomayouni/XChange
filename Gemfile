@@ -84,3 +84,4 @@ gem "jquery-rails", "~> 4.3"
 gem "ransack", "~> 2.0"
 gem 'rails-controller-testing'
 gem 'geocoder'
+gem "chartkick"
