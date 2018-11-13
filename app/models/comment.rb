@@ -5,6 +5,6 @@ class Comment < ApplicationRecord
     has_many :comments, as: :reply
     
     validates :body, length: {minimum: 1}
-    #validates :rating, if: :reply_type != "Comment"
+    
 
 end

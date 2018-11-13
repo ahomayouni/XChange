@@ -34,7 +34,7 @@ before_action :find_reply
                     old_review = @listing.rating
                     total_reviews = Comment.where(subject_id: @comment.subject_id, reply_type: "Listing").length
                     old_review *= total_reviews
-                    old_review += rating
+                    old_review += @comment.rating
                     old_review /= total_reviews+1
                     @listing.update_attribute(:rating, old_review)
                 else
