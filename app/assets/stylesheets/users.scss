@@ -39,28 +39,33 @@
   left: 30px;
 }
 
-.signup-container {
+.signup-container, .signin-container {
   background-color: rgb(104,214,205);
   
+  a {
+    text-decoration: none !important;
+    color: white;
+  }
   input:not([type='submit']), textarea.form-control {
     // outline: 0;
     border: 0;
     box-sizing: border-box;
   }
-
   input[type='submit'] {
     border: 2px solid rgb(3,15,80);
     background-color: rgb(3,15,80) !important;
     color: rgb(104,214,205) !important;
     width: 100%;
   }
-
   input[type='submit']:hover {
     border: 2px solid rgb(3,15,80);
     background-color: transparent !important;
     color: rgb(3,15,80) !important;
   }
 }
-.signup-form {
+.signin-container {
+  height: 100%;
+}
+.signup-form, .signin-form {
   width: 50%;
 }

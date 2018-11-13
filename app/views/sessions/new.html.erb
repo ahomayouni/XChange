@@ -1,23 +1,13 @@
 <% provide(:title, "Log in") %>
 
-<div class="container" style="width:600px;">
-    <h1>Log in</h1>
-      <%= form_for(:session, url: login_path) do |f| %>
-
-        <%= f.label :email %>
-        <%= f.email_field :email, class: 'form-control' %>
-
-        <%= f.label :password %>
-        <%= link_to "Forgot Password" , new_password_reset_path %>
-        <%= f.password_field :password, class: 'form-control' %>
-
-        <%= f.label :remember_me, class: "checkbox inline" do%>
-          <%= f.check_box :remember_me%>
-          <span> Remember me on this computer </span>
-        <%end%>
-        <%= f.submit "Log in", class: "btn btn-primary" %>
-      <% end %>
-
-    <p>New user? <%= link_to "Sign up now!", new_user_path %></p>
-    <%=link_to "Back to Home", home_index_path %>
+<div class="signin-container">
+  <div class="signin-form p-4 m-auto">
+    <h2 class="text-center">Log in</h2>
+    <div>
+      <%= render 'form' %>
+    </div>
+  </div>
+  <p class="text-center"> New user? <%= link_to "Sign up now!", new_user_path %></p>
+  <%# Don't think we need this since we have home link on footer now %>
+  <%# <%=link_to "Back to Home", home_index_path %>
 </div>
