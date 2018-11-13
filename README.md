@@ -21,6 +21,7 @@ To get this project running, follow these steps:
 ## Current Bugs:
 * Anyone can edit anyone else's listing (Fixed by Maru)
 * Anyone can delete anyone else's listing (Fixed by Peter)
+* Error for displaying rating when there is no rating (nil) (Fixed by Maru)
 
 ## IceBox (Required within the Bolen Docs):
 * Simple Chat/Messaging Application
