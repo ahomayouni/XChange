@@ -20,6 +20,7 @@ class ChatRoomsController < ApplicationController
     # generate the set of messages in channel
     def show
         @chat_room = ChatRoom.includes(:messages).find_by(id: params[:id])
+        @message = Message.new
     end
   
     private
