@@ -1,7 +1,9 @@
 <li>
   <%= comment.body %> - by <%= User.find(comment.commenter_id).name %>
   <small>Submitted <%= time_ago_in_words(comment.created_at) %> ago</small>
-
+  <% if comment.rating != nil %>
+  Rating: <%= comment.rating %>
+  <% end %>
 
   <%= form_for [comment, Comment.new] do |f| %>
       <%= f.text_area :body, placeholder: "Add a Reply" %><br/>

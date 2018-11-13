@@ -41,7 +41,7 @@ before_action :find_reply
                     old_review /= total_reviews+1
                     @listing.update_attribute(:rating, old_review)
                 else
-                    @listing.update_attribute(:rating, @listing.rating)
+                    @listing.update_attribute(:rating, @comment.rating)
                 end
             end
         #redirect_to :back, notice: 'Your review was successfully posted!'

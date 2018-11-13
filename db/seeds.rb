@@ -244,3 +244,15 @@ User.all.each_with_index do |u,index|
   latitude:lat,
   longitude:long)
 end
+
+# seeds to add commetns to all people; This also changes the ratings of the respective epople
+# Person.all do |p|
+#   p.comments.create( body: "hello", rating: 5, listing_id: nil, reply_id: 1, reply_type: "Listing", created_at: "2018-11-13 00:15:33", updated_at: "2018-11-13 00:15:33", commenter_id: 1, subject_id: p.id)
+#   p.comments.create( body: "hello", rating: 8, listing_id: nil, reply_id: 1, reply_type: "Listing", created_at: "2018-11-13 00:15:33", updated_at: "2018-11-13 00:15:33", commenter_id: 1, subject_id: p.id)
+# end
+
+# Listing.create( title: "Test", description: "great", category: "Film & Photography", price_per_day: 10, start_lending: "2018-11-11 00:00:00", end_lending: "2018-11-11 00:00:00", user_id: 1, rating: 3)
+
+# 10.times do |i|
+#   Listing.first.comments.create(body: "How this user is great", rating: 6)
+# end
