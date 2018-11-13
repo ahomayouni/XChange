@@ -29,6 +29,7 @@ before_action :find_reply
             end
             #when you comment on listings
             if @comment.reply_type == "Listing"
+                puts "INSIDE LISTINGGGGGGOAJOJOSJJAOJSOAJOJAOASJOSJOAJSOAJSOAJOSJOAJS"
                 @listing = Listing.find(@comment.subject_id)
                 if @listing.rating
                     old_review = @listing.rating
@@ -37,6 +38,11 @@ before_action :find_reply
                     old_review += @comment.rating
                     old_review /= total_reviews+1
                     @listing.update_attribute(:rating, old_review)
+
+                    @notif_recipient = User.find(@listing.user_id)
+
+                    @new_notif = Notification.new(recipient: @notif_recipient, actor_id: current_user.id ,action: "new_listing_comment",notifiable: @listing)
+                    @new_notif.save 
                 else
                     @listing.update_attribute(:rating, @comment.rating)
                 end
