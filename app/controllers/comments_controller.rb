@@ -44,7 +44,9 @@ before_action :find_reply
         #redirect_to :back, notice: 'Your review was successfully posted!'
         redirect_back fallback_location: request.referrer, notice: 'Your review was successfully posted!'
         else
-        redirect_to :back, notice: "Your review wasn't posted!"
+        #format.html { redirect_to :back, notice: 'Building Created!' }
+        #redirect_to , notice: "Your review wasn't posted!"
+        redirect_back(fallback_location: listings_path, notice: "Your review wasn't posted!, Make sure to write something down")
         end
     end
     
