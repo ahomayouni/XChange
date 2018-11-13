@@ -26,4 +26,9 @@ module ListingsHelper
     end 
   end 
 
+  def get_rounded_rating
+    @current_lisitng = Listing.find(params[:id])
+    return @current_listing.rating.round
+  end 
+
 end
