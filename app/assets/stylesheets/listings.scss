@@ -5,3 +5,9 @@
     background-color:#ff608a; //bg colour
     color: white; //text colour
 }
+
+.card-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
