@@ -27,7 +27,7 @@
   .card-img-top {
     width:100%; 
     height: 40vw;
-    object-fit: cover;
+    object-fit: contain;
   }
 }
  
@@ -39,7 +39,7 @@
   .card-img-top {
       width:100%; 
       height: 35vw;
-      object-fit: cover;
+      object-fit: contain;
   }
 }
  
@@ -49,7 +49,7 @@
     .card-img-top {
       width:100%; 
       height: 25vw;
-      object-fit: cover;
+      object-fit: contain;
     }
 }
  
@@ -59,7 +59,7 @@
   .card-img-top {
     width:100%; 
     height: 25vw;
-    object-fit: cover;
+    object-fit: contain;
   }
 }
 
