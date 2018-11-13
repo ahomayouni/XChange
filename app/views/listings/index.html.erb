@@ -11,11 +11,11 @@
 		</button>
 			<div class="collapse navbar-collapse" id="listings-toolbar">
 				<ul class="navbar-nav">
-                    <li class="d-flex flex-row">
+                    <li>
                         <%= form_tag listings_path, :method => 'get', html: {class: "form-inline"} do %>  
                             <%= select_tag :filter,
                                 options_for_select(["All", "Film & Photography","Audio Visual Equipment","Projectors & Screens","Drones","DJ Equipment","Transport","Storage","Electronics","Party & Events","Sports","Musical Instruments","Home / Office / Garden","Kids & Baby","Holiday & Travel","Clothing"]),
-                                 class: "form-control" 
+                                 class: "form-control w-100" 
                                  %>
                             <%= submit_tag 'Filter by Category', class: 'btn btn-outline-info' %>       
                         <% end %>
