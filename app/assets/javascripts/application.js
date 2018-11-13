@@ -19,6 +19,7 @@
 //= require_tree .
 //= require Chart.bundle
 //= require chartkick
+//= require cable
 
 function show_password(){
 	var x = document.getElementById("input_password");
