@@ -1,18 +1,18 @@
 class LocationsController < ApplicationController
   def index
     @locations = Location.all
-    @user_location = current_user.location
+    @location = current_user.location
     
-    if @user_location # check to see if object exists
+    if @location # check to see if object exists
       if(params.has_key?(:lat) && params.has_key?(:long) && params.has_key?(:calculated_address)) #If it's a new location
         @latitude = params[:lat]
         @longitude = params[:long]
         @address = params[:calculated_address]
-        @user_location.latitude = @latitude
-        @user_location.longitude = @longitude
-        @user_location.address = @address
+        @location.latitude = @latitude
+        @location.longitude = @longitude
+        @location.address = @address
         
-        if @user_location.save
+        if @location.save
           flash.now[:success] = "Location updated"
           render 'index'
         else # couldn't save location, try again
@@ -20,14 +20,8 @@ class LocationsController < ApplicationController
           redner 'new' 
         end
       else #If location was created before, at this point location.latitude should have a value
-        if @user_location.latitude and @user_location.longitude and @user_location.address # Fields are present. Success!
-          flash.now[:notice] = "INDEX: lat = #{@user_location.latitude} long = #{ @user_location.longitude} estimated address = #{@user_location.address}"
-          #can show everything here
-
-
-
-
-          
+        if @location.latitude and @location.longitude and @location.address # Fields are present. Success!
+          #Success: can show everything in the view now!
         else  #object is here but fields are empty. So Try new again
           flash.now[:error] = "A location object exists. But it's empty"
           render 'new'

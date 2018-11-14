@@ -1,7 +1,14 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAG4tWx7kUqZymglhMc6mRstD_RXXTEeMY"></script>
-<h1> Location </h1>
 
-<button onclick="update_location()" class="btn btn-primary">Update my location</button>
+<div class="container-fluid">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3 mt-3">
+				<button onclick="update_location()" class="btn btn-primary">Update my location</button>
+			</div>
+		</div>
+	</div>
+</div>
 
 <script>
 
@@ -40,3 +47,133 @@
 	}
 
 </script>
+
+<% if current_user.location %>
+	<% if current_user.location.latitude and current_user.location.longitude %> <%# Check if location latitude longitude exist %>
+
+	<div class="container-fluid">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 mt-3">
+					<h1>My Location</h1><br>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-9 mb-5">
+					<h3>My last updated location:<br><h3>
+						<h4>
+							Latitude: <div id='user-lat'><%if @location %><%= @location.latitude%><%else%><%="N/A"%><%end%></div>
+							Longitude: <div id='user-long'><%if @location %><%= @location.longitude%><%else%><%="N/A"%><%end%></div>
+							Estimated address:	<div id='user-address'><%if @location %><%= @location.address%><%else%><%="N/A"%><%end%></div><br>
+						</h4>
+					</div>
+				</div>
+
+				<div id="map">
+				</div>
+
+				<style>
+					#map {
+						width: 100%;
+						height: 400px;
+					}
+				</style>
+
+			<script>
+				var latitude =document.getElementById("user-lat").innerHTML;
+				var longitude =document.getElementById("user-long").innerHTML;
+				if (latitude == "N/A" || longitude == "N/A")
+				{
+					alert("Refresh the page to update your location again!");
+				}
+				else
+				{
+					var map = new GMaps({
+						el: '#map',
+						lat: latitude,
+						lng: longitude
+					});
+				}
+
+				GMaps.geolocate({
+					success: function(position) {
+
+						if (latitude != "N/A" || longitude != "N/A") //If location coordinates exist
+						{
+							map.setCenter(position.coords.latitude, position.coords.longitude);
+							map.addMarker({
+								lat: position.coords.latitude,
+								lng: position.coords.longitude,
+								title: 'My Location',
+								click: function(e) {
+									alert('My location is at [' + position.coords.latitude + ', '+position.coords.longitude+']');
+								}
+							}); 
+						}
+					},
+					error: function(error) {
+						alert('Geolocation failed: '+error.message);
+					},
+					not_supported: function() {
+						alert("Your browser does not support geolocation");
+					},
+					always: function() {
+						;
+					}
+				});
+
+		</script>
+		
+		<div class="row">
+			<div class="col-lg-9 mb-5">
+				<% neaby_users = {} %>
+
+				<% User.all.each do |u|%>	
+					<% if u.location and u.location.latitude and u.location.longitude and @location %>
+						<% if u.location.latitude != "-1" and u.location.longitude != "-1"%>
+							<% distance_miles = Geocoder::Calculations.distance_between(
+								[@location.latitude.to_f, @location.longitude.to_f],
+								[u.location.latitude.to_f, u.location.longitude.to_f])%>
+
+								<%distance_km = distance_miles * 1.609344 %>
+								<% neaby_users.store(u, distance_km) %>
+							<% end%>	
+						<% end%>
+					<% end%>
+
+					<% neaby_users = neaby_users.sort_by {|_key, value| value} %>
+					<h3>Nearby users:<br><h3>
+						<ul>
+							<% neaby_users.each do |user, distance| %>
+								<li>	
+									'<%= user.name %>' is <b><%= distance.round(2) %> km</b> away 
+									<div name="hidden-lat" style="display: none"><%=user.location.latitude%></div>
+									<div name="hidden-long" style="display: none"><%=user.location.longitude%></div>
+									<div name="hidden-name" style="display: none"><%=user.name%></div>
+								</li>
+							<% end %>
+						</ul>
+
+						<script>
+							var lats = document.getElementsByName("hidden-lat");
+							var longs= document.getElementsByName("hidden-long");
+							var names= document.getElementsByName("hidden-name");
+							var i;
+							var marker = []; 
+							marker.length = names.length;
+							for(i = 0; i < names.length; i++)
+							{
+								marker[i] = map.addMarker({
+									lat: lats[i].innerHTML,
+									lng: longs[i].innerHTML,
+									title: names[i].innerHTML,
+								});
+							}
+
+						</script>
+					</div>
+				</div>
+			</div>
+		</div>
+	<% end%>
+<% end%>
