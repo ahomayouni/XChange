@@ -1,25 +1,21 @@
-<li>
-  <div class="container">
-  <p> <%= User.find(comment.commenter_id).name %> </p>
-  <p> <%= comment.body %> </p>
-
-  <% if comment.rating != nil %>
-  <span>
-  Rating: <%= comment.rating %>
-  </span>
-  <% end %>
-  
-  <span class="time-right"> Submitted <%= time_ago_in_words(comment.created_at) %> ago </span> 
-  </div>
-
- 
-
-  <%= form_for [comment, Comment.new] do |f| %>
-      <%= f.text_area :body, placeholder: "Add a Reply" %><br/>
-      <%= f.submit "Reply" %>
-    <% end %>
-  <ul>
+<div class="card my-2">
+    <div class="card-header" style="background-color:#ffccd9;"> <%= User.find(comment.commenter_id).name %>'s review: </div>
+    <div class="card-text ml-2 mb-2">
+      <%= comment.body %>
+      <br />
+      <% if comment.rating != nil %>
+        Rating:
+        <% for i in 1..comment.rating do %>
+          <i class="material-icons">
+          grade
+          </i> 
+        <%end%>
+      <% end %> <br />
+      <span class="badge padge-pill badge-info time-right"> Submitted <%= time_ago_in_words(comment.created_at) %> ago </span> 
+      <%= form_for [comment, Comment.new] do |f| %>
+          <%= f.text_area :body, placeholder: "Add a Reply" %><br/>
+          <%= f.submit "Reply", class:"btn btn-outline-info" %>
+        <% end %>
       <%= render partial: 'comments/comment', collection: comment.comments %>
-  </ul>
-
-</li>
+    </div>
+</div>
