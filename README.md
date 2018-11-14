@@ -26,6 +26,9 @@ To get this project running, follow these steps:
 ## IceBox (Required within the Bolen Docs):
 * Simple Chat/Messaging Application
 * Push Notification (Say when I follow a User, I would be able to get notifications)
+* Wizard / Step by Step sign up ( not required but would add to a "superb UI/UX"
+* Report a listing - say if a listing does not seem legitamate, other users can report that listing. Then admin would be able to delete that listing if they find that it does not follow community guidelines 
+* Potentially being able to upload a picture from mobile for your listing 
 
 ## Deployment
 * Install heroku CLI installed on your computer
