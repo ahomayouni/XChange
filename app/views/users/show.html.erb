@@ -11,10 +11,6 @@
                     <p> Listings by Category: </p>
                     <%= pie_chart Listing.group(:category).count, colors: ['#ebceff', '#ffb2d7'],class:'w-25'%>
                 </div>
-                <div class="col-md-3">
-                    <p> Listings by Category: </p>
-                    <%= pie_chart Listing.group(:category).count %>
-                </div>
             </div>
        </div>
     </div>
