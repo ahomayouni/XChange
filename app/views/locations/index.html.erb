@@ -1,0 +1,42 @@
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAG4tWx7kUqZymglhMc6mRstD_RXXTEeMY"></script>
+<h1> Location </h1>
+
+<button onclick="update_location()" class="btn btn-primary">Update my location</button>
+
+<script>
+
+	function update_location(){
+
+		GMaps.geolocate({
+			success: function(position) {
+
+		// Get latitude and longitude of user's location
+		var lat = position.coords.latitude;
+		var long = position.coords.longitude;
+		
+		// Turn coordinates into an object
+		var user_location  = new google.maps.LatLng(lat, long); 
+		var geocoder  = new google.maps.Geocoder();             
+
+		geocoder.geocode({'latLng': user_location}, function (results, status) {
+			if(status == google.maps.GeocoderStatus.OK) {           // if geocode success
+
+				// address found		
+				var calculated_address = results[0].formatted_address;  
+				window.location.replace("/locations?lat=" + lat + "&long=" + long + "&calculated_address=" + calculated_address);
+			}
+		});	
+		},
+		error: function(error) {
+			alert('Geolocation failed: '+error.message);
+		},
+		not_supported: function() {
+			alert("Your browser does not support geolocation");
+		},
+		always: function() {
+			;
+		}
+		});
+	}
+
+</script>

@@ -1,21 +1,80 @@
 class LocationsController < ApplicationController
   def index
-    @locations = nil
+    @locations = Location.all
+    @user_location = current_user.location
+    
+    if @user_location # check to see if object exists
+      if(params.has_key?(:lat) && params.has_key?(:long) && params.has_key?(:calculated_address)) #If it's a new location
+        @latitude = params[:lat]
+        @longitude = params[:long]
+        @address = params[:calculated_address]
+        @user_location.latitude = @latitude
+        @user_location.longitude = @longitude
+        @user_location.address = @address
+        
+        if @user_location.save
+          flash.now[:success] = "Location updated"
+          render 'index'
+        else # couldn't save location, try again
+          flash.now[:error] = "Location could not get updated. Trying again"
+          redner 'new' 
+        end
+      else #If location was created before, at this point location.latitude should have a value
+        if @user_location.latitude and @user_location.longitude and @user_location.address # Fields are present. Success!
+          flash.now[:notice] = "INDEX: lat = #{@user_location.latitude} long = #{ @user_location.longitude} estimated address = #{@user_location.address}"
+          #can show everything here
+
+
+
+
+          
+        else  #object is here but fields are empty. So Try new again
+          flash.now[:error] = "A location object exists. But it's empty"
+          render 'new'
+        end
+      end
+    else # Object doesn't exists, so make one
+      flash.now[:error] = "A location object does not exist yet"
+      render 'new'
+    end
   end
+
   def show
     @location = nil
+    if @location  # check to see if object exists
+        if @location.latitude and @location.longitude and @location.address # Fields are present. we can show it!
+          flash.now[:notice] = "SHOW: lat = #{@location.latitude} long = #{ @location.longitude} estimated address = #{@location.address}"
+          # Can implemenet show success show here
+          # ...
+          # ...
+          # ...
+          # ...
+
+        else  # Object exists but feilds are empty. So try again and create a new one
+          flash.now[:error] = "A location object exists. But it's empty"
+          render 'new'
+        end
+    else # Object doesn't exists, so make one
+      flash.now[:error] = "A location object does not exist yet"
+      render 'new'
+    end
   end 
+
   def new
-    @location = nil
+    @location = Location.new
+    current_user.location = @location
+    if @location.save
+      flash.now[:notice] = "New Location object created for #{current_user.name} with id #{@location.id}"
+      render 'index'
+    else
+      flash.now[:error] = "Could not create a location object"
+    end
   end
-  def edit
-    @location = nil
+
+  def edit #edit will not get used
+    @location = nil 
   end
-  def create
-    @location = nil
-  end
-  def destoy
-  end
+
   private
   def location_params_validator
     params.require(:location).permit(:address, :latitude, :longitude)

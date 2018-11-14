@@ -20,9 +20,15 @@
 					<li>
 						<%= link_to "Groups", groups_path, class: "nav-link" %>
 					</li>
-					<li>
-						<%= link_to "Nearby", location_path(current_user.id), class: "nav-link" %>
-					</li>
+					<% if current_user.location%>
+						<li>
+							<%= link_to "Nearby", locations_path, class: "nav-link" %>
+						</li>
+					<% else %>
+						<li>
+							<%= link_to "Update My Location", new_location_path, class: "nav-link" %>
+						</li>
+					<% end %>
 					<li>
 						<%= link_to "Settings", user_settings_path(current_user), class: "nav-link" %>
 					</li>
