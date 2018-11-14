@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_13_211902) do
+ActiveRecord::Schema.define(version: 2018_11_13_211356) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -106,16 +106,6 @@ ActiveRecord::Schema.define(version: 2018_11_13_211902) do
     t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
-  create_table "messages", force: :cascade do |t|
-    t.text "body"
-    t.integer "user_id"
-    t.integer "chat_room_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
-  end
-
   create_table "notifications", force: :cascade do |t|
     t.integer "recipient_id"
     t.integer "actor_id"
@@ -136,15 +126,6 @@ ActiveRecord::Schema.define(version: 2018_11_13_211902) do
     t.datetime "updated_at", null: false
     t.float "rating"
     t.index ["user_id"], name: "index_people_on_user_id"
-  end
-
-  create_table "subjects", force: :cascade do |t|
-    t.integer "ref_id"
-    t.string "location"
-    t.text "descrip"
-    t.float "rating"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
