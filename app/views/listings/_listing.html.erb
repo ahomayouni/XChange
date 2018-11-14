@@ -7,7 +7,7 @@
         <h5 class="card-title">
           <%= listing.title %>
         </h5>
-      <p class="card-text">Description: <%= listing.description %></p>
+      <p class="card-text listing-card-text">Description: <%= listing.description %></p>
       <!-- Added this div to make buttons appear in the same row-->
       <div class="d-flex flex-row">
         <%= button_to "View Listing", listing_path(listing), class:"card-link btn btn-primary mr-3", :method => :get %>
