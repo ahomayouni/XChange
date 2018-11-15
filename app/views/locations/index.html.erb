@@ -30,7 +30,8 @@
 
 				// address found		
 				var calculated_address = results[0].formatted_address;  
-				window.location.replace("/locations?lat=" + lat + "&long=" + long + "&calculated_address=" + calculated_address);
+				window.location.replace("/locations?lat=" + lat + "&long=" + long + "&calculated_address=" 
+					+ calculated_address + "&max_distance=" + document.getElementById("max-distance").innerHTML);
 			}
 		});	
 		},
@@ -64,10 +65,17 @@
 						<h4>
 							Latitude: <div id='user-lat'><%if @location %><%= @location.latitude%><%else%><%="N/A"%><%end%></div>
 							Longitude: <div id='user-long'><%if @location %><%= @location.longitude%><%else%><%="N/A"%><%end%></div>
-							Estimated address:	<div id='user-address'><%if @location %><%= @location.address%><%else%><%="N/A"%><%end%></div><br>
+							Estimated address:	<div id='user-address'><%if @location %><%= @location.address%><%else%><%="N/A"%><%end%></div>
 						</h4>
 					</div>
-				</div>
+				</div>	
+				
+
+				<h5>Show users within range (km):  <div id = "max-distance" style="display: inline"></div> <h5>
+				<%= form_with url: locations_path, local: true, method: :get, html: {class: "form-inline"} do |form| %>
+	                <%= form.range_field :max_distance, :value=> @max_distance,:min=>0, :max=>50, class: "slide form-control", :id=>"user-range" %>
+	                <%= form.button "Find", class: "btn btn-outline-success" %>
+                <% end %>
 
 				<div id="map">
 				</div>
@@ -136,7 +144,13 @@
 								[u.location.latitude.to_f, u.location.longitude.to_f])%>
 
 								<%distance_km = distance_miles * 1.609344 %>
-								<% neaby_users.store(u, distance_km) %>
+								<%if @max_distance %>
+									<% if distance_km < @max_distance.to_f %>
+										<% neaby_users.store(u, distance_km) %>
+									<% end %>
+								<% else %>
+									<% neaby_users.store(u, distance_km) %>
+								<% end %>
 							<% end%>	
 						<% end%>
 					<% end%>
@@ -153,8 +167,17 @@
 								</li>
 							<% end %>
 						</ul>
-
+						
 						<script>
+							var slider = document.getElementById("user-range");
+							var output = document.getElementById("max-distance");
+							output.innerHTML = slider.value; // Display the default slider value
+
+							// Update the current slider value (each time you drag the slider handle)
+							slider.oninput = function() {
+							    output.innerHTML = this.value;
+							}
+
 							var lats = document.getElementsByName("hidden-lat");
 							var longs= document.getElementsByName("hidden-long");
 							var names= document.getElementsByName("hidden-name");
@@ -162,7 +185,7 @@
 							var marker = []; 
 							marker.length = names.length;
 							for(i = 0; i < names.length; i++)
-							{
+							{	
 								marker[i] = map.addMarker({
 									lat: lats[i].innerHTML,
 									lng: longs[i].innerHTML,
