@@ -1,6 +1,6 @@
 class BorrowRequestsController < ApplicationController
   def send_request
-      @new_request = BorrowRequest.new(listing_id: params[:listing_id], user_id: current_user.id)
+      @new_request = BorrowRequest.new(listing_id: params[:listing_id], user_id: current_user.id, status: "requested")
       if @new_request.save
         flash[:notice] = "Borrow Request Successfull"
         redirect_to listings_path
