@@ -83,12 +83,12 @@
 .page-content {
   text-align: center;
   .home-title {
-    font-size: 3.5vw !important;
+    // font-size: 3.5vw !important;
     letter-spacing: 1.3vw !important;
     font-weight: 1000 !important;
   }
   .main-text {
-    font-size: 1.7vw !important;
+    // font-size: 1.7vw !important;
   }
   hr {
     border: 1.5px solid rgb(104,214,205);
@@ -106,12 +106,20 @@
     width: 70%;
   }
   .divider {
-    height: 30vh;
+    // height: 30vh;
     width: 30;
     background-position: center;
     background-image: asset_url('carousel-pattern.jpg');
     background-attachment: fixed !important;
   }
+
+  .get-involved {
+    color: white;
+    img {
+      width: 70%;
+    }
+  }
+
   .about-icons {
     img {
       width: 100%;

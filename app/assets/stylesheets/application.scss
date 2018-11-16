@@ -20,10 +20,28 @@
     font-family: 'Catamaran', sans-serif;
 }
 
+// v small devices
+@media (max-width: 543px) {  
+  * {
+    font-size:0.9rem; /*1rem = 16px*/
+  } 
+  .home-title {
+    font-size: 1.8rem;
+  }
+  .card-img-top {
+    width:100%; 
+    height: 40vw;
+    object-fit: contain;
+  }
+}
+
 @media (min-width: 544px) {  
   * {
     font-size:1rem; /*1rem = 16px*/
   } 
+  .home-title {
+    font-size: 2rem;
+  }
   .card-img-top {
     width:100%; 
     height: 40vw;
@@ -36,6 +54,9 @@
   * {
     font-size:1.1rem;
   } 
+  .home-title {
+    font-size: 2.2rem;
+  }
   .card-img-top {
       width:100%; 
       height: 35vw;
@@ -46,16 +67,22 @@
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) { 
   *{font-size:1.1rem;} /*1rem = 16px*/
-    .card-img-top {
-      width:100%; 
-      height: 25vw;
-      object-fit: contain;
-    }
+  .home-title {
+    font-size: 2.2rem;
+  }
+  .card-img-top {
+    width:100%; 
+    height: 25vw;
+    object-fit: contain;
+  }
 }
  
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {  
- *{font-size:1.2rem;} /*1rem = 16px*/    
+  *{font-size:1.2rem;} /*1rem = 16px*/ 
+  .home-title {
+    font-size: 2.4rem;
+  }   
   .card-img-top {
     width:100%; 
     height: 25vw;
