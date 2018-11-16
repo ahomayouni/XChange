@@ -74,7 +74,7 @@ class ListingsController < ApplicationController
       end
   end
 
-  
+
 
  private
 

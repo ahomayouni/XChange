@@ -36,4 +36,28 @@
             </div>
         <%end%>
     </div>
+    <!-- <div class="row">
+          <div class="col-md-6 mx-4">
+              <div class="d-flex flex-row mt-3 py-3">
+                  <h2> <%=@user.name%>'s Borrow Requests </h2>
+                  <% if @user.borrow_requests.count > 0%>
+                  <%= @user.borrow_requests.count %>
+                  <%end%>
+              </div>
+          </div>
+      </div>
+    <div class="row">
+        <% if @user.borrow_requests.count > 0%>
+        <%= @user.borrow_requests.count %>
+        <% else %>
+            <div class="col-md-12">
+                <div class="card d-flex p-5 mb-5">
+                    <div class="card-text p-5 d-flex justify-content-center align-items-center text-secondary">
+                      You don't have any borrow requests right now
+                    </div>
+                </div>
+            </div>
+        <%end%>
+    </div> -->
+
 </div>

@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   get 'privacy_policy/index'
   get 'terms_of_service/index'
   get 'about/index'
-  get '/borrow_requests/:listing_id', to: 'borrow_requests#send_request', as: 'borrow_requests'
+
+  #get '/borrow_reauests'
   get 'home/index'
 
   # Session routes
@@ -50,7 +51,7 @@ Rails.application.routes.draw do
 
   # Listing routes
   resources :listings
-  
+
   # Groups routes
   resources :groups
   get :join, controller: :groups
@@ -68,10 +69,18 @@ Rails.application.routes.draw do
   get '/search_groups', to: 'groups#search_groups'
   get '/search_add_to_groups', to: 'groups#search_add_to_groups'
   get '/add_to_group/:user_id', to: 'groups#add_to_group', as: 'add_to_group'
-  
+
   # Location routes
   resources :locations
+
+
+  # resources :borrow_requests
+  # get :requested_listings, controller: :borrow_requests
+  # get :need_approval, controller: :borrow_requests
+
+  get '/borrow_requests/:listing_id', to: 'borrow_requests#send_request', as: 'create_borrow_request'
   
+
   resources :notifications do
     collection do
       post :mark_as_read

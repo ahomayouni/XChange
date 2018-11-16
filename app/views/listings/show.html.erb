@@ -24,7 +24,7 @@
             <div class="card-body pb-3">
               <h3 class="card-title"><%= @listing.title %></h3>
               <p class="card-text"><%= @listing.description %></p>
-              <p class="card-text"> Average Rating:</p> 
+              <p class="card-text"> Average Rating:</p>
               <p class="card-text">
                 <!-- I know this isn't the cleanest looking erb code.. but it works -->
                 <% if get_rounded_rating == 0 %>
@@ -36,7 +36,7 @@
                     </i>
                   <%end%>
                 <% end %>
-              </p>               
+              </p>
             </div>
         </div>
         <!--  For adding a review -->
@@ -47,12 +47,12 @@
                 <%= f.text_area :body, placeholder: "Add a comment", class:'form-group' %><br/>
                 <%= f.number_field :rating, placeholder: "Add rating" %><br/>
                 <%= f.submit "Add Comment", class:'btn btn-outline-info mt-2' %>
-              <% end %> 
+              <% end %>
           </div>
         </div>
         <!-- Showing existing comments on the post  -->
         <%= render(partial: 'comments/comment', collection: @listing.comments) %>
-      </div> 
+      </div>
      </div>
 
    </div>
