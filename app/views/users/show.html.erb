@@ -10,7 +10,7 @@
                     <% if @user.listings.count > 0%>
                         <p> Listings by Category: </p>
                         <%= pie_chart @user.listings.group(:category).count, colors: ['#ebceff', '#ffb2d7'],class:'w-25'%>
-                    <% end %>
+                    <% end  %>
                 </div>
             </div>
        </div>

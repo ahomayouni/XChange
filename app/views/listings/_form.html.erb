@@ -37,6 +37,7 @@
   <p>
     <%= f.label :image %>
     <%= f.file_field :images, multiple: true , class: 'form-control'%>
+    <input type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput">
   </p>
   <p>
     <%= f.submit 'Create Listing', :class => "btn btn-primary"%>

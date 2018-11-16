@@ -41,6 +41,14 @@ ActiveRecord::Schema.define(version: 2018_11_15_041024) do
     t.integer "status"
   end
 
+  create_table "chat_rooms", force: :cascade do |t|
+    t.string "title"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_chat_rooms_on_user_id"
+  end
+
   create_table "comments", force: :cascade do |t|
     t.text "body"
     t.integer "rating"
@@ -97,6 +105,16 @@ ActiveRecord::Schema.define(version: 2018_11_15_041024) do
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_memberships_on_group_id"
     t.index ["user_id"], name: "index_memberships_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "body"
+    t.integer "user_id"
+    t.integer "chat_room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "notifications", force: :cascade do |t|
