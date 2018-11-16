@@ -6,8 +6,8 @@ class Listing < ActiveRecord::Base
   has_many :comments, as: :reply
   has_many_attached :images
   has_many :borrow_requests
-  validates :title, presence: true, length: {maximum: 20}
-  validates :description, presence: true, length: {minimum: 5, maximum: 50}
+  validates :title, presence: true, length: {maximum: 50}
+  validates :description, presence: true, length: {minimum: 5, maximum: 500}
   validates :category, presence: true
   validates :price_per_day, presence: true, numericality: {greater_than: 0, only_integer: true}
   validate :validateTimings

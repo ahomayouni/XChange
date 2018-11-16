@@ -197,6 +197,10 @@ toronto_addresses =
 "57 Rhodes Ave Toronto ON",
 "48 Caroline Ave Toronto ON"];
 
+listing_categories = ["Film & Photography","Audio Visual Equipment","Projectors & Screens","Drones",
+  "DJ Equipment","Transport","Storage","Electronics","Party & Events","Sports","Musical Instruments",
+  "Home / Office / Garden","Kids & Baby","Holiday & Travel","Clothing"]
+
 # Create 100 Fake users. Also Template in how we can prepopulate the database.
 User.create!(name:  "admin",
              email: "admin@admin.com",
@@ -211,7 +215,7 @@ User.create!(name:  "admin",
               description: 'I am a bot created by the master Peter Tanugraha'
              ))
 
-99.times do |n|
+19.times do |n|
   name  = Faker::FunnyName.name
   email = "example-#{n+1}@beepbeep.org"
   password = "worstpassword"
@@ -243,6 +247,41 @@ User.all.each_with_index do |u,index|
   address:toronto_addresses[index],
   latitude:lat,
   longitude:long)
+
+  if u.save
+    puts "Updated location info for user with id: #{u.id}"
+  else
+     "Could not update location info of user_id: #{u.id}"
+  end
+
+  5.times do |i|
+
+    listing = Listing.new
+    listing.title = "#{u.name}'s listing"
+    listing.description = Faker::Friends.quote
+    listing.category = listing_categories.sample
+    listing.start_lending = Faker::Date.forward(1)
+    listing.end_lending = Faker::Date.forward(365)
+    listing.price_per_day = 2
+    listing.user_id = u.id
+
+    # 1 Image for all users for now
+    listing.images.attach(
+    io: File.open(File.join(Rails.root, "/app/assets/images/books.jpg")),
+    filename: 'books.jpg',
+    content_type: 'image/jpeg',
+    )
+
+    if listing.save
+      puts "Successfully created Listing id: #{listing.id} with user_id: #{listing.user_id}"
+    else
+      listing.errors.full_messages.each do |message|
+        puts message
+      end
+    end
+  end
+  
+
 end
 
 # seeds to add commetns to all people; This also changes the ratings of the respective epople
