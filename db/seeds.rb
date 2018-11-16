@@ -254,32 +254,33 @@ User.all.each_with_index do |u,index|
      "Could not update location info of user_id: #{u.id}"
   end
 
-  5.times do |i|
-
-    listing = Listing.new
-    listing.title = "#{u.name}'s listing"
-    listing.description = Faker::Friends.quote
-    listing.category = listing_categories.sample
-    listing.start_lending = Faker::Date.forward(1)
-    listing.end_lending = Faker::Date.forward(365)
-    listing.price_per_day = 2
-    listing.user_id = u.id
+#  5.times do |i|
+#
+#    listing = Listing.new
+#    listing.title = "#{u.name}'s listing"
+#    listing.description = Faker::Friends.quote
+#    listing.category = listing_categories.sample
+#    listing.start_lending = Faker::Date.forward(1)
+#    listing.end_lending = Faker::Date.forward(365)
+#    listing.price_per_day = 2
+#    listing.user_id = u.id
 
     # 1 Image for all users for now
-    listing.images.attach(
-    io: File.open(File.join(Rails.root, "/app/assets/images/books.jpg")),
-    filename: 'books.jpg',
-    content_type: 'image/jpeg',
-    )
+#    listing.images.attach(
+#    io: File.open(File.join(Rails.root, "/app/assets/images/books.jpg")),
+#    filename: 'books.jpg',
+#    content_type: 'image/jpeg',
+#    )
 
-    if listing.save
-      puts "Successfully created Listing id: #{listing.id} with user_id: #{listing.user_id}"
-    else
-      listing.errors.full_messages.each do |message|
-        puts message
-      end
-    end
-  end
+#    if listing.save
+#      puts "Successfully created Listing id: #{listing.id} with user_id: #{listing.user_id}"
+#    else
+#      listing.errors.full_messages.each do |message|
+#        puts message
+#      end
+#    end
+
+ # end
   
 
 end
