@@ -23,6 +23,13 @@ To get this project running, follow these steps:
 * Anyone can delete anyone else's listing (Fixed by Peter)
 * Error for displaying rating when there is no rating (nil) (Fixed by Maru)
 
+## Heroku Database (files disappearing):
+* The Heroku filesystem is ephemeral - that means that any changes to the filesystem whilst the dyno is running only last until that dyno is shut down or restarted.
+* Dynos will restart every day in a process known as "Cycling".
+* Need someone to incorporate AWS S3 - otherwise static files such as images would be disappeared.
+* Reference: https://help.heroku.com/K1PPS2WM/why-are-my-file-uploads-missing-deleted
+* How to: https://devcenter.heroku.com/articles/paperclip-s3
+
 ## IceBox (Required within the Bolen Docs):
 * Simple Chat/Messaging Application
 * Push Notification (Say when I follow a User, I would be able to get notifications)
