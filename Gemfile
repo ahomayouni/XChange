@@ -88,4 +88,4 @@ gem "chartkick"
 
 # Required gems for S3 bucket implementation
 gem 'paperclip'
-gem "aws-sdk"
+gem "aws-sdk" 
