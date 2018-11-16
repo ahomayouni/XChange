@@ -38,8 +38,17 @@
     </div>
 
     <div class="row">
+          <div class="col-md-6 mx-4">
+              <div class="d-flex flex-row mt-3 py-3">
+                  <h2> My Requests </h2>
+              </div>
+          </div>
+      </div>
+    <div class="row">
         <% if @user.borrow_requests.count > 0%>
-        <%= @user.borrow_requests.count %>
+        <% @user.borrow_requests.each do |borrow_request|%>
+        <%= render Listing.find_by(id: borrow_request.listing_id) %>
+        <% end %>
         <% else %>
             <div class="col-md-12">
                 <div class="card d-flex p-5 mb-5">
