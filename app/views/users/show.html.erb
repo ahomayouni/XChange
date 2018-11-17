@@ -46,9 +46,19 @@
       </div>
     <div class="row">
         <% if @user.borrow_requests.count > 0%>
-        <% @user.borrow_requests.each do |borrow_request|%>
-        <%= render Listing.find_by(id: borrow_request.listing_id) %>
-        <% end %>
+            <% @user.borrow_requests.each do |borrow_request|%>
+                <% listing = Listing.find_by(id: borrow_request.listing_id) %>
+                <div class="col-md-6">
+                    <div class="card mx-2 mb-2">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= listing.title %>
+                            </h5> 
+                            <h6> Owned by: <%= listing.user.name %> </h6>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
         <% else %>
             <div class="col-md-12">
                 <div class="card d-flex p-5 mb-5">
