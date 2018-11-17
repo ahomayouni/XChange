@@ -76,8 +76,8 @@
               <% listing.borrow_requests.each do |borrow_request| %>
                 <h4> Borrower id: </h4>
                 <%= User.find_by(id: borrow_request.user_id).name %>
-                <h4> Listing name </h4>
-                <%= listing.title %> 
+                <h4> Listing name: </h4>
+                <%= listing.title %>
               <% end %>
              <% end %>
         <% else %>
