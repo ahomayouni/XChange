@@ -6,8 +6,9 @@
                 <%= listing.title %>
             </h5> 
             <h6> Owned by: <%= listing.user.name %> </h6>
+            <h6 style="color:#ffc107;"> Requested on <%= borrow_request.created_at.strftime("%d/%m/%Y") %> </h6>
                 <%= button_to "View Listing", listing_path(listing), class:"card-link btn btn-primary float-right", :method => :get %>
-            <span class="badge badge-pill status-pill float-right mt-2 mr-2"><%= borrow_request.status %> </span>      
+            <span class="badge badge-pill status-pill float-right mt-2 mr-2"><%= borrow_request.status.camelize %> </span>      
             </div>
         </div>
     </div>
