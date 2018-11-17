@@ -1,0 +1,13 @@
+ <% listing = Listing.find_by(id: borrow_request.listing_id) %>
+    <div class="col-md-6">
+        <div class="card mx-2 mb-2">
+        <div class="card-body">
+            <h5 class="card-title">
+                <%= listing.title %>
+            </h5> 
+            <h6> Owned by: <%= listing.user.name %> </h6>
+                <%= button_to "View Listing", listing_path(listing), class:"card-link btn btn-primary float-right", :method => :get %>
+            <span class="badge badge-pill status-pill float-right mt-2 mr-2"><%= borrow_request.status %> </span>      
+            </div>
+        </div>
+    </div>
