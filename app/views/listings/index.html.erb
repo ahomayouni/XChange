@@ -37,8 +37,18 @@
 	</nav>
   
     <div class="row mt-4">
-        <% @listings.each do |listing| %>
-            <%= render listing %>
-        <%end %>
+        <% if @listings.count > 0%>
+            <% @listings.each do |listing| %>
+                <%= render listing %>
+            <%end %>
+        <%else%>
+            <div class="col-md-12">
+                <div class="card d-flex p-5 mb-5">
+                    <div class="card-text p-5 d-flex justify-content-center align-items-center text-secondary">
+                      No listings found 
+                    </div>
+                </div>
+            </div>
+        <%end%>
     </div>
 </div >
