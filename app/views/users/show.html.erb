@@ -58,4 +58,39 @@
         <%end%>
     </div>
 
+
+    <div class="row">
+          <div class="col-md-6 mx-4">
+              <div class="d-flex flex-row mt-3 py-3">
+                  <h2> Awaiting Approvals </h2>
+              </div>
+          </div>
+    </div>
+    <div class="row">
+        <% @count = 0 %>
+        <% @user.listings.each do |u| %>
+        <% @count += u.borrow_requests.count %>
+        <% end %>
+        <% if @count > 0%>
+             <% @user.listings.each do |listing| %>
+              <% listing.borrow_requests.each do |borrow_request| %>
+                <h4> Borrower id: </h4>
+                <%= User.find_by(id: borrow_request.user_id).name %>
+                <h4> Listing name </h4>
+                <%= listing.title %> 
+              <% end %>
+             <% end %>
+        <% else %>
+            <div class="col-md-12">
+                <div class="card d-flex p-5 mb-5">
+                    <div class="card-text p-5 d-flex justify-content-center align-items-center text-secondary">
+                      You don't have any awating approvals
+                    </div>
+                </div>
+            </div>
+        <%end%>
+    </div>
+
+
+
 </div>
