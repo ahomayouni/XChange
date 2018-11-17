@@ -27,7 +27,7 @@
 					</li>
 					<li>
 						<%= form_with url: search_listings_path, local: true, method: :get, html: {class: "form-inline"} do |form| %>
-                            <%= form.text_field :listings_q, placeholder: "Search for a listing..", data: { behaviour: "autocomplete_listings" }, class: "form-control" %>
+                            <%= form.text_field :listings_q, placeholder: "Search for a listing..", data: { behaviour: "autocomplete_listings" }, class: "form-control w-100" %>
                             <%= form.button "Search", class: "btn btn-outline-success" %>
                         <% end %>
 					</li>
@@ -35,6 +35,7 @@
 			</div>
 		</div>
 	</nav>
+  
     <div class="row mt-4">
         <% @listings.each do |listing| %>
             <%= render listing %>
