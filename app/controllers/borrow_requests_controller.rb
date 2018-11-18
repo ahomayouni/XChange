@@ -12,17 +12,22 @@ class BorrowRequestsController < ApplicationController
           flash[:notice] = "Borrow Request Unsuccessfull"
       redirect_to listings_path
         end
-      end 
+      end
     end
 
-  # listings that the user has requested to borrow
-  # def requested_listings
-  #   @listings = Listing.joins(:borrow_requests).where(borrow_requests: {status: "requested", user_id: current_user.id})
-  # end
+    def approve
+      puts params[:id]
+      redirect_to listings_path
+    end
 
-  # listings that require the user's approval
-  #def need_approval
-  #@listings = BorrowRequest.where(status: "requetsed")
-  #@listings = Listing.joins(:borrow_requests).where(borrow_requests: {status: "requested"})
-  #end
+    def decline
+      redirect_to listing_path
+    end
+
+    def borrowed
+    end
+
+    def returned
+    end
+
 end
