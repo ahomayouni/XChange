@@ -38,9 +38,7 @@
   
     <div class="row mt-4">
         <% if @listings.count > 0%>
-            <% @listings.each do |listing| %>
-                <%= render listing %>
-            <%end %>
+            <%= render @listings %>
         <%else%>
             <div class="col-md-12">
                 <div class="card d-flex p-5 mb-5">
