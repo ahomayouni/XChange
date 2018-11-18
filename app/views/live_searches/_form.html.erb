@@ -1,0 +1,47 @@
+<%= form_with(model: live_search, local: true) do |form| %>
+  <% if live_search.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(live_search.errors.count, "error") %> prohibited this live_search from being saved:</h2>
+
+      <ul>
+      <% live_search.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.number_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category %>
+    <%= form.text_area :category %>
+  </div>
+
+  <div class="field">
+    <%= form.label :from_when %>
+    <%= form.datetime_select :from_when %>
+  </div>
+
+  <div class="field">
+    <%= form.label :to_when %>
+    <%= form.datetime_select :to_when %>
+  </div>
+
+  <div class="field">
+    <%= form.label :where %>
+    <%= form.text_field :where %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

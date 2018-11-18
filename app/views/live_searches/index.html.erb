@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Live Searches</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Title</th>
+      <th>Category</th>
+      <th>From when</th>
+      <th>To when</th>
+      <th>Where</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @live_searches.each do |live_search| %>
+      <tr>
+        <td><%= live_search.user_id %></td>
+        <td><%= live_search.title %></td>
+        <td><%= live_search.category %></td>
+        <td><%= live_search.from_when %></td>
+        <td><%= live_search.to_when %></td>
+        <td><%= live_search.where %></td>
+        <td><%= link_to 'Show', live_search %></td>
+        <td><%= link_to 'Edit', edit_live_search_path(live_search) %></td>
+        <td><%= link_to 'Destroy', live_search, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Live Search', new_live_search_path %>

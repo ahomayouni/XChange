@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @live_search.user_id %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @live_search.title %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @live_search.category %>
+</p>
+
+<p>
+  <strong>From when:</strong>
+  <%= @live_search.from_when %>
+</p>
+
+<p>
+  <strong>To when:</strong>
+  <%= @live_search.to_when %>
+</p>
+
+<p>
+  <strong>Where:</strong>
+  <%= @live_search.where %>
+</p>
+
+<%= link_to 'Edit', edit_live_search_path(@live_search) %> |
+<%= link_to 'Back', live_searches_path %>
