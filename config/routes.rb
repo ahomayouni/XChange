@@ -79,7 +79,8 @@ Rails.application.routes.draw do
   # get :need_approval, controller: :borrow_requests
 
   get '/borrow_requests/:listing_id', to: 'borrow_requests#send_request', as: 'create_borrow_request'
-  
+  get '/borrow_requests/:id', to: 'borrow_requests#approve', as: 'borrow_approve'
+  get '/borrow_requests/:id', to: 'borrow_requests#decline', as: 'borrow_decline'
 
   resources :notifications do
     collection do
