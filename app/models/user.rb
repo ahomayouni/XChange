@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
 	has_many :notifications, foreign_key: :recipient_id, :dependent => :destroy
 
-	has_many :borrow_requests
+	has_many :borrow_requests, :dependent => :destroy
 
 	# creating an association with groups
   	has_many :memberships
@@ -22,15 +22,15 @@ class User < ApplicationRecord
 	# creating an association with listings
 	has_many :listings , :dependent => :destroy
 	has_one :person , :dependent => :destroy
-  
+
 	# creating a one-to-one association with location
 	 has_one :location , :dependent => :destroy
-	 
+
 	# Create associations to link with private chatroom messages
 	has_many :messages
 	#this allows each user access to chatroom through their messages
-	has_many :chatroom, through: :messages 
-  
+	has_many :chatroom, through: :messages
+
 	# Validate email field with regex
 	validates :email, presence:true , length:{maximum:255} , format:{with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
 
