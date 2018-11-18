@@ -4,9 +4,9 @@ class Notifications
     if @notifications.length > 0
       @handleSuccess @notifications.data("notifications")
       $("[data-behavior='notifications-link']").on "click", @handleClick
-      # setInterval (=>
-      #   @getNewNotifications()
-      # ), 1000
+      setInterval (=>
+        @getNewNotifications()
+      ), 1000
       
 
   getNewNotifications: ->
