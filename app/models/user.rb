@@ -24,7 +24,12 @@ class User < ApplicationRecord
 	has_one :person , :dependent => :destroy
   
 	# creating a one-to-one association with location
-  has_one :location , :dependent => :destroy
+	 has_one :location , :dependent => :destroy
+	 
+	# Create associations to link with private chatroom messages
+	has_many :messages
+	#this allows each user access to chatroom through their messages
+	has_many :chatroom, through: :messages 
   
 	# Validate email field with regex
 	validates :email, presence:true , length:{maximum:255} , format:{with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
