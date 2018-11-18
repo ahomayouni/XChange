@@ -44,7 +44,7 @@ before_action :find_reply
 
                     # Don't give myself a notification.
                     @notif_recipient = User.find(@listing.user_id)
-                    if not @notif_recipient.id == current_user.id 
+                    if not @notif_recipient.id == current_user.id
                         @new_notif = Notification.new(recipient: @notif_recipient, actor_id: current_user.id ,action: "new_listing_comment",notifiable: @listing)
                         @new_notif.save
                     end 

@@ -17,7 +17,6 @@ class Notifications
       success: @handleSuccess
     )
 
-
   handleClick: (e) =>
     $.ajax(
       url: "/notifications/mark_as_read"
