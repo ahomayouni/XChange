@@ -41,14 +41,6 @@ ActiveRecord::Schema.define(version: 2018_11_15_041024) do
     t.integer "status"
   end
 
-  create_table "chat_rooms", force: :cascade do |t|
-    t.string "title"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_chat_rooms_on_user_id"
-  end
-
   create_table "comments", force: :cascade do |t|
     t.text "body"
     t.integer "rating"
@@ -107,16 +99,6 @@ ActiveRecord::Schema.define(version: 2018_11_15_041024) do
     t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
-  create_table "messages", force: :cascade do |t|
-    t.text "body"
-    t.integer "user_id"
-    t.integer "chat_room_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
-  end
-
   create_table "notifications", force: :cascade do |t|
     t.integer "recipient_id"
     t.integer "actor_id"
@@ -137,15 +119,6 @@ ActiveRecord::Schema.define(version: 2018_11_15_041024) do
     t.datetime "updated_at", null: false
     t.float "rating"
     t.index ["user_id"], name: "index_people_on_user_id"
-  end
-
-  create_table "subjects", force: :cascade do |t|
-    t.integer "ref_id"
-    t.string "location"
-    t.text "descrip"
-    t.float "rating"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
