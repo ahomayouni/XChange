@@ -15,19 +15,24 @@ class BorrowRequestsController < ApplicationController
       end
     end
 
-    def approve
-      puts params[:id]
-      redirect_to listings_path
-    end
+  def approve
+    @borrow_request = BorrowRequest.find_by(id: params[:id])
+    @borrow_request.status = "approved"
+    @borrow_request.save
+    redirect_to listings_path
+  end
 
-    def decline
-      redirect_to listing_path
-    end
+  def decline
+    @borrow_request = BorrowRequest.find_by(id: params[:id])
+    @borrow_request.status = "declined"
+    @borrow_request.save
+    redirect_to listing_path
+  end
 
-    def borrowed
-    end
+  def borrowed
+  end
 
-    def returned
-    end
+  def returned
+  end
 
 end

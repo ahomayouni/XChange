@@ -74,12 +74,14 @@
         <% if @count > 0%>
              <% @user.listings.each do |listing| %>
               <% listing.borrow_requests.each do |borrow_request| %>
-                <h4> Borrower's Name: </h4>
-                <%= User.find_by(id: borrow_request.user_id).name %>
-                <h4> Listing name: </h4>
-                <%= listing.title %>
-                <%= link_to "Approve", borrow_approve_path(borrow_request.id), class: 'btn btn-outline-info mt-2'%>
-                <%= link_to "Decline", borrow_decline_path(borrow_request.id), class: 'btn btn-outline-info mt-2'%>
+                <% if borrow_request.status == "requested"%>
+                  <h4> Borrower's Name: </h4>
+                  <%= User.find_by(id: borrow_request.user_id).name %>
+                  <h4> Listing name: </h4>
+                  <%= listing.title %>
+                  <%= link_to "Approve", borrow_approve_path(borrow_request.id), method: :put, class: 'btn btn-outline-info mt-2'%>
+                  <%= link_to "Decline", borrow_decline_path(borrow_request.id), method: :put,class: 'btn btn-outline-info mt-2'%>
+                <% end %>
               <% end %>
              <% end %>
         <% else %>
@@ -92,7 +94,5 @@
             </div>
         <%end%>
     </div>
-
-
 
 </div>
