@@ -15,6 +15,17 @@ class BorrowRequestsController < ApplicationController
       end
     end
 
+  def delete_request
+    if BorrowRequest.exists?(id: params[:id])
+      BorrowRequest.find_by(id: params[:id]).destroy
+      flash[:notice] = "Borrow Request Deleted"
+    else
+      flash[:notice] = "Borrow Request could not be deleted"
+    end
+    # TODO: change the redirect to a more approproate listing
+    redirect_to listing_path
+  end
+
   def approve
     @borrow_request = BorrowRequest.find_by(id: params[:id])
     @borrow_request.status = "approved"
