@@ -5,7 +5,7 @@ class Listing < ActiveRecord::Base
   has_many :listing_images, dependent: :destroy
   has_many :comments, as: :reply
   has_many_attached :images
-  has_many :borrow_requests
+  has_many :borrow_requests, dependent: :destroy
   validates :title, presence: true, length: {maximum: 50}
   validates :description, presence: true, length: {minimum: 5, maximum: 500}
   validates :category, presence: true
@@ -38,10 +38,6 @@ private
      end
    end
  end
-  #Not used anymore, using ransack instead in home_controller.rb
-  #def self.search(search)
-  #  where("title LIKE ? OR description LIKE ?", "%#{search}%", "%#{search}%")
-  #end
 end
 
 

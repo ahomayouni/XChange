@@ -23,21 +23,21 @@ class BorrowRequestsController < ApplicationController
       flash[:notice] = "Borrow Request could not be deleted"
     end
     # TODO: change the redirect to a more approproate listing
-    #redirect_to listing_path
+    redirect_to current_user
   end
 
   def approve
     @borrow_request = BorrowRequest.find_by(id: params[:id])
     @borrow_request.status = "approved"
     @borrow_request.save
-    redirect_to listings_path
+    redirect_to current_user
   end
 
   def decline
     @borrow_request = BorrowRequest.find_by(id: params[:id])
     @borrow_request.status = "declined"
     @borrow_request.save
-    redirect_to listing_path
+    redirect_to current_user
   end
 
   def borrowed
