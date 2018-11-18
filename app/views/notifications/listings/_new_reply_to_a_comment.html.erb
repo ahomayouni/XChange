@@ -1,0 +1,2 @@
+<% @actor = User.find(notification.actor_id) %>
+<%= link_to " #{@actor.name} has replied to a comment you posted on a listings post.", listing_path(notification.notifiable) %>

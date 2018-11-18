@@ -13,7 +13,15 @@ before_action :find_reply
         @comment.subject_id = @reply.id # remove subject id and replace with reply_id
         
         if @comment.save
-            #when users reply to a person
+
+            if @comment.reply_type == "Comment"
+                # TODO: Arnav. Need to be able to get Listing ID here.
+                # @listing = Listing.find(@comment.subject_id)
+                # @comment_owner = User.find(@reply.commenter_id)
+                # @new_notif = Notification.new(recipient: @comment_owner, actor_id: current_user.id ,action: "new_reply_to_a_comment",notifiable: @listing)
+                # @new_notif.save
+            end
+
             if @comment.reply_type == "Person"
                 @person = Person.find(@comment.subject_id)
                 if @person.rating != nil
