@@ -14,17 +14,19 @@ class User < ApplicationRecord
 
 	has_many :borrow_requests, :dependent => :destroy
 
+	has_many :borrow_reauests, :dependent => :destroy
+
 	# creating an association with groups
-  	has_many :memberships
-  	has_many :groups, through: :memberships
-  	#has_many :owned_groups, class_name: 'Group', foreign_key: 'user_id'
+	has_many :memberships
+	has_many :groups, through: :memberships
+	#has_many :owned_groups, class_name: 'Group', foreign_key: 'user_id'
 
 	# creating an association with listings
 	has_many :listings , :dependent => :destroy
 	has_one :person , :dependent => :destroy
 
 	# creating a one-to-one association with location
-	 has_one :location , :dependent => :destroy
+ 	has_one :location , :dependent => :destroy
 
 	# Create associations to link with private chatroom messages
 	has_many :messages
