@@ -20,6 +20,17 @@ before_action :find_reply
                 # @comment_owner = User.find(@reply.commenter_id)
                 # @new_notif = Notification.new(recipient: @comment_owner, actor_id: current_user.id ,action: "new_reply_to_a_comment",notifiable: @listing)
                 # @new_notif.save
+                @listing = @comment
+                while @listing.reply_type == "Comment" do
+                    @listing = Comment.find(@listing.reply_id)
+                end
+                if @listing.reply_type == "Listing"
+                    @listing = Listing.find(@listing.reply_id)
+                    @comment.update_attribute(:listing_id, @listing.id)
+                else
+                    @listing = nil
+                end
+
             end
 
             if @comment.reply_type == "Person"
