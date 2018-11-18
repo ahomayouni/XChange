@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :live_searches
   get 'groups/index'
   get 'groups/show'
   post 'groups/show'

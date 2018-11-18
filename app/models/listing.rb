@@ -51,4 +51,3 @@ end
 # t.integer :"price_per_day"
 # t.datetime :"start_lending"
 # t.datetime :"end_lending"
-#

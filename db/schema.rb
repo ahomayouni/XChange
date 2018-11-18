@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_18_081633) do
+ActiveRecord::Schema.define(version: 2018_11_18_231443) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -84,6 +84,17 @@ ActiveRecord::Schema.define(version: 2018_11_18_081633) do
     t.datetime "end_lending"
     t.integer "user_id"
     t.float "rating"
+  end
+
+  create_table "live_searches", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "title"
+    t.text "category"
+    t.datetime "from_when"
+    t.datetime "to_when"
+    t.string "where"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "locations", force: :cascade do |t|
