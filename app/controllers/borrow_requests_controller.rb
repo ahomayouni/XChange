@@ -23,7 +23,7 @@ class BorrowRequestsController < ApplicationController
       flash[:notice] = "Borrow Request could not be deleted"
     end
     # TODO: change the redirect to a more approproate listing
-    redirect_to listing_path
+    #redirect_to listing_path
   end
 
   def approve
