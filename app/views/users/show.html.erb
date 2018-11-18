@@ -37,6 +37,7 @@
         <%end%>
     </div>
 
+    <!-- Start of My Request -->
     <div class="row">
           <div class="col-md-6 mx-4">
               <div class="d-flex flex-row mt-3 py-3">
@@ -57,8 +58,9 @@
             </div>
         <%end%>
     </div>
+   <!-- End of My Request -->
 
-
+   <!-- Start of Awating approvals -->
     <div class="row">
           <div class="col-md-6 mx-4">
               <div class="d-flex flex-row mt-3 py-3">
@@ -94,7 +96,9 @@
             </div>
         <%end%>
     </div>
+    <!-- end of awaiting approvals -->
 
+    <!-- Start of Approved Request -->
     <div class="row">
           <div class="col-md-6 mx-4">
               <div class="d-flex flex-row mt-3 py-3">
@@ -102,5 +106,32 @@
               </div>
           </div>
     </div>
+    <div class="row">
+        <% @count = 0 %>
+        <% @user.listings.each do |u| %>
+        <% @count += u.borrow_requests.where(status: "approved").count %>
+        <% end %>
+        <% if @count > 0%>
+             <% @user.listings.each do |listing| %>
+              <% listing.borrow_requests.each do |borrow_request| %>
+                <% if borrow_request.status == "approved"%>
+                  <h4> Borrower's Name: </h4>
+                  <%= User.find_by(id: borrow_request.user_id).name %>
+                  <h4> Listing name: </h4>
+                  <%= listing.title %>
+                <% end %>
+              <% end %>
+             <% end %>
+        <% else %>
+            <div class="col-md-12">
+                <div class="card d-flex p-5 mb-5">
+                    <div class="card-text p-5 d-flex justify-content-center align-items-center text-secondary">
+                      You don't have approved requests
+                    </div>
+                </div>
+            </div>
+        <%end%>
+    </div>
+    <!-- End of Approved Request -->
 
 </div>
