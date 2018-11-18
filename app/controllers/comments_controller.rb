@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 before_action :find_reply
-#before_action :update_person
+
     def new
         @comment = Comment.new
     end
@@ -57,7 +57,7 @@ before_action :find_reply
         else
         #format.html { redirect_to :back, notice: 'Building Created!' }
         #redirect_to , notice: "Your review wasn't posted!"
-        redirect_back(fallback_location: listings_path, notice: "Your review wasn't posted!, Make sure to write something down")
+        redirect_back(fallback_location: listings_path, notice: @comment.errors.full_messages[0] )
         end
     end
     
