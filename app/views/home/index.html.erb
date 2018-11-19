@@ -143,48 +143,22 @@
       </div>
     </div>
   <% end %>
-  <div class="items py-4">
-    <div class="home-title"> LISTINGS </div>
-    <hr>
-      <div class="px-5">
-        <%# TODO: implement cards later just a white space for now%>
-        <div class="row">
-          <div class="col-md-3">
-            <div class="card mx-2 my-2">
-              <%= image_tag("empty-item-icon.jpg", :class => "card-img-top")%>
-              <div class="card-body">
-                <p class="card-text">Listings</p>
-              </div>
-            </div>
+
+  <%# Only make it show in log in rn %>
+  <% if logged_in? %>
+    <div class="items py-4">
+      <div class="home-title"> LISTINGS </div>
+      <hr>
+        <div class="px-5">
+          <div class="row mt-4">
+            <% @listings.limit(4).each do |listing| %>
+                <%= render listing %>
+            <%end %>
           </div>
-          <div class="col-md-3">
-            <div class="card mx-2 my-2">
-              <%= image_tag("empty-item-icon.jpg", :class => "card-img-top")%>
-   
-              <div class="card-body">
-                <p class="card-text">Sample Listing</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="card mx-2 my-2">
-              <%= image_tag("empty-item-icon.jpg", :class => "card-img-top")%>
-              <div class="card-body">
-                <p class="card-text">Sample Listing</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="card mx-2 my-2">
-              <%= image_tag("empty-item-icon.jpg", :class => "card-img-top")%>
-              <div class="card-body">
-                <p class="card-text">Sample Listing</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> 
-  </div>
+        </div> 
+    </div>
+  <% end %>
+
 </div>
 
 <%# comment out this part instead of deletingjust for the purpose of saving the description %>
