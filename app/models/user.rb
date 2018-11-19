@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
 	has_many :borrow_requests, :dependent => :destroy
 
-	has_many :borrow_reauests, :dependent => :destroy
+	has_many :borrow_requests, :dependent => :destroy
 
 	# creating an association with groups
 	has_many :memberships
