@@ -85,3 +85,5 @@ gem "ransack", "~> 2.0"
 gem 'rails-controller-testing'
 gem 'geocoder'
 gem "chartkick"
+gem "aws-sdk"
+gem 'aws-sdk-s3'
