@@ -4,6 +4,8 @@
 
 .xchange-header {
     width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     background-color: rgb(104,214,205);
     transition: ease-out 0.3s;
     a {
@@ -33,6 +35,10 @@
     .notification-button {
       text-align: center;
       color: white !important;
+    }
+    input {
+      border: 0px;
+      height: 30px !important;
     }
 }
 

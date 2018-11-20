@@ -5,14 +5,6 @@
         </div>
         <div class="col-md-9 py-3 px-3">
             <h1>  <%=@user.name%>'s Dashboard </h1>
-            <div class="row">
-                <div class="col-md-3">
-                    <% if @user.listings.count > 0%>
-                        <p> Listings by Category: </p>
-                        <%= pie_chart @user.listings.group(:category).count, colors: ['#ebceff', '#ffb2d7'],class:'w-25'%>
-                    <% end  %>
-                </div>
-            </div>
        </div>
     </div>
  	<div class="row">
@@ -41,7 +33,7 @@
     <div class="row">
           <div class="col-md-6 mx-4">
               <div class="d-flex flex-row mt-3 py-3">
-                  <h2> My Requests </h2>
+                  <h2> Requests You've Made </h2>
               </div>
           </div>
       </div>
@@ -76,14 +68,20 @@
         <% if @count > 0%>
              <% @user.listings.each do |listing| %>
               <% listing.borrow_requests.each do |borrow_request| %>
-                <% if borrow_request.status == "requested"%>
-                  <h4> Borrower's Name: </h4>
-                  <%= User.find_by(id: borrow_request.user_id).name %>
-                  <h4> Listing name: </h4>
-                  <%= listing.title %>
-                  <%= link_to "Approve", borrow_approve_path(borrow_request.id), method: :put, class: 'btn btn-outline-info mt-2'%>
-                  <%= link_to "Decline", borrow_decline_path(borrow_request.id), method: :put,class: 'btn btn-outline-info mt-2'%>
-                <% end %>
+                    <% if borrow_request.status == "requested"%>
+                       <div class="col-md-6">
+                          <div class="card mx-2 mb-2">
+                            <div class="card-body">
+                                <h4> Borrower's Name: </h4>
+                                <%= User.find_by(id: borrow_request.user_id).name %>
+                                <h4> Listing name:   <%= listing.title %> </h4>
+                                <%= link_to "Approve", borrow_approve_path(borrow_request.id), method: :put, class: 'btn btn-outline-info mt-2'%>
+                                <%= link_to "Decline", borrow_decline_path(borrow_request.id), method: :put,class: 'btn btn-danger mt-2'%>
+                            </div>
+                          </div >
+                       </div>
+      
+                    <% end %>
               <% end %>
              <% end %>
         <% else %>
@@ -115,10 +113,16 @@
              <% @user.listings.each do |listing| %>
               <% listing.borrow_requests.each do |borrow_request| %>
                 <% if borrow_request.status == "approved"%>
-                  <h4> Borrower's Name: </h4>
-                  <%= User.find_by(id: borrow_request.user_id).name %>
-                  <h4> Listing name: </h4>
-                  <%= listing.title %>
+                 <div class="col-md-6">
+                    <div class="card card mx-2 mb-2">
+                        <div class="card-body">
+                            <h4> Borrower's Name: </h4>
+                            <%= User.find_by(id: borrow_request.user_id).name %>
+                            <h4> Listing name: </h4>
+                            <%= listing.title %>
+                        </div>
+                    </div>
+                </div>
                 <% end %>
               <% end %>
              <% end %>
