@@ -44,6 +44,12 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  #Private messaging routes
+  mount ActionCable.server => '/cable'
+
+  resources :chatrooms, param: :slug
+  resources :messages
+
   # Account Activation routes
   resources :account_activations, only: [:edit]
 
