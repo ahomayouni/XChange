@@ -24,7 +24,7 @@
 				<p class="card-text"><%= button_to "Leave Group", {:controller => "group", :action => "leave", :group => @group, :user => current_user }, :method => :post, class:"card-link btn btn-warning" %></p>
 			<% end %>
 			
-			<% if current_user.admin? or current_user.id == group.owner_id %>
+			<% if current_user.admin? or current_user.id == @group.owner_id %>
 				<%= button_to 'Delete Group', @group, method: :delete, data: {confirm: "Are You sure you want to delete #{@group.name}? "},
 				class: "card-link btn btn-danger" %>
 			<% end %>

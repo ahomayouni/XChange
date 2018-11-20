@@ -15,8 +15,6 @@ before_action :find_reply
         if @comment.save
 
             if @comment.reply_type == "Comment"
-                # TODO: Arnav. Need to be able to get Listing ID here.
-
                 @listing = @comment
                 while @listing.reply_type == "Comment" do
                     @listing = Comment.find(@listing.reply_id)
@@ -64,9 +62,8 @@ before_action :find_reply
                     old_review /= total_reviews
                     @listing.update_attribute(:rating, old_review)
 
-                    # Don't give myself a notification.
                     @notif_recipient = User.find(@listing.user_id)
-                    if not @notif_recipient.id == current_user.id
+                    if not @notif_recipient.id == current_user.id # Don't give myself a notification.
                         @new_notif = Notification.new(recipient: @notif_recipient, actor_id: current_user.id ,action: "new_listing_comment",notifiable: @listing)
                         @new_notif.save
                     end 
