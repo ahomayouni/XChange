@@ -19,7 +19,7 @@
       <div class="col-lg-9 mb-5">
         <div class="card mt-4">
             <% (0...@listing.images.count).each do |image| %>
-              <%= image_tag(@listing.thumbnail(image), :class => "card-img-top")%>
+              <%= image_tag(@listing.thumbnail(image), :class => "card-img-top", :style=>"object-fit:contain;")%>
             <% end %>
             <div class="card-body pb-3">
               <h3 class="card-title"><%= @listing.title %></h3>
