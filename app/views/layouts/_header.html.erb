@@ -1,7 +1,7 @@
 <% if logged_in? %>
-	<nav class="xchange-header navbar navbar-expand-md py-3">
+	<nav class="xchange-header navbar navbar-expand-md">
 		<div class="container">
-		<%= link_to "XChange", user_path(current_user), class: "navbar-brand font-weight-bold logo" %>
+		<%= link_to "XChange", home_index_path, class: "navbar-brand font-weight-bold logo" %>
 		<%# mobile display toggle  %>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu-nav" aria-controls="menu-nav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"><i class="material-icons">menu</i></span>
@@ -9,41 +9,52 @@
 			<div class="collapse navbar-collapse" id="menu-nav">
 				<ul class="navbar-nav">
 					<li>
-						<%= link_to "#{current_user.name.camelcase}", user_path(current_user), class: "nav-link py-2 d-md-inline-block" %>
+						<%= link_to "#{current_user.name.camelcase}", user_path(current_user), class: "nav-link" %>
 					</li>
 					<li>
-						<%= link_to "Users", users_path, class: "nav-link" %>
+						<%= link_to groups_path, class: "nav-link" do%>
+							<i class="material-icons">group</i>
+						<%end%>
 					</li>
 					<li>
-						<%= link_to "Listings", listings_path, class: "nav-link" %>
-					</li>
-					<li>
-						<%= link_to "Groups", groups_path, class: "nav-link" %>
+						<%= link_to listings_path, class: "nav-link" do%>
+							<i class="material-icons">view_list</i>
+						<% end %>
 					</li>
 					<% if current_user.location%>
 						<li>
-							<%= link_to "Nearby", locations_path, class: "nav-link" %>
+							<%= link_to locations_path, class: "nav-link" do%>
+								<i class="material-icons">location_on</i>
+							<%end%>
 						</li>
 					<% else %>
 						<li>
 							<%= link_to "Update My Location", new_location_path, class: "nav-link" %>
 						</li>
 					<% end %>
-					<li>
-						<%= link_to "Settings", user_settings_path(current_user), class: "nav-link" %>
-					</li>
 				</ul>
 				<ul class="navbar-nav ml-auto">
-					 <li class="nav-item btn-group notification-button mr-2" data-behavior="notifications" data-notifications='<%= render template: "notifications/index", formats: [:json] %>'>
-			          <a class="dropdown-toggle nav-link" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			            <i class="tiny material-icons"> notification_important </i> <span data-behavior="unread-count"></span>
-			          </a>
-			          <div class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items"> <!-- Dropdown Itemshere will be placed by the notification-items given by the javascript file in the form of html.erb --></div>
-			        </li>
 					<li>
-						<%= link_to "Log Out", logout_path , method: :delete, class: "btn btn-primary" %>
+						<%= form_with url: search_users_path, local: true, method: :get, html: {class: "nav-link form-inline"} do |form| %>
+							<%= form.text_field :users_q, placeholder: "Search for a user..", data: { behaviour: "autocomplete_users" }, class: "nav-link form-control" %>
+						<% end %>	
 					</li>
-					
+					<li class="nav-item btn-group notification-button" data-behavior="notifications" data-notifications='<%= render template: "notifications/index", formats: [:json] %>'>
+							<a class="nav-link" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<i class="tiny material-icons"> notification_important </i>
+							</a>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items"> <!-- Dropdown Itemshere will be placed by the notification-items given by the javascript file in the form of html.erb --></div>
+					</li>
+					<li>
+						<%= link_to user_settings_path(current_user), class: "nav-link" do%>
+							<i class="material-icons">settings</i>
+						<%end%>
+					</li>
+					<li>
+						<%= link_to logout_path , method: :delete, class: "nav-link" do%>
+							<i class="material-icons">exit_to_app</i>
+						<%end%>
+					</li>
 				</ul>
 			</div>
 		</div>
