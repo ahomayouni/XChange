@@ -44,6 +44,9 @@ class GroupsController < ApplicationController
     @membership.group_id = @group.id
     @membership.user_id = @user.id
     if @membership.save
+      @notif_recipient = User.find(@group.owner_id)
+      @new_notif = Notification.new(recipient: @notif_recipient, actor_id: current_user.id ,action: "join_group",notifiable: @group)
+      @new_notif.save
       flash[:success] = "Successfully joined the '#{@group.name}' group"
     else
       flash[:error] = "Couldn't join the '#{@group.name}' group"
