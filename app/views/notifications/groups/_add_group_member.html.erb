@@ -1,0 +1,2 @@
+<% @actor = User.find(notification.actor_id) %>
+<%= link_to " #{@actor.name} has added you to a group: #{notification.notifiable.name}", group_path(notification.notifiable) %>

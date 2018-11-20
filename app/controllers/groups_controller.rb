@@ -126,6 +126,8 @@ class GroupsController < ApplicationController
       @membership.group_id = @target_group.id
       @membership.user_id = @user_id
       if @membership.save
+        @new_notif = Notification.new(recipient: @user, actor_id: current_user.id ,action: "add_group_member",notifiable: @target_group)
+        @new_notif.save 
         flash[:success] = "Successfully added '#{@user.name}' to the '#{@target_group.name}' group"
       else
         flash[:error] = "Couldn't add '#{@user.name}' to the '#{@target_group.name}' group"

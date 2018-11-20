@@ -47,10 +47,6 @@ class BorrowRequestsController < ApplicationController
     @borrow_request.save
     @notif_recipient = User.find(@borrow_request.user_id)
     @current_listing = Listing.find(@borrow_request.listing_id)
-    puts "PRINTING DECLINE           ASDASDASDASDADSA"
-    puts @notif_recipient.id
-    puts @current_listing.id
-
     @new_notif = Notification.new(recipient: @notif_recipient, actor_id: current_user.id ,action: "request_declined",notifiable: @current_listing)
     @new_notif.save
     redirect_to current_user
