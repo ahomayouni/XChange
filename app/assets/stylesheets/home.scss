@@ -36,9 +36,18 @@
       text-align: center;
       color: white !important;
     }
-    input {
+    // search bar
+    .search input {
+      display: block;
+      margin: 0 0 0 auto;
       border: 0px;
+      width: 50%;
       height: 30px !important;
+      -webkit-transition: width 0.4s ease-in-out;
+      transition: width 0.4s ease-in-out;
+    }
+    .search input:focus {
+      width: 100%;
     }
 }
 
@@ -145,5 +154,58 @@
     color: rgb(3,15,80) !important;
 
     }
+  }
+}
+
+.landing-page-search {
+  background-color: rgb(104,214,205);
+  .title h1 {
+    font-size: 10vw;
+    font-family: 'Mabry-Black' ,' Helvetica', 'Arial' !important;
+    letter-spacing: -5;
+    font-weight: bold;
+    color: rgb(3,15,80) !important;
+  }
+  .floating-img {
+    animation: float 4s ease-in-out infinite;
+    img {
+      width: 100%;
+    }
+  }
+  @keyframes float {
+    0% {
+      transform: translatey(0px);
+    }
+    50% {
+      transform: translateX(10px) translateY(-20px);
+    }
+    100% {
+      transform: translatey(0px);
+    }
+  }
+
+  .searchbar {
+    width: 100%;
+    i {
+      color: rgb(3,15,80);
+    }
+    .easy-autocomplete {
+      width: 100% !important;
+    }
+    .input-container {
+      position: relative;
+    }
+    .input-icon {
+      position: absolute;
+      bottom: 12px;
+      left: 15px;   
+    }
+    input {
+      margin: 0;
+      border: 0px;
+      height: 50px;
+      width: 95%; 
+      padding-left: 50px;
+    }    
   }
 }

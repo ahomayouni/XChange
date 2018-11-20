@@ -4,34 +4,48 @@
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
   </ol> %>
+  <% if !logged_in? %>
   <div class="carousel-inner">
       <div class="carousel-item active">
           <div class="carousel-image slide-1"></div>
           <div class="carousel-caption">
              XCHANGE 
-            <%# <h1>Borrow Anything</h1> %>
-            <%# <p>Need something that you'll only use once?
-              We'll connect you with people that you can borrow it from at a lower cost. </p> %>
           </div>
       </div>
-      <%# <div class="carousel-item">
-          <div class="carousel-image slide-2"></div> 
-          <div class="carousel-content">
-            <h1>Lend Anything</h1>
-            <p>Got something lying around that you only used once?
-                Lend it out through XChange to give it a second life. </p>
-          </div>
-      </div> %>
   </div>
-    <%# <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a> %>
 </div>
+<% end %>
+
+<% if logged_in? %>
+  <div class="landing-page-search">
+    <div class="search-wrapper p-5">
+      <div class="row">
+        <div class="col-8"> 
+          <div class="title">
+              <h1>Get</h1>
+              <h1>Started.</h1>
+            </div>
+        </div>
+        <div class="col-4"> 
+          <div class="floating-img">
+            <%= image_tag("balloons-home.png")%>
+          </div>   
+        </div>
+      </div>
+
+      <div class="row pt-3">
+        <div class="col-12 col-md-8">
+          <%= form_with url: search_listings_path, local: true, method: :get, html: {class: "searchbar"} do |form| %>
+              <div class="input-container">
+                <%= form.text_field :listings_q, placeholder: "", data: { behaviour: "autocomplete_listings" }, class: "input-field" %>
+                <i class="material-icons input-icon"> search </i>
+              </div>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
 
 <div class="page-content my-4">
   <%# only show info if not logged in %>

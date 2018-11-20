@@ -34,9 +34,10 @@
 					<% end %>
 				</ul>
 				<ul class="navbar-nav ml-auto">
+				<%# TODO: fix width when search is span %>
 					<li>
-						<%= form_with url: search_users_path, local: true, method: :get, html: {class: "nav-link form-inline"} do |form| %>
-							<%= form.text_field :users_q, placeholder: "Search for a user..", data: { behaviour: "autocomplete_users" }, class: "nav-link form-control" %>
+						<%= form_with url: search_users_path, local: true, method: :get, html: {class: "nav-link form-inline search"} do |form| %>
+							<%= form.text_field :users_q, placeholder: "Search", data: { behaviour: "autocomplete_users" }, class: "nav-link form-control" %>
 						<% end %>	
 					</li>
 					<li class="nav-item btn-group notification-button" data-behavior="notifications" data-notifications='<%= render template: "notifications/index", formats: [:json] %>'>
