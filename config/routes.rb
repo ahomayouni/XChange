@@ -86,8 +86,8 @@ Rails.application.routes.draw do
   # get :need_approval, controller: :borrow_requests
 
   get '/borrow_requests/:listing_id', to: 'borrow_requests#send_request', as: 'create_borrow_request'
-  put 'borrow_requests/:id/', to: 'borrow_requests#approve', as: 'borrow_approve'
-  put '/borrow_requests/:id', to: 'borrow_requests#decline', as: 'borrow_decline'
+  patch 'borrow_request/:id', to: 'borrow_requests#approve', as: 'borrow_approve'
+  get '/borrow_request/:id', to: 'borrow_requests#decline', as: 'borrow_decline'
   delete '/borrow_request/:id', to: 'borrow_requests#delete_request', as: 'borrow_delete'
 
   resources :notifications do
