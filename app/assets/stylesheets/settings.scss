@@ -1,20 +1,23 @@
 // Place all the styles related to the Settings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.setting-container {
+    width: 100%;
+}
 .setting-menu {
     padding: 10%;
     margin: auto;
     height: 70vh;
-    border: 1px solid #17a2b8;
-    a {
+    background-color: #55beb5;
+    // border: 1px solid #17a2b8;
+    a, a:hover {
         text-decoration: none !important;
-        color: black;
+        color: white;
     }
 
 }
 .setting-item {
     padding: 3%;
     margin: auto;
-    height: 70vh;
-    border: 1px solid #17a2b8;
+    // height: 70vh;
 }
