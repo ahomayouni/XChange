@@ -6,13 +6,10 @@ class BorrowRequestsController < ApplicationController
       else
         @new_request = BorrowRequest.new(listing_id: params[:listing_id], user_id: current_user.id, status: "requested")
         if @new_request.save
-
-
           @current_listing = Listing.find(params[:listing_id])
           @notif_recipient = User.find(@current_listing.user_id)
           @new_notif = Notification.new(recipient: @notif_recipient, actor_id: current_user.id ,action: "borrow_request",notifiable: @current_listing)
           @new_notif.save
-
           flash[:notice] = "Borrow Request Successfull"
           redirect_to listings_path
         else
@@ -37,6 +34,11 @@ class BorrowRequestsController < ApplicationController
     @borrow_request = BorrowRequest.find_by(id: params[:id])
     @borrow_request.status = "approved"
     @borrow_request.save
+    @notif_recipient = User.find(@borrow_request.user_id)
+    @current_listing = Listing.find(@borrow_request.listing_id)
+    @new_notif = Notification.new(recipient: @notif_recipient, actor_id: current_user.id ,action: "request_approved",notifiable: @current_listing)
+    @new_notif.save
+
     redirect_to current_user
   end
 
