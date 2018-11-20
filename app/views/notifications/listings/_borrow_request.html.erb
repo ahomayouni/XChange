@@ -1,0 +1,2 @@
+<% @actor = User.find(notification.actor_id) %>
+<%= link_to " #{@actor.name} has requested to borrow your item: #{notification.notifiable.title}", user_path(current_user) %>
