@@ -19,6 +19,7 @@
 //= require_tree .
 //= require Chart.bundle
 //= require chartkick
+//= require_tree ./channels
 
 function show_password(){
 	var x = document.getElementById("input_password");
