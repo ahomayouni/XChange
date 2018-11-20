@@ -1,8 +1,30 @@
 <div class="col-md-3">
   <div class="card mx-2 mb-2">
-      <% (0...listing.images.count).each do |image| %>
-        <%= image_tag(listing.thumbnail(image), :class => "card-img-top")%>
-      <% end %>
+          
+    <div id="carouselExampleFade" data-interval="2000" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <% (0...listing.images.count).each.with_index do |image, index| %>
+            <% if index == 0 %>
+              <div class="carousel-item active">
+                <%= image_tag(listing.thumbnail(image), :class => " d-block w-100 card-img-top")%>
+              </div>
+            <% else %>
+              <div class="carousel-item">
+                <%= image_tag(listing.thumbnail(image), :class => " d-block w-100 card-img-top")%>
+              </div>
+            <%end%>
+          <% end %>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
     <div class="card-body">
         <h5 class="card-title">
           <%= listing.title %>
@@ -19,3 +41,4 @@
     </div>
   </div>
 </div>
+
