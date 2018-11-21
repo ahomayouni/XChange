@@ -19,15 +19,15 @@
 							<h5>Update your profile</h5>
 						</div>
 					</div>
-					<%if @user.person.image.attachment != nil %>
-						<div class="row">
-							<div class="carousel-item active">
-			                	<%= image_tag(@user.thumbnail, :class => " d-block w-100 card-img-top")%>
-			             	</div>
-			             </div>
-		             <%end%>
 					<div class="row">
 						<div class="col-md-6 offset-md-3">
+							<%if @user.person.image.attachment != nil and @user.person.image.content_type.in?(%('image/jpeg image/png')) %>
+								<div class="row">
+									<div class="carousel-item active">
+					                	<%= image_tag(@user.thumbnail, :class => "img-thumbnail")%>
+					             	</div>
+					            </div>
+			             	<%end%>
 							<%= form_for @user, html: {class: "form-control-sm"} do |f| %>
 								<%= render 'shared/error_messages' %> 
 									<%= f.label :image  , "Profile Picture: "%>

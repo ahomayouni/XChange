@@ -42,9 +42,10 @@ class User < ApplicationRecord
 	validates :password, presence: true, length: { minimum: 5 }, :if => :password
 
 	def thumbnail
-		if self.person and self.person.image.attachment
+		if self.person and self.person.image.attachment and self.person.image.content_type.in?(%('image/jpeg image/png'))
 			return self.person.image.variant(resize: '300x300').processed
 		else
+			self.person.image = nil
 			return nil
 		end
 	end
