@@ -8,6 +8,7 @@
     text-overflow: ellipsis;
     background-color: rgb(104,214,205);
     transition: ease-out 0.3s;
+    z-index: 25 !important;
     a, i {
       color: white;
       transition: ease-in-out color .25s;

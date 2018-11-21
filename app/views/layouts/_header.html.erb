@@ -70,10 +70,10 @@
 	<nav class="xchange-header sticky-top navbar navbar-expand-md sticky-top py-3">
 		<div class="container">
 			<%= link_to "XChange", home_index_path, class: "navbar-brand font-weight-bold logo" %>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu-nav" aria-controls="menu-nav" aria-expanded="false" aria-label="Toggle navigation">
+			<button class="navbar-toggler collapse-menu-button" type="button" data-toggle="collapse">
 			<span class="navbar-toggler-icon"><i class="material-icons">menu</i></span>
 		</button>
-			<div class="collapse navbar-collapse" id="menu-nav">
+			<div class="collapse navbar-collapse">
 				<ul class="navbar-nav ml-auto">
 					<li>
 					<%= link_to "Log In", login_path, class: "btn btn-outline-primary mr-2", data: {toggle:"modal", target:"#loginModal"}  %>
@@ -111,7 +111,6 @@ but we don't have that much time, mind you so just pick one or the other.  - >
 
 <%# hidden collapsible side bar nav bar for smaller screen%>
 <%# I couldn't really find a bootstrap that makes this easier so I wrote it myself, a lil messy sorry %>
-<%# TODO: Duplicate this for when user isn't logged in %>
 <% if logged_in? %>
 	<div class="side-menu" style="display:none;">
 		<div class="side-nav-wrapper">
@@ -126,6 +125,18 @@ but we don't have that much time, mind you so just pick one or the other.  - >
 					<%= link_to "Update My Location", new_location_path, class: "pt-2 px-3"%>
 				<% end %>
 				<%= link_to "Log Out", logout_path , method: :delete, class: "btn btn-outline-primary m-3"%>
+			</nav>
+		</div>
+		<div class="side-menu-bg"> </div>
+	</div>
+<%end%>
+
+<% if !logged_in? %>
+	<div class="side-menu" style="display:none;">
+		<div class="side-nav-wrapper">
+			<nav id="sidebar">
+				<%= link_to "Log In", login_path, class: "btn btn-outline-primary pt-2 px-3 m-3", data: {toggle:"modal", target:"#loginModal"}  %>
+				<%= link_to "Sign Up", new_user_path, class: "btn btn-outline-primary pt-2 px-3 m-3"%>
 			</nav>
 		</div>
 		<div class="side-menu-bg"> </div>
