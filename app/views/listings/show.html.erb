@@ -24,7 +24,8 @@
             <div id='user-lat' style="display: none"><%if @listing %><%= @listing.latitude%><%else%><%="N/A"%><%end%></div>
             <div id='user-long' style="display: none"><%if @listing %><%= @listing.longitude%><%else%><%="N/A"%><%end%></div>
             <%if @listing.latitude and @listing.longitude and @listing.address %> <!-- If listing location is valid-->
-              <br><div id="user_map"></div>
+              <br><p class="card-text"> Meetup Location:<br><%= @listing.address %></p>
+              <div id="user_map"></div>
             <% end %>
       </div>
       <div class="col-lg-9 mb-5">
