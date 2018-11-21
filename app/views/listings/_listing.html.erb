@@ -1,6 +1,5 @@
-<div class="col-md-3">
+<div class="col-md-4">
   <div class="card mx-2 mb-2">
-          
     <div id="carouselExampleFade" data-interval="2000" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <% (0...listing.images.count).each.with_index do |image, index| %>
@@ -26,7 +25,6 @@
         </a>
       <% end %>
     </div>
-
     <div class="card-body">
         <h5 class="card-title">
           <%= listing.title %>
