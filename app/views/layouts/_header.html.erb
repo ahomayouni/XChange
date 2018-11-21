@@ -39,12 +39,16 @@
 							<%= form.text_field :users_q, placeholder: "Search for a user..", data: { behaviour: "autocomplete_users" }, class: "nav-link form-control" %>
 						<% end %>	
 					</li>
+					
 					<li class="nav-item btn-group notification-button" data-behavior="notifications" data-notifications='<%= render template: "notifications/index", formats: [:json] %>'>
 							<a class="nav-link" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i class="tiny material-icons"> notification_important </i>
 							</a>
-							<div class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items"> <!-- Dropdown Itemshere will be placed by the notification-items given by the javascript file in the form of html.erb --></div>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items"> 
+							<!-- Dropdown Itemshere will be placed by the notification-items given by the javascript file in the form of html.erb -->
+							</div>
 					</li>
+				
 					<li>
 						<%= link_to user_settings_path(current_user), class: "nav-link" do%>
 							<i class="material-icons">settings</i>

@@ -38,7 +38,7 @@ class Notifications
         unread_count += 1
 
     $("[data-behavior='unread-count']").text(unread_count)
-    $("[data-behavior='notification-items']").html(items)
+    $("[data-behavior='notification-items']").html(items.join("<br />"))
 
 jQuery ->
   new Notifications
