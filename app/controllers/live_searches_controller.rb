@@ -24,7 +24,7 @@ class LiveSearchesController < ApplicationController
   # POST /live_searches
   # POST /live_searches.json
   def create
-    @live_search = LiveSearch.new(live_search_params)
+    @live_search = LiveSearch.new(user_id: current_user.id, title: params[:titile], category: params[:category], from_when: params[:from_when], to_when: params[:to_when], where: params[:where])
 
     respond_to do |format|
       if @live_search.save

@@ -10,11 +10,11 @@
       </ul>
     </div>
   <% end %>
-
+<!--
   <div class="field">
     <%= form.label :user_id %>
     <%= form.number_field :user_id %>
-  </div>
+  </div> -->
 
   <div class="field">
     <%= form.label :title %>
@@ -22,18 +22,20 @@
   </div>
 
   <div class="field">
+    <!-- <%= form.label :category %>
+    <%= form.text_area :category %> -->
     <%= form.label :category %>
-    <%= form.text_area :category %>
+    <%= form.select :category, ["Film & Photography","Audio Visual Equipment","Projectors & Screens","Drones","DJ Equipment","Transport","Storage","Electronics","Party & Events","Sports","Musical Instruments","Home / Office / Garden","Kids & Baby","Holiday & Travel","Clothing"] , class: 'form-control'%>
   </div>
 
   <div class="field">
     <%= form.label :from_when %>
-    <%= form.datetime_select :from_when %>
+    <%= form.date_select :from_when %>
   </div>
 
   <div class="field">
     <%= form.label :to_when %>
-    <%= form.datetime_select :to_when %>
+    <%= form.date_select :to_when %>
   </div>
 
   <div class="field">
