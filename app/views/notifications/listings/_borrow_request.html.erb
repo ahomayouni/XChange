@@ -1,6 +1,10 @@
 <% @actor = User.find(notification.actor_id) %>
 <div class="d-flex flex-row">
-    <%= image_tag 'empty-user-icon.png', class:"rounded-circle ml-2 mt-1", style:'width:50px;height:50px' %>
+     <%if @actor.person.image.attachment != nil and @actor.person.image.content_type.in?(%('image/jpeg image/png')) %>
+          <%= image_tag(@user.thumbnail, :class => "rounded-circle ml-2 mt-1", :style=> "width:50px;height:50px")%>
+      <% else %>
+          <%= image_tag("empty-user-icon.png", :class=> "rounded-circle ml-2 mt-1", :style=> "width:50px;height:50px")%>
+     <%end%>
     <%= link_to " #{@actor.name} has requested to borrow your item: #{notification.notifiable.title}", 
     user_path(current_user), class: "dropdown-item"%>
 </div>
