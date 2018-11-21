@@ -41,6 +41,13 @@ class User < ApplicationRecord
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 5 }, :if => :password
 
+	def thumbnail
+		if self.person and self.person.image.attachment
+			return self.person.image.variant(resize: '300x300').processed
+		else
+			return nil
+		end
+	end
 	def password_reset_expired?
 		reset_sent_at < 2.hours.ago # Another beauty of rails :)
 	end

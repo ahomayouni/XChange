@@ -44,6 +44,7 @@ class UsersController < ApplicationController
     @user.person.address = params[:user][:address]
     @user.person.phone_number = params[:user][:phone_number]
     @user.person.description = params[:user][:description]
+    @user.person.image = params[:user][:image]
 
     @user.password = ''
     @user.password_confirmation = ''

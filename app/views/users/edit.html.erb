@@ -19,10 +19,20 @@
 							<h5>Update your profile</h5>
 						</div>
 					</div>
+					<%if @user.person.image.attachment != nil %>
+						<div class="row">
+							<div class="carousel-item active">
+			                	<%= image_tag(@user.thumbnail, :class => " d-block w-100 card-img-top")%>
+			             	</div>
+			             </div>
+		             <%end%>
 					<div class="row">
 						<div class="col-md-6 offset-md-3">
 							<%= form_for @user, html: {class: "form-control-sm"} do |f| %>
 								<%= render 'shared/error_messages' %> 
+									<%= f.label :image  , "Profile Picture: "%>
+    								<%= f.file_field :image, class: 'form-control'%>
+									
 									<%= f.label :name , "Name: "%>
 									<%= f.text_field :name, class: 'form-control'%> 
 
