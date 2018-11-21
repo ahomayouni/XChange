@@ -36,8 +36,8 @@
 				<ul class="navbar-nav ml-auto">
 				<%# TODO: fix width when search is span %>
 					<li>
-						<%= form_with url: search_users_path, local: true, method: :get, html: {class: "nav-link form-inline search"} do |form| %>
-							<%= form.text_field :users_q, placeholder: "Search", data: { behaviour: "autocomplete_users" }, class: "nav-link form-control" %>
+						<%= form_with url: search_listings_path, local: true, method: :get, html: {class: "nav-link form-inline search"} do |form| %>
+							<%= form.text_field :users_q, placeholder: "Search", data: { behaviour: "autocomplete_listings" }, class: "nav-link form-control" %>
 						<% end %>	
 					</li>
 					
