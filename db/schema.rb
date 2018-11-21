@@ -84,7 +84,6 @@ ActiveRecord::Schema.define(version: 2018_11_21_200352) do
     t.datetime "end_lending"
     t.integer "user_id"
     t.float "rating"
-    t.string "location"
     t.string "address"
     t.string "latitude"
     t.string "longitude"
