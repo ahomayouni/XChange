@@ -2,11 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .dropdown-menu { 
-    //width: 10rem !important; 
-    //white-space: normal;
-    //word-break: break-all !important; 
+    width: 16rem !important; 
     a {
-       // @extend .dropdown-item; 
         color: black !important; 
         font-size: .75rem !important; 
         white-space: normal;

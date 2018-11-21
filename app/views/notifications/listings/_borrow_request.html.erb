@@ -1,5 +1,3 @@
 <% @actor = User.find(notification.actor_id) %>
-<li>
 <%= link_to " #{@actor.name} has requested to borrow your item: #{notification.notifiable.title}", 
 user_path(current_user), class: "dropdown-item"%>
-</li>
