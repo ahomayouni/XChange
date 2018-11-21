@@ -7,11 +7,13 @@ class Listing < ActiveRecord::Base
   has_many_attached :images
   has_many :borrow_requests, dependent: :destroy
   validates :title, presence: true, length: {maximum: 50}
+  validates :address, presence: true
   validates :description, presence: true, length: {minimum: 5, maximum: 500}
   validates :category, presence: true
-  validates :price_per_day, presence: true, numericality: {greater_than: 0, only_integer: true}
+  #validates :price_per_day, presence: true, numericality: {greater_than: 0, only_integer: true}
   validate :validateTimings
   validate :image_type
+  validate :check_address
 
   #For filtering a listing based on their category
   scope :has_category, -> (category) { where category: category }
@@ -37,6 +39,13 @@ private
        errors.add(:images, "needs to be JPEG or PNG")
      end
    end
+ end
+
+ def check_address
+  results = Geocoder.search(self.address)
+  if !results.first  #If location is invalid
+    errors.add(:address, "- Meetup Address is invalid. Please try again.")
+  end 
  end
 end
 

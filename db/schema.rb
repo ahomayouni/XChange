@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_21_082418) do
+ActiveRecord::Schema.define(version: 2018_11_21_200352) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -84,6 +84,10 @@ ActiveRecord::Schema.define(version: 2018_11_21_082418) do
     t.datetime "end_lending"
     t.integer "user_id"
     t.float "rating"
+    t.string "location"
+    t.string "address"
+    t.string "latitude"
+    t.string "longitude"
   end
 
   create_table "live_searches", force: :cascade do |t|

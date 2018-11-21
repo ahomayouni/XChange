@@ -25,6 +25,13 @@ class ListingsController < ApplicationController
     #render plain: params[:listing].inspect
     #@listing = Listing.new(listing_params)
     @listing = current_user.listings.build(listing_params)
+    results = Geocoder.search(@listing.address)
+    if !results.first  #If location is invalid
+      flash[:error] = "Can't find location"
+    else
+      @listing.latitude = results.first.coordinates[0]
+      @listing.longitude = results.first.coordinates[1]
+    end 
     if @listing.save
       flash[:notice] = "Listing was successfully created"
       redirect_to listing_path(@listing)
@@ -86,7 +93,7 @@ class ListingsController < ApplicationController
     end
 
     def listing_params
-      params.require(:listing).permit(:title, :description, :category, :start_lending, :end_lending, :price_per_day, images: [])
+      params.require(:listing).permit(:title, :description, :category, :start_lending, :end_lending, :address,:latitude,:longitude,:address,images: [])
     end
 
     #to ensure "/search_listings" is allowed as well as "/search_listings.json"

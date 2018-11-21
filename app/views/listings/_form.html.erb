@@ -21,11 +21,16 @@
     <%= f.label :description%>
     <%= f.text_area :description, placeholder:"eg. Shooting beautiful shots on film is made simple with the auto mode, but you're able to also switch that off and shoot in full manual! ", class: 'form-control'%>
   </p>
+<!--
   <p>
     <%= f.label :price_per_day%>
     <%= f.number_field :price_per_day, placeholder:"eg. $20", class: 'form-control'%>
   </p>
-
+-->
+  <p>
+    <%= f.label :address, "Meetup Address: " %>
+    <%= f.text_field :address, placeholder:"eg. 25 St George St", class: 'form-control'%>
+  </p>
   <p>
     <%= f.label :start_lending%>
     <%= f.date_select :start_lending, class: 'form-control'%>
