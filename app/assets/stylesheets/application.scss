@@ -33,6 +33,9 @@
     height: 40vw;
     object-fit: cover;
   }
+  .dropdown-menu {
+    width:20rem; 
+  }
 }
 
 @media (min-width: 544px) {  
@@ -46,6 +49,9 @@
     width:100%; 
     height: 40vw;
     object-fit: cover;
+  }
+  .dropdown-menu {
+    width:20rem; 
   }
 }
  
@@ -62,6 +68,9 @@
       height: 35vw;
       object-fit: cover;
   }
+  .dropdown-menu {
+    width:20rem; 
+  }
 }
  
 /* Large devices (desktops, 992px and up) */
@@ -75,6 +84,9 @@
     height: 25vw;
     object-fit: cover;
   }
+  .dropdown-menu {
+    width:16rem; 
+  }
 }
  
 /* Extra large devices (large desktops, 1200px and up) */
@@ -87,6 +99,9 @@
     width:100%; 
     height: 25vw;
     object-fit: cover;
+  }
+  .dropdown-menu {
+    width:16rem; 
   }
 }
 
