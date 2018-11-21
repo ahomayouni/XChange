@@ -43,10 +43,10 @@ $(document).ready(function() {
 	    $(".settings_selector").css({"background":"white"});
 	});
 	// collapsible side bar
-	$(".collapse-menu-button").click(function(){
+	$(document).on('click', '.collapse-menu-button', function(){
 		$('.side-menu').show();
 	});
-	$(".side-menu-bg").click(function(){
+	$(document).on('click', '.side-menu-bg', function(){
 		$(".side-menu").hide();
 	});
 	$(window).on('resize', function(){
