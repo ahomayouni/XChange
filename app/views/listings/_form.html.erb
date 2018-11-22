@@ -1,3 +1,5 @@
+<script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
+
 <div class="container-fluid">
   <% if @listing.errors.any? %>
   <h4>The following errors prevented the listing from saving:</h4>
@@ -29,7 +31,7 @@
 -->
   <p>
     <%= f.label :address, "Meetup Address: " %>
-    <%= f.text_field :address, placeholder:"eg. 25 St George St", class: 'form-control'%>
+    <%= f.text_field :address,placeholder:"eg. 25 St George St", class: 'form-control'%>
   </p>
   <p>
     <%= f.label :start_lending%>
@@ -49,3 +51,31 @@
   <% end %>
   <%= link_to 'Back', listings_path %>
 </div>
+
+
+<script>
+
+$(function(){        
+  $("#listing_address").geocomplete()
+    .bind("geocode:result", function(event, result){
+      $.log("Result: " + result.formatted_address);
+    })
+    .bind("geocode:error", function(event, status){
+      $.log("ERROR: " + status);
+    })
+    .bind("geocode:multiple", function(event, results){
+            $.log("Multiple: " + results.length + " results found");
+          });
+        
+        $("#find").click(function(){
+          $("#listing_address").trigger("geocode");
+        });
+        
+        
+        $("#examples a").click(function(){
+          $("#listing_address").val($(this).text()).trigger("geocode");
+          return false;
+        });
+        
+      });  
+</script>

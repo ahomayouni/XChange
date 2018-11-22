@@ -21,6 +21,7 @@
 //= require chartkick
 //= require_tree ./channels
 //= require jquery_ujs
+//= require geocomplete
 
 function show_password(){
 	var x = document.getElementById("input_password");
