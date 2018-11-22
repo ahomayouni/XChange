@@ -17,7 +17,7 @@
 
 /*** DO NOT CHANGE - This is for making font sizes responsive */
 * {
-    font-family: 'Catamaran', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 // v small devices
@@ -87,7 +87,7 @@
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-  *{font-size:1.1rem;} /*1rem = 16px*/
+  *{font-size:1rem;} /*1rem = 16px*/
   body {
     position: relative;
     margin-bottom:80px;
@@ -107,7 +107,7 @@
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-  *{font-size:1.2rem;} /*1rem = 16px*/
+  *{font-size:1rem;} /*1rem = 16px*/
   body {
     position: relative;
     margin-bottom:80px;
