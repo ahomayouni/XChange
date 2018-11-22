@@ -4,7 +4,7 @@
             <ul class="nav nav-tabs nav-justified">
                 <!-- add data-toggle attribute to the anchors -->
                 <li class="nav-item active">
-                    <a class="nav-link active" data-toggle="tab" href="#statsTab">Stats</a>
+                    <a class="nav-link active" data-toggle="tab" href="#dashboardTab">Dashboard</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#userListings">Listings</a>
@@ -24,16 +24,24 @@
     <div class="row">
         <div class="col-md-12">
             <div class="tab-content">
-                <div id="statsTab" class="tab-pane fade show active">
-                    <h3>HOME</h3>
-                    <p>Some content.</p>
+                <div id="dashboardTab" class="tab-pane fade show active">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <%= link_to "Put up a Listing", new_listing_path, class:'btn btn-outline-info db-create-btn p-4 m-2 w-100' %>
+                            </div>
+                            <div class="col-md-6">
+                                <%= link_to "Browse Listings", listings_path , class:'btn btn-outline-info p-4 m-2 w-100' %>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div id="userListings" class="tab-pane fade">
                    <div class="row">
                         <div class="col-md-6 mx-4">
                             <div class="d-flex flex-row mt-3 py-3">
                                 <h2> <%=@user.name%>'s listings </h2>
-                                <%= link_to "Create new listing", new_listing_path, class:'btn btn-outline-info h-25 ml-4 mt-2' %>
+                                <%= link_to "Create new listing", new_listing_path, class:'btn-danger h-25 ml-4 mt-2' %>
                             </div>
                         </div>
                     </div>

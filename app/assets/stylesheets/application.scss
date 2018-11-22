@@ -232,3 +232,41 @@ html {
     }
   }
 }
+
+
+/*CSS For the Nav Tabs - Note this applies to the nav Tabs in the settings as well. */
+.nav-tabs {
+  border-bottom: 1px solid #17a2b8 !important; 
+  a {
+    color: grey; 
+  }
+  .nav-link:hover {
+     font-weight:bold !important; 
+     border-top: none; 
+     border-left:none; 
+     border-right:none;
+  }
+
+  .nav-link.active{
+    font-weight:bold; 
+    color:#030f50 !important; 
+    //border-bottom:2px solid white; 
+    border-left: 1px solid #17a2b8 !important; 
+    border-right: 1px solid #17a2b8 !important; 
+    border-top:1px solid #17a2b8 !important; 
+    
+  }
+  .nav-link.active:hover {
+    border-left: 1px solid #17a2b8 !important; 
+    border-right: 1px solid #17a2b8 !important; 
+    border-top:1px solid #17a2b8 !important; 
+  }
+  .nav-link.active.show {
+    font-weight: bold; 
+      color: #030f50 !important; 
+      //border-bottom:2px solid white; 
+      border-left: 1px solid #17a2b8 !important; 
+      border-right: 1px solid #17a2b8 !important; 
+      border-top:1px solid #17a2b8 !important; 
+  }
+}
