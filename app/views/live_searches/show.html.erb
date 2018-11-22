@@ -2,7 +2,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @live_search.user_id %>
+  <%= User.find(@live_search.user_id).name %>
 </p>
 
 <p>

@@ -14,7 +14,8 @@ class LiveSearchesController < ApplicationController
 
   # GET /live_searches/new
   def new
-    @live_search = LiveSearch.new
+    #@live_search = LiveSearch.new
+    @live_search = current_user.live_searches.build
   end
 
   # GET /live_searches/1/edit
@@ -24,11 +25,13 @@ class LiveSearchesController < ApplicationController
   # POST /live_searches
   # POST /live_searches.json
   def create
-    @live_search = LiveSearch.new(user_id: current_user.id, title: params[:titile], category: params[:category], from_when: params[:from_when], to_when: params[:to_when], where: params[:where])
-
+    #@live_search = LiveSearch.new(user_id: current_user.id, title: params[:title], category: params[:category], from_when: params[:from_when], to_when: params[:to_when], where: params[:where])
+    #@live_search = current_user.live_searches.build(user_id: current_user.id, title: params[:title], category: params[:category], from_when: params[:from_when], to_when: params[:to_when], where: params[:where])
+    @live_search = current_user.live_searches.build(live_search_params)
+    @live_search.user_id = current_user.id
     respond_to do |format|
       if @live_search.save
-        format.html { redirect_to @live_search, notice: 'Live search was successfully created.' }
+        format.html { redirect_to @live_search}
         format.json { render :show, status: :created, location: @live_search }
       else
         format.html { render :new }
@@ -42,7 +45,7 @@ class LiveSearchesController < ApplicationController
   def update
     respond_to do |format|
       if @live_search.update(live_search_params)
-        format.html { redirect_to @live_search, notice: 'Live search was successfully updated.' }
+        format.html { redirect_to @live_search}
         format.json { render :show, status: :ok, location: @live_search }
       else
         format.html { render :edit }
@@ -56,7 +59,7 @@ class LiveSearchesController < ApplicationController
   def destroy
     @live_search.destroy
     respond_to do |format|
-      format.html { redirect_to live_searches_url, notice: 'Live search was successfully destroyed.' }
+      format.html { redirect_to live_searches_url}
       format.json { head :no_content }
     end
   end
@@ -69,6 +72,6 @@ class LiveSearchesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def live_search_params
-      params.require(:live_search).permit(:user_id, :title, :category, :from_when, :to_when, :where)
+      params.require(:live_search).permit(:title, :category, :from_when, :to_when, :where)
     end
 end

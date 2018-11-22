@@ -13,7 +13,7 @@ class User < ApplicationRecord
 	has_many :notifications, foreign_key: :recipient_id, :dependent => :destroy
 
 	has_many :borrow_requests, :dependent => :destroy
-
+  has_many :live_searches, :dependent => :destroy
 	# creating an association with groups
 	has_many :memberships
 	has_many :groups, through: :memberships
