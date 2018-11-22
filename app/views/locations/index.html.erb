@@ -71,9 +71,9 @@
 				</div>	
 				
 
-				<h5>Show users within range (km):  <div id = "max-distance" style="display: inline"></div> <h5>
+				<h5>Show listings within range (km):  <div id = "max-distance" style="display: inline"></div> <h5>
 				<%= form_with url: locations_path, local: true, method: :get, html: {class: "form-inline"} do |form| %>
-	                <%= form.range_field :max_distance, :value=> @max_distance,:min=>0, :max=>50, class: "slide form-control", :id=>"user-range" %>
+	                <%= form.range_field :max_distance, :value=> @max_distance,:min=>0, :max=>50, class: "slider form-control", :id=>"listing-range" %>
 	                <%= form.button "Find", class: "btn btn-outline-success" %>
                 <% end %>
 
@@ -134,42 +134,42 @@
 		
 		<div class="row">
 			<div class="col-lg-9 mb-5">
-				<% neaby_users = {} %>
+				<% neaby_listings = {} %>
 
-				<% User.all.each do |u|%>	
-					<% if u.location and u.location.latitude and u.location.longitude and @location %>
-						<% if u.location.latitude != "-1" and u.location.longitude != "-1"%>
+				<% Listing.all.each do |u|%>	
+					<% if u and u.latitude and u.longitude and @location %>
+						<% if u.latitude != "-1" and u.longitude != "-1"%>
 							<% distance_miles = Geocoder::Calculations.distance_between(
 								[@location.latitude.to_f, @location.longitude.to_f],
-								[u.location.latitude.to_f, u.location.longitude.to_f])%>
+								[u.latitude.to_f, u.longitude.to_f])%>
 
 								<%distance_km = distance_miles * 1.609344 %>
 								<%if @max_distance %>
 									<% if distance_km < @max_distance.to_f %>
-										<% neaby_users.store(u, distance_km) %>
+										<% neaby_listings.store(u, distance_km) %>
 									<% end %>
 								<% else %>
-									<% neaby_users.store(u, distance_km) %>
+									<% neaby_listings.store(u, distance_km) %>
 								<% end %>
 							<% end%>	
 						<% end%>
 					<% end%>
 
-					<% neaby_users = neaby_users.sort_by {|_key, value| value} %>
-					<h3>Nearby users:<br><h3>
+					<% neaby_listings = neaby_listings.sort_by {|_key, value| value} %>
+					<h3>Nearby Listings:<br><h3>
 						<ul>
-							<% neaby_users.each do |user, distance| %>
-								<li>	
-									'<%= user.name %>' is <b><%= distance.round(2) %> km</b> away 
-									<div name="hidden-lat" style="display: none"><%=user.location.latitude%></div>
-									<div name="hidden-long" style="display: none"><%=user.location.longitude%></div>
-									<div name="hidden-name" style="display: none"><%=user.name%></div>
-								</li>
+							<% index = 0%>
+							<% neaby_listings.each do |listing, distance| %>
+								<% index = index + 1%>
+								<%= index %>. Listing <i id='current-title'>'<%= listing.title %>'</i> is <b><%= distance.round(2) %> km</b> away <%= link_to 'view', listing_path(listing) %><br>
+								<div name="hidden-lat" style="display: none"><%=listing.latitude%></div>
+								<div name="hidden-long" style="display: none"><%=listing.longitude%></div>
+								<div name="hidden-name" style="display: none"><%=listing.title%></div>
 							<% end %>
 						</ul>
 						
 						<script>
-							var slider = document.getElementById("user-range");
+							var slider = document.getElementById("listing-range");
 							var output = document.getElementById("max-distance");
 							output.innerHTML = slider.value; // Display the default slider value
 
@@ -200,3 +200,36 @@
 		</div>
 	<% end%>
 <% end%>
+
+<!-- Range Slider CSS-->
+<style type="text/css">
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;   
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%; 
+    background: rgb(104,214,205);
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: rgb(104,214,205);
+    cursor: pointer;
+}	
+</style>
