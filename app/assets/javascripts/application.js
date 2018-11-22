@@ -20,6 +20,8 @@
 //= require Chart.bundle
 //= require chartkick
 //= require_tree ./channels
+//= require jquery_ujs
+//= require gmaps-auto-complete
 
 function show_password(){
 	var x = document.getElementById("input_password");
@@ -55,4 +57,3 @@ $(document).ready(function() {
 		}
   	});
 })
-

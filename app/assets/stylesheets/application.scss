@@ -15,93 +15,97 @@
  */
 @import 'bootstrap';
 
-/*** DO NOT CHANGE - This is for making font sizes responsive */ 
+// adding g-maps auto complete
+*= require gmaps-auto-complete
+
+
+/*** DO NOT CHANGE - This is for making font sizes responsive */
 * {
     font-family: 'Catamaran', sans-serif;
 }
 
 // v small devices
-@media (max-width: 543px) {  
+@media (max-width: 543px) {
   * {
     font-size:0.9rem; /*1rem = 16px*/
-  } 
+  }
   .home-title {
     font-size: 1.8rem;
   }
   .card-img-top {
-    width:100%; 
+    width:100%;
     height: 40vw;
     object-fit: cover;
   }
   .dropdown-menu {
-    width:20rem; 
+    width:20rem;
   }
 }
 
-@media (min-width: 544px) {  
+@media (min-width: 544px) {
   * {
     font-size:1rem; /*1rem = 16px*/
-  } 
+  }
   .home-title {
     font-size: 2rem;
   }
   .card-img-top {
-    width:100%; 
+    width:100%;
     height: 40vw;
     object-fit: cover;
   }
   .dropdown-menu {
-    width:20rem; 
+    width:20rem;
   }
 }
- 
+
 /* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {  
+@media (min-width: 768px) {
   * {
     font-size:1.1rem;
-  } 
+  }
   .home-title {
     font-size: 2.2rem;
   }
   .card-img-top {
-      width:100%; 
+      width:100%;
       height: 35vw;
       object-fit: cover;
   }
   .dropdown-menu {
-    width:20rem; 
+    width:20rem;
   }
 }
- 
+
 /* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) { 
+@media (min-width: 992px) {
   *{font-size:1.1rem;} /*1rem = 16px*/
   .home-title {
     font-size: 2.2rem;
   }
   .card-img-top {
-    width:100%; 
+    width:100%;
     height: 25vw;
     object-fit: cover;
   }
   .dropdown-menu {
-    width:16rem; 
+    width:16rem;
   }
 }
- 
+
 /* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {  
-  *{font-size:1.2rem;} /*1rem = 16px*/ 
+@media (min-width: 1200px) {
+  *{font-size:1.2rem;} /*1rem = 16px*/
   .home-title {
     font-size: 2.4rem;
-  }   
+  }
   .card-img-top {
-    width:100%; 
+    width:100%;
     height: 25vw;
     object-fit: cover;
   }
   .dropdown-menu {
-    width:16rem; 
+    width:16rem;
   }
 }
 
@@ -113,7 +117,7 @@ html {
 body {
   position: relative;
 }
-  
+
 /*input:not([type='submit']), textarea.form-control {
   outline: 0;
   border: 0;
@@ -195,7 +199,7 @@ body {
     padding: 0;
     a {
       display: block !important;
-      white-space: nowrap; 
+      white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       text-decoration: none;

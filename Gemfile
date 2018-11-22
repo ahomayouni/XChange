@@ -87,3 +87,4 @@ gem 'geocoder'
 gem "chartkick"
 gem "aws-sdk"
 gem 'aws-sdk-s3'
+gem 'gmaps-autocomplete-rails'
