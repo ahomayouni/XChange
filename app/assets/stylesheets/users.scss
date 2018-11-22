@@ -3,9 +3,17 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .db-create-btn {
-  color: pink; 
+  background-color: rgb(215, 0, 75) !important;
+  border-color: rgb(215, 0, 75) !important;
 }
+.db-create-btn:hover {
+  color:white !important; 
+}
+.db-browse-btn {
+  background-color: #602bff !important; 
+  border-color: #602bff !important;
 
+}
 
 
 .user-card {
