@@ -3,20 +3,40 @@
         <div class="col-md-12 p-3">
             <ul class="nav nav-tabs nav-justified">
                 <!-- add data-toggle attribute to the anchors -->
+                <li class="nav-item">
+                    <%if params[:active_tab]=="statsTab"%>
+                    <a class="nav-link active" data-toggle="tab" href="#statsTab">Statistics</a>
+                    <%else%>
+                    <a class="nav-link" data-toggle="tab" href="#statsTab">Statistics</a>
+                    <%end%>
+                </li>
                 <li class="nav-item active">
-                    <a class="nav-link active" data-toggle="tab" href="#statsTab">Stats</a>
-                </li>
-                <li class="nav-item">
+                    <%if params[:active_tab]=="userListings"%>
+                    <a class="nav-link active" data-toggle="tab" href="#userListings">Listings</a>
+                    <%else%>
                     <a class="nav-link" data-toggle="tab" href="#userListings">Listings</a>
+                    <%end%>
                 </li>
                 <li class="nav-item">
+                    <%if params[:active_tab]=="borrowRequests"%>
+                    <a class="nav-link active" data-toggle="tab" href="#borrowRequests">Borrow Requests</a>
+                    <%else%>
                     <a class="nav-link" data-toggle="tab" href="#borrowRequests">Borrow Requests</a>
+                    <%end%>
                 </li>
                 <li class="nav-item">
+                    <%if params[:active_tab]=="actionItems"%>
+                    <a class="nav-link active" data-toggle="tab" href="#actionItems">Action Items </a>
+                    <%else%>
                     <a class="nav-link" data-toggle="tab" href="#actionItems">Action Items </a>
+                    <%end%>
                 </li>
                  <li class="nav-item">
+                    <%if params[:active_tab]=="approvedRequests"%>
+                    <a class="nav-link active" data-toggle="tab" href="#approvedRequests">Approved Requests</a>
+                    <%else%>
                     <a class="nav-link" data-toggle="tab" href="#approvedRequests">Approved Requests</a>
+                    <%end%>
                 </li>
             </ul>
         </div>
@@ -24,11 +44,19 @@
     <div class="row">
         <div class="col-md-12">
             <div class="tab-content">
+                <%if params[:active_tab]=="statsTab"%>
                 <div id="statsTab" class="tab-pane fade show active">
+                <%else%>
+                <div id="statsTab" class="tab-pane fade">
+                <%end%>
                     <h3>HOME</h3>
                     <p>Some content.</p>
                 </div>
+                <%if params[:active_tab]=="userListings"%>
+                <div id="userListings" class="tab-pane fade show active">
+                <%else%>
                 <div id="userListings" class="tab-pane fade">
+                <%end%>
                    <div class="row">
                         <div class="col-md-6 mx-4">
                             <div class="d-flex flex-row mt-3 py-3">
@@ -51,7 +79,11 @@
                         <%end%>
                     </div>
                 </div>
-                <div id="borrowRequests" class="tab-pane fade">
+                <%if params[:active_tab]=="borrowRequests"%>
+                <div id="borrowRequests" class="tab-pane fade show active">
+                    <%else%>
+                    <div id="borrowRequests" class="tab-pane fade">
+                    <%end%>
                      <div class="row">
                         <div class="col-md-6 mx-4">
                             <div class="d-flex flex-row mt-3 py-3">
@@ -73,7 +105,11 @@
                         <%end%>
                     </div>
                 </div>
+                <%if params[:active_tab]=="actionItems"%>
+                <div id="actionItems" class="tab-pane fade show active">
+                <%else%>
                 <div id="actionItems" class="tab-pane fade">
+                <%end%>
                     <div class="row">
                         <div class="col-md-6 mx-4">
                             <div class="d-flex flex-row mt-3 py-3">
@@ -115,7 +151,11 @@
                         <%end%>
                     </div>
                 </div>
-                <div id="approvedRequests" class="tab-pane fade">
+                <%if params[:active_tab]=="approvedRequests"%>
+                <div id="approvedRequests" class="tab-pane fade show active">
+                    <%else%>
+                    <div id="approvedRequests" class="tab-pane fade">
+                    <%end%>
                      <div class="row">
                         <div class="col-md-6 mx-4">
                             <div class="d-flex flex-row mt-3 py-3">
