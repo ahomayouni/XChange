@@ -7,6 +7,7 @@
 		<%= render @listings_found %> <br>
 	<% else %>
 		<h3> No listings found for "<%= params[:listings_q] %>" </h3>
+		<%= link_to 'Request this item!', new_live_search_path %>
 	<% end %>
 <% end %>
 </div>
