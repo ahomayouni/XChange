@@ -3,11 +3,11 @@
         <div class="col-md-12 p-3">
             <ul class="nav nav-tabs nav-justified">
                 <!-- add data-toggle attribute to the anchors -->
-                <li class="nav-item">
-                    <%if params[:active_tab]=="statsTab"%>
-                    <a class="nav-link active" data-toggle="tab" href="#statsTab">Statistics</a>
+                <li class="nav-item active">
+                    <%if params[:active_tab]=="dashboardTab"%>
+                    <a class="nav-link active" data-toggle="tab" href="#dashboardTab">Dashboard</a>
                     <%else%>
-                    <a class="nav-link" data-toggle="tab" href="#statsTab">Statistics</a>
+                    <a class="nav-link" data-toggle="tab" href="#dashboardTab">Dashboard</a>
                     <%end%>
                 </li>
                 <li class="nav-item active">
@@ -44,13 +44,21 @@
     <div class="row">
         <div class="col-md-12">
             <div class="tab-content">
-                <%if params[:active_tab]=="statsTab"%>
-                <div id="statsTab" class="tab-pane fade show active">
+                <%if params[:active_tab]=="dashboardTab"%>
+                <div id="dashboardTab" class="tab-pane fade show active">
                 <%else%>
-                <div id="statsTab" class="tab-pane fade">
+                <div id="dashboardTab" class="tab-pane fade">
                 <%end%>
-                    <h3>HOME</h3>
-                    <p>Some content.</p>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <%= link_to "Put up a Listing", new_listing_path, class:'btn db-create-btn p-4 m-2 w-100 font-weight-bold', style:"color:white!important;" %>
+                            </div>
+                            <div class="col-md-6">
+                                <%= link_to "Browse Listings", listings_path , class:'btn db-browse-btn p-4 m-2 w-100 font-weight-bold', style:"color:white!important;" %>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <%if params[:active_tab]=="userListings"%>
                 <div id="userListings" class="tab-pane fade show active">
