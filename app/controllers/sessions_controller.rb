@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
         log_in(user)
         # Whether to use cookies or not
         params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-        redirect_to user
+        redirect_to user_path(user,active_tab: "dashboardTab")
       else
         flash[:warning] = "Account not activated. Please check your email for the activation link. Also please check your spam!"
         redirect_to root_path
