@@ -1,4 +1,5 @@
 <script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
+<script src=“http://ubilabs.github.io/geocomplete/jquery.geocomplete.js“></script>
 
 <div class="container-fluid">
   <% if @listing.errors.any? %>
@@ -10,7 +11,7 @@
   </ul>
   <% end %>
 
-  <%= form_for @listing do |f| %> 
+  <%= form_for @listing do |f| %>
   <p>
     <%= f.label :title %>
     <%= f.text_field :title, placeholder:"eg. Canon XF205" , class: 'form-control'%>
@@ -55,7 +56,7 @@
 
 <script>
 
-$(function(){        
+$(function(){
   $("#listing_address").geocomplete()
     .bind("geocode:result", function(event, result){
       $.log("Result: " + result.formatted_address);
@@ -66,16 +67,16 @@ $(function(){
     .bind("geocode:multiple", function(event, results){
             $.log("Multiple: " + results.length + " results found");
           });
-        
+
         $("#find").click(function(){
           $("#listing_address").trigger("geocode");
         });
-        
-        
+
+
         $("#examples a").click(function(){
           $("#listing_address").val($(this).text()).trigger("geocode");
           return false;
         });
-        
-      });  
+
+      });
 </script>
