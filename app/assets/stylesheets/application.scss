@@ -15,10 +15,6 @@
  */
 @import 'bootstrap';
 
-// adding g-maps auto complete
-*= require gmaps-auto-complete
-
-
 /*** DO NOT CHANGE - This is for making font sizes responsive */
 * {
     font-family: 'Catamaran', sans-serif;
@@ -28,6 +24,10 @@
 @media (max-width: 543px) {
   * {
     font-size:0.9rem; /*1rem = 16px*/
+  }
+  body {
+    position: relative;
+    margin-bottom:140px;
   }
   .home-title {
     font-size: 1.8rem;
@@ -45,6 +45,10 @@
 @media (min-width: 544px) {
   * {
     font-size:1rem; /*1rem = 16px*/
+  }
+  body {
+    position: relative;
+    margin-bottom:140px;
   }
   .home-title {
     font-size: 2rem;
@@ -64,6 +68,10 @@
   * {
     font-size:1.1rem;
   }
+  body {
+    position: relative;
+    margin-bottom:90px;
+  }
   .home-title {
     font-size: 2.2rem;
   }
@@ -80,6 +88,10 @@
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
   *{font-size:1.1rem;} /*1rem = 16px*/
+  body {
+    position: relative;
+    margin-bottom:80px;
+  }
   .home-title {
     font-size: 2.2rem;
   }
@@ -96,6 +108,10 @@
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
   *{font-size:1.2rem;} /*1rem = 16px*/
+  body {
+    position: relative;
+    margin-bottom:80px;
+  }
   .home-title {
     font-size: 2.4rem;
   }
@@ -114,9 +130,6 @@ html {
     min-height: 100%;
 }
 
-body {
-  position: relative;
-}
 
 /*input:not([type='submit']), textarea.form-control {
   outline: 0;
@@ -159,11 +172,12 @@ body {
   border-color: #ffc107;
   color: white !important;
 }
+
 .footer {
   //position: absolute;
   bottom: 0;
   width: 100%;
-  /*height: 60px; /* Set the fixed height of the footer here */
+  // height: 80px; /* Set the fixed height of the footer here */
   /*line-height: 60px; /* Vertically center the text there */
   background-color: #1c1d28;
   a {
@@ -216,5 +230,43 @@ body {
       background-color: white;
       color: rgb(104,214,205) !important;
     }
+  }
+}
+
+
+/*CSS For the Nav Tabs - Note this applies to the nav Tabs in the settings as well. */
+.nav-tabs {
+  border-bottom: 1px solid #17a2b8 !important;
+  a {
+    color: grey;
+  }
+  .nav-link:hover {
+     font-weight:bold !important;
+     border-top: none;
+     border-left:none;
+     border-right:none;
+  }
+
+  .nav-link.active{
+    font-weight:bold;
+    color:#030f50 !important;
+    //border-bottom:2px solid white;
+    border-left: 1px solid #17a2b8 !important;
+    border-right: 1px solid #17a2b8 !important;
+    border-top:1px solid #17a2b8 !important;
+
+  }
+  .nav-link.active:hover {
+    border-left: 1px solid #17a2b8 !important;
+    border-right: 1px solid #17a2b8 !important;
+    border-top:1px solid #17a2b8 !important;
+  }
+  .nav-link.active.show {
+    font-weight: bold;
+      color: #030f50 !important;
+      //border-bottom:2px solid white;
+      border-left: 1px solid #17a2b8 !important;
+      border-right: 1px solid #17a2b8 !important;
+      border-top:1px solid #17a2b8 !important;
   }
 }
