@@ -109,9 +109,9 @@ html {
     position: relative;
     min-height: 100%;
 }
-
 body {
   position: relative;
+  margin-bottom:80px; 
 }
   
 /*input:not([type='submit']), textarea.form-control {
@@ -155,9 +155,7 @@ body {
   border-color: #ffc107;
   color: white !important;
 }
-body {
-  margin-bottom:100px; 
-}
+
 .footer {
   //position: absolute;
   bottom: 0;
