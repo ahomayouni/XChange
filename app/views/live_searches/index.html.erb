@@ -4,15 +4,22 @@
   <div class="live-search-inquiry">
     <% @live_searches.each do |live_search| %>
       <div class="d-flex flex-row mt-3">
-        <div class="mx-3 user-detail">
-          <div class="row">
-            <div class="col-12">
-              <%= image_tag("empty-user-icon.png", :class => "live-search-user-pic m-auto") %>
+        <div class="user-detail-container">
+          <div class="user-detail">
+            <div class="row">
+              <div class="col-12">
+                <% if User.find(live_search.user_id).thumbnail.present?%>
+                  <%= image_tag(User.find(live_search.user_id).thumbnail, :class => "live-search-user-pic m-auto") %>
+                <% else %>
+                  <%= image_tag("empty-user-icon.png", :class => "live-search-user-pic m-auto") %>
+                <% end %>
+              </div>
             </div>
-          </div>
-          <div class="row m-auto">
-            <div class="col-12">
-              <%= User.find(live_search.user_id).name%>
+            <div class="row">
+              <div class="col-12">
+                <%# sometime user name is too long %>
+                <div class="user-name"> <%= User.find(live_search.user_id).name %> </div>
+              </div>
             </div>
           </div>
         </div>

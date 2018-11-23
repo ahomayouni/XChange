@@ -4,9 +4,18 @@
 .live-search-wrapper {
     width: 70%;
     @media (max-width: 480px){
-        .user-detail, .text-bubble:after  {
+        .user-detail-container, .text-bubble:after  {
             display: none;
         }
+    }
+    .user-name {
+        text-align: center;
+        width: 3.2rem;
+    }
+    .user-name, .search-detail {
+        white-space: nowrap;
+        text-overflow: ellipsis !important;
+        overflow: hidden;
     }
     .live-search-user-pic {
         border-radius: 50%;
@@ -46,10 +55,5 @@
     }
     .search-info {
         max-height: 100%;
-    }
-    .search-detail {
-        white-space: nowrap;
-        text-overflow: ellipsis !important;
-        overflow: hidden;
     }
 }
