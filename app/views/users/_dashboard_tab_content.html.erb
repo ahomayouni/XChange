@@ -5,14 +5,17 @@
             <h1 class="font-weight-bold ml-4"> Profile </h1>
         </div>
     </div>
-    <div class="row">
+    <div class="row mb-5">
         <div class="col-md-3">
              <%if @user.person.image.attachment != nil and @user.person.image.content_type.in?(%('image/jpeg image/png')) %>
           			<%= image_tag(@user.thumbnail, :class => "img-thumbnail rounded-circle")%>
              <% else %>
           			<%= image_tag("empty-user-icon.png", :class=> "img-thumbnail rounded-circle")%>
              <%end%>
-            <div class="d-flex flex-row ml-3 mb-3">
+            <%= link_to "Edit Profile", user_settings_path(current_user), class:'btn btn-outline-info ml-5 mt-3 w-75 font-weight-bold'%>
+        </div>
+         <div class="col-md-9">
+              <div class="d-flex flex-row ml-3 mb-3">
                 <h6 class="font-weight-bold text-secondary">Name:</h6>
                 <h6 class="ml-3 font-weight-bold"><%= @user.name%> </h6>
             </div>
@@ -20,16 +23,25 @@
                 <h6 class="font-weight-bold text-secondary">Email:</h6>
                 <h6 class="ml-3 font-weight-bold"><%= @user.email%> </h6>
             </div>
-             <div class="d-flex flex-row ml-3">
+             <div class="d-flex flex-row ml-3 mb-3">
                 <h6 class="font-weight-bold text-secondary">Address:</h6>
-                <h6 class="ml-3 font-weight-bold"><%= %> </h6>
+                <h6 class="ml-3 font-weight-bold"><%= @user.person.address %> </h6>
+            </div>
+            <div class="d-flex flex-row ml-3 mb-3">
+                <h6 class="font-weight-bold text-secondary">Phone Number:</h6>
+                <h6 class="ml-3 font-weight-bold"><%= @user.person.phone_number %> </h6>
+            </div>
+            <div class="d-flex flex-row ml-3 mb-3">
+                <h6 class="font-weight-bold text-secondary">Joined:</h6>
+                <h6 class="ml-3 font-weight-bold"><%= @user.created_at.strftime("%B %d, %Y") %> </h6>
+            </div>
+             <div class="d-flex flex-column ml-3">
+                <h6 class="font-weight-bold text-secondary mb-3">Description:</h6>
+                <h6 class="ml-3 font-weight-bold"><%= @user.person.description %> </h6>
             </div>
         </div>
-         <div class="col-md-9">
-             
-        </div>
     </div>
-    <!-- Ez access buttons
+    <!-- Ez access buttons -->
       <div class="row">
         <div class="col-md-6">
             <%= link_to "Put up a Listing", new_listing_path, class:'btn db-create-btn p-3 m-2 w-75 font-weight-bold', style:"color:white!important;" %>
@@ -37,5 +49,5 @@
         <div class="col-md-6">
             <%= link_to "Browse Listings", listings_path , class:'btn db-browse-btn p-3 m-2 w-75 font-weight-bold', style:"color:white!important;" %>
         </div>
-    </div>-->
+    </div>
 </div>

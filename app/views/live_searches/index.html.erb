@@ -1,36 +1,52 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Live Searches</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Title</th>
-      <th>Category</th>
-      <th>From when</th>
-      <th>To when</th>
-      <th>Where</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="live-search-wrapper m-auto p-3">
+  <h1>Live Searches</h1>
+  <input type="text" class="live-item-search"/>
+  <div class="live-search-inquiry">
     <% @live_searches.each do |live_search| %>
-      <tr>
-        <td><%= User.find(live_search.user_id).name %></td>
-        <td><%= live_search.title %></td>
-        <td><%= live_search.category %></td>
-        <td><%= live_search.from_when %></td>
-        <td><%= live_search.to_when %></td>
-        <td><%= live_search.where %></td>
-        <td><%= link_to 'Show', live_search %></td>
-        <td><%= link_to 'Edit', edit_live_search_path(live_search) %></td>
-        <td><%= link_to 'Destroy', live_search, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="d-flex flex-row mt-3">
+        <div class="mx-3 user-detail">
+          <div class="row">
+            <div class="col-12">
+              <%= image_tag("empty-user-icon.png", :class => "live-search-user-pic m-auto") %>
+            </div>
+          </div>
+          <div class="row m-auto">
+            <div class="col-12">
+              <%= User.find(live_search.user_id).name%>
+            </div>
+          </div>
+        </div>
+        <div class="mx-3 text-bubble-wrapper d-flex">
+          <div class="text-bubble d-flex">
+            <div class="d-flex flex-row w-100">
+              <div class="text-bubble-left-fill"></div>
+              <div class="search-info my-auto mx-3 w-100">
+                <div class="row">
+                  <div class="col-3 search-detail">
+                    <%= live_search.title %> 
+                  </div>
+                  <div class="col-6 search-detail">
+                    <%= live_search.from_when.strftime("%e %b %y") %> - <%= live_search.to_when.strftime("%e %b %y") %>
+                  </div>
+                  <div class="col-3 search-detail">
+                    <%= live_search.where %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 ">
+                    <div class="float-right">
+                      <%= link_to 'Show', live_search %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
 
 <br>
 
