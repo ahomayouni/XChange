@@ -1,12 +1,12 @@
 <div class="live-search-wrapper m-auto p-3">
   <div class="title pb-2">Live Searches</div>
-  <div class="live-item-search-container">
+  <div class="live-item-search-container m-auto">
     <input type="text" class="live-item-search"/> 
     <i class="material-icons">search</i>
   </div>
-  <div class="live-search-inquiry m-4">
+  <div class="live-search-inquiry m-auto">
     <% @live_searches.each do |live_search| %>
-      <div class="d-flex flex-row mt-3">
+      <div class="d-flex flex-row mt-3 mx-auto">
         <div class="user-detail-container">
           <div class="user-detail">
             <div class="row">
@@ -26,12 +26,12 @@
             </div>
           </div>
         </div>
-        <div class="mx-3 text-bubble-wrapper d-flex">
+        <div class="mx-3 text-bubble-wrapper d-flex flex-grow-1">
           <div class="text-bubble d-flex">
             <div class="d-flex flex-row w-100">
               <div class="text-bubble-left-fill"></div>
               <div class="search-info my-auto mx-3 w-100">
-                <div class="row">
+                <div class="row w-100">
                   <div class="col-3 search-detail">
                     <%= live_search.title %> 
                   </div>
@@ -43,7 +43,7 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-12 ">
+                  <div class="col-12">
                     <div class="float-right">
                       <%= link_to 'Show', live_search %>
                     </div>

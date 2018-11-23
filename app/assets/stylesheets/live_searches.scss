@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .live-search-wrapper {
-    width: 65%;
+    width: 75%;
     @media (max-width: 480px){
         .user-detail-container, .text-bubble:after  {
             display: none;
@@ -32,6 +32,7 @@
     .user-name {
         text-align: center;
         width: 3.2rem;
+        height: 3.2rem;
     }
     .user-name, .search-detail {
         white-space: nowrap;
@@ -46,7 +47,6 @@
     }
     .text-bubble-wrapper {
         height: 6rem;
-        width: 100%;
     }
     .text-bubble {
         position: relative;
