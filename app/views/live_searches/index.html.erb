@@ -1,12 +1,10 @@
 <div class="live-search-wrapper m-auto p-3">
   <h1>Live Searches</h1>
   <input type="text" class="live-item-search"/>
-
   <div class="live-search-inquiry">
     <% @live_searches.each do |live_search| %>
-
       <div class="d-flex flex-row mt-3">
-        <div class="mx-3">
+        <div class="mx-3 user-detail">
           <div class="row">
             <div class="col-12">
               <%= image_tag("empty-user-icon.png", :class => "live-search-user-pic m-auto") %>
@@ -20,20 +18,17 @@
         </div>
         <div class="mx-3 text-bubble-wrapper d-flex">
           <div class="text-bubble d-flex">
-            <div class="d-flex flex-row">
+            <div class="d-flex flex-row w-100">
               <div class="text-bubble-left-fill"></div>
-              <div class="search-info my-auto mx-3">
+              <div class="search-info my-auto mx-3 w-100">
                 <div class="row">
-                  <div class="col-3">
+                  <div class="col-3 search-detail">
                     <%= live_search.title %> 
                   </div>
-                  <div class="col-3">
-                    <%= live_search.from_when %>
+                  <div class="col-6 search-detail">
+                    <%= live_search.from_when.strftime("%e %b %y") %> - <%= live_search.to_when.strftime("%e %b %y") %>
                   </div>
-                  <div class="col-3">
-                    <%= live_search.to_when %>
-                  </div>
-                  <div class="col-3">
+                  <div class="col-3 search-detail">
                     <%= live_search.where %>
                   </div>
                 </div>
@@ -49,11 +44,6 @@
           </div>
         </div>
       </div>
-      
-      
-  
-
-
     <% end %>
   </div>
 </div>

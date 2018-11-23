@@ -3,6 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .live-search-wrapper {
     width: 70%;
+    @media (max-width: 480px){
+        .user-detail, .text-bubble:after  {
+            display: none;
+        }
+    }
     .live-search-user-pic {
         border-radius: 50%;
         height: 3.2rem;
@@ -38,5 +43,13 @@
         top: 10%;
         left: -21px;
         z-index: -15;
-      }
+    }
+    .search-info {
+        max-height: 100%;
+    }
+    .search-detail {
+        white-space: nowrap;
+        text-overflow: ellipsis !important;
+        overflow: hidden;
+    }
 }
