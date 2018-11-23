@@ -4,48 +4,34 @@
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
   </ol> %>
-  <% if !logged_in? %>
-  <div class="carousel-inner">
-      <div class="carousel-item active">
-          <div class="carousel-image slide-1"></div>
-          <div class="carousel-caption">
-             XCHANGE 
+<div class="landing-page-search">
+  <div class="search-wrapper p-5">
+    <div class="row">
+      <div class="col-8"> 
+        <div class="title">
+            <h1>Get</h1>
+            <h1>Started.</h1>
           </div>
       </div>
-  </div>
-</div>
-<% end %>
-
-<% if logged_in? %>
-  <div class="landing-page-search">
-    <div class="search-wrapper p-5">
-      <div class="row">
-        <div class="col-8"> 
-          <div class="title">
-              <h1>Get</h1>
-              <h1>Started.</h1>
-            </div>
-        </div>
-        <div class="col-4"> 
-          <div class="floating-img">
-            <%= image_tag("balloons-home.png")%>
-          </div>   
-        </div>
+      <div class="col-4"> 
+        <div class="floating-img">
+          <%= image_tag("balloons-home.png")%>
+        </div>   
       </div>
+    </div>
 
-      <div class="row pt-3">
-        <div class="col-12 col-md-8">
-          <%= form_with url: search_listings_path, local: true, method: :get, html: {class: "searchbar"} do |form| %>
-              <div class="input-container">
-                <%= form.text_field :listings_q, placeholder: "", data: { behaviour: "autocomplete_listings" }, class: "input-field" %>
-                <i class="material-icons input-icon"> search </i>
-              </div>
-            <% end %>
-        </div>
+    <div class="row pt-3">
+      <div class="col-12 col-md-8">
+        <%= form_with url: search_listings_path, local: true, method: :get, html: {class: "searchbar"} do |form| %>
+            <div class="input-container">
+              <%= form.text_field :listings_q, placeholder: "", data: { behaviour: "autocomplete_listings" }, class: "input-field" %>
+              <i class="material-icons input-icon"> search </i>
+            </div>
+          <% end %>
       </div>
     </div>
   </div>
-<% end %>
+</div>
 
 <div class="page-content my-4">
   <%# only show info if not logged in %>
