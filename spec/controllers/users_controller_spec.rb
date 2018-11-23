@@ -8,6 +8,20 @@ end
 
 
 RSpec.describe UsersController, type: :controller do
+
+	context "Integration Testing with Notification system" do
+		it 'The user should receive a welcome notification once a user has created a new account' do 
+				post :create, params: {user:{ name:  "dodo",
+							 email: "dragonball@gmail.com",
+				             password:              "satuikanasin",
+				             password_confirmation: "satuikanasin"}
+				         }
+				@notification = Notification.first 
+
+				expect(@notification.action).to eq("created_new_account")  
+			end
+	end
+
 	context 'GET #index' do 
 		it 'returns a failed response since no user is logged in' do
 			get :index
@@ -242,8 +256,6 @@ RSpec.describe UsersController, type: :controller do
 		end
 
 	end
-
-
 
 	end
 
