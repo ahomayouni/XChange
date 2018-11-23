@@ -2,10 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .live-search-wrapper {
-    width: 70%;
+    width: 65%;
     @media (max-width: 480px){
         .user-detail-container, .text-bubble:after  {
             display: none;
+        }
+    }
+    .title {
+        font-size: 40px;
+        font-weight: bolder;
+    }
+    .live-item-search-container {
+        width: 100%;
+        position:relative;
+        input {
+            margin: 0;
+            border: 1px solid #cdcdcd;
+            border-radius: 5px;
+            height: 40px;
+            width: 100%; 
+            padding-left: 50px;
+        }
+        i {
+            position: absolute;
+            bottom: 8px;
+            left: 15px; 
         }
     }
     .user-name {

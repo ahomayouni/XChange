@@ -1,7 +1,10 @@
 <div class="live-search-wrapper m-auto p-3">
-  <h1>Live Searches</h1>
-  <input type="text" class="live-item-search"/>
-  <div class="live-search-inquiry">
+  <div class="title pb-2">Live Searches</div>
+  <div class="live-item-search-container">
+    <input type="text" class="live-item-search"/> 
+    <i class="material-icons">search</i>
+  </div>
+  <div class="live-search-inquiry m-4">
     <% @live_searches.each do |live_search| %>
       <div class="d-flex flex-row mt-3">
         <div class="user-detail-container">
