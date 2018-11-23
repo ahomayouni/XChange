@@ -1,3 +1,42 @@
 // Place all the styles related to the LiveSearches controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.live-search-wrapper {
+    width: 70%;
+    .live-search-user-pic {
+        border-radius: 50%;
+        height: 3.2rem;
+        width: 3.2rem;
+        display: block;
+    }
+    .text-bubble-wrapper {
+        height: 6rem;
+        width: 100%;
+    }
+    .text-bubble {
+        position: relative;
+        background: transparent;
+        border: 2px solid rgb(104,214,205);
+        border-radius: 15px;
+        width: 100%;
+    }
+    .text-bubble-left-fill {
+        background-color:rgb(104,214,205);
+        min-width: 20px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+    .text-bubble:after {
+        content: "";
+        width: 0px;
+        height: 0px;
+        position: absolute;
+        border-left: 10px solid transparent;
+        border-right: 10px solid rgb(104,214,205);
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        top: 10%;
+        left: -21px;
+        z-index: -15;
+      }
+}
