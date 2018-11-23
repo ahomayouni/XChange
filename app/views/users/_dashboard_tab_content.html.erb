@@ -12,6 +12,7 @@
              <% else %>
           			<%= image_tag("empty-user-icon.png", :class=> "img-thumbnail rounded-circle")%>
              <%end%>
+            <%= link_to "Edit Profile", user_settings_path(current_user), class:'btn btn-outline-info ml-5 mt-3 w-75 font-weight-bold'%>
         </div>
          <div class="col-md-9">
               <div class="d-flex flex-row ml-3 mb-3">
