@@ -1,66 +1,46 @@
 <% if logged_in? %>
 	<nav class="xchange-header navbar navbar-expand-md">
 		<div class="container">
-		<%= link_to "XChange", home_index_path, class: "navbar-brand font-weight-bold logo" %>
+		<%= link_to "XChange", home_index_path, class: "navbar-brand font-weight-bold" %>
 		<%# mobile display toggle  %>
 		<button class="navbar-toggler collapse-menu-button" type="button" data-toggle="collapse">
 			<span class="navbar-toggler-icon"><i class="material-icons">menu</i></span>
 		</button>
 			<div class="collapse navbar-collapse">
-				<ul class="navbar-nav">
-					<li>
-						<%= link_to "Dashboard", user_path(current_user,active_tab: "dashboardTab"), class: "nav-link" %>
-					</li>
-					<li>
-						<%= link_to groups_path, class: "nav-link" do%>
-							<i class="material-icons">group</i>
-						<%end%>
-					</li>
-					<li>
-						<%= link_to listings_path, class: "nav-link" do%>
-							<i class="material-icons">view_list</i>
-						<% end %>
-					</li>
-					<% if current_user.location%>
-						<li>
-							<%= link_to locations_path, class: "nav-link" do%>
-								<i class="material-icons">location_on</i>
-							<%end%>
-						</li>
-					<% else %>
-						<li>
-							<%= link_to "Update My Location", new_location_path, class: "nav-link" %>
-						</li>
-					<% end %>
-				</ul>
 				<ul class="navbar-nav ml-auto">
-				<%# TODO: fix width when search is span %>
 					<li>
-						<%= form_with url: search_listings_path, local: true, method: :get, html: {class: "nav-link form-inline search"} do |form| %>
-							<%= form.text_field :users_q, placeholder: "Search", data: { behaviour: "autocomplete_listings" }, class: "nav-link form-control" %>
-						<% end %>	
+						<%= link_to "Listings", listings_path, class: "nav-link"%>
 					</li>
-					
+					<li>
+						<%= link_to "Wanted Items", live_searches_path, class: "nav-link"%>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="accountDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<%# Why doesnt this work????? %>
+							<%# <% current_user.name %>
+							Account
+        				</a>
+						<div class="dropdown-menu" aria-labelledby="accountDropDownk">
+							<%= link_to "Dashboard", user_path(current_user,active_tab: "dashboardTab"), class: "nav-link" %>
+							<%= link_to "Groups", groups_path, class: "nav-link" %>
+							<% if current_user.location%>
+								<%= link_to "My Location", locations_path, class: "nav-link"%>
+							<% else %>
+								<%= link_to "Update My Location", new_location_path, class: "nav-link" %>
+							<% end %>
+							<%= link_to "Settings", user_settings_path(current_user), class: "nav-link"%>
+							<%= link_to "Log Out", logout_path , method: :delete, class: "nav-link" %>
+						</div>
+					</li>
 					<li class="nav-item btn-group notification-button" data-behavior="notifications" data-notifications='<%= render template: "notifications/index", formats: [:json] %>'>
-							<a class="nav-link" data-behavior="unread-count" > </a>
-							<a class="nav-link" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<i class="tiny material-icons"> notification_important </i>
-							</a>
-							<div class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items"> 
-							<!-- Dropdown Itemshere will be placed by the notification-items given by the javascript file in the form of html.erb -->
-							</div>
-					</li>
-				
-					<li>
-						<%= link_to user_settings_path(current_user), class: "nav-link" do%>
-							<i class="material-icons">settings</i>
-						<%end%>
-					</li>
-					<li>
-						<%= link_to logout_path , method: :delete, class: "nav-link" do%>
-							<i class="material-icons">exit_to_app</i>
-						<%end%>
-					</li>
+						<a class="nav-link" data-behavior="unread-count" > </a>
+						<a class="nav-link" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="tiny material-icons"> notification_important </i>
+						</a>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items"> 
+						<!-- Dropdown Itemshere will be placed by the notification-items given by the javascript file in the form of html.erb -->
+						</div>
+					</li>			
 				</ul>
 			</div>
 		</div>
@@ -77,7 +57,7 @@
 			<div class="collapse navbar-collapse">
 				<ul class="navbar-nav ml-auto">
 					<li>
-					<%= link_to "Log In", login_path, class: "btn btn-outline-primary mr-2", data: {toggle:"modal", target:"#loginModal"}  %>
+						<%= link_to "Log In", login_path, class: "btn btn-outline-primary mr-2", data: {toggle:"modal", target:"#loginModal"}  %>
 					</li>
 					<li>
 						<%= link_to "Sign Up", new_user_path, class: "btn btn-outline-primary"%>
@@ -120,11 +100,13 @@ but we don't have that much time, mind you so just pick one or the other.  - >
 				<%= link_to "#{current_user.name.camelcase}", user_path(current_user), class:"pt-2 px-3"%>
 				<%= link_to "Groups", groups_path, class:"pt-2 px-3"%>
 				<%= link_to "Listings", listings_path, class:"pt-2 px-3"%>
+				<%= link_to "Wanted Items", live_searches_path, class: "pt-2 px-3"%>
 				<% if current_user.location%>
 					<%= link_to "Location", locations_path, class: "pt-2 px-3"%>
 				<% else %>
 					<%= link_to "Update My Location", new_location_path, class: "pt-2 px-3"%>
 				<% end %>
+				<%= link_to "Settings", user_settings_path(current_user), class: "pt-2 px-3"%>
 				<%= link_to "Log Out", logout_path , method: :delete, class: "btn btn-outline-primary m-3"%>
 			</nav>
 		</div>

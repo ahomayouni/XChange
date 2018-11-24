@@ -16,9 +16,6 @@
     .navbar-brand, a:hover, i:hover {
       color: rgb(3,15,80) !important; 
     }
-    .logo {
-      font-size: 1.3rem;
-    }
     .btn {
       color: white !important;
       border-color: white !important;
@@ -30,19 +27,6 @@
     .notification-button {
       text-align: center;
       color: white !important;
-    }
-    // search bar
-    .search input {
-      display: block;
-      margin: 0 0 0 auto;
-      border: 0px;
-      width: 50%;
-      height: 30px !important;
-      -webkit-transition: width 0.4s ease-in-out;
-      transition: width 0.4s ease-in-out;
-    }
-    .search input:focus {
-      width: 100%;
     }
 }
 
