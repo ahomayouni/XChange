@@ -181,6 +181,43 @@
       </div> 
     </div>
   <% end %>
+
+  <%# No matter if user is logged in, this will show %>
+  <div class="fake-reviews-container">
+    <div class="fake-reviews p-3">
+      <div class="row h-100">
+        <div class="col-3">
+          <%= image_tag("github-fake-reviews.png", class: "m-auto")%>
+        </div>
+        <div class="col">
+          <div class="card-container">
+            <div class="fake-review-card" style="top: 10%;">
+              <div class="review-content text-left p-3">
+                <div class="stars">
+                  <i class="material-icons"> star </i><i class="material-icons"> star </i><i class="material-icons"> star </i><i class="material-icons"> star </i><i class="material-icons"> star </i>
+                </div>
+                <div class="review-comment"> "So like.... This website is gonna get it" </div>
+                <div class="review-author text-right font-italic"> – Bella Hadid </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card-container">
+            <div class="fake-review-card" style="bottom: 10%;">
+              <div class="review-content text-left p-3">
+                <div class="stars">
+                  <i class="material-icons"> star </i><i class="material-icons"> star </i><i class="material-icons"> star </i><i class="material-icons"> star </i><i class="material-icons"> star </i>
+                </div>
+                <div class="review-comment"> "The students that made this website are the coolest students I've ever met." </div>
+                <div class="review-author text-right font-italic"> – Michael Stumm</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <%# comment out this part instead of deletingjust for the purpose of saving the description %>
