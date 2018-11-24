@@ -44,7 +44,7 @@
 
 @media (min-width: 544px) {
   * {
-    font-size:1rem; /*1rem = 16px*/
+    font-size:0.9rem; /*1rem = 16px*/
   }
   body {
     position: relative;
@@ -66,7 +66,7 @@
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
   * {
-    font-size:1.1rem;
+    font-size:0.9rem;
   }
   body {
     position: relative;
@@ -87,7 +87,7 @@
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-  *{font-size:1rem;} /*1rem = 16px*/
+  *{font-size:1.1rem;} /*1rem = 16px*/
   body {
     position: relative;
     margin-bottom:80px;
@@ -107,7 +107,7 @@
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-  *{font-size:1rem;} /*1rem = 16px*/
+  *{font-size:1.1rem;} /*1rem = 16px*/
   body {
     position: relative;
     margin-bottom:80px;
