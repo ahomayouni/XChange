@@ -62,11 +62,11 @@ $(document).ready(function() {
 
 $(document).on('turbolinks:load', function() {
 	$( "#borrowingButton" ).click(function() {
-        $('#borrowing').show(); 
-    $('#lending').hide(); 
+        $('#borrowing').fadeIn(); 
+        $('#lending').hide(); 
      });
     $( "#lendingButton" ).click(function() {
-        $('#lending').show(); 
+        $('#lending').fadeIn(); 
     $('#borrowing').hide(); 
   });
 });
