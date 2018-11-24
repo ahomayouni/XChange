@@ -34,6 +34,8 @@ function show_password(){
 
 }
 
+
+
 // Jquery side of things
 $(document).ready(function() {
 	$(".settings_selector").mouseenter(function(){
@@ -55,5 +57,16 @@ $(document).ready(function() {
 		if (!$(".navbar-toggler").is(":visible")){
 			$(".side-menu").hide();
 		}
-  	});
-})
+	  });
+});
+
+$(document).on('turbolinks:load', function() {
+	$( "#borrowingButton" ).click(function() {
+        $('#borrowing').fadeIn(); 
+        $('#lending').hide(); 
+     });
+    $( "#lendingButton" ).click(function() {
+        $('#lending').fadeIn(); 
+    $('#borrowing').hide(); 
+  });
+});
