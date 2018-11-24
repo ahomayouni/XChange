@@ -12,8 +12,10 @@
  *
  *= require_tree .
  *= require_self
+ *= require jquery-ui/datepicker
  */
 @import 'bootstrap';
+
 
 /*** DO NOT CHANGE - This is for making font sizes responsive */
 * {
@@ -33,7 +35,7 @@ html,body {
 }
 
 #main-body {
-  padding-bottom: 60px; 
+  padding-bottom: 60px;
 }
 
 // v small devices
@@ -256,39 +258,39 @@ html {
   a {
     color: grey;
   }
-  border-radius: none; 
+  border-radius: none;
   .nav-link {
-    border-top-left-radius: 0rem !important; 
-    border-top-right-radius:0rem !important; 
+    border-top-left-radius: 0rem !important;
+    border-top-right-radius:0rem !important;
   }
   .nav-link:hover {
-    color: #602bff; 
-     font-weight: bold !important; 
-     border-top: none; 
-     border-left:none; 
+    color: #602bff;
+     font-weight: bold !important;
+     border-top: none;
+     border-left:none;
      border-right:none;
   }
 
   .nav-link.active{
-    font-weight:bold; 
-    color: black !important; 
-    //border-bottom:2px solid white; 
-    border-left: 1px solid grey !important; 
-    border-right: 1px solid grey !important; 
-    border-top:1px solid grey !important; 
-    
+    font-weight:bold;
+    color: black !important;
+    //border-bottom:2px solid white;
+    border-left: 1px solid grey !important;
+    border-right: 1px solid grey !important;
+    border-top:1px solid grey !important;
+
   }
   .nav-link.active:hover {
-    border-left: 1px solid grey !important; 
-    border-right: 1px solid grey !important; 
-    border-top:1px solid grey !important; 
+    border-left: 1px solid grey !important;
+    border-right: 1px solid grey !important;
+    border-top:1px solid grey !important;
   }
   .nav-link.active.show {
-    font-weight: bold; 
-      color: black !important; 
-      //border-bottom:2px solid white; 
-      border-left: 1px solid grey !important; 
-      border-right: 1px solid grey !important; 
-      border-top:1px solid grey !important; 
+    font-weight: bold;
+      color: black !important;
+      //border-bottom:2px solid white;
+      border-left: 1px solid grey !important;
+      border-right: 1px solid grey !important;
+      border-top:1px solid grey !important;
   }
 }

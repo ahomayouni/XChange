@@ -22,6 +22,8 @@
 //= require_tree ./channels
 //= require jquery_ujs
 //= require geocomplete
+//= require moment
+//= require jquery-ui/widgets/datepicker
 
 function show_password(){
 	var x = document.getElementById("input_password");
@@ -34,7 +36,7 @@ function show_password(){
 
 }
 
-//PSA: If you want to do any jquery, do it in this block of code. 
+//PSA: If you want to do any jquery, do it in this block of code.
 $(document).on('turbolinks:load', function() {
 	$(function () {
 		$('[data-toggle="tooltip"]').tooltip()
@@ -67,11 +69,11 @@ $(document).on('turbolinks:load', function() {
 
 	//Toggle buttons on dashboard page
 	$( "#borrowingButton" ).click(function() {
-        $('#borrowing').fadeIn(); 
-        $('#lending').hide(); 
+        $('#borrowing').fadeIn();
+        $('#lending').hide();
      });
     $( "#lendingButton" ).click(function() {
-        $('#lending').fadeIn(); 
-    	$('#borrowing').hide(); 
+        $('#lending').fadeIn();
+    	$('#borrowing').hide();
     });
 });
