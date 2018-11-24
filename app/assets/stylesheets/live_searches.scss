@@ -12,6 +12,20 @@
         font-size: 40px;
         font-weight: bolder;
     }
+    .button-new {
+        a {
+            color: white !important;
+        }
+        .btn-new {
+            background-color: rgb(104,214,205);
+            border: 0; 
+        }
+        .btn-new:hover {
+            background-color: rgba(104,214,205, 0.8);
+            
+        } 
+    }
+    
     .live-item-search-container {
         width: 100%;
         position:relative;

@@ -16,9 +16,6 @@
     .navbar-brand, a:hover, i:hover {
       color: rgb(3,15,80) !important; 
     }
-    .logo {
-      font-size: 1.3rem;
-    }
     .btn {
       color: white !important;
       border-color: white !important;
@@ -30,19 +27,6 @@
     .notification-button {
       text-align: center;
       color: white !important;
-    }
-    // search bar
-    .search input {
-      display: block;
-      margin: 0 0 0 auto;
-      border: 0px;
-      width: 50%;
-      height: 30px !important;
-      -webkit-transition: width 0.4s ease-in-out;
-      transition: width 0.4s ease-in-out;
-    }
-    .search input:focus {
-      width: 100%;
     }
 }
 
@@ -222,20 +206,10 @@
 
 .fake-reviews-container {
   background-color: #ff7264;
-  height: 300px;
-  img {
-    width: 100%;
-  }
   .fake-reviews {
     height: 100%;
   }
-  .card-container {
-    position: relative;
-    height: 100%;
-  }
   .fake-review-card {
-    position: absolute;
-    // height: 150px;
     width: 100%;
     border-radius: 6px;
     background-color: #ff3f64;
@@ -245,5 +219,34 @@
   }
   .review-comment, .review-author {
     color: white;
+  }
+  @media (min-width: 576px) {
+    .top-right-padding {
+      padding-top: 60px;
+    }
+    .bottom-padding {
+      padding-top: 50px;
+    }
+  }
+}
+
+.news-container {
+  .news-content {
+    img {
+      height: 25px;
+    }
+  }
+  .news-details {
+    width: 50%;
+  }
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+  text-align: center;
+  a {
+    color: black !important;
   }
 }

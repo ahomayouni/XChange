@@ -20,6 +20,22 @@
   font-family: 'Karla', sans-serif;
 }
 
+// fill up the page when there aren't enough materials so the footer stick at the bottom
+html,body {
+  margin:0;
+  padding:0;
+  height:100%;
+}
+
+#body-container {
+  min-height:100%;
+  position:relative;
+}
+
+#main-body {
+  padding-bottom: 60px; 
+}
+
 // v small devices
 @media (max-width: 543px) {
   * {
@@ -27,7 +43,7 @@
   }
   body {
     position: relative;
-    margin-bottom:140px;
+    // margin-bottom:140px;
   }
   .home-title {
     font-size: 1.8rem;
@@ -48,7 +64,7 @@
   }
   body {
     position: relative;
-    margin-bottom:140px;
+    // margin-bottom:140px;
   }
   .home-title {
     font-size: 2rem;
@@ -70,7 +86,7 @@
   }
   body {
     position: relative;
-    margin-bottom:90px;
+    // margin-bottom:90px;
   }
   .home-title {
     font-size: 2.2rem;
@@ -90,7 +106,7 @@
   *{font-size:1.1rem;} /*1rem = 16px*/
   body {
     position: relative;
-    margin-bottom:80px;
+    // margin-bottom:80px;
   }
   .home-title {
     font-size: 2.2rem;
@@ -110,7 +126,7 @@
   *{font-size:1.1rem;} /*1rem = 16px*/
   body {
     position: relative;
-    margin-bottom:80px;
+    // margin-bottom:80px;
   }
   .home-title {
     font-size: 2.4rem;
