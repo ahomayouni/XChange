@@ -34,31 +34,38 @@ function show_password(){
 
 }
 
-// Jquery side of things
-$(document).ready(function() {
+//PSA: If you want to do any jquery, do it in this block of code. 
+$(document).on('turbolinks:load', function() {
+	$(function () {
+		$('[data-toggle="tooltip"]').tooltip()
+	});
+
 	$(".settings_selector").mouseenter(function(){
 	    // alert("You entered testing!");
 	    $(".settings_selector").css({"background":"red"});
 	});
+
 	$(".settings_selector").mouseleave(function(){
 	    // alert("You entered testing!");
 	    $(".settings_selector").css({"background":"white"});
 	});
+
 	// collapsible side bar
 	$(document).on('click', '.collapse-menu-button', function(){
 		$('.side-menu').show();
 	});
+
 	$(document).on('click', '.side-menu-bg', function(){
 		$(".side-menu").hide();
 	});
+
 	$(window).on('resize', function(){
 		if (!$(".navbar-toggler").is(":visible")){
 			$(".side-menu").hide();
 		}
-	  });
-});
+	});
 
-$(document).on('turbolinks:load', function() {
+	//Toggle buttons on dashboard page
 	$( "#borrowingButton" ).click(function() {
         $('#borrowing').fadeIn(); 
         $('#lending').hide(); 
