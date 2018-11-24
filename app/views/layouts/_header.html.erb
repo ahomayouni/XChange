@@ -11,9 +11,8 @@
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="accountDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							<%# Why doesnt this work????? %>
-							<%# <% current_user.name %>
-							Account
-        				</a>
+							<%= current_user.name %>
+        		</a>
 						<div class="dropdown-menu" aria-labelledby="accountDropDownk">
 							<%= link_to "Dashboard", user_path(current_user,active_tab: "dashboardTab"), class: "nav-link" %>
 							<%= link_to "Groups", groups_path, class: "nav-link" %>
