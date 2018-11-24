@@ -10,9 +10,7 @@
                 <%= button_to "View Listing", listing_path(listing), class:"card-link btn btn-primary float-right", :method => :get %>
                 <%= button_to "Delete Request", borrow_delete_path(borrow_request.id), class:"card-link btn btn-primary float-up", :method => :delete %>
                 <% pill_color = get_pill_color_from_status(borrow_request.status) %>
-                pill_color
                 <span class="badge badge-pill status-pill float-right mt-2 mr-2" style="background-color:green;"><%= borrow_request.status.camelize %> </span>
-            
             </div>
         </div>
     </div>
