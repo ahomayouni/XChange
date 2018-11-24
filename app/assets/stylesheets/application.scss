@@ -32,6 +32,10 @@ html,body {
   position:relative;
 }
 
+#main-body {
+  padding-bottom: 60px; 
+}
+
 // v small devices
 @media (max-width: 543px) {
   * {
