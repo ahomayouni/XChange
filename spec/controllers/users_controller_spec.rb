@@ -135,7 +135,7 @@ RSpec.describe UsersController, type: :controller do
 				             password:              "111111",
 				             password_confirmation: "satuikanasin"}
 				         }
-				expect(response).to render_template(:new)    
+				expect(response).to render_template('home/index')    
 			end
 
 			it 'Should not be able to create a user successfully when invalid email is given' do 
@@ -144,7 +144,7 @@ RSpec.describe UsersController, type: :controller do
 				             password:              "111111",
 				             password_confirmation: "satuikanasin"}
 				         }
-				expect(response).to render_template(:new)    
+				expect(response).to render_template('home/index')    
 			end
 
 			it 'Should not be able to create a user successfully when no name is given' do 
@@ -153,7 +153,7 @@ RSpec.describe UsersController, type: :controller do
 				             password:              "111111",
 				             password_confirmation: "satuikanasin"}
 				         }
-				expect(response).to render_template(:new)    
+				expect(response).to render_template('home/index')    
 			end
 
 			it 'Should not be able to create a user when password is too little' do 
@@ -162,7 +162,7 @@ RSpec.describe UsersController, type: :controller do
 				             password:              "11",
 				             password_confirmation: "11"}
 				         }
-				expect(response).to render_template(:new)    
+				expect(response).to render_template('home/index')    
 			end
 		end
 

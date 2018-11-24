@@ -68,14 +68,15 @@ RSpec.describe Comment, type: :model do
 
 
   	context "Comments Validation on replying to a comment" do
-  		it "Should create a comment when the correct params are given" do 
+  		before do 
   			@comment1 = Comment.new 
   			@comment1.body = "This is a great item"
   			@comment1.rating = 3
   			@comment1.reply_type = "Listing"
   			@comment1.reply_id = @listing.id 
   			@comment1.save 
-
+  		end
+  		it "Should create a comment when the correct params are given" do 
   			@comment = Comment.new 
   			@comment.body = "Thank you for the reply!"
   			@comment.reply_type = "Comment"

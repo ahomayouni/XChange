@@ -4,6 +4,7 @@ class Comment < ApplicationRecord
     belongs_to :reply, polymorphic: true
     has_many :comments, as: :reply
     
+    validates :body, length: {minimum: 1}
     validate :validate_rating
     validate :has_rating
 
