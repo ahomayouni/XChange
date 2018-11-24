@@ -19,6 +19,9 @@ class Listing < ActiveRecord::Base
   scope :has_category, -> (category) { where category: category }
 
   def validateTimings
+    if self.start_lending < Date.today
+      errors[:base] << "Start Time cannot be in the past"
+    end
     if self.start_lending && self.end_lending && self.start_lending > self.end_lending
       errors[:base] << "Start Time must be before End Time"
     end
@@ -45,7 +48,7 @@ private
   results = Geocoder.search(self.address)
   if !results.first  #If location is invalid
     errors.add(:address, "- Meetup Address is invalid. Please try again.")
-  end 
+  end
  end
 end
 
