@@ -1,5 +1,5 @@
-<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAG4tWx7kUqZymglhMc6mRstD_RXXTEeMY"></script>
-<script src="https://ubilabs.github.io/geocomplete/jquery.geocomplete.js"></script>
+<script async src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAG4tWx7kUqZymglhMc6mRstD_RXXTEeMY"></script>
+<script asyc src="https://ubilabs.github.io/geocomplete/jquery.geocomplete.js"></script>
 
 <%= form_with(model: live_search, local: true) do |form| %>
   <% if live_search.errors.any? %>
@@ -39,6 +39,7 @@
   <div class="field">
     <%= form.label :to_when %>
     <%= form.date_select :to_when %>
+    <!-- <%= form.text_field :to_when, data:{ provide:'datepicker' } %> -->
   </div>
 
   <div class="field">
@@ -78,6 +79,4 @@
         });
 
       });
-
-
 </script>

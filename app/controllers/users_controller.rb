@@ -24,7 +24,8 @@ class UsersController < ApplicationController
   		flash[:success] = "Thanks for signing up with XChange! Now please check your email to activate"
       redirect_to root_path
   	else
-  		render 'new'
+  		flash.now[:danger] = "The signup form was field in incorrectly."
+  		render 'home/index'
   	end
   end
 
@@ -78,6 +79,10 @@ class UsersController < ApplicationController
         @users_found = @users_found.limit(5)
       }
     end
+  end
+
+  def send_reminders
+    flash[:success] = "Example of a scheduler reminder!"
   end
   
   private

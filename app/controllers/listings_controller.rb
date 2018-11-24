@@ -31,7 +31,7 @@ class ListingsController < ApplicationController
     else
       @listing.latitude = results.first.coordinates[0]
       @listing.longitude = results.first.coordinates[1]
-    end 
+    end
     if @listing.save
       flash[:notice] = "Listing was successfully created"
       redirect_to listing_path(@listing)
@@ -80,8 +80,6 @@ class ListingsController < ApplicationController
         }
       end
   end
-
-
 
  private
 

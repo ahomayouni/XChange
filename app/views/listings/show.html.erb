@@ -19,8 +19,15 @@
               <%= image_tag("empty-user-icon.png", :class => "user-icon rounded") %>
             <%end%>
             <h5 class="mt-3"> <%= @listing.user.name %> </h5>
-				    <%= button_to "View Profile", user_path(@listing.user), params:{active_tab: "dashboardTab"}, class:"btn btn-primary", :method => :get %>
-            <%= button_to "Send Message", user_path(@listing.user), params:{active_tab: "messagesTab"},class:"btn btn-primary", :method => :get %>
+				    <%= button_to "View Profile", user_path(@listing.user), class:"btn btn-primary", :method => :get %>
+            <%= form_for Message.new do |f| %>
+            <%= hidden_field_tag 'borrower_id', @listing.user_id %>
+            <%= hidden_field_tag 'chatroom_id', nil %>
+            <%= f.text_field :content, autofocus: true, class: 'form-control' %>
+            
+            <%= f.submit "Message", class: 'btn btn-primary' %>
+            <% end %>
+
             <div id='user-lat' style="display: none"><%if @listing %><%= @listing.latitude%><%else%><%="N/A"%><%end%></div>
             <div id='user-long' style="display: none"><%if @listing %><%= @listing.longitude%><%else%><%="N/A"%><%end%></div>
             <%if @listing.latitude and @listing.longitude and @listing.address %> <!-- If listing location is valid-->

@@ -80,6 +80,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "bootstrap", "~> 4.1"
 
+gem 'bootstrap-datepicker-rails'
+
+
 gem "jquery-rails", "~> 4.3"
 gem "ransack", "~> 2.0"
 gem 'rails-controller-testing'

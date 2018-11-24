@@ -1,7 +1,6 @@
-<%= form_for message, remote: true do |f| %>
-  <%= f.label :your_message %>:
-  <%= f.text_area :content, class: "form-control", data: {textarea: "message"} %>
-
-  <%= f.hidden_field :chatroom_id, value: chatroom.id %>
-  <%= f.submit "send", class: "btn btn-primary", style: "display: none", data: {send: "message"} %>
+<%= form_for Message.new do |f| %>
+<%= hidden_field_tag 'borrower_id', nil%>
+<%= hidden_field_tag 'chatroom_id', @chatroom.id %>
+<%= f.text_field :content, autofocus: true, class: 'form-control' %>
+<%= f.submit "Message", class: 'btn btn-primary' %>
 <% end %>
