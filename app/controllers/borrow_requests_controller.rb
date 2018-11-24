@@ -1,7 +1,7 @@
 class BorrowRequestsController < ApplicationController
   def send_request
       if BorrowRequest.exists?(listing_id: params[:listing_id], user_id: current_user.id)
-        flash[:notice] = "Alrerady requested"
+        flash[:danger] = "Already requested"
         redirect_to listings_path
       else
         @new_request = BorrowRequest.new(listing_id: params[:listing_id], user_id: current_user.id, status: "requested")
@@ -10,10 +10,10 @@ class BorrowRequestsController < ApplicationController
           @notif_recipient = User.find(@current_listing.user_id)
           @new_notif = Notification.new(recipient: @notif_recipient, actor_id: current_user.id ,action: "borrow_request",notifiable: @current_listing)
           @new_notif.save
-          flash[:notice] = "Borrow Request Successfull"
+          flash[:success] = "Borrow Request Successfull"
           redirect_to listings_path
         else
-          flash[:notice] = "Borrow Request Unsuccessfull"
+          flash[:danger] = "Borrow Request Unsuccessfull"
       redirect_to listings_path
         end
       end
@@ -22,9 +22,9 @@ class BorrowRequestsController < ApplicationController
   def delete_request
     if BorrowRequest.exists?(id: params[:id])
       BorrowRequest.find_by(id: params[:id]).destroy
-      flash[:notice] = "Borrow Request Deleted"
+      flash[:success] = "Borrow Request Deleted"
     else
-      flash[:notice] = "Borrow Request could not be deleted"
+      flash[:danger] = "Borrow Request could not be deleted"
     end
     # TODO: change the redirect to a more approproate listing
     redirect_to current_user
