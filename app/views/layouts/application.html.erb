@@ -18,6 +18,7 @@
   </head>
 
   <body>
+    <div id="body-container">
       <%= render 'layouts/header' %>
       <!-- Enables the use of flash here throughout the repository -->
       <% flash.each do |message_type, message| %>
@@ -25,5 +26,6 @@
       <% end %>
       <%= yield %>
       <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>
