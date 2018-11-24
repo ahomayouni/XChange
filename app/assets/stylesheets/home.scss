@@ -222,20 +222,10 @@
 
 .fake-reviews-container {
   background-color: #ff7264;
-  height: 300px;
-  img {
-    width: 100%;
-  }
   .fake-reviews {
     height: 100%;
   }
-  .card-container {
-    position: relative;
-    height: 100%;
-  }
   .fake-review-card {
-    position: absolute;
-    // height: 150px;
     width: 100%;
     border-radius: 6px;
     background-color: #ff3f64;
@@ -245,6 +235,14 @@
   }
   .review-comment, .review-author {
     color: white;
+  }
+  @media (min-width: 576px) {
+    .top-right-padding {
+      padding-top: 60px;
+    }
+    .bottom-padding {
+      padding-top: 50px;
+    }
   }
 }
 
