@@ -41,13 +41,33 @@ RSpec.describe Listing, type: :model do
 	  		expect(Listing.all.count).to eq(1)
 	  	end
 
-	  	it "Should not create when the end date is before the starting date" do
+	  	it "Should not create when the start date is before's todays date" do
 
 	  		@listing = Listing.new
 	  		@listing.description = "Brand new macbook pro for rent :) helping out the world"
 	  		@listing.category = "Film & Photography"
 	  		@listing.start_lending = Date.today - 2
 	  		@listing.end_lending = Date.today + 2
+	  		@listing.user_id = @user.id
+	  		@listing.address = "1442 Lawrence Ave W Toronto ON"
+
+	  		   @listing.images.attach(
+				   io: File.open(File.join(Rails.root, "/app/assets/images/books.jpg")),
+				   filename: 'books.jpg',
+				   content_type: 'image/jpeg',
+				)
+
+	  		@listing.save
+	  		expect(Listing.all.count).to eq(0)
+	  	end
+
+	  	it "Should not create when the end date is earlier than the start date" do
+
+	  		@listing = Listing.new
+	  		@listing.description = "Brand new macbook pro for rent :) helping out the world"
+	  		@listing.category = "Film & Photography"
+	  		@listing.start_lending = Date.today + 2
+	  		@listing.end_lending = Date.today - 2
 	  		@listing.user_id = @user.id
 	  		@listing.address = "1442 Lawrence Ave W Toronto ON"
 

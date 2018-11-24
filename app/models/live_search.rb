@@ -8,6 +8,9 @@ class LiveSearch < ApplicationRecord
   validate :validateTimings
 
   def validateTimings
+    if self.from_when < Date.today
+      errors[:base] << "Start Date cannot be in the past"
+    end
     if self.from_when && self.to_when && self.from_when > self.to_when
       errors[:base] << "Start Time must be before End Time"
     end
