@@ -11,9 +11,8 @@
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="accountDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							<%# Why doesnt this work????? %>
-							<%# <% current_user.name %>
-							Account
-        				</a>
+							<%= current_user.name %>
+        		</a>
 						<div class="dropdown-menu" aria-labelledby="accountDropDownk">
 							<%= link_to "Dashboard", user_path(current_user,active_tab: "dashboardTab"), class: "nav-link" %>
 							<%= link_to "Groups", groups_path, class: "nav-link" %>
@@ -60,7 +59,7 @@
 						<%= link_to "Log In", login_path, class: "btn btn-outline-primary mr-2", data: {toggle:"modal", target:"#loginModal"}  %>
 					</li>
 					<li>
-						<%= link_to "Sign Up", new_user_path, class: "btn btn-outline-primary"%>
+						<%= link_to "Sign Up", new_user_path, class: "btn btn-outline-primary", data: {toggle:"modal", target:"#signupModal"} %>
 					</li>
 				</ul>
 			</div>
@@ -85,6 +84,22 @@ but we don't have that much time, mind you so just pick one or the other.  - >
       </div>
       <div class="modal-body">
 	  			<%= render 'sessions/form' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signupModalLabel">Sign up</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+	  			<%= render 'users/form' %>
       </div>
     </div>
   </div>
