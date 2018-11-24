@@ -44,7 +44,6 @@ RSpec.describe Comment, type: :model do
   			@comment.reply_type = "Listing"
   			@comment.reply_id = @listing.id 
   			@comment.save 
-  			puts @comment.errors.full_messages
   			expect(Comment.all.count).to eq(1)
   		end
 
@@ -84,6 +83,17 @@ RSpec.describe Comment, type: :model do
   			@comment.reply_id = @comment1.id 
   			@comment.save 
   			expect(Comment.all.count).to eq(2)
+  		end
+  	end
+
+  	context "Comments Validation on replying to a person" do
+  		it "Should create a comment when the correct params are given" do 
+  			@comment = Comment.new 
+  			@comment.body = "I like your profile"
+  			@comment.reply_type = "Person"
+  			@comment.reply_id = @user.id
+  			@comment.save 
+  			expect(Comment.all.count).to eq(1)
   		end
   	end
 end
