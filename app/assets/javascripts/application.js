@@ -34,8 +34,6 @@ function show_password(){
 
 }
 
-
-
 // Jquery side of things
 $(document).ready(function() {
 	$(".settings_selector").mouseenter(function(){
