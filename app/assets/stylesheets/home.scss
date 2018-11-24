@@ -247,3 +247,14 @@
     color: white;
   }
 }
+
+.news-container {
+  .news-content {
+    img {
+      height: 25px;
+    }
+  }
+  .news-details {
+    width: 50%;
+  }
+}
