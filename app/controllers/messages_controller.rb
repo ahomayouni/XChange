@@ -5,6 +5,7 @@ class MessagesController < ApplicationController
 
     def create
       @message = Message.new message_params
+      # only assignment message's chatroom id if the chatroom id is not null (coming from listing)
       @message.chatroom_id = params[:chatroom_id]
       @borrower_id = params[:borrower_id]
       if @message.chatroom_id == nil
@@ -16,10 +17,11 @@ class MessagesController < ApplicationController
         end
         @message.borrower_id = params[:borrower_id]
         # update so we know there is a conversation going on
+        # only create chatroom if message's chatroom is nil
+        @chatroom = Chatroom.create
+        @chatroom.update_attribute(:user_ids, [current_user.id, @message.borrower_id])
+        @message.chatroom_id = @chatroom.id
       end
-      @chatroom = Chatroom.create
-      @chatroom.update_attribute(:user_ids, [current_user.id, @message.borrower_id])
-      @message.chatroom_id = @chatroom.id
       @message.user_id = current_user.id
 
       if @message.save
