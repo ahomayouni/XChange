@@ -5,12 +5,22 @@
       <% if msg.content.present? %>
         <% if current_user.id == msg.user_id%>
           <%# left float if not cur user %>
-          <div class="text-right">
+          <div class="text-right pt-3">
             <%= msg.content %> - <%= User.find(msg.user_id).name %>
+            <% if User.find(msg.user_id).thumbnail.present?%>
+                <%= image_tag(User.find(msg.user_id).thumbnail, :class => "liveo") %>
+              <% else %>
+                <%= image_tag("empty-user-icon.png", :class => "live-suto") %>
+            <% end %>
           </div>
         <% else %>
           <%# right float if current user %>
-          <div class="text-left">
+          <div class="text-left pt-3">
+            <% if User.find(msg.user_id).thumbnail.present?%>
+                <%= image_tag(User.find(msg.user_id).thumbnail, :class => "liveo") %>
+              <% else %>
+                <%= image_tag("empty-user-icon.png", :class => "live-suto") %>
+            <% end %>
             <%= msg.content %> - <%= User.find(msg.user_id).name %>
           </div>
         <%end%>
