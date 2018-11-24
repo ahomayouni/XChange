@@ -1,20 +1,27 @@
 <div class="container"> 
     <div class="row justify-content-center mt-3"> 
         <div class="btn-group w-50" role="group" aria-label="Basic example">
-            <button id="borrowingButton" type="button" class="btn btn-secondary w-50">Borrowing</button>
-            <button id="lendingButton" type="button" class="btn btn-secondary w-50">Lending</button>
+            <button id="borrowingButton" type="button" class="btn btn-secondary w-50 toggle-item">Borrowing</button>
+            <button id="lendingButton" type="button" class="btn btn-secondary w-50 toggle-item">Lending</button>
         </div>
     </div>
 </div>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-                <div id="borrowing">
+                <div id="borrowing" style="display:none;">
                     Borrowing stuff 
                 </div>
-                <div id="lending">
+                <div id="lending" style="display:none;">
                     Lending stuff 
                 </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="col-md-6 mx-4">
+        <div class="d-flex flex-row mt-3 py-3">
+            <h2> What you're Borrowing </h2>
         </div>
     </div>
 </div>
