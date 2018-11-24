@@ -80,6 +80,10 @@ class UsersController < ApplicationController
       }
     end
   end
+
+  def send_reminders
+    flash[:success] = "Example of a scheduler reminder!"
+  end
   
   private
 

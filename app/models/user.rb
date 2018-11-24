@@ -88,10 +88,6 @@ class User < ApplicationRecord
 		UserMailer.password_reset(self).deliver_now # Amazing gem that has everything
 	end
 
-	def send_reminders
-		flash[:success] = "Example of a scheduler reminder!"
-	end
-
 	#Not used anymore, using ransack instead in home_controller.rb
 	#def self.search(search)
 	#  where("name LIKE ? OR email LIKE ?", "%#{search}%", "%#{search}%")
