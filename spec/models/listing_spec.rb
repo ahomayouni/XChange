@@ -25,8 +25,8 @@ RSpec.describe Listing, type: :model do
 	  		@listing.title = "Macbook Pro"
 	  		@listing.description = "Brand new macbook pro for rent :) helping out the world"
 	  		@listing.category = "Film & Photography"
-	  		@listing.start_lending = "2018-11-11 00:00:00"
-	  		@listing.end_lending = "2018-11-11 00:00:00"
+	  		@listing.start_lending = Date.today
+	  		@listing.end_lending = Date.today + 4
 	  		@listing.user_id = @user.id
 	  		@listing.address = "1442 Lawrence Ave W Toronto ON"
 
@@ -37,6 +37,7 @@ RSpec.describe Listing, type: :model do
 				)
 
 	  		@listing.save
+	  		puts @listing.errors.full_messages
 	  		expect(Listing.all.count).to eq(1)
 	  	end
 
@@ -45,8 +46,8 @@ RSpec.describe Listing, type: :model do
 	  		@listing = Listing.new
 	  		@listing.description = "Brand new macbook pro for rent :) helping out the world"
 	  		@listing.category = "Film & Photography"
-	  		@listing.start_lending = "2018-11-11 00:00:00"
-	  		@listing.end_lending = "2018-09-11 00:00:00"
+	  		@listing.start_lending = Date.today - 2
+	  		@listing.end_lending = Date.today + 2
 	  		@listing.user_id = @user.id
 	  		@listing.address = "1442 Lawrence Ave W Toronto ON"
 
