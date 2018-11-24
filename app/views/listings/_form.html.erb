@@ -11,15 +11,15 @@
 
   <%= form_for @listing do |f| %>
   <p>
-    <%= f.label :title, class:"font-weight-bold" %>
+    <%= f.label :title, class:"font-weight-bold", style:"color:#9a00bc;", data: {toggle:"tooltip", placement:"right", title:"What's your item called? Keep it short but descriptive!"}%>
     <%= f.text_field :title, placeholder:"eg. Canon XF205" , class: 'form-control'%>
   </p>
   <p>
-    <%= f.label :category, class:"font-weight-bold"  %>
+    <%= f.label :category, class:"font-weight-bold", style:"color:#9a00bc;", data: {toggle:"tooltip", placement:"right", title:" Select a category to increase your item's visibility to potential borrowers!"}  %>
     <%= f.select :category, ["Film & Photography","Audio Visual Equipment","Projectors & Screens","Drones","DJ Equipment","Transport","Storage","Electronics","Party & Events","Sports","Musical Instruments","Home / Office / Garden","Kids & Baby","Holiday & Travel","Clothing"] , class: 'form-control'%>
   </p>
   <p>
-    <%= f.label :description, class:"font-weight-bold" %>
+    <%= f.label :description, style:"color:#9a00bc;", class:"font-weight-bold",data: {toggle:"tooltip", placement:"right", title:"What is your item? Anything particular about it? This is the place to write it."} %>
     <%= f.text_area :description, placeholder:"eg. Shooting beautiful shots on film is made simple with the auto mode, but you're able to also switch that off and shoot in full manual! ", class: 'form-control'%>
   </p>
 <!--
@@ -29,19 +29,19 @@
   </p>
 -->
   <p>
-    <%= f.label :address, "Meetup Address: ", class:"font-weight-bold", style:"color:#9a00bc;"  %>
+    <%= f.label :address, "Meetup Address: ", class:"font-weight-bold", style:"color:#9a00bc;", data: {toggle:"tooltip", placement:"right", title:"Where can this item be picked up?"}%>
     <%= f.text_field :address,placeholder:"eg. 25 St George St", class: 'form-control'%>
   </p>
   <p>
-    <%= f.label :start_lending, class:"font-weight-bold" %>
+    <%= f.label :start_lending, class:"font-weight-bold", style:"color:#9a00bc;", data: {toggle:"tooltip", placement:"right", title:"When is your item available from?"} %>
     <%= f.date_select :start_lending, class: 'form-control'%>
   </p>
   <p>
-    <%= f.label :end_lending, class:"font-weight-bold" %>
+    <%= f.label :end_lending, class:"font-weight-bold", style:"color:#9a00bc;" %>
     <%= f.date_select :end_lending, class: 'form-control'%>
   </p>
   <p>
-    <%= f.label :image, class:"font-weight-bold"  %>
+    <%= f.label :image, class:"font-weight-bold", style:"color:#9a00bc;", data: {toggle:"tooltip", placement:"right", title:"Images are helpful for potential borrowers. The more the merrier!"} %>
     <%= f.file_field :images, multiple: true , class: 'form-control'%>
   </p>
   <p>
