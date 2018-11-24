@@ -29,7 +29,7 @@ class User < ApplicationRecord
 	# Create associations to link with private chatroom messages
 	has_many :messages
 	#this allows each user access to chatroom through their messages
-	has_many :chatroom, through: :messages
+	has_many :chatroom, -> { distinct }, through: :messages
 
 	# Validate email field with regex
 	validates :email, presence:true , length:{maximum:255} , format:{with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
