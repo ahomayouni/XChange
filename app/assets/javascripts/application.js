@@ -67,6 +67,6 @@ $(document).on('turbolinks:load', function() {
      });
     $( "#lendingButton" ).click(function() {
         $('#lending').fadeIn(); 
-    $('#borrowing').hide(); 
-  });
+    	$('#borrowing').hide(); 
+    });
 });
