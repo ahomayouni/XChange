@@ -16,13 +16,9 @@
   <p>
     <%= form.label :title, class:"font-weight-bold", style:"color:#9a00bc;", data: {toggle:"tooltip", placement:"right", title:"What's your item called? Keep it short but descriptive!"}%>
     <%= form.text_field :title, placeholder:"eg. Canon XF205" , class: 'form-control'%>
-    <!-- <%= form.label :title %>
-    <%= form.text_field :title %> -->
   </p>
 
   <p>
-    <!-- <%= form.label :category %>
-    <%= form.text_area :category %> -->
     <%= form.label :category, class:"font-weight-bold", style:"color:#9a00bc;", data: {toggle:"tooltip", placement:"right", title:" Select a category to increase your item's visibility to potential borrowers!"}  %>
     <%= form.select :category, ["Film & Photography","Audio Visual Equipment","Projectors & Screens","Drones","DJ Equipment","Transport","Storage","Electronics","Party & Events","Sports","Musical Instruments","Home / Office / Garden","Kids & Baby","Holiday & Travel","Clothing"] , class: 'form-control'%>
   </p>
@@ -46,7 +42,7 @@
     <%= form.submit %>
   </div>
 <% end %>
-
+<%= link_to 'Back', live_searches_path %> 
 
 
 <script>
