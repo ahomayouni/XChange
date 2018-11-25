@@ -12,9 +12,9 @@ class ChatroomsController < ApplicationController
   end
 
   def show
-    @chatroom = Chatroom.find_by(params[:chatroom_id])
+    @chatroom = Chatroom.find(params[:id])
+    @messages = Message.where(chatroom_id: params[:id])
   end
-    
 
   private
   def chatroom_params

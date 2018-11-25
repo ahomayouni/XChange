@@ -6,7 +6,7 @@
   </div>
   <hr>
   <div class="mt-3 button-new w-100">
-      <%= link_to '+', new_live_search_path, class:"btn btn-default btn-new w-100" %>
+      <%= link_to '+', new_live_search_path, class:"btn btn-default btn-new w-100", data: {toggle:"modal", target:"#liveSearchModal"}%>
   </div>
   <div class="live-search-inquiry m-auto">
     <% @live_searches.each do |live_search| %>
@@ -60,4 +60,6 @@
       </div>
     <% end %>
   </div>
+  <%# modal %>
+  <%= render 'new_modal' %>
 </div>

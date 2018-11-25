@@ -1,11 +1,10 @@
 <script async src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAG4tWx7kUqZymglhMc6mRstD_RXXTEeMY"></script>
 <script asyc src="https://ubilabs.github.io/geocomplete/jquery.geocomplete.js"></script>
 
-<%= form_with(model: live_search, local: true) do |form| %>
-  <% if live_search.errors.any? %>
+<%= form_for LiveSearch.new do |form| %>
+  <% if live_search.present? && live_search.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(live_search.errors.count, "error") %> prohibited this live_search from being saved:</h2>
-
       <ul>
       <% live_search.errors.full_messages.each do |message| %>
         <li><%= message %></li>
