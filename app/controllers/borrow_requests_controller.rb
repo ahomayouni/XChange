@@ -1,10 +1,20 @@
 class BorrowRequestsController < ApplicationController
   def send_request
+    puts ">>>>>>>>>>>>>>>>>>>>>>>>"
+    puts params[:borrow_request][:date_range].split(" - ")[0]
+    puts params[:borrow_request][:date_range].split(" - ")[1]
+    puts ">>>>>>>>>>>>>>>>>>>>>>>>"
+
       if BorrowRequest.exists?(listing_id: params[:listing_id], user_id: current_user.id)
         flash[:danger] = "Already requested"
         redirect_to listings_path
       else
-        @new_request = BorrowRequest.new(listing_id: params[:listing_id], user_id: current_user.id, status: "requested")
+        start_b = params[:borrow_request][:date_range].split(" - ")[0].split("/")
+        @start_borrowing = DateTime.new(start_b[0].to_i, start_b[1].to_i, start_b[2].to_i)
+        end_b = params[:borrow_request][:date_range].split(" - ")[1].split("/")
+        @end_borrowing = DateTime.new(end_b[0].to_i, end_b[1].to_i, end_b[2].to_i)
+
+        @new_request = BorrowRequest.new(listing_id: params[:listing_id], user_id: current_user.id, status: "requested", start_borrowing: @start_borrowing, end_borrowing: @end_borrowing)
         if @new_request.save
           @current_listing = Listing.find(params[:listing_id])
           @notif_recipient = User.find(@current_listing.user_id)

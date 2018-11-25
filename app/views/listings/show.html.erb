@@ -94,7 +94,7 @@
           <%if not_listing_owner%>
           <div id='listing_start_date' style="display: none"><%if @listing %><%= @listing.start_lending%><%else%><%="N/A"%><%end%></div>
           <div id='listing_end_date' style="display: none"><%if @listing %><%= @listing.end_lending%><%else%><%="N/A"%><%end%></div>
-            <%= form_for(:borrow_request, class: "form-control", url: create_borrow_request_path(@listing), method: :get, remote: true) do |form| %>
+            <%= form_for(:borrow_request, class: "form-control", url: create_borrow_request_path(@listing), method: :get) do |form| %>
             <%= form.label :date_range %>
             <%= form.text_field :date_range, class: "daterange", data:{ behavior: 'daterangepicker' } %>
             <%= submit_tag "Request Item", class: 'btn btn-outline-info mt-2' %>
@@ -145,17 +145,11 @@
 </script>
 
 <script>
-// $(function() {
-//   $('.daterange #borrow_request_dob').daterangepicker({
-//       'format': 'yyyy-mm-dd',
-//       'autoclose': true
-//     });
-// });
 
 $(function(){
   var start_lending = document.getElementById("listing_start_date").innerHTML.split(' ')[0];
   var end_lending = document.getElementById("listing_end_date").innerHTML.split(' ')[0];
-  console.log(start_lending, end_lending)
+  // console.log(start_lending, end_lending)
   $('[data-behavior=daterangepicker]').daterangepicker({
     startDate: start_lending,
     minDate: start_lending,
