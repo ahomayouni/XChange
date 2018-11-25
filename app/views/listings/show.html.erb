@@ -11,14 +11,7 @@
             <% if is_listing_owner %>
                <%= link_to "Edit", edit_listing_path(@listing), class: 'btn btn-outline-info'%>
             <% end %>
-            <%if not_listing_owner%>
-              <%= form_for(:borrow_request, class: 'form-inline', url: create_borrow_request_path(@listing), method: :get) do |form| %>
-              <%= form.label :dob %>
-              <%= form.text_field :dob, class: "daterange", data:{ behavior: 'daterangepicker' } %>
-              <%= submit_tag "Request Item", class: 'btn btn-outline-info mt-2' %>
-              <% end %>
-               <!-- <%= link_to "Request Item", create_borrow_request_path(@listing), class: 'btn btn-outline-info mt-2'%> -->
-            <%end%>
+
             <h5 class="mt-3"> Owner: </h5>
             <%if @listing.user.person.image.attachment != nil and @listing.user.person.image.content_type.in?(%('image/jpeg image/png')) %>
               <%= image_tag(@listing.user.thumbnail, :class => "img-thumbnail rounded-circle")%>
@@ -100,6 +93,16 @@
               <% end %>
           </div>
         </div>
+        <div class="card mt-2">
+          <%if not_listing_owner%>
+            <%= form_for(:borrow_request, class: "form-control", url: create_borrow_request_path(@listing), method: :get, remote: true) do |form| %>
+            <%= form.label :date_range %>
+            <%= form.text_field :date_range, class: "daterange", data:{ behavior: 'daterangepicker' } %>
+            <%= submit_tag "Request Item", class: 'btn btn-outline-info mt-2' %>
+            <% end %>
+             <!-- <%= link_to "Request Item", create_borrow_request_path(@listing), class: 'btn btn-outline-info mt-2'%> -->
+          <%end%>
+        </div>
         <!-- Showing existing comments on the post  -->
         <%= render(partial: 'comments/comment', collection: @listing.comments) %>
       </div>
@@ -152,14 +155,17 @@
 
 $(function(){
   $('[data-behavior=daterangepicker]').daterangepicker({
-    opens: 'left',
+    inline:false,
+    container:"container",
+    minYear:2018,
+    maxYear:2019,
     locale: { format: 'DD/MM/YYYY'},
     cancelLabel: 'Clear'
   });
 
-  $('[data-behavior=daterangepicker]').on('cancel.daterangepicker', function(){
-    $(this).val(' ');
-  });
+  // $('[data-behavior=daterangepicker]').on('cancel.daterangepicker', function(){
+  //   $(this).val(' ');
+  // });
 
 });
 </script>

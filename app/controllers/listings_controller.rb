@@ -81,6 +81,7 @@ class ListingsController < ApplicationController
       end
   end
 
+
  private
 
      def find_user

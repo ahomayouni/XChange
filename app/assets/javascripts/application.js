@@ -23,7 +23,7 @@
 //= require jquery_ujs
 //= require geocomplete
 //= require moment
-//= require jquery-ui/widgets/datepicker
+//= require daterangepicker
 
 function show_password(){
 	var x = document.getElementById("input_password");
