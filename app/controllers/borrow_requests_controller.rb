@@ -1,9 +1,9 @@
 class BorrowRequestsController < ApplicationController
   def send_request
-    puts ">>>>>>>>>>>>>>>>>>>>>>>>"
-    puts params[:borrow_request][:date_range].split(" - ")[0]
-    puts params[:borrow_request][:date_range].split(" - ")[1]
-    puts ">>>>>>>>>>>>>>>>>>>>>>>>"
+    # puts ">>>>>>>>>>>>>>>>>>>>>>>>"
+    # puts params[:borrow_request][:date_range].split(" - ")[0]
+    # puts params[:borrow_request][:date_range].split(" - ")[1]
+    # puts ">>>>>>>>>>>>>>>>>>>>>>>>"
 
       if BorrowRequest.exists?(listing_id: params[:listing_id], user_id: current_user.id)
         flash[:danger] = "Already requested"

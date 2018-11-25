@@ -7,6 +7,7 @@
             </h5>
             <h6> Owned by: <%= listing.user.name %> </h6>
             <h6 style="color:#ffc107;"> Requested on <%= borrow_request.created_at.strftime("%d/%m/%Y") %> </h6>
+            <h6 style="color:blue;"> From <%= borrow_request.start_borrowing.strftime("%d/%m/%Y") %> To <%= borrow_request.end_borrowing.strftime("%d/%m/%Y") %></h6>
                 <%= button_to "View Listing", listing_path(listing), class:"card-link btn btn-primary float-right", :method => :get %>
                 <%= button_to "Delete Request", borrow_delete_path(borrow_request.id), class:"card-link btn btn-primary float-up", :method => :delete %>
                 <% pill_color = get_pill_color_from_status(borrow_request.status) %>
@@ -15,7 +16,7 @@
                 <%= hidden_field_tag 'borrower_id', listing.user_id %>
                 <%= hidden_field_tag 'chatroom_id', nil %>
                 <%= f.text_field :content, autofocus: true, class: 'form-control' %>
-                
+
                 <%= f.submit "Message", class: 'btn btn-primary' %>
                 <% end %>
             </div>
