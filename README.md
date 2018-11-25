@@ -1,6 +1,6 @@
 # XChange
 
-CSC-444 group project
+Software Engineering Group Project ;) 
 
 ## Installation:
 To get this project running, follow these steps:
