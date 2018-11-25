@@ -17,9 +17,9 @@
                 <div class="col-md-6">
                     <div class="card mx-2 mb-2">
                         <div class="card-body">
-                            <h4> Borrower's Name: </h4>
-                            <%= User.find_by(id: borrow_request.user_id).name %>
+                            <h4> Borrower's Name: <%= User.find_by(id: borrow_request.user_id).name %></h4>
                             <h4> Listing name:   <%= listing.title %> </h4>
+                            <h4 style="color:blue;"> From <%= borrow_request.start_borrowing.strftime("%d/%m/%Y") %> To <%= borrow_request.end_borrowing.strftime("%d/%m/%Y") %></h4>
                             <%= link_to "Approve", borrow_approve_path(borrow_request.id), method: :patch, class: 'btn btn-outline-info mt-2'%>
                             <%= link_to "Decline", borrow_decline_path(borrow_request.id), method: :get, class: 'btn btn-danger mt-2'%>
                         </div>
