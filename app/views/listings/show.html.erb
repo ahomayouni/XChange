@@ -92,6 +92,8 @@
         </div>
         <div class="card mt-2">
           <%if not_listing_owner%>
+          <div id='listing_start_date' style="display: none"><%if @listing %><%= @listing.start_lending%><%else%><%="N/A"%><%end%></div>
+          <div id='listing_end_date' style="display: none"><%if @listing %><%= @listing.end_lending%><%else%><%="N/A"%><%end%></div>
             <%= form_for(:borrow_request, class: "form-control", url: create_borrow_request_path(@listing), method: :get, remote: true) do |form| %>
             <%= form.label :date_range %>
             <%= form.text_field :date_range, class: "daterange", data:{ behavior: 'daterangepicker' } %>
@@ -151,12 +153,15 @@
 // });
 
 $(function(){
+  var start_lending = document.getElementById("listing_start_date").innerHTML.split(' ')[0];
+  var end_lending = document.getElementById("listing_end_date").innerHTML.split(' ')[0];
+  console.log(start_lending, end_lending)
   $('[data-behavior=daterangepicker]').daterangepicker({
-    inline:false,
-    container:"container",
-    minYear:2018,
-    maxYear:2019,
-    locale: { format: 'DD/MM/YYYY'},
+    startDate: start_lending,
+    minDate: start_lending,
+    endDate: end_lending,
+    maxDate: end_lending,
+    locale: { format: 'YYYY/MM/DD'},
     cancelLabel: 'Clear'
   });
 
