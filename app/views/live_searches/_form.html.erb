@@ -12,39 +12,35 @@
       </ul>
     </div>
   <% end %>
-<!--
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
-  </div> -->
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+  <p>
+    <%= form.label :title, class:"font-weight-bold", style:"color:#9a00bc;", data: {toggle:"tooltip", placement:"right", title:"What's your item called? Keep it short but descriptive!"}%>
+    <%= form.text_field :title, placeholder:"eg. Canon XF205" , class: 'form-control'%>
+    <!-- <%= form.label :title %>
+    <%= form.text_field :title %> -->
+  </p>
 
-  <div class="field">
+  <p>
     <!-- <%= form.label :category %>
     <%= form.text_area :category %> -->
-    <%= form.label :category %>
+    <%= form.label :category, class:"font-weight-bold", style:"color:#9a00bc;", data: {toggle:"tooltip", placement:"right", title:" Select a category to increase your item's visibility to potential borrowers!"}  %>
     <%= form.select :category, ["Film & Photography","Audio Visual Equipment","Projectors & Screens","Drones","DJ Equipment","Transport","Storage","Electronics","Party & Events","Sports","Musical Instruments","Home / Office / Garden","Kids & Baby","Holiday & Travel","Clothing"] , class: 'form-control'%>
-  </div>
+  </p>
 
-  <div class="field">
-    <%= form.label :from_when %>
-    <%= form.date_select :from_when %>
-  </div>
+  <p>
+    <%= form.label :from_when, class:"font-weight-bold", style:"color:#9a00bc;", data: {toggle:"tooltip", placement:"right", title:"When do you want this item?"} %>
+    <%= form.date_select :from_when, class: 'form-control'%>
+  </p>
 
-  <div class="field">
-    <%= form.label :to_when %>
-    <%= form.date_select :to_when %>
-    <!-- <%= form.text_field :to_when, data:{ provide:'datepicker' } %> -->
-  </div>
+  <p>
+    <%= form.label :to_when, class:"font-weight-bold", style:"color:#9a00bc;", data: {toggle:"tooltip", placement:"right", title:"Till when do you want this item?"} %>
+    <%= form.date_select :to_when, class: 'form-control'%>
+  </p>
 
-  <div class="field">
-    <%= form.label :where %>
-    <%= form.text_field :where %>
-  </div>
+  <p>
+    <%= form.label :where, "Meetup Address: ", class:"font-weight-bold", style:"color:#9a00bc;", data: {toggle:"tooltip", placement:"right", title:"Where can this item be picked up?"}%>
+    <%= form.text_field :where, placeholder:"eg. 25 St George St", class: 'form-control'%>
+  </p>
 
   <div class="actions">
     <%= form.submit %>
