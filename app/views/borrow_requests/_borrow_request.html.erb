@@ -12,13 +12,42 @@
                 <%= button_to "Delete Request", borrow_delete_path(borrow_request.id), class:"card-link btn btn-primary float-up", :method => :delete %>
                 <% pill_color = get_pill_color_from_status(borrow_request.status) %>
                 <span class="badge badge-pill status-pill float-right mt-2 mr-2" style="background-color:green;"><%= borrow_request.status.camelize %> </span>
-                 <%= form_for Message.new do |f| %>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Send a message!
+                </button>
+            </div>
+        </div>
+    </div>
+
+ 
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title font-weight-bold" id="exampleModalLabel" style="color:purple;">Send a mesasge to  <%= listing.user.name %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h6 class="font-weight-bold p-4 text-secondary">Your next step is to let <%= listing.user.name %> know
+            what meet up time and location works for you. What are you waiting for? Don't be shy! </h6>
+         <%= form_for Message.new do |f| %>
                 <%= hidden_field_tag 'borrower_id', listing.user_id %>
                 <%= hidden_field_tag 'chatroom_id', nil %>
                 <%= f.text_field :content, autofocus: true, class: 'form-control' %>
 
-                <%= f.submit "Message", class: 'btn btn-primary' %>
+                <%= f.submit "Message", class: 'btn btn-primary mt-2' %>
                 <% end %>
-            </div>
-        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
     </div>
+  </div>
+</div>
+
+    <%# Modal content %>
+     <!--  -->
