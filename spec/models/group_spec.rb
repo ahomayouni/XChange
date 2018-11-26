@@ -10,7 +10,53 @@ RSpec.describe Group, type: :model do
   		@group.save
 
   		expect(Group.all.count).to eq(1)
-  		
+  	end
+
+  	it "should NOT create a group when name is missing" do 
+  		@group = Group.new 
+  		@group.description = "People living in the north york area looking to borrow and lend stuff"
+  		@group.isPublic = true 
+  		@group.save
+
+  		expect(Group.all.count).to eq(0)
+  	end
+
+  	it "should NOT create a group when name characters is less than 5" do 
+  		@group = Group.new 
+  		@group.name = "a"
+  		@group.description = "People living in the north york area looking to borrow and lend stuff"
+  		@group.isPublic = true 
+  		@group.save
+
+  		expect(Group.all.count).to eq(0)
+  	end
+
+  	it "should NOT create a group when description is missing" do 
+  		@group = Group.new 
+  		@group.name = "People of North York"
+  		@group.isPublic = true 
+  		@group.save
+
+  		expect(Group.all.count).to eq(0)
+  	end
+
+  	it "should NOT create a group when description characters is less than 5" do 
+  		@group = Group.new 
+  		@group.name = "People of North York"
+  		@group.description = "1"
+  		@group.isPublic = true 
+  		@group.save
+
+  		expect(Group.all.count).to eq(0)
+  	end
+
+  	it "should NOT create a group when isPublic parameter is missing" do 
+  		@group = Group.new 
+  		@group.name = "People of North York"
+  		@group.description = "People living in the north york area looking to borrow and lend stuff"
+  		@group.save
+
+  		expect(Group.all.count).to eq(0)
   	end
 
   end
