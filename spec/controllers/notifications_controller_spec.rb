@@ -11,8 +11,6 @@ RSpec.describe NotificationsController, type: :controller do
 			get :index
 			expect(response).to_not be_successful
 		end
-
-		# Why is this returning an error?
 	end
 
 	context 'POST #mark_as_read' do 
