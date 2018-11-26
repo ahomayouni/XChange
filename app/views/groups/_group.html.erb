@@ -1,17 +1,22 @@
 <div class="card user-group">
   <div class="card-body">
-		<h5 class="card-title">Name: <%= group.name %></h5>
-		<p class="card-text"><%= button_to "View Group", group_path(group), class:"card-link btn btn-primary", :method => :get %></p>	
-		<p class="card-text">Privacy: <% if group.isPublic %>Public<% else %>Private<%end%></p>
-    	<p class="card-text">Description: <%= group.description %></p>
-		<% if !group.member_exists(current_user) %>
-			<p class="card-text"><%= button_to "Join Group", {:controller => "group", :action => "join", :group => group, :user => current_user }, :method => :post, class:"card-link btn btn-success" %></p>
-		<% else %>
-			<p class="card-text"><%= button_to "Leave Group", {:controller => "group", :action => "leave", :group => group, :user => current_user }, :method => :post, class:"card-link btn btn-warning" %></p>
-		<% end %>
-		<% if current_user.admin? or current_user.id == group.owner_id %>
-			<%= button_to 'DELETE', group, method: :delete, data: {confirm: "Are You sure you want to delete #{group.name}? "},
-			class: "card-link btn btn-danger" %>
-		<% end %>
+		<h5 class="card-title font-weight-bold" style="color:purple;"><%= group.name %></h5>
+		<p class="card-text font-weight-bold text-secondary">Privacy: <% if group.isPublic %>Public<% else %>Private<%end%></p>
+    	<p class="card-text font-weight-bold"> Description: </p>
+    	<p class="card-text "> 	<%= group.description %> </p>
+		
+		<div class="d-flex flex-row">
+				<p class="card-text mr-2"><%= button_to "View Group", group_path(group), class:"card-link btn btn-primary", :method => :get %></p>	
+			<% if !group.member_exists(current_user) %>
+				<p class="card-text mr-2"><%= button_to "Join Group", {:controller => "group", :action => "join", :group => group, :user => current_user }, :method => :post, class:"card-link btn btn-success" %></p>
+			<% else %>
+				<p class="card-text mr-2"><%= button_to "Leave Group", {:controller => "group", :action => "leave", :group => group, :user => current_user }, :method => :post, class:"card-link btn btn-warning" %></p>
+			<% end %>
+			<% if current_user.admin? or current_user.id == group.owner_id %>
+				<%= button_to 'DELETE', group, method: :delete, data: {confirm: "Are You sure you want to delete #{group.name}? "},
+				class: "card-link btn btn-danger ml-2" %>
+			<% end %>
+		</div>
+	
   </div>
 </div>
