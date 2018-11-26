@@ -58,6 +58,31 @@ RSpec.describe Group, type: :model do
 
   		expect(Group.all.count).to eq(0)
   	end
+  end
 
+  context "Associations testing with User Model" do
+  	# Prerequisuites
+  		before(:each) do
+  			@user = User.new(name:  "dodo",
+							 email: "dragonball@gmail.com",
+				             password:              "satuikanasin",
+				             password_confirmation: "satuikanasin",
+				             activated: true,
+				             activated_at: Time.zone.now,
+				             person: Person.create(
+				              address: Faker::Address.street_address,
+				              phone_number: '6471678732',
+				              description: 'I am a bot created by the master Peter Tanugraha'
+				             ))
+
+  			@user.save
+  		end
+
+  	it "A user model should be able to create a new group for him/her" do
+  		@user.groups.create(name:"People of North York", description:"People living in the north york area looking to borrow and lend stuff",
+  							isPublic: true)
+
+  		expect(@user.groups.count).to eq(1)
+  	end
   end
 end
