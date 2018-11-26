@@ -1,5 +1,5 @@
 <div class="chatroom-container w-50 m-auto p-4">
-  <h1>Chatroom: <%= @chatroom.id %></h1>
+  <h1>Conversation with: <%= @chatroom.id %></h1>
   <div class="chatroom-messages">
     <% @messages.each do |msg| %>
       <% if msg.content.present? %>
