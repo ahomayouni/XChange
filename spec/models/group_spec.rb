@@ -83,6 +83,7 @@ RSpec.describe Group, type: :model do
   							isPublic: true)
 
   		expect(@user.groups.count).to eq(1)
+  		expect(Group.all.count).to eq(1)
   	end
   end
 end
