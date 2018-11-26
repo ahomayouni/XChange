@@ -7,16 +7,16 @@
 <div class="landing-page-search">
   <div class="search-wrapper p-5">
     <div class="row">
-      <div class="col-8"> 
+      <div class="col-8">
         <div class="title">
-            <h1>Get</h1>
-            <h1>Started.</h1>
+            <h1>Borrow</h1>
+            <h1>Anything</h1>
           </div>
       </div>
-      <div class="col-4"> 
+      <div class="col-4">
         <div class="floating-img">
           <%= image_tag("balloons-home.png")%>
-        </div>   
+        </div>
       </div>
     </div>
 
@@ -24,7 +24,7 @@
       <div class="col-12 col-md-8">
         <%= form_with url: search_listings_path, local: true, method: :get, html: {class: "searchbar"} do |form| %>
             <div class="input-container">
-              <%= form.text_field :listings_q, placeholder: "", data: { behaviour: "autocomplete_listings" }, class: "input-field" %>
+              <%= form.text_field :listings_q, placeholder: "I need a...", data: { behaviour: "autocomplete_listings" }, class: "input-field" %>
               <i class="material-icons input-icon"> search </i>
             </div>
           <% end %>
@@ -62,7 +62,7 @@
         </div>
       </div>
       <div class="btn">
-				<%= link_to 'About', controller: 'about' %>        
+				<%= link_to 'About', controller: 'about' %>
       </div>
     </div>
     <div class="divider">
@@ -175,10 +175,10 @@
               </div>
           <% end %>
         </div>
-        <div class="text-right"> 
+        <div class="text-right">
           <%= link_to "View All", listings_path, class: "font-weight-bold" %>
         </div>
-      </div> 
+      </div>
     </div>
   <% end %>
 
@@ -215,8 +215,8 @@
                 </div>
               </div>
             </div>
-          </div>      
-        </div> 
+          </div>
+        </div>
         <div class="col-12 col-sm-6">
           <div class="row">
             <div class="col-12">

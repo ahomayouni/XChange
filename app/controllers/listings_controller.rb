@@ -92,8 +92,17 @@ class ListingsController < ApplicationController
     end
 
     def listing_params
-      params.require(:listing).permit(:title, :description, :category, :start_lending, :end_lending, :address,:latitude,:longitude,:address,images: [])
+      params.require(:listing).permit(:title, :description, :category, :lending_range, :start_lending, :end_lending, :address,:latitude,:longitude,:address,images: [])
     end
+
+    def parse_dates(lending_range)
+      start_b = lending_range.split(" - ")[0].split("/")
+      @start_l = DateTime.new(start_b[0].to_i, start_b[1].to_i, start_b[2].to_i)
+      end_b = lending_range.split(" - ")[1].split("/")
+      @end_l = DateTime.new(end_b[0].to_i, end_b[1].to_i, end_b[2].to_i)
+      return @start_l, @end_l
+    end
+
 
     #to ensure "/search_listings" is allowed as well as "/search_listings.json"
     def force_json
