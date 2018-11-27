@@ -5,7 +5,7 @@
                   <div class="col-md-2">
                         <%= link_to 'Home', controller: 'home', class: "py-2 d-none d-md-inline-block"  %>
                   </div>
-                  <div class="col-md-2">
+                  <div class="col-md-1">
                         <%= link_to 'About', controller: 'about', class: "py-2 d-none d-md-inline-block"  %>
                   </div>
                   <div class="col-md-2">
@@ -17,9 +17,27 @@
                   <div class="col-md-2">
                         <%= link_to 'Contact Us', controller: 'contact_us', class: "py-2 d-none d-md-inline-block"  %>
                   </div>
-                  <div class="col-md-2">
+                  <div class="col-md-1">
                         <%= link_to 'FAQ', controller: 'contact_us', class: "py-2 d-none d-md-inline-block"  %>
+                  </div>
+                  <div class="col-md-2">
+                        <a href="https://www.facebook.com/Xchange-343909489518466">
+                              <%= image_tag("facebook-icon.png", :class => "social-icon")%>
+                        </a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="https://twitter.com/xchange89880614">
+                              <%= image_tag("instagram-icon.png", :class => "social-icon")%>
+                        </a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="https://www.instagram.com/xchange.csc444">
+                              <%= image_tag("twitter-icon.png", :class => "social-icon")%>
+                        </a>
                   </div>
             </div>
       </div>
 </footer>
+
+<style>
+.social-icon
+{
+      max-width:15%;
+}
+</style>
