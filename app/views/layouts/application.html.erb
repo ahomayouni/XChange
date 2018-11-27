@@ -18,11 +18,25 @@
   </head>
 
   <body>
+    <%# Render the flash modals. They will stay hidden until the JS in flash triggers the modal to display%>
+    <%= render 'layouts/success_borrow_request_modal' %>
+
     <div id="body-container">
       <%= render 'layouts/header' %>
       <!-- Enables the use of flash here throughout the repository -->
       <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
+         <%# If you would like to render a modal with your message on it, then make sure
+         in your controller you write flash[:modal_alert] Modal! %>
+        <% if message_type == "borrow_request_sucess" %>
+          <script>
+              $('#myModal').modal('show');
+          </script>
+        <% else %>
+            <script>console.log(message_type)</script>
+            <%# how ever you are rendering the default flashes %>
+            <div class="alert alert-<%= message_type %>"><%= message %> <%= message_type %></div>
+        <% end %>
+        
       <% end %>
       <div id="main-body"><%= yield %></div>
       <%= render 'layouts/footer' %>
