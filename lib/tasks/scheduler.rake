@@ -9,23 +9,27 @@ task :send_reminders => :environment do
 	  	@borrower = User.find(item.user_id)
 	  	if item.end_borrowing.past?
 	  		# Late
-	  		@new_notif = Notification.new(recipient: @borrower, actor_id: @borrower.id ,action: "systems_listing_reminder_past_due",notifiable: item)
-	        @new_notif.save 
+	  		# @new_notif = Notification.new(recipient: @borrower, actor_id: @borrower.id ,action: "systems_listing_reminder_past_due",notifiable: item)
+	    #     @new_notif.save 
 	  	elsif item.end_borrowing.today?
 	  		# Due Today
-	  		@new_notif = Notification.new(recipient: @borrower, actor_id: @borrower.id ,action: "systems_listing_reminder_due_today",notifiable: item)
-	        @new_notif.save
+	  		# @new_notif = Notification.new(recipient: @borrower, actor_id: @borrower.id ,action: "systems_listing_reminder_due_today",notifiable: item)
+	    	# @new_notif.save
 	  	elsif (item.end_borrowing - 1).today?
 	  		# Due Tomorrow
-	  		@new_notif = Notification.new(recipient: @borrower, actor_id: @borrower.id ,action: "systems_listing_reminder_due_tomorrow",notifiable: item)
 
-	        @new_notif.save
-	        puts @new_notif.errors.full_messages
+	  		# Check if the system has sent out the notifications
+	  		if Notification.where(actor_id: @borrower.id, recipient: @borrower , action: "systems_listing_reminder_due_tomorrow", notifiable: item).count == 0 
+		  		@new_notif = Notification.new(recipient: @borrower, actor_id: @borrower.id ,action: "systems_listing_reminder_due_tomorrow",notifiable: item)
+		        @new_notif.save
+		    else
+		    	puts "The system have already sent out the notification"
+		    end
 	  	elsif (item.end_borrowing - 2).today?
 	  		# Due in Two days
-	  		@new_notif = Notification.new(recipient: @borrower, actor_id: @borrower.id ,action: "systems_listing_reminder_due_in_two_days",notifiable: item)
-	        @new_notif.save
-	        puts @new_notif.errors.full_messages
+	  		# @new_notif = Notification.new(recipient: @borrower, actor_id: @borrower.id ,action: "systems_listing_reminder_due_in_two_days",notifiable: item)
+	    #     @new_notif.save
+	    #     puts @new_notif.errors.full_messages
 	  	else
 	  		puts "Nothing due soon !"
 	  	end
