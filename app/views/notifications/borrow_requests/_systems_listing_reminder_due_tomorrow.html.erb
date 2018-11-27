@@ -1,0 +1,7 @@
+<% item = notification.notifiable %>
+<% @current_listing = Listing.find(item.listing_id) %>
+<% @listing_owner = User.find(@current_listing.user_id) %>
+<div class="d-flex flex-row">
+    <%= link_to " Remember to return your borrowed: #{@current_listing.title} due tomorrow to #{@listing_owner.name}", 
+    user_path(notification.recipient,active_tab: "borrowRequests"), class: "dropdown-item"%>
+</div>
