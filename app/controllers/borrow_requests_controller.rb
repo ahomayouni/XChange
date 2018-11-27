@@ -22,7 +22,7 @@ class BorrowRequestsController < ApplicationController
           @new_notif.save
           @chatroom = Chatroom.create(borrow_request_id: @new_request.id)
           inital_message = 'I would like to talk about' + @current_listing.title
-          @chatroom.messages.create(content: inital_message)
+          @chatroom.messages.create(content: inital_message, )
           @chatroom.save
           flash[:success] = "Borrow Request Successfull"
           redirect_to listings_path
