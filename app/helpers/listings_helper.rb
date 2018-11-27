@@ -38,7 +38,7 @@ module ListingsHelper
   def has_user_already_requested_to_borrow_listing
     current_listing = Listing.find(params[:id])
     if current_listing.borrow_requests.nil? 
-      return false 
+      return true 
     end 
     
     borrow_request = current_listing.borrow_requests.find(current_listing.id)
