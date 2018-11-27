@@ -21,6 +21,8 @@ class BorrowRequestsController < ApplicationController
           @new_notif = Notification.new(recipient: @notif_recipient, actor_id: current_user.id ,action: "borrow_request",notifiable: @current_listing)
           @new_notif.save
           @chatroom = Chatroom.create(borrow_request_id: @new_request.id)
+          @listing_user = @current_listing.user_id
+          @chatroom.user_ids = [current_user.id, @listing_user]
           inital_message = 'I would like to talk about ' + @current_listing.title
           @chatroom.messages.create(content: inital_message, user_id: current_user.id)
           @chatroom.save
