@@ -5,7 +5,9 @@
         <% current_user.chatroom.each do |chatroom_id| %>
             <div class="chat text-center" id="chat-<%= chatroom_id.id %>">
                 <div class="m-auto">
-                Chat about: <%= Listing.find(BorrowRequest.find(chatroom_id.borrow_request_id).listing_id).title %>
+                    <% if chatroom_id.borrow_request_id.present? %>
+                        Chat about: <%= Listing.find(BorrowRequest.find(chatroom_id.borrow_request_id).listing_id).title %>
+                    <% end %>
                 </div>
             </div>
         <% end %>
