@@ -913,8 +913,8 @@ PLATFORMS
   x86-mswin32
 
 DEPENDENCIES
-  aws-sdk
-  aws-sdk-s3
+  aws-sdk (~> 3)
+  aws-sdk-s3 (~> 1)
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.1.0)
   bootstrap (~> 4.1)
