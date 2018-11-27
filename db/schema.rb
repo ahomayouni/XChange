@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_27_142448) do
+ActiveRecord::Schema.define(version: 2018_11_27_163404) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2018_11_27_142448) do
     t.text "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "borrow_request_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -128,7 +129,6 @@ ActiveRecord::Schema.define(version: 2018_11_27_142448) do
     t.integer "chatroom_id"
     t.integer "user_id"
     t.integer "borrower_id"
-    t.integer "borrow_request_id"
   end
 
   create_table "notifications", force: :cascade do |t|
