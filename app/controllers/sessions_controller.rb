@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
         redirect_to user_path(user,active_tab: "dashboardTab")
       else
         flash[:warning] = "Account not activated. Please check your email for the activation link. Also please check your spam!"
-        # redirect_to root_path
+        redirect_to root_path
       end
 
   	else
