@@ -3,15 +3,17 @@
     <div class="chatrooms-window" style="display:none;">
         <div class="popup-chat-top"></div>
         <% current_user.chatroom.each do |chatroom_id| %>
-            <div class="chat" id="chat-<%= chatroom_id.id %>">
-                Chatroom: <%= chatroom_id.id %>
+            <div class="chat text-center" id="chat-<%= chatroom_id.id %>">
+                <div class="m-auto">
+                Chat about: <%= Listing.find(BorrowRequest.find(chatroom_id.borrow_request_id).listing_id).title %>
+                </div>
             </div>
         <% end %>
     </div>
-    <div class="personal-chat">
+    <div class="personal-chat" style="display:none;">
+        <div class="popup-chat-top"></div>
         <% current_user.chatroom_ids.each do |popup_id| %>
-            <div class="popup-chat" id="personal-chat-<%=popup_id%>" style="display:none;">
-                <div class="popup-chat-top"></div>
+            <div class="popup-chat" id="personal-chat-<%=popup_id%>"  style="display:none;">
                 <%= render partial: 'chatrooms/show_popup', locals: {messages: Message.where(chatroom_id: popup_id), chatroom: Chatroom.find(popup_id)}%>
             </div>
         <% end %>
@@ -29,6 +31,7 @@
   });
   $( ".chat" ).click(function() {
     // hide all others
+    $(".personal-chat").show();
     $('.popup-chat').each(function() {
         $(this).hide();
     });

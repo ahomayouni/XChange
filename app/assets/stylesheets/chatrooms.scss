@@ -17,13 +17,30 @@
             color: rgb(3,15,80);
         }
     }
-    .chatrooms-window {
+    .chatrooms-window, .personal-chat {
         height: 300px;
         width: 200px;
+    }
+    .chatrooms-window, .personal-chat, .popup-chat-top {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+    .popup-chat-top {
+        width: 100%;
+        height:30px;
+        background-color: rgb(3,15,80);
+    }
+    // chat rooms display
+    .chatrooms-window {
         position: fixed;
         bottom:0;
         right:0;
         background: white;
+    }
+    // single chatroom number
+    .chat {
+        height: 30px;
+        border-bottom: 1px solid black;
     }
     .personal_chat {
         position: fixed;
@@ -35,20 +52,17 @@
         overflow: scroll;
     }
     .popup-chat {
+        height: 100%;
+        overflow: scroll;
+    }
+    .personal-chat {
         background-color: white;
         position:fixed;
-        height: 300px;
-        width: 200px;
         bottom: 0px;
         right: 220px;
     }
     .popup-chat, .chatrooms-window {
         box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3); 
-    }
-    .popup-chat-top {
-        width: 100%;
-        height:20px;
-        background-color: black;
     }
     
 }
