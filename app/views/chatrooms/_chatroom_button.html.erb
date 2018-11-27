@@ -1,0 +1,37 @@
+<div class="chatroom-button-container" id="chatbox-1">
+    <button id="chatroom-button"> <i class="material-icons"> mode_comment </i> </button>
+    <div class="chatrooms-window" style="display:none;">
+        <div class="popup-chat-top"></div>
+        <% current_user.chatroom.each do |chatroom_id| %>
+            <div class="chat" id="chat-<%= chatroom_id.id %>">
+                Chatroom: <%= chatroom_id.id %>
+            </div>
+        <% end %>
+    </div>
+    <div class="personal-chat">
+        <% current_user.chatroom_ids.each do |popup_id| %>
+            <div class="popup-chat" id="personal-chat-<%=popup_id%>" style="display:none;">
+                <div class="popup-chat-top"></div>
+                <%= render partial: 'chatrooms/show_popup', locals: {messages: Message.where(chatroom_id: popup_id), chatroom: Chatroom.find(popup_id)}%>
+            </div>
+        <% end %>
+    </div>
+</div>
+
+<%# force rerender a partial %>
+<script>
+  // chatrooms implementations
+  $("#chatroom-button").click(function() {
+      $(".chatrooms-window").show();
+  });
+  $(".popup-chat-top").click(function() {
+      $(this).parent().hide();
+  });
+  $( ".chat" ).click(function() {
+    // hide all others
+    $('.popup-chat').each(function() {
+        $(this).hide();
+    });
+    $("#personal-" + $(this).attr('id')).show();
+  });
+</script>
