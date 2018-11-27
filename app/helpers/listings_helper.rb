@@ -41,9 +41,9 @@ module ListingsHelper
       return true 
     end 
     
-    borrow_request = current_listing.borrow_requests.find(@current_listing.id)
+    borrow_request = current_listing.borrow_requests.where(listing_id: current_listing.id)
     
-    if !borrow_request.nil? && borrow_request.user_id == current_user.id 
+    if borrow_request.first.user_id == current_user.id 
       return false 
     else
       return true

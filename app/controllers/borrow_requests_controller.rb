@@ -43,7 +43,8 @@ class BorrowRequestsController < ApplicationController
       flash[:danger] = "Borrow Request could not be deleted"
     end
     # TODO: change the redirect to a more approproate listing
-    redirect_to current_user
+    redirect_to user_path(current_user,active_tab: "borrowRequests")
+    
   end
 
   def approve
