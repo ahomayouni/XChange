@@ -27,12 +27,22 @@ module ListingsHelper
   end
 
   def get_rounded_rating
-    @current_lisitng = Listing.find(params[:id])
-    if @current_lisitng.rating.nil?
+    @current_listing = Listing.find(params[:id])
+    if @current_listing.rating.nil?
       return 0
     else
       return @current_listing.rating.round
     end
   end
+
+  def has_user_already_requested_to_borrow_listing
+    current_listing = Listing.find(params[:id])
+    borrow_request = current_listing.borrow_requests.find(current_listing.id)
+    if borrow_request.user_id == current_user.id 
+      return false 
+    else
+      return true
+    end 
+  end 
 
 end
