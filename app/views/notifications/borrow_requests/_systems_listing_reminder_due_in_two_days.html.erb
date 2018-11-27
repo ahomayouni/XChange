@@ -2,8 +2,6 @@
 <% @current_listing = Listing.find(item.listing_id) %>
 <% @listing_owner = User.find(@current_listing.user_id) %>
 <div class="d-flex flex-row">
-    <%= link_to "Remember to return #{@listing_owner.name}'s item: #{@current_listing.title} tomorrow!", 
+    <%= link_to "Remember to return #{@listing_owner.name}'s item: #{@current_listing.title} in two days!", 
     user_path(notification.recipient,active_tab: "borrowRequests"), class: "dropdown-item"%>
 </div>
-	
-
