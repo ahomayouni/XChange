@@ -76,7 +76,6 @@ class GroupsController < ApplicationController
     @user = User.find(params[:user])
     @membership= Membership.find_by(user_id: @user.id, group_id: @group.id)
     if @membership.destroy
-
       @group.users.each do |current_group_member|
         if not current_group_member.id == current_user.id
           @notif_recipient = User.find(current_group_member.id)
