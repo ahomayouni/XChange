@@ -29,11 +29,15 @@ class GroupsController < ApplicationController
   end
   
   def destroy
-    @group = Group.find(params[:id])
-    @group_users = @group.users
-    @group_users.destroy
-    @group.destroy
-    flash[:success] = "Group has been successfully deleted"
+    if Group.where(id:params[:id]).count != 0
+      @group = Group.find(params[:id])
+      @group_users = @group.users
+      @group_users.destroy
+      @group.destroy
+      flash[:success] = "Group has been successfully deleted"
+    else
+      flash[:danger] = "Group ID not found"
+    end
     redirect_to groups_path 
   end
   
