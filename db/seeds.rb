@@ -238,6 +238,27 @@ def seed_listing(title, description, category, userid, image_name, image_type, a
   end
 end
 
+def seed_user (name, email, pw, addr, desc, image_name, image_type)
+  @temp_user = User.new(name:  name,
+             email: email,
+             password:              pw,
+             password_confirmation: pw,
+             admin: false,
+             activated: true,
+             activated_at: Time.zone.now,
+             person: Person.create(
+             address: addr,
+             phone_number: Faker::PhoneNumber.cell_phone,
+             description: desc
+             ))
+  @temp_user.person.image.attach(
+      io: File.open(File.join(Rails.root, ("/app/assets/images/"+image_name))),
+      filename: image_name,
+      content_type: image_type,
+  )
+  @temp_user.save
+end
+
 # Create 100 Fake users. Also Template in how we can prepopulate the database.
 @admin_user = User.new(name:  "admin",
              email: "admin@admin.com",
@@ -274,9 +295,20 @@ Notification.create(recipient: @admin_user,actor: @admin_user,action:"created_ne
 
 end
 
+seed_user("Arash", "arash@gmail.com", "12345", "262 Rhodes Ave Toronto", 'Developer at XChange',"arash.jpg", 'image/jpeg')
+seed_user("Peter", "peter@gmail.com", "12345", "15 Pape Ave Toronto", 'Developer at XChange','peter.jpeg', 'image/jpeg')
+seed_user("Maru", "maru@gmail.com", "12345", "1830 Bloor St W Toronto", 'Developer at XChange','maru.jpg', 'image/jpeg')
+seed_user("Adi", "adi@gmail.com", "12345", "260 Carlaw Ave Toronto", 'Developer at XChange','adi.jpeg', 'image/jpeg')
+seed_user("Arnav", "arnav@gmail.com", "12345", "62 Hiltz Ave Toronto", 'Developer at XChange','arnav.jpg', 'image/jpeg')
+seed_user("KC", "KC@gmail.com", "12345", "67 Curzon St Toronto", 'Developer at XChange', 'KC.jpg', 'image/jpeg')
+
 # Seeding istings
-seed_listing("Canon FX Camera", "35 mm SLR Camera", "Film & Photography", User.all[0].id, 'camera-seed.jpeg', 'image/jpeg', "69 Mallory Cres Toronto")
-seed_listing("Saw for carpenting", "Traditional style saw", "Home / Office / Garden", User.all[1].id, 'saw.jpg', 'image/jpeg', "2925 Dufferin St Toronto")
+seed_listing("Canon FX Camera", "35 mm SLR Camera", "Film & Photography", User.find_by(name:"Arash").id, 'camera-seed.jpeg', 'image/jpeg', "710 Trethewey Dr Toronto")
+seed_listing("Saw for carpenting", "Traditional style saw", "Home / Office / Garden", User.find_by(name:"Peter").id, 'saw.jpg', 'image/jpeg', "2925 Dufferin St Toronto")
+seed_listing("HP Office Printer", "Not used. Message for details", "Home / Office / Garden", User.find_by(name:"Adi").id, 'printer.jpg', 'image/jpeg', "36 Thorncliffe Ave Toronto")
+seed_listing("Drone with Camera", "Comes with a 4K Camera", "Drones", User.find_by(name:"Arnav").id, 'drone.jpg', 'image/jpeg', "1830 Bloor St W Toronto")
+seed_listing("DJ studio", "Available for daily rentals", "DJ Equipment", User.find_by(name:"Maru").id, 'dj.jpg', 'image/jpeg', "82 Woodside Ave Toronto")
+seed_listing("Bicycle", "Sport. Never used.", "Sports", User.find_by(name:"KC").id, 'bike.jpeg', 'image/jpeg', "111 Pacific Ave Toronto")
 
 # Get corresponding longitude and latitude from user.peron.address and fill the location model
 User.all.each_with_index do |u,index|
