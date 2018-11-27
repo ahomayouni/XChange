@@ -47,8 +47,10 @@ class BorrowRequestsController < ApplicationController
     @notif_recipient = User.find(@borrow_request.user_id)
     @current_listing = Listing.find(@borrow_request.listing_id)
     @new_notif = Notification.new(recipient: @notif_recipient, actor_id: current_user.id ,action: "request_approved",notifiable: @current_listing)
-    @new_notif.save
-    redirect_to current_user
+    if @new_notif.save
+      
+      redirect_to current_user
+    end
   end
 
   def decline

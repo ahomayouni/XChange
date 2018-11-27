@@ -6,6 +6,9 @@ class ChatroomsController < ApplicationController
 
   def create
     @chatroom = Chatroom.new chatroom_params
+    @borrow_request = BorrowRequest.find(borrow_request_id)
+    @listing = Listing.find(@borrow_request.listing_id)
+    @chatroom.title = @listing.title + ' Discussion'
   end
 
   def show
