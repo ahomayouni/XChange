@@ -28,7 +28,7 @@ class BorrowRequestsController < ApplicationController
           redirect_to listings_path
         else
           flash[:danger] = "Borrow Request Unsuccessfull"
-      redirect_to listings_path
+          redirect_to listings_path
         end
       end
     end

@@ -34,7 +34,7 @@
             what meet up time and location works for you. What are you waiting for? Don't be shy! </h6>
             <%= form_for Message.new do |f| %>
             <%= hidden_field_tag 'borrower_id', listing.user_id %>
-            <%= hidden_field_tag 'chatroom_id', nil %>
+            <%= hidden_field_tag 'chatroom_id', current_user.chatroom.find_by(borrow_request_id: borrow_request.id) %>
             <%= f.text_field :content, autofocus: true, class: 'form-control p-3' %>
             <%= f.submit "Message", class: 'btn btn-primary mt-2' %>
             <% end %>
