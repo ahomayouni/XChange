@@ -20,7 +20,7 @@
                             <h4> Borrower's Name: <%= User.find_by(id: borrow_request.user_id).name %></h4>
                             <h4> Listing name:   <%= listing.title %> </h4>
                             <h4 style="color:blue;"> From <%= borrow_request.start_borrowing.strftime("%d/%m/%Y") %> To <%= borrow_request.end_borrowing.strftime("%d/%m/%Y") %></h4>
-                            <%= link_to "Approve", borrow_approve_path(borrow_request.id), method: :patch, class: 'btn btn-outline-info mt-2'%>
+                            <%= link_to "Approve", borrow_approve_path(borrow_request.id), method: :patch, class: 'btn btn-outline-info mt-2' , data: {toggle:"tooltip", placement:"right", title:"After you approve a request, schedule to drop off the item! Then go to My Rentals -> Lending, and mark the item as borrowed."}%>
                             <%= link_to "Decline", borrow_decline_path(borrow_request.id), method: :get, class: 'btn btn-danger mt-2'%>
                         </div>
                     </div >

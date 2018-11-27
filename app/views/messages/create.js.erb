@@ -1,0 +1,1 @@
+$("#personal-chat-<%= @message.chatroom_id %>").html("<%= j render partial: 'chatrooms/show_popup', locals: {messages: Message.where(chatroom_id: @message.chatroom_id), chatroom: Chatroom.find(@message.chatroom_id)}%>");

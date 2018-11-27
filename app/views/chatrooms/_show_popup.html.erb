@@ -1,0 +1,25 @@
+<div class="personal-chat-container">
+  <div class="chatroom-messages">
+    <% messages.each do |msg| %>
+      <% if msg.content.present? %>
+        <% if current_user.id == msg.user_id%>
+          <%# left float if not cur user %>
+          <div class="text-right pt-3">
+            <%= msg.content %> - <%= User.find(msg.user_id).name %>
+  
+          </div>
+        <% else %>
+          <%# right float if current user %>
+          <div class="text-left pt-3">
+
+            <%= msg.content %> - <%= User.find(msg.user_id).name %>
+          </div>
+        <%end%>
+      <% end %>
+    <%end%>
+  </div>
+  <br>
+  <%= render partial: 'messages/message_form', locals: {chatroom: chatroom}%>
+</div>
+
+
