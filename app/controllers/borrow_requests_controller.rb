@@ -20,6 +20,10 @@ class BorrowRequestsController < ApplicationController
           @notif_recipient = User.find(@current_listing.user_id)
           @new_notif = Notification.new(recipient: @notif_recipient, actor_id: current_user.id ,action: "borrow_request",notifiable: @current_listing)
           @new_notif.save
+          @chatroom = Chatroom.create(borrow_request_id: @new_request.id)
+          inital_message = 'I would like to talk about' + @current_listing.title
+          @chatroom.messages.create(content: inital_message, user_id: current_user.id)
+          @chatroom.save
           flash[:success] = "Borrow Request Successfull"
           redirect_to listings_path
         else

@@ -7,6 +7,7 @@ class Comment < ApplicationRecord
     validates :body, length: {minimum: 1}
     validate :validate_rating
     validate :has_rating
+    validate :has_borrowed
 
     def validate_rating
         unless rating.blank? 
@@ -22,7 +23,19 @@ class Comment < ApplicationRecord
         end
     end
                 
-
-    
-
+    def has_borrowed
+        # we we are replying to a person and the commenter has on borrow request
+        # if reply_type == "Person"
+        #     user_borrowed = false
+        #     for BorrowRequest.where(user_id: user_id, status: :approved).each do |request|
+        #         owner_id = Listing.find(request.listing_id).user_id
+        #         if owner_id == reply_id
+        #             user_borrowed = true
+        #         end
+        #     end
+        #     if !user_borrowed
+        #         errors.add(:reply, "must have something borrowed from them")
+        #     end
+        # end
+    end  
 end
