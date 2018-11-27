@@ -25,7 +25,8 @@
                         <%end%>
                 </div>
                 <div class="" id="lending" style="display:none;">
-                    <h2 class="p-3"> What you've Lent out</h2> 
+                     <h2 class="p-3"> Rental requests you've Approved:</h2> 
+
                     <% @count = 0 %>
                     <% @user.listings.each do |u| %>
                     <% @count += u.borrow_requests.where(status: "approved").count %>
@@ -40,14 +41,18 @@
                                         <h4> Borrower's Name: </h4>
                                         <%= User.find_by(id: borrow_request.user_id).name %>
                                         <h4> Listing name: </h4>
-                                        <%= listing.title %>
-                                        
+                                        <%= listing.title %> <br />
+                                        <span class="badge badge-pill status-pill float-right mt-2 mr-2" style="background-color:green;"><%= borrow_request.status.camelize %> </span> <br/>
+                                        <button class="btn btn-outline-info" data-toggle="tooltip" data-placement="right" data-title="Have you given the item to <%= User.find_by(id: borrow_request.user_id).name %> yet? Mark it as borrowed!"> Mark as Borrowed </button>
                                     </div>
                                 </div>
                             </div>
                             <% end %>
                         <% end %>
                         <% end %>
+                    <h2 class="p-3"> Items currently out for loan:</h2> 
+
+
                     <% else %>
                         <div class="col-md-12">
                             <div class="card d-flex p-5 mb-5">
