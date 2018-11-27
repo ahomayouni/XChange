@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 	context 'validation tests' do 
-		it 'ensures email is presence' do
+		it 'ensures email field is present' do
 			@user = User.new(name:  "dodo",
 				             password:              "dodo",
 				             password_confirmation: "dodo",
@@ -17,7 +17,7 @@ RSpec.describe User, type: :model do
 			expect(user_save_success).to eq(false)
 		end
 
-		it 'ensures name is presence' do
+		it 'ensures name field is presenct' do
 			@user = User.new(email: "dragonball@gmail.com",
 				             password:              "dodo",
 				             password_confirmation: "dodo",
