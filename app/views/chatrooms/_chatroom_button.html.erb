@@ -6,7 +6,7 @@
             <div class="chat text-center" id="chat-<%= chatroom_id.id %>">
                 <div class="m-auto">
                     <% if chatroom_id.borrow_request_id.present? %>
-                        Chat about: <%= Listing.find(BorrowRequest.find(chatroom_id.borrow_request_id).listing_id).title %>
+                        Chat about: <%= Listing.where(id: BorrowRequest.where(id: chatroom_id.borrow_request_id)[0].listing_id)[0].title %>
                     <% end %>
                 </div>
             </div>
