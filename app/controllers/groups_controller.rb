@@ -48,15 +48,16 @@ class GroupsController < ApplicationController
     @membership.group_id = @group.id
     @membership.user_id = @user.id
     if @membership.save
-
       # Send a notification to everyone in the group member
       @group.users.each do |current_group_member|
         if not current_group_member.id == current_user.id
           if current_group_member.id == @group.owner_id
             @notif_recipient = User.find(@group.owner_id)
+            #Send notification to the group owner
             @new_notif = Notification.new(recipient: @notif_recipient, actor_id: current_user.id ,action: "join_group_owner",notifiable: @group)
           else
             @notif_recipient = User.find(current_group_member.id)
+            # Send notification to all the group members in the group
             @new_notif = Notification.new(recipient: @notif_recipient, actor_id: current_user.id ,action: "join_group_member",notifiable: @group)
           end
           @new_notif.save
@@ -76,7 +77,6 @@ class GroupsController < ApplicationController
     @membership= Membership.find_by(user_id: @user.id, group_id: @group.id)
     if @membership.destroy
 
-      
       @group.users.each do |current_group_member|
         if not current_group_member.id == current_user.id
           @notif_recipient = User.find(current_group_member.id)

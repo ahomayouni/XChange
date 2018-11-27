@@ -222,11 +222,10 @@ RSpec.describe GroupsController, type: :controller do
 					              description: 'I am a bot created by the master Peter Tanugraha'
 					             ))
 				user.groups.create(name:"People of North York", description:"People living in the north york area looking to borrow and lend stuff",
-  							isPublic: true)
+  							isPublic: true,owner_id: 1)
 			end
 
-			it "should allow a valid user to join a group and when it does, receive notification" do 
-
+			it "should allow a valid user to join a group and when it does, people in the group would receive notification" do 
 				@new_user = User.create!(name:  "new_user",
 								 email: "new_user@gmail.com",
 					             password:              "satuikanasin",
@@ -242,7 +241,7 @@ RSpec.describe GroupsController, type: :controller do
 				login(@new_user)
 				post :join, params: {group:1,user:2}
 				expect(flash[:success]).to be_present
-				expect(Notification.last.action).to eq("join_group_member")
+				expect(Notification.last.action).to eq("join_group_owner") #Since there is only the owner of the group in the current group
 			end
 		end
 	end
