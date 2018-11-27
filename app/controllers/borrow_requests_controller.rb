@@ -22,7 +22,7 @@ class BorrowRequestsController < ApplicationController
           @new_notif.save
           @chatroom = Chatroom.create(borrow_request_id: @new_request.id)
           inital_message = 'I would like to talk about' + @current_listing.title
-          @chatroom.messages.create(content: inital_message, )
+          @chatroom.messages.create(content: inital_message, user_id: current_user.id)
           @chatroom.save
           flash[:success] = "Borrow Request Successfull"
           redirect_to listings_path
@@ -51,19 +51,8 @@ class BorrowRequestsController < ApplicationController
     @notif_recipient = User.find(@borrow_request.user_id)
     @current_listing = Listing.find(@borrow_request.listing_id)
     @new_notif = Notification.new(recipient: @notif_recipient, actor_id: current_user.id ,action: "request_approved",notifiable: @current_listing)
-<<<<<<< HEAD
-    if @new_notif.save
-      # @listing = Listing.find(listing_id)
-      # @chatroom = Chatroom.create(borrow_request_id: id)
-      # inital_message = 'I would like to talk about' + @listing.title
-      # @chatroom.messages.create(content: inital_message)
-      # redirect_to chatroom_path(@message.chatroom_id)
-      redirect_to current_user
-    end
-=======
     @new_notif.save
     redirect_to user_path(current_user,active_tab: "actionItems")
->>>>>>> 9ba34dfcf4b1dd592512cb2bf26e3223576e4d08
   end
 
   def decline
