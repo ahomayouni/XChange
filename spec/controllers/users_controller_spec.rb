@@ -126,6 +126,7 @@ RSpec.describe UsersController, type: :controller do
 				             password:              "satuikanasin",
 				             password_confirmation: "satuikanasin"}
 				         }
+				expect(Notification.last.action).to eq("created_new_account")
 				expect(response).to redirect_to(root_path)    
 			end
 

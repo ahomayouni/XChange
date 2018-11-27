@@ -154,7 +154,7 @@ RSpec.describe GroupsController, type: :controller do
 	end
 
 
-	describe "DESTROY #destroy" do 
+	describe "delete #destroy" do 
 		context "#destroy when not logged in" do 
 				it "should not be able to trigger destroy commands when not logged in " do 
 				delete :destroy, params:{id:1}
@@ -198,4 +198,53 @@ RSpec.describe GroupsController, type: :controller do
 			end
  		end
 	end
+
+	describe "post #join" do 
+
+		context "post #join when not logged in" do 
+			it "should not trigger the join method when not logged in" do 
+				post :join, params: {group:1,user:1}
+				expect(response).to_not be_successful
+			end
+		end
+
+		context "post #join when logged in" do 
+			before(:each) do 
+				user = User.create!(name:  "dodo",
+								 email: "dragonball@gmail.com",
+					             password:              "satuikanasin",
+					             password_confirmation: "satuikanasin",
+					             activated: true,
+					             activated_at: Time.zone.now,
+					             person: Person.create(
+					              address: Faker::Address.street_address,
+					              phone_number: '6471678732',
+					              description: 'I am a bot created by the master Peter Tanugraha'
+					             ))
+				user.groups.create(name:"People of North York", description:"People living in the north york area looking to borrow and lend stuff",
+  							isPublic: true)
+			end
+
+			it "should allow a valid user to join a group and when it does, receive notification" do 
+
+				@new_user = User.create!(name:  "new_user",
+								 email: "new_user@gmail.com",
+					             password:              "satuikanasin",
+					             password_confirmation: "satuikanasin",
+					             activated: true,
+					             activated_at: Time.zone.now,
+					             person: Person.create(
+					              address: Faker::Address.street_address,
+					              phone_number: '6171678732',
+					              description: 'I am a new user trying to apply to a new team'
+					             ))
+				@new_user.save
+				login(@new_user)
+				post :join, params: {group:1,user:2}
+				expect(flash[:success]).to be_present
+				expect(Notification.last.action).to eq("join_group_member")
+			end
+		end
+	end
+
 end
