@@ -52,6 +52,19 @@ class BorrowRequestsController < ApplicationController
     @current_listing = Listing.find(@borrow_request.listing_id)
     @new_notif = Notification.new(recipient: @notif_recipient, actor_id: current_user.id ,action: "request_approved",notifiable: @current_listing)
     @new_notif.save
+
+    check = BorrowRequest.where(listing_id: @borrow_request.listing_id, status: "requested").where.not(id: @borrow_request.id)
+    check.each do |i|
+      unless @borrow_request.end_borrowing < i.start_borrowing || @borrow_request.start_borrowing > i.end_borrowing
+        @decline_request = BorrowRequest.find_by(id: i.id)
+        @decline_request.status = "declined"
+        @decline_request.save
+        @notif_recipient = User.find(@decline_request.user_id)
+        @current_listing = Listing.find(@decline_request.listing_id)
+        @new_notif = Notification.new(recipient: @notif_recipient, actor_id: current_user.id ,action: "request_declined",notifiable: @current_listing)
+        @new_notif.save
+      end
+    end
     redirect_to user_path(current_user,active_tab: "actionItems")
   end
 
@@ -63,7 +76,7 @@ class BorrowRequestsController < ApplicationController
     @current_listing = Listing.find(@borrow_request.listing_id)
     @new_notif = Notification.new(recipient: @notif_recipient, actor_id: current_user.id ,action: "request_declined",notifiable: @current_listing)
     @new_notif.save
-    redirect_to current_user
+    redirect_to user_path(current_user,active_tab: "actionItems")
   end
 
   def borrowed
