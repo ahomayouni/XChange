@@ -5,8 +5,12 @@
         <% current_user.chatroom.each do |chatroom_id| %>
             <div class="chat text-center" id="chat-<%= chatroom_id.id %>">
                 <div class="m-auto">
-                    <% if chatroom_id.borrow_request_id.present? %>
-                        Chat about: <%= Listing.where(id: BorrowRequest.where(id: chatroom_id.borrow_request_id)[0].listing_id)[0].title %>
+                    <% if !chatroom_id.borrow_request_id.nil? %>
+                        <%# hot fix %>
+                        <% borrow_request = BorrowRequest.where(id: chatroom_id.borrow_request_id)[0] %>
+                        <% if !borrow_request.nil? %>
+                            Chat about: <%= Listing.where(id: borrow_request.listing_id)[0].title %>
+                        <% end %>
                     <% end %>
                 </div>
             </div>
