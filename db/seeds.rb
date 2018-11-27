@@ -201,6 +201,43 @@ listing_categories = ["Film & Photography","Audio Visual Equipment","Projectors 
   "DJ Equipment","Transport","Storage","Electronics","Party & Events","Sports","Musical Instruments",
   "Home / Office / Garden","Kids & Baby","Holiday & Travel","Clothing"]
 
+def geo_code(address) 
+  results = Geocoder.search(address)
+  lat = nil
+  lon = nil
+  if results.first
+    lat = "#{results.first.coordinates[0]}"
+    lon = "#{results.first.coordinates[1]}"
+  end
+  return [lat,lon]
+end
+
+def seed_listing(title, description, category, userid, image_name, image_type, address)
+  listing = Listing.new
+  listing.title = title
+  listing.description = description
+  listing.category = category
+  listing.start_lending = Faker::Date.forward(1)
+  listing.end_lending = Faker::Date.forward(365)
+  listing.user_id = userid
+  listing.images.attach(
+      io: File.open(File.join(Rails.root, ("/app/assets/images/"+image_name))),
+      filename: image_name,
+      content_type: image_type,
+  )
+  listing.address = address
+  lat_long = geo_code(listing.address)
+  listing.latitude = lat_long[0]
+  listing.longitude = lat_long[1]
+  if listing.save
+    puts "Successfully created Listing id: #{listing.id} with user_id: #{listing.user_id}"
+  else
+    listing.errors.full_messages.each do |message|
+    puts message
+    end
+  end
+end
+
 # Create 100 Fake users. Also Template in how we can prepopulate the database.
 @admin_user = User.new(name:  "admin",
              email: "admin@admin.com",
@@ -217,7 +254,7 @@ listing_categories = ["Film & Photography","Audio Visual Equipment","Projectors 
 @admin_user.save
 Notification.create(recipient: @admin_user,actor: @admin_user,action:"created_new_account",notifiable:@admin_user)
 
-19.times do |n|
+9.times do |n|
   name  = Faker::FunnyName.name
   email = "example-#{n+1}@beepbeep.org"
   password = "worstpassword"
@@ -236,6 +273,10 @@ Notification.create(recipient: @admin_user,actor: @admin_user,action:"created_ne
   Notification.create(recipient: @current_user,actor: @current_user,action:"created_new_account",notifiable:@current_user)
 
 end
+
+# Seeding istings
+seed_listing("Canon FX Camera", "35 mm SLR Camera", "Film & Photography", User.all[0].id, 'camera-seed.jpeg', 'image/jpeg', "69 Mallory Cres Toronto")
+seed_listing("Saw for carpenting", "Traditional style saw", "Home / Office / Garden", User.all[1].id, 'saw.jpg', 'image/jpeg', "2925 Dufferin St Toronto")
 
 # Get corresponding longitude and latitude from user.peron.address and fill the location model
 User.all.each_with_index do |u,index|
@@ -287,7 +328,6 @@ User.all.each_with_index do |u,index|
 
  # end
   
-
 end
 
 # seeds to add commetns to all people; This also changes the ratings of the respective epople
