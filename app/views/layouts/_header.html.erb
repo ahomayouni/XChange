@@ -8,6 +8,21 @@
 		</button>
 			<div class="collapse navbar-collapse">
 				<ul class="navbar-nav ml-auto">
+					<li class="nav-item btn-group notification-button" data-behavior="notifications" data-notifications='<%= render template: "notifications/index", formats: [:json] %>'>
+						<a class="nav-link" data-behavior="unread-count" > </a>
+						<a class="nav-link" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="tiny material-icons"> notification_important </i>
+						</a>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items"> 
+						<!-- Dropdown Itemshere will be placed by the notification-items given by the javascript file in the form of html.erb -->
+						</div>
+					</li>
+					<li>
+						<%= link_to "Listings", listings_path, class: "nav-link"%>
+					</li>
+					<li>
+						<%= link_to "Wanted Items", live_searches_path, class: "nav-link"%>
+					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="accountDropDown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							<%# Why doesnt this work????? %>
@@ -24,21 +39,6 @@
 							<%= link_to "Settings", user_settings_path(current_user), class: "nav-link"%>
 							<%= link_to "Log Out", logout_path , method: :delete, class: "nav-link" %>
 						</div>
-					</li>
-					<li class="nav-item btn-group notification-button" data-behavior="notifications" data-notifications='<%= render template: "notifications/index", formats: [:json] %>'>
-						<a class="nav-link" data-behavior="unread-count" > </a>
-						<a class="nav-link" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<i class="tiny material-icons"> notification_important </i>
-						</a>
-						<div class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items"> 
-						<!-- Dropdown Itemshere will be placed by the notification-items given by the javascript file in the form of html.erb -->
-						</div>
-					</li>
-					<li>
-						<%= link_to "Listings", listings_path, class: "nav-link"%>
-					</li>
-					<li>
-						<%= link_to "Wanted Items", live_searches_path, class: "nav-link"%>
 					</li>			
 				</ul>
 			</div>
