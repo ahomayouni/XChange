@@ -1,5 +1,5 @@
 <div class="card my-2">
-    <div class="card-header" style="background-color:#ffccd9;"> <%= User.find(comment.commenter_id).name %>'s review: </div>
+    <div class="card-header"> <%= User.find(comment.commenter_id).name %>'s review: </div>
     <div class="card-text ml-2 mb-2">
       <%= comment.body %>
       <br />
