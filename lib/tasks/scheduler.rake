@@ -1,9 +1,9 @@
 desc "This task is called by the Heroku scheduler add-on"
 task :send_reminders => :environment do
-  # might have to change this with status borrowed later 
-  @approved_items = BorrowRequest.where(status:"approved")
-  puts "There are #{@approved_items.all.count} items currently being borrowed"
-  @approved_items.each do |item| 
+
+  @borrowed_items = BorrowRequest.where(status:"borrowed") #Look for currently borrowed items
+  puts "There are #{@borrowed_items.all.count} items currently being borrowed"
+  @borrowed_items.each do |item| 
 	  	@borrower = User.find(item.user_id)
 	  	if item.end_borrowing.past?
 	  		# Late
