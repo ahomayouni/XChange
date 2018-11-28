@@ -39,7 +39,7 @@
                 <h6 class="font-weight-bold text-secondary mb-3">Description:</h6>
                 <h6 class="ml-3 font-weight-bold"><%= @user.person.description %> </h6>
             </div>
-             <div class="d-flex flex-column ml-3">
+             <div class="d-flex flex-column ml-3 mb-3">
                 <h6 class="font-weight-bold text-secondary mb-3">Rating:</h6>
                 <h6 class="ml-3 font-weight-bold">
                     <% if get_rounded_user_rating == 0 %>
@@ -53,11 +53,11 @@
                     <% end %>
                  </h6>
             </div>
-
-
-            <ul>
-            <%= render(partial: 'comments/comment', collection: @user.person.comments) %>
-            </ul>
+            <div class="d-flex flex-row ml-3">
+                <button type="button" class="btn db-browse-btn font-weight-bold" style="color:white!important;" data-toggle="modal" data-target="#userReviewsModal">
+                    See Reviews
+                </button>
+            </div>
         </div>
     </div>
     <!-- Ez access buttons -->
@@ -70,3 +70,26 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="userReviewsModal" tabindex="-1" role="dialog" aria-labelledby="userReviewsModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="userReviewsModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="overflow-y:scroll;">
+        <ul>
+            <%= render(partial: 'comments/comment', collection: @user.person.comments) %>
+            </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+          
