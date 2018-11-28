@@ -107,7 +107,7 @@ RSpec.describe NotificationsController, type: :controller do
 			expect(BorrowRequest.all.count).to eq(0)
 
 			# Expect when called the controller is called next to clean out the nil notifiable which is 
-			#BorrowRequest since its already deleted
+			# BorrowRequest since its already deleted
 			get :index
 			expect(response).to be_successful
 			expect(Notification.all.count).to eq(0)

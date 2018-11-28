@@ -36,6 +36,7 @@ class ListingsController < ApplicationController
       flash[:notice] = "Listing was successfully created"
       redirect_to listing_path(@listing)
     else
+      puts @listing.errors.full_messages
       render 'new'
     end
   end

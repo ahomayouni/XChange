@@ -61,7 +61,7 @@ RSpec.describe GroupsController, type: :controller do
 				login(user)
 			end
 			it 'must be able to get a template for the creation of a new group when logged in ' do
-				get :index
+				get :new
 				expect(response).to be_successful
 			end
 		end
