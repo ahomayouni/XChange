@@ -81,9 +81,13 @@
         </button>
       </div>
       <div class="modal-body" style="overflow-y:scroll;">
-        <ul>
-            <%= render(partial: 'comments/comment', collection: @user.person.comments) %>
+        <%if @user.person.comments.count == 0%>
+        No reviews yet
+        <%else %>
+            <ul>
+                 <%= render(partial: 'comments/comment', collection: @user.person.comments) %>
             </ul>
+        <%end%>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
