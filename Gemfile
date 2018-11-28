@@ -92,3 +92,4 @@ gem "chartkick"
 gem 'aws-sdk-s3'
 gem 'gmaps-autocomplete-rails'
 gem 'geocomplete_rails'
+gem 'webpacker'
