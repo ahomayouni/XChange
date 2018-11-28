@@ -1,6 +1,6 @@
 <div class="card my-2">
-    <div class="card-header"> <%= User.find(comment.commenter_id).name %>'s review: </div>
     <div class="card-text ml-2 mb-2">
+      <div class="font-weight-bold"><%= User.find(comment.commenter_id).name %> said: </div> <br />
       <%= comment.body %>
       <br />
       <% if comment.rating != nil %>
@@ -19,3 +19,5 @@
       <%= render partial: 'comments/comment', collection: comment.comments %>
     </div>
 </div>
+
+<%= User.find(comment.commenter_id).name %>'s review:
