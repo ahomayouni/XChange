@@ -15,6 +15,9 @@
                     <div class="col-sm-6">
                          <%= button_to "Delete Request", borrow_delete_path(borrow_request.id), class:"card-link btn btn-primary mt-1", :method => :delete %>
                     </div>
+                    <div class="col-sm-6">
+                         <%= button_to "Declare Returned", borrow_returned_path(borrow_request.id), class:"card-link btn btn-primary mt-1", :method => :put %>
+                    </div>
                 </div>
                 <% pill_color = get_pill_color_from_status(borrow_request.status) %>
                 <span class="badge badge-pill status-pill float-right mt-2 mr-2" style="background-color:green;"><%= borrow_request.status.camelize %> </span>
