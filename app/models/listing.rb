@@ -51,7 +51,6 @@ private
  end
 end
 
-
 # == Schema Information
 #
 # Table name: create_listings
