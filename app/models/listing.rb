@@ -27,8 +27,7 @@ class Listing < ActiveRecord::Base
   end
 
 def thumbnail image_index
-  #return self.images[image_index].variant(resize: '300x300').processed
-  return self.images[image_index]
+  return self.images[image_index].variant(resize: '300x300').processed
 end
 
 private
