@@ -9,7 +9,10 @@
            <div style="color:grey;">  You'll be notified if the lender approves or rejects your request.</div> 
         </div>
         <div class="modal-footer">
-             <%= button_to "My Rentals", user_path(current_user),params: {active_tab: "borrowRequests"}, class:"btn db-create-btn mt-2 font-weight-bold", :method => :get, :style => {color:"white!important;"} %>
+            <% if !current_user.nil? %>
+             <%= button_to "My Rentals", user_path(current_user.id),params: {active_tab: "borrowRequests"}, class:"btn db-create-btn mt-2 font-weight-bold", :method => :get, :style => {color:"white!important;"} %>
+             <%else%>
+             <%end%>
         </div>
         </div>
     </div>
