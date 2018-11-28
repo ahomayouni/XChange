@@ -41,7 +41,17 @@
             </div>
              <div class="d-flex flex-column ml-3">
                 <h6 class="font-weight-bold text-secondary mb-3">Rating:</h6>
-                <h6 class="ml-3 font-weight-bold"><%= @user.person.rating %> </h6>
+                <h6 class="ml-3 font-weight-bold">
+                    <% if get_rounded_user_rating == 0 %>
+                        <p class="card-text"> No ratings yet </p>
+                    <% else %>
+                        <% for i in 1..get_rounded_user_rating do %>
+                        <i class="material-icons">
+                        grade
+                        </i>
+                        <%end%>
+                    <% end %>
+                 </h6>
             </div>
 
 
