@@ -35,10 +35,19 @@
                 <h6 class="font-weight-bold text-secondary">Joined:</h6>
                 <h6 class="ml-3 font-weight-bold"><%= @user.created_at.strftime("%B %d, %Y") %> </h6>
             </div>
-             <div class="d-flex flex-column ml-3">
+             <div class="d-flex flex-column ml-3 mb-3">
                 <h6 class="font-weight-bold text-secondary mb-3">Description:</h6>
                 <h6 class="ml-3 font-weight-bold"><%= @user.person.description %> </h6>
             </div>
+             <div class="d-flex flex-column ml-3">
+                <h6 class="font-weight-bold text-secondary mb-3">Rating:</h6>
+                <h6 class="ml-3 font-weight-bold"><%= @user.person.rating %> </h6>
+            </div>
+
+
+            <ul>
+            <%= render(partial: 'comments/comment', collection: @user.person.comments) %>
+            </ul>
         </div>
     </div>
     <!-- Ez access buttons -->
