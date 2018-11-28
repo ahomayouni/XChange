@@ -30,7 +30,7 @@
                      <h2 class="p-3"> Rental requests you've Approved:</h2> 
 
                     <% @count = 0 %>
-                    <% @user.listings.each do |u| %>approved
+                    <% @user.listings.each do |u| %>
                     <% @count += u.borrow_requests.where(status: "approved").count %>
                     <% end %>
                     <% if @count > 0%>

@@ -86,12 +86,13 @@ class BorrowRequestsController < ApplicationController
     @borrow_request = BorrowRequest.find_by(id: params[:id])
     if @borrow_request.status == "approved"
       @borrow_request.update_attribute(:status, "borrowed")
-      redirect_to user_path(current_user, active_tab: "borrowRequests")
     elsif @borrow_request.status == "borrowed"
       @borrow_request.update_attribute(:status, "returned")
     end
     
-    @borrow_request.save
+    if @borrow_request.save
+      redirect_to user_path(current_user, active_tab: "borrowRequests")
+    end
   end
 
 end
