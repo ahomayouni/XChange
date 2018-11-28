@@ -82,6 +82,27 @@ class ListingsController < ApplicationController
       end
   end
 
+  def report
+    if params[:id].present? and Listing.exists?(id: params[:id])
+      @listing = Listing.find(params[:id])
+      if Report.exists?(user_id: @current_user.id, listing_id: @listing.id)
+        flash[:danger] = "You have already submitted a report for this listing"
+      else
+        @report = Report.new
+        @report.user_id = @current_user.id
+        @report.listing_id = @listing.id
+        if @report.save
+          flash.now[:success] = "successfully Reported this listing"
+        else
+          flash.now[:danger] = "Could not report this item" 
+        end
+      end
+      render 'show'
+    else
+      @listings = Listing.all
+      render 'index'
+    end
+  end
 
  private
 
