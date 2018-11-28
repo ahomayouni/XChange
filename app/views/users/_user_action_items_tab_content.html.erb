@@ -1,96 +1,35 @@
-  <div class="row">
-    <div class="col-md-6 mx-4">
-        <div class="d-flex flex-row mt-3 py-3">
-            <h2> Awaiting Approvals </h2>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <% @count = 0 %>
-    <% @return_count = 0 %>
-    <% @user.listings.each do |u| %>
-    <% @count += u.borrow_requests.where(status: "requested").count %>
-    <% @return_count += u.borrow_requests.where(status: "returned").count %>
-    <% end %>
-    <% if @count > 0%>
-        <% @user.listings.each do |listing| %>
-            <% listing.borrow_requests.each do |borrow_request| %>
-                    <% if borrow_request.status == "requested"%>
-                    <div class="col-md-6">
-                        <div class="card mx-2 mb-2">
-                            <div class="card-body">
-                                <h4> Borrower's Name: <%= User.find_by(id: borrow_request.user_id).name %></h4>
-                                <h4> Listing name:   <%= listing.title %> </h4>
-                                <h4 style="color:blue;"> From <%= borrow_request.start_borrowing.strftime("%d/%m/%Y") %> To <%= borrow_request.end_borrowing.strftime("%d/%m/%Y") %></h4>
-                                <%= link_to "Approve", borrow_approve_path(borrow_request.id), method: :patch, class: 'btn btn-outline-info mt-2' , data: {toggle:"tooltip", placement:"right", title:"After you approve a request, schedule to drop off the item! Then go to My Rentals -> Lending, and mark the item as borrowed."}%>
-                                <%= link_to "Decline", borrow_decline_path(borrow_request.id), method: :get, class: 'btn btn-danger mt-2'%>
-                            </div>
-                        </div >
-                    </div>
-                    <% end %>
-            <% end %>
-        <% end %>
-    <% end %>
-    <% if @return_count > 0%>
-        <% @user.listings.each do |listing| %>
-            <% listing.borrow_requests.each do |borrow_request| %>
-                    <% if borrow_request.status == "returned"%>
-                    <div class="col-md-6">
-                        <div class="card mx-2 mb-2">
-                            <div class="card-body">
-                                <h4> <%=link_to User.find_by(id: borrow_request.user_id).name, user_path(User.find_by(id: borrow_request.user_id))%> has declared the return of your item</h4>
-                                <h4> Listing name:   <%= listing.title %> </h4>
-                                <h4 style="color:blue;"> From <%= borrow_request.start_borrowing.strftime("%d/%m/%Y") %> To <%= borrow_request.end_borrowing.strftime("%d/%m/%Y") %></h4>
-                                <%= link_to "Delete Listing", listing_path(borrow_request.listing_id), method: :delete, data: { confirm: 'Are you sure you would like to remove this listing?' }, class: 'btn btn-danger mt-2'%>
-                            </div>
-                        </div >
-                    </div>
-                    <% end %>
-            <% end %>
-        <% end %>
-    <% end %>
-    <% if @return_count < 1 && @count < 1 %>
-        <div class="col-md-12">
-            <div class="card d-flex p-5 mb-5">
-                <div class="card-text p-5 d-flex justify-content-center align-items-center text-secondary">
-                You don't have any awating actions
+<div class="container">
+            <div class="row">
+                <div class="col-md-12 p-3">
+                    <ul class="nav nav-tabs nav-justified">
+                        <li class="nav-item active">
+                            <a class="nav-link active" data-toggle="tab" href="#pendingApprovals">Pending Approvals</a>
+                        </li>
+                        <li class="nav-item active">
+                           <a class="nav-link" data-toggle="tab" href="#markAsLent">Items to Mark as Lent</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#markAsReturned">Items to Mark as Returned</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    <%end%>
-
-    <%if current_user.admin? %>
-        <div class="col-md-6 mx-4">
-        <div class="d-flex flex-row mt-3 py-3">
-            <h2> Reported Listings</h2>
-        </div>
-        </div>
-        <% if Report.all.count > 0 %>
-        <% Report.all.each do |report|%>
-        <% if Listing.exists?(id: report.listing_id) and User.exists?(id: report.user_id)%>
-            <div class="col-md-6">
-                <div class="card mx-2 mb-2">
-                    <div class="card-body">     
-                        <%listing = Listing.find_by(id: report.listing_id)%>
-                        <%user = User.find_by(id: report.user_id)%>
-                        <h4> Reporter's Name: <%= user.name %></h4>
-                        <h4> Listing name:   <%= listing.title %> </h4>
-                        <%= link_to "View Listing", listing_path(listing.id),  class: 'btn btn-outline-info mt-2'%>
-                        <%= link_to "Delete Request", delete_report_request_path(report.id), data: {confirm: "Delete this report request?"} ,class:'btn btn-danger btn-outline-info mt-2'%>
-                        <%= link_to 'Delete Listing', delete_report_listing_path(report.id), data: {confirm: "Delete this listing?"}, class:'btn btn-danger btn-outline-info mt-2' %>
-                    </div>
-                </div >
-            </div>
-        <%end%>
-        <% end %>
-        <% else %>
-            <div class="col-md-12">
-                <div class="card d-flex p-5 mb-5">
-                    <div class="card-text p-5 d-flex justify-content-center align-items-center text-secondary">
-                        You don't have any awating submitted reports
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="tab-content">
+                        <div id="pendingApprovals" class="tab-pane fade show active">
+                             <%= render 'action_items_pending_approvals'%>
+                        </div>
+                        
+                        <div id="markAsLent" class="tab-pane fade">
+                            Items to mark as borrowed go here. Ie. items in the approved state
+                        </div>
+                       
+                        <div id="markAsReturned" class="tab-pane fade">
+                            Items to mark as returned go here, ie in the Borrowed state. 
+                        </div>
                     </div>
                 </div>
             </div>
-        <% end %>
-    <%end %>
-</div>
+        </div> 
+ 
