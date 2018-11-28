@@ -41,7 +41,8 @@ class User < ApplicationRecord
 
 	def thumbnail
 		if self.person and self.person.image.attachment and self.person.image.content_type.in?(%('image/jpeg image/png'))
-			return self.person.image.variant(resize: '300x300').processed
+			#return self.person.image.variant(resize: '300x300').processed
+			return self.person.image
 		else
 			self.person.image = nil
 			return nil
