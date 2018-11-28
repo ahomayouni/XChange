@@ -1,7 +1,5 @@
 desc "This task is called by the Heroku scheduler add-on"
-
 task :send_reminders => :environment do
-  
   # might have to change this with status borrowed later 
   @approved_items = BorrowRequest.where(status:"approved")
   puts "There are #{@approved_items.all.count} items currently being borrowed"
