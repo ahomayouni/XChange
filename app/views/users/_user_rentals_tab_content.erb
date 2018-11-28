@@ -45,7 +45,7 @@
                                         <h4> Listing name: </h4>
                                         <%= listing.title %> <br />
                                         <span class="badge badge-pill status-pill float-right mt-2 mr-2" style="background-color:green;"><%= borrow_request.status.camelize %> </span> <br/>
-                                        <button class="btn btn-outline-info" data-toggle="tooltip" data-placement="right" data-title="Have you given the item to <%= User.find_by(id: borrow_request.user_id).name %> yet? Mark it as borrowed!"> Mark as Borrowed </button>
+                                        <%= button_to "Mark as Borrowed", borrowed_path(borrow_request.id), class:"btn btn-outline-info", :method => :put %>       
                                     </div>
                                 </div>
                             </div>
