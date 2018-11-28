@@ -161,6 +161,15 @@ ActiveRecord::Schema.define(version: 2018_11_28_193625) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "subjects", force: :cascade do |t|
+    t.integer "ref_id"
+    t.string "location"
+    t.text "descrip"
+    t.float "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
