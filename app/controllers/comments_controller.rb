@@ -39,8 +39,12 @@ before_action :find_reply
                 if @person.rating != nil
                     old_review = @person.rating
                     total_reviews = Comment.where(subject_id: @comment.subject_id, reply_type: "Person").length
-                    old_review *= total_reviews
-                    old_review += @comment.rating
+                    old_review *= (total_reviews-1)
+                    if not @comment.rating.nil?
+                         old_review += @comment.rating
+                    else 
+                        old_review += 0
+                    end
                     old_review /= total_reviews
                     @person.update_attribute(:rating, old_review)
                 else

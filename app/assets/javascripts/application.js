@@ -38,10 +38,7 @@ function show_password(){
 
 //PSA: If you want to do any jquery, do it in this block of code.
 $(document).on('turbolinks:load', function() {
-	$('#myModal').on('shown.bs.modal', function () {
-		$('#myInput').trigger('focus')
-	});
-
+	
 	$(function () {
 		$('[data-toggle="tooltip"]').tooltip()
 	});

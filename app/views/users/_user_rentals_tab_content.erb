@@ -19,7 +19,9 @@
                                     <div class="card-text p-5 d-flex text-secondary">
                                         You haven't requested to borrow anything yet. Browse our listings to find what you need!
                                     </div>
-                                    <%= link_to "Browse Listings", listings_path , class:'btn db-browse-btn w-25 ml-5 font-weight-bold', style:"color:white!important;" %>
+                                    <div class="card-text">
+                                        <%= link_to "Browse Listings", listings_path , class:'btn db-create-btn font-weight-bold', style:"color:white!important;" %>
+                                    </div>
                                 </div>
                             </div>
                         <%end%>
@@ -59,7 +61,7 @@
                                 <div class="card-text p-5 d-flex justify-content-center align-items-center text-secondary">
                                     You haven't lent anything out. Why not put up a listing?
                                 </div>
-                                 <%= link_to "Post a listing", new_listing_path, class:'btn db-browse-btn w-25 ml-5 font-weight-bold', style:"color:white!important;" %>
+                                 <%= link_to "Post a listing", new_listing_path, class:'btn db-create-btn font-weight-bold', style:"color:white!important;" %>
                             </div>
                         </div>
                     <%end%>
