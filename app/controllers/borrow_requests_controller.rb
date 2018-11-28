@@ -90,6 +90,10 @@ class BorrowRequestsController < ApplicationController
   end
 
   def returned
+    @borrow_request = BorrowRequest.find_by(id: params[:id])
+    @borrow_request.update_attribute(:status, "returned")
+    if @borrow_request.save
+    end
   end
 
 end

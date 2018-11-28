@@ -5,7 +5,7 @@
             <h5 class="card-title">
                 <%= listing.title %>
             </h5>
-            <h6> Owned by: <%= listing.user.name %> </h6>
+            <h6> Owned by: <%=link_to listing.user.name, user_path(listing.user_id) %> </h6>
             <h6 style="color:#ffc107;"> Requested on <%= borrow_request.created_at.strftime("%d/%m/%Y") %> </h6>
             <h6 style="color:blue;"> From <%= borrow_request.start_borrowing.strftime("%d/%m/%Y") %> To <%= borrow_request.end_borrowing.strftime("%d/%m/%Y") %></h6>
                 <div class="row">

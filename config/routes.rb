@@ -90,6 +90,7 @@ Rails.application.routes.draw do
   get '/borrow_request/:id', to: 'borrow_requests#decline', as: 'borrow_decline'
   delete '/borrow_request/:id', to: 'borrow_requests#delete_request', as: 'borrow_delete'
   put '/borrow_request/:id', to: 'borrow_requests#borrowed', as: 'borrowed'
+  put '/borrow_request/:id', to: 'borrow_requests#returned', as: 'borrow_returned'
 
   resources :notifications do
     collection do
