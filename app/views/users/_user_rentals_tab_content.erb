@@ -30,7 +30,7 @@
                      <h2 class="p-3"> Rental requests you've Approved:</h2> 
 
                     <% @count = 0 %>
-                    <% @user.listings.each do |u| %>
+                    <% @user.listings.each do |u| %>approved
                     <% @count += u.borrow_requests.where(status: "approved").count %>
                     <% end %>
                     <% if @count > 0%>
@@ -45,7 +45,9 @@
                                         <h4> Listing name: </h4>
                                         <%= listing.title %> <br />
                                         <span class="badge badge-pill status-pill float-right mt-2 mr-2" style="background-color:green;"><%= borrow_request.status.camelize %> </span> <br/>
-                                        <%= button_to "Mark as Borrowed", borrowed_path(borrow_request.id), class:"btn btn-outline-info", :method => :put %>       
+                                        <% if borrow_request.status == "approved"%>
+                                        <%= button_to "Mark as Borrowed", borrow_update_path(borrow_request.id), class:"btn btn-outline-info", :method => :put %>       
+                                        <% end %>
                                     </div>
                                 </div>
                             </div>
