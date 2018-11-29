@@ -94,7 +94,7 @@ Rails.application.routes.draw do
   get '/borrow_request/:id', to: 'borrow_requests#decline', as: 'borrow_decline'
   delete '/borrow_request/:id', to: 'borrow_requests#delete_request', as: 'borrow_delete'
   put '/borrow_request/:id', to: 'borrow_requests#update', as: 'borrow_update'
-  
+  post '/borrow_request/:id', to: 'borrow_requests#make_chatroom', as: 'borrow_chatroom'
 
   resources :notifications do
     collection do

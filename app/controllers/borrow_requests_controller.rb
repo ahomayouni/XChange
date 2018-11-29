@@ -20,12 +20,6 @@ class BorrowRequestsController < ApplicationController
           @notif_recipient = User.find(@current_listing.user_id)
           @new_notif = Notification.new(recipient: @notif_recipient, actor_id: current_user.id ,action: "borrow_request",notifiable: @current_listing)
           @new_notif.save
-          @chatroom = Chatroom.create(borrow_request_id: @new_request.id)
-          @listing_user = @current_listing.user_id
-          @chatroom.user_ids = [current_user.id, @listing_user]
-          inital_message = 'I would like to talk about ' + @current_listing.title
-          @chatroom.messages.create(content: inital_message, user_id: current_user.id)
-          @chatroom.save
           flash[:borrow_request_sucess] = "Borrow Request Successfull"
           redirect_to listings_path
         else
@@ -37,7 +31,9 @@ class BorrowRequestsController < ApplicationController
 
   def delete_request
     if BorrowRequest.exists?(id: params[:id])
-      BorrowRequest.find_by(id: params[:id]).destroy
+      @borrow_request = BorrowRequest.find_by(id: params[:id])
+      @borrow_request.destroy
+      Chatroom.find_by(borrow_request_id: @borrow_request.id).destroy
       flash[:success] = "Borrow Request Deleted"
     else
       flash[:danger] = "Borrow Request could not be deleted"
@@ -101,5 +97,22 @@ class BorrowRequestsController < ApplicationController
     redirect_to user_path(current_user, active_tab: "actionItems")
   end
 
+  def make_chatroom
+    @borrow_request = BorrowRequest.find_by(id: params[:id])
+    @current_chat = Chatroom.find_by(borrow_request_id: @borrow_request.id)
+    if @current_chat.nil?
+      @current_listing = Listing.find(@borrow_request.listing_id)
+      @listing_user = User.find(@current_listing.user_id)
+      list_title = @listing_user.name + "'s " + @current_listing.title
+      @chatroom = Chatroom.create(borrow_request_id: @borrow_request.id, title:  list_title)
+      @listing_user = @current_listing.user_id
+      @chatroom.user_ids = [current_user.id, @listing_user]
+      if @chatroom.save
+        redirect_to chatroom_path(@chatroom.id)
+      end
+    else
+      redirect_to chatroom_path(@current_chat.id)
+    end
+  end
 
 end
