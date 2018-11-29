@@ -68,6 +68,8 @@ class BorrowRequestsController < ApplicationController
         @new_notif.save
       end
     end
+
+    flash[:borrow_approve_flash] = "Borrow Request approve successful"
     redirect_to user_path(current_user,active_tab: "actionItems")
   end
 
@@ -82,16 +84,18 @@ class BorrowRequestsController < ApplicationController
     redirect_to user_path(current_user,active_tab: "actionItems")
   end
 
-  def update
+  def borrowed
     @borrow_request = BorrowRequest.find_by(id: params[:id])
-    if @borrow_request.status == "approved"
-      @borrow_request.update_attribute(:status, "borrowed")
-    elsif @borrow_request.status == "borrowed"
-      @borrow_request.update_attribute(:status, "returned")
-    end
-    
+    @borrow_request.update_attribute(:status, "borrowed")
     if @borrow_request.save
-      redirect_to user_path(current_user, active_tab: "borrowRequests")
+    end
+  end
+
+  def returned
+    @borrow_request = BorrowRequest.find_by(id: params[:id])
+    @borrow_request.update_attribute(:status, "returned")
+    if @borrow_request.save
+      
     end
   end
 
