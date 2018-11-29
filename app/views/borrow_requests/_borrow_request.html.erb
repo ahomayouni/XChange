@@ -21,6 +21,7 @@
                     <div class="col-sm-6">
                          <%= button_to "Not Interested Anymore", borrow_delete_path(borrow_request.id), class:"card-link btn btn-primary mt-1", :method => :delete %>
                     </div>
+                    <% end %>
                     <div class="col-sm-6">
                         <% if borrow_request.status == "borrowed"%>
                          <%= button_to "Declare Returned", borrow_update_path(borrow_request.id), class:"card-link btn btn-primary mt-1", :method => :put %>
