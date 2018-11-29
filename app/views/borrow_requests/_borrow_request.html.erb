@@ -31,15 +31,8 @@
                 </div>
                 <% pill_color = get_pill_color_from_status(borrow_request.status) %>
                 <span class="badge badge-pill badge-<%= pill_color %> float-right mt-2 mr-2"><%= borrow_request.status.camelize %> </span>
-<<<<<<< HEAD
                 <%= link_to "Send a message!", borrow_chatroom_path(borrow_request.id), class:"btn db-browse-btn mt-2 font-weight-secondary", style:"color:white!important;", data: {toggle:"modal", target:"#exampleModal"}, :method => :post %>
 
-=======
-                
-                <button type="button" class="btn db-browse-btn mt-2 font-weight-secondary" style="color:white!important;" data-toggle="modal" data-target="#exampleModal">
-                    Send a message!
-                </button>
->>>>>>> 69ead0bc0ff3a382d2d9c0f6584f884dddb232d4
             </div>
         </div>
     </div>
