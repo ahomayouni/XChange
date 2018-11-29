@@ -9,7 +9,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-                <div class="" id="borrowing" style="">
+                <div id="borrowing">
                    <h2 class="p-3"> What you're Borrowing </h2> 
                        <% if @user.borrow_requests.count > 0%>
                             <%= render @user.borrow_requests %>
@@ -26,7 +26,7 @@
                             </div>
                         <%end%>
                 </div>
-                <div class="" id="lending" style="display:none;">
+                <div id="lending" style="display:none;">
                      <h2 class="p-3"> Items out for loan:</h2> 
                     <% @count = 0 %>
                     <% @user.listings.each do |u| %>
@@ -61,6 +61,42 @@
                             </div>
                         </div>
                     <%end%>
+                  <h2 class="p-3"> Your Returned Rentals</h2>
+                         <% @count = 0 %>
+                        <% @user.listings.each do |u| %>
+                        <% @count += u.borrow_requests.where(status: "returned").count %>
+                        <% end %>
+                        <% if @count > 0%>
+                        <% @user.listings.each do |listing| %>
+                        <% listing.borrow_requests.each do |borrow_request| %>
+                            <% if borrow_request.status == "returned"%>
+                            <div class="col-md-6">
+                                <div class="card card mx-2 mb-2">
+                                    <div class="card-body">
+                                        <h4> Borrower's Name: </h4>
+                                        <%= User.find_by(id: borrow_request.user_id).name %>
+                                        <h4> Listing name: </h4>
+                                        <%= listing.title %> <br />
+                                        <h6 style="color:blue;"> From <%= borrow_request.start_borrowing.strftime("%d/%m/%Y") %> To <%= borrow_request.end_borrowing.strftime("%d/%m/%Y") %></h6>
+                                        <span class="badge badge-pill status-pill float-right mt-2 mr-2" style="background-color:green;"><%= borrow_request.status.camelize %> </span> <br/>
+                                        <%= link_to "Rate this Borrower!", person_path(borrow_request.user_id), class: 'btn db-browse-btn', style:"color:white!important"%> 
+                                        <%= button_to "Post this Listing Again", edit_listing_path(borrow_request.listing_id), class:"card-link btn btn-primary mt-1", :method => :get %>
+                                        <%= button_to 'Delete Listing', listing_path(borrow_request.listing_id), method: :delete, data: {confirm: "Are you sure?"}, class:'card-link btn btn-danger mt-1' %>
+                                    </div>
+                                </div>
+                            </div>
+                            <% end %>
+                            <% end %>
+                            <% end %>
+                        <%else%> <%# for outermost if %>
+                         <div class="col-md-12">
+                            <div class="card d-flex p-5 mb-5">
+                                <div class="card-text p-5 d-flex justify-content-center align-items-center text-secondary">
+                                  No rentals that have been returned. 
+                                </div>
+                            </div>
+                        </div>
+                        <%end%>
                 </div>
         </div>
     </div>

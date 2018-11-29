@@ -28,12 +28,6 @@
                     </div>
                     <% end %>
                     <!-- If the status is returned then, ask the owner to either update/delete item -->
-                    <% if borrow_request.status == "returned" && User.find(Listing.find(borrow_request.listing_id).user_id).id == current_user.id%>
-                    <div class="col-sm-6">
-                         <%= button_to "Post this Listing Again", edit_listing_path(borrow_request.listing_id), class:"card-link btn btn-primary mt-1", :method => :get %>
-                         <%= button_to 'Delete Listing', listing_path(borrow_request.listing_id), method: :delete, data: {confirm: "Are you sure?"}, class:'card-link btn btn-danger' %>
-                    </div>
-                    <% end %>
                 </div>
                 <% pill_color = get_pill_color_from_status(borrow_request.status) %>
                 <span class="badge badge-pill badge-<%= pill_color %> float-right mt-2 mr-2"><%= borrow_request.status.camelize %> </span>
