@@ -37,12 +37,14 @@
               $('#approveModal').modal('show');
             </script>
           <% elsif message_type == "borrow_success"%>
+            <%= render 'layouts/success_mark_as_borrowed_flash'%>
             <script>
-            alert("successfuly marked as borrowed");
+             $('#markAsBorrowedModal').modal('show');
             </script>
           <%elsif message_type == "return_success"%>
+            <%= render 'layouts/success_mark_as_returned_flash'%>
             <script>
-            alert("successfuly marked as returned");
+            $('#markAsReturnedModal').modal('show');
             </script>
           <% else %>
               <div class="alert alert-<%= message_type %>"><%= message %></div>
