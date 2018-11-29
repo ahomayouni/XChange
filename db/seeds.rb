@@ -275,6 +275,29 @@ def seed_user_production (name, email, pw, addr, desc)
   @temp_user.save
 end
 
+def create_group (name,desc, isPublic, owner_name)
+  group = Group.new(name: name,
+    description: desc,
+    isPublic: true,
+    owner_id: User.find_by(name:owner_name).id
+  )
+    if group.save
+    puts "Successfully created group with id: #{group.id}"
+  else
+    puts "Failed to create group"
+  end
+end
+
+def add_to_group(group_name, user_name)
+  membership = Membership.new(group_id: Group.find_by(name:group_name).id,
+                                user_id: User.find_by(name:user_name).id)
+  if membership.save
+    puts "Added user '#{user_name}' to group '#{group_name}'"
+  else
+   puts "failed to add'#{user_name}' to group '#{group_name}'"
+  end
+end
+
 # Create 100 Fake users. Also Template in how we can prepopulate the database.
 @admin_user = User.new(name:  "admin",
              email: "admin@admin.com",
@@ -326,7 +349,6 @@ else
   seed_user("Arnav", "arnav@gmail.com", "12345", "62 Hiltz Ave Toronto", 'Developer at XChange','arnav.jpg', 'image/jpeg')
   seed_user("KC", "KC@gmail.com", "12345", "67 Curzon St Toronto", 'Developer at XChange', 'KC.jpg', 'image/jpeg')
   seed_user("Donald Trump", "trump@gmail.com", "12345", "156 Colbeck St Toronto", 'President of the United States', 'trump.jpg', 'image/jpeg')
-  seed_user("Donald Trump", "trump@gmail.com", "12345", "156 Colbeck St Toronto", 'President of the United States', 'trump.jpg', 'image/jpeg')
   seed_user("Neil deGrasse Tyson", "neil@gmail.com", "12345", "65 High Park Ave Toronto", 'The Space Guy', 'neil.jpg', 'image/jpeg')
   seed_user("Chandler Bing", "chandler@gmail.com", "12345", "2 Aberfoyle Cres Toronto", "I'm not great at advice. Can I interest you in a sarcastic comment?", 'chandler.jpg', 'image/jpeg')
   seed_user("Donald Knuth", "donald@gmail.com", "12345", "52 Milverton Blvd Toronto", "An algorithm must be seen to be believed.", 'donald.jpg', 'image/jpeg')
@@ -341,6 +363,31 @@ else
   seed_listing("Cosmos DVD set", "My very own TV show", "Film & Photography", User.find_by(name:"Neil deGrasse Tyson").id, 'cosmos.jpg', 'image/jpeg', "81 Lemonwood Dr Toronto")
   seed_listing("OLD Home Phone", "Old collectible", "Home / Office / Garden", User.find_by(name:"Chandler Bing").id, 'phone.png', 'image/png', "103 The Queensway Toronto")
   seed_listing("The Art of Computer Programming", "Collection by Donald Knuth", "Home / Office / Garden", User.find_by(name:"Donald Knuth").id, 'dbook.jpg', 'image/jpg', "989 Logan Ave Toronto")
+
+  # Seeding groups
+  create_group("UofT Alumni","Open to all students and alumni at the University of Toronto", true, "Arash")
+  create_group("Residents near Yonge and Sheppard","Open to everyone near Yonge and Sheppard", true, "Peter")
+  create_group("Colleagues at Snapchat","Open to employees of the Toronto location", true, "KC")
+  create_group("Fans of Cosmos","If you are a fan of 'Neil deGrasse Tyson', this group is for you!", true, "Maru")
+
+  add_to_group("UofT Alumni", "Arash")
+  add_to_group("UofT Alumni", "Maru")
+  add_to_group("UofT Alumni", "Peter")
+  add_to_group("UofT Alumni", "KC")
+  add_to_group("UofT Alumni", "Arnav")
+  add_to_group("UofT Alumni", "Adi")
+  
+  add_to_group("Residents near Yonge and Sheppard", "Peter")
+  add_to_group("Residents near Yonge and Sheppard", "Donald Trump")
+  add_to_group("Residents near Yonge and Sheppard", "Chandler Bing")
+
+  add_to_group("Colleagues at Snapchat", "KC")
+  add_to_group("Colleagues at Snapchat", "Arash")
+  add_to_group("Colleagues at Snapchat", "Adi")
+
+  add_to_group("Fans of Cosmos", "Maru")
+  add_to_group("Fans of Cosmos", "Arash")
+  add_to_group("Fans of Cosmos", "Donald Knuth")
 end 
 
 # Get corresponding longitude and latitude from user.peron.address and fill the location model

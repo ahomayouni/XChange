@@ -10,14 +10,16 @@
 	</div>
     <div class="row">
         <div class="col-md-9 py-3 px-3">
-            <h1 style="white-space: nowrap ; overflow: hidden; text-overflow: ellipsis;">  '<%=@group.name%>' Group Page</h1>
+            <h1 style="white-space: nowrap ; overflow: hidden; text-overflow: ellipsis;">  '<%=@group.name%>'</h1>
+            <h3 style="white-space: nowrap ; overflow: hidden; text-overflow: ellipsis;">  <%=@group.description%></h3>
+
 			<% if @group.owner_id %>
 				<h4 class="card-text">Owner: <%= User.find_by(id:@group.owner_id).name %></h4>
 			<% else %>
 				<h4 class="card-text">Owner: Anonymous</h4>
 			<% end %>
-            <h4> This group has <%= @group.users.count %> members </h4>
-            <h4> Privacy: <% if @group.isPublic %>Public<% else %>Private<%end%></p> </h4>
+            <h4><%= @group.users.count %> members </h4>
+            <!--<h4> Privacy: <% if @group.isPublic %>Public<% else %>Private<%end%></p> </h4><--></-->
             <% if !@group.member_exists(current_user) %>
 				<p class="card-text"><%= button_to "Join Group", {:controller => "group", :action => "join", :group => @group, :user => current_user }, :method => :post, class:"card-link btn btn-success" %></p>
 			<% else %>

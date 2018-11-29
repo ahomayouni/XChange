@@ -3,7 +3,7 @@ class Group < ApplicationRecord
   has_many :users, through: :memberships, :dependent => :delete_all 
   
   validates :name, presence: true, length: {minimum: 5}
-  validates :description, presence: true, length: {minimum: 5, maximum: 100}
+  validates :description, presence: true, length: {minimum: 5, maximum: 1000}
   validates :isPublic, presence: true
     
   def member_exists(user)
