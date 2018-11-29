@@ -75,8 +75,10 @@ before_action :find_reply
                     @listing.update_attribute(:rating, @comment.rating)
                 end
             end
+        flash[:success] = "Thanks for posting this review!"
+        redirect_to user_path(@person.user_id)
         #redirect_to :back, notice: 'Your review was successfully posted!'
-        redirect_back fallback_location: request.referrer, notice: 'Your review was successfully posted!'
+        #redirect_back fallback_location: request.referrer, notice: 'Your review was successfully posted!'
         else
         #format.html { redirect_to :back, notice: 'Building Created!' }
         #redirect_to , notice: "Your review wasn't posted!"

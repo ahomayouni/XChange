@@ -100,6 +100,24 @@
                  <%end%>
             </div>
             <div class="col-md-9">
+             <div class="d-flex flex-row ml-3 mb-3">
+                <h6 class="font-weight-bold text-secondary mb-3">Rating:</h6>
+                <h6 class="ml-3 font-weight-bold">
+                    <% if get_rounded_user_rating(@user.id) == 0 %>
+                        <p class="card-text"> No ratings yet </p>
+                    <% else %>
+                        <% for i in 1..get_rounded_user_rating(@user.id)do %>
+                        <i class="material-icons" style="color:#f2a900!important;">
+                        grade
+                        </i>
+                        <%end%>
+                    <% end %>
+                 </h6>
+
+                <button type="button" class="btn db-browse-btn font-weight-bold ml-3" style="color:white!important;" data-toggle="modal" data-target="#anotherUserReviewsModal">
+                    See Reviews
+                </button>
+            </div>
                   <div class="d-flex flex-row ml-3 mb-3">
                     <h6 class="font-weight-bold text-secondary">Name:</h6>
                     <h6 class="ml-3 font-weight-bold"><%= @user.name%> </h6>
@@ -124,25 +142,14 @@
                     <h6 class="font-weight-bold text-secondary mb-3">Description:</h6>
                     <h6 class="ml-3 font-weight-bold"><%= @user.person.description %> </h6>
                 </div>
-                <div class="d-flex flex-column ml-3 mb-3">
-                    <h6 class="font-weight-bold text-secondary mb-3">Rating:</h6>
-                    <h6 class="ml-3 font-weight-bold">
-                        <% if get_rounded_user_rating == 0 %>
-                            <p class="card-text"> No ratings yet </p>
-                        <% else %>
-                            <% for i in 1..get_rounded_user_rating do %>
-                            <i class="material-icons">
-                            grade
-                            </i>
-                            <%end%>
-                        <% end %>
-                    </h6>
-                </div>
-                <div class="d-flex flex-row ml-3">
-                    <button type="button" class="btn db-browse-btn font-weight-bold" style="color:white!important;" data-toggle="modal" data-target="#anotherUserReviewsModal">
-                        See Reviews
-                    </button>
-                </div>
+
+                <%rendered=false%>
+                <%BorrowRequest.all.each do |cur_item|%>
+                    <% if cur_item.user_id == @user.id and cur_item.status=="late" and rendered==false and Listing.find(cur_item.listing_id).user_id == current_user.id and !current_user.admin? %>
+                        <%rendered=true%>
+                        <%= link_to "Report this user", report_user_path(@user), class: 'btn btn-danger btn-outline-info mt-2'%>
+                    <% end %>
+                <%end%>
             </div>
         </div>
     </div>

@@ -80,10 +80,14 @@ Rails.application.routes.draw do
   # Location routes
   resources :locations
 
-  # Report route
+  # Report routes (for listings)
   get '/listings/:id/report', to: 'listings#report', as: 'report_listing'
   get '/reports/delete_listing_and_request/:id', to: 'reports#delete_listing_and_request', as: 'delete_report_listing'
   get '/reports/delete_request/:id', to: 'reports#delete_request', as: 'delete_report_request'
+
+  # Report routes (for users)
+  get '/users/:id/report', to: 'users#report', as: 'report_user'
+  get '/user_report/delete_request/:id', to: 'user_report#delete_request', as: 'delete_user_report_request'
 
   # resources :borrow_requests
   # get :requested_listings, controller: :borrow_requests

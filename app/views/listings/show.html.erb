@@ -31,14 +31,14 @@
                 <% end %>
               </div>
             <!-- Listing rating -->
-              <div class="card-body pb-3">
+            <div class="card-body pb-3">
                 <p class="card-text"> Average Rating:</p>
                 <p class="card-text">
                   <% if get_rounded_rating == 0 %>
                       <p class="card-text"> No ratings yet </p>
                   <% else %>
                     <% for i in 1..get_rounded_rating do %>
-                      <i class="material-icons">
+                      <i class="material-icons" style="color:#f2a900!important;">
                       grade
                       </i>
                     <%end%>
@@ -96,12 +96,36 @@
           <% if is_listing_owner %>
               <%= link_to "Edit", edit_listing_path(@listing), class: 'btn btn-outline-info'%>
           <% else %>
-              <%= link_to "Report this listing", report_listing_path(@listing), class: 'btn btn-danger btn-outline-info'%>
+              <%= link_to "Report this listing", report_listing_path(@listing), class: 'btn btn-danger btn-outline-info mt-2'%>
           <% end %>
         </div>
         <div class="row justify-content-center">
           <h5 class="mt-3 font-weight-bold"> Who's lending this out? </h5>
         </div>
+        <div class="row justify-content-center">
+              <h5 class="mt-3 font-weight-bold"> <%= @listing.user.name %> </h5> 
+        </div>
+         <div class="d-flex flex-row ml-3 mb-3 justify-content-center">
+                <h6 class="font-weight-bold text-secondary mb-3">Rating:</h6>
+                <h6 class="ml-3 font-weight-bold">
+                    <% if get_rounded_user_rating(@listing.user_id) == 0 %>
+                        <p class="card-text"> No ratings yet </p>
+                    <% else %>
+                        <% for i in 1..get_rounded_user_rating(@listing.user_id) do %>
+                        <i class="material-icons" style="color:#f2a900!important;">
+                        grade
+                        </i>
+                        <%end%>
+                    <% end %>
+                 </h6>
+                
+        </div>
+        <div class="row justify-content-center">
+         <button type="button" class="btn db-browse-btn font-weight-bold ml-3 my-2" style="color:white!important;" data-toggle="modal" data-target="#listingUserReviewsModal">
+                    See <%= @listing.user.name%>'s Reviews
+                </button>
+        </div>
+         
         <div class="row justify-content-center">
               <%if @listing.user.person.image.attachment != nil and @listing.user.person.image.content_type.in?(%('image/jpeg image/png')) %>
                 <%= image_tag(@listing.user.thumbnail, :class => "img-thumbnail rounded-circle")%>
@@ -109,9 +133,7 @@
                 <%= image_tag("empty-user-icon.png", :class => "user-icon rounded") %>
               <%end%>
         </div>
-        <div class="row justify-content-center">
-              <h5 class="mt-3"> <%= @listing.user.name %> </h5> 
-        </div>
+       
         <div class="row justify-content-center">
               <%= button_to "View Profile", user_path(@listing.user),params: {active_tab: "dashboardTab"}, class:"btn btn-primary", :method => :get %>
         </div>
@@ -172,9 +194,10 @@ $(function(){
   var start_lending = document.getElementById("listing_start_date").innerHTML.split(' ')[0];
   var end_lending = document.getElementById("listing_end_date").innerHTML.split(' ')[0];
   // console.log(start_lending, end_lending)
+  // For some reason when i do -1 it shows up all of the dates
   $('[data-behavior=daterangepicker]').daterangepicker({
-    startDate: start_lending,
-    minDate: start_lending,
+    // startDate: start_lending,
+    // minDate: start_lending,
     endDate: end_lending,
     maxDate: end_lending,
     locale: { format: 'YYYY/MM/DD'},
@@ -203,3 +226,32 @@ $(function(){
               </div>
             </div>
         </div>
+
+
+
+<div class="modal fade" id="listingUserReviewsModal" tabindex="-1" role="dialog" aria-labelledby="listingUserReviewsModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="listingUserReviewsModalLabel"><%= @user.name%>'s Reviews</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="overflow-y:scroll;">
+        <%if @user.person.comments.count == 0%>
+        No reviews yet
+        <%else %>
+            <ul>
+                <%= render(partial: 'comments/comment', collection: @user.person.comments) %>
+            </ul>
+        <%end%>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+          

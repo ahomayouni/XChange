@@ -22,23 +22,24 @@
                          <%= button_to "Not Interested Anymore", borrow_delete_path(borrow_request.id), class:"card-link btn btn-primary mt-1", :method => :delete %>
                     </div>
                     <% end %>
-                    <% if borrow_request.status == "borrowed" && User.find(Listing.find(borrow_request.listing_id).user_id).id == current_user.id%>
-                    <div class="col-sm-6">
-                         <%= button_to "Declare Returned", borrow_update_path(borrow_request.id), class:"card-link btn btn-primary mt-1", :method => :put %>
-                    </div>
-                    <% end %>
+                    <% if borrow_request.status == "returned" %>
+                        <div class="col-sm-6">
+                         <%= link_to "Rate #{listing.user.name}", person_path(listing.user_id), class: 'btn db-browse-btn', style:"color:white!important"%> 
+                         </div>
+                    <% end %>   
                     <!-- If the status is returned then, ask the owner to either update/delete item -->
-                    <% if borrow_request.status == "returned" && User.find(Listing.find(borrow_request.listing_id).user_id).id == current_user.id%>
-                    <div class="col-sm-6">
-                         <%= button_to "Post this Listing Again", edit_listing_path(borrow_request.listing_id), class:"card-link btn btn-primary mt-1", :method => :get %>
-                         <%= button_to 'Delete Listing', listing_path(borrow_request.listing_id), method: :delete, data: {confirm: "Are you sure?"}, class:'card-link btn btn-danger' %>
-                    </div>
-                    <% end %>
                 </div>
                 <% pill_color = get_pill_color_from_status(borrow_request.status) %>
                 <span class="badge badge-pill badge-<%= pill_color %> float-right mt-2 mr-2"><%= borrow_request.status.camelize %> </span>
+<<<<<<< HEAD
                 <%= link_to "Send a message!", borrow_chatroom_path(borrow_request.id), class:"btn db-browse-btn mt-2 font-weight-secondary", style:"color:white!important;", data: {toggle:"modal", target:"#exampleModal"}, :method => :post %>
 
+=======
+                
+                <button type="button" class="btn db-browse-btn mt-2 font-weight-secondary" style="color:white!important;" data-toggle="modal" data-target="#exampleModal">
+                    Send a message!
+                </button>
+>>>>>>> 69ead0bc0ff3a382d2d9c0f6584f884dddb232d4
             </div>
         </div>
     </div>

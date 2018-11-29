@@ -325,7 +325,11 @@ else
   seed_user("Adi", "adi@gmail.com", "12345", "260 Carlaw Ave Toronto", 'Developer at XChange','adi.jpeg', 'image/jpeg')
   seed_user("Arnav", "arnav@gmail.com", "12345", "62 Hiltz Ave Toronto", 'Developer at XChange','arnav.jpg', 'image/jpeg')
   seed_user("KC", "KC@gmail.com", "12345", "67 Curzon St Toronto", 'Developer at XChange', 'KC.jpg', 'image/jpeg')
-
+  seed_user("Donald Trump", "trump@gmail.com", "12345", "156 Colbeck St Toronto", 'President of the United States', 'trump.jpg', 'image/jpeg')
+  seed_user("Donald Trump", "trump@gmail.com", "12345", "156 Colbeck St Toronto", 'President of the United States', 'trump.jpg', 'image/jpeg')
+  seed_user("Neil deGrasse Tyson", "neil@gmail.com", "12345", "65 High Park Ave Toronto", 'The Space Guy', 'neil.jpg', 'image/jpeg')
+  seed_user("Chandler Bing", "chandler@gmail.com", "12345", "2 Aberfoyle Cres Toronto", "I'm not great at advice. Can I interest you in a sarcastic comment?", 'chandler.jpg', 'image/jpeg')
+  seed_user("Donald Knuth", "donald@gmail.com", "12345", "52 Milverton Blvd Toronto", "An algorithm must be seen to be believed.", 'donald.jpg', 'image/jpeg')
   # Seeding istings
   seed_listing("Canon FX Camera", "35 mm SLR Camera", "Film & Photography", User.find_by(name:"Arash").id, 'camera-seed.jpeg', 'image/jpeg', "710 Trethewey Dr Toronto")
   seed_listing("Saw for carpenting", "Traditional style saw", "Home / Office / Garden", User.find_by(name:"Peter").id, 'saw.jpg', 'image/jpeg', "2925 Dufferin St Toronto")
@@ -333,6 +337,10 @@ else
   seed_listing("Drone with Camera", "Comes with a 4K Camera", "Drones", User.find_by(name:"Arnav").id, 'drone.jpg', 'image/jpeg', "1830 Bloor St W Toronto")
   seed_listing("DJ studio", "Available for daily rentals", "DJ Equipment", User.find_by(name:"Maru").id, 'dj.jpg', 'image/jpeg', "82 Woodside Ave Toronto")
   seed_listing("Bicycle", "Sport. Never used.", "Sports", User.find_by(name:"KC").id, 'bike.jpeg', 'image/jpeg', "111 Pacific Ave Toronto")
+  seed_listing("Trump's Tower", "My humble tower.", "Holiday & Travel", User.find_by(name:"Donald Trump").id, 'tower.jpg', 'image/jpeg', "325 Bay St, Toronto")
+  seed_listing("Cosmos DVD set", "My very own TV show", "Film & Photography", User.find_by(name:"Neil deGrasse Tyson").id, 'cosmos.jpg', 'image/jpeg', "81 Lemonwood Dr Toronto")
+  seed_listing("OLD Home Phone", "Old collectible", "Home / Office / Garden", User.find_by(name:"Chandler Bing").id, 'phone.png', 'image/png', "103 The Queensway Toronto")
+  seed_listing("The Art of Computer Programming", "Collection by Donald Knuth", "Home / Office / Garden", User.find_by(name:"Donald Knuth").id, 'dbook.jpg', 'image/jpg', "989 Logan Ave Toronto")
 end 
 
 # Get corresponding longitude and latitude from user.peron.address and fill the location model

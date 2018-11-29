@@ -7,7 +7,11 @@ task :send_reminders => :environment do
 	  	@borrower = User.find(item.user_id)
 	  	if item.end_borrowing.past?
 	  		# Late
-	    if Notification.where(actor_id: @borrower.id, recipient: @borrower , action: "systems_listing_reminder_past_due", notifiable: item).count == 0 
+	  		puts "Found a late item"
+	  		# Change the state to 'late' as this would also trigger other reports button 
+	  		item.status = "late"
+	  		item.save
+	    	if Notification.where(actor_id: @borrower.id, recipient: @borrower , action: "systems_listing_reminder_past_due", notifiable: item).count == 0 
 		  		@new_notif = Notification.new(recipient: @borrower, actor_id: @borrower.id ,action: "systems_listing_reminder_past_due",notifiable: item)
 		        @new_notif.save
 		        puts "Sending notification for something past due"

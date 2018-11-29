@@ -1,0 +1,2 @@
+class UserReport < ApplicationRecord
+end
