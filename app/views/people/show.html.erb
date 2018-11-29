@@ -1,15 +1,24 @@
-<%= link_to "Go back to users", users_path %><br/>
-<small>Submitted <%= time_ago_in_words(@person.created_at) %> ago</small>
-
-<h3>Comments</h3>
-<%# 
-Use form_for %>
-<%= form_for [@person, Comment.new] do |f| %> 
-<%= f.text_area :body, placeholder: "Add a comment" %><br/>
-<%= f.number_field :rating, placeholder: "Add rating" %><br/>
-<%= f.submit "Add Comment" %>
-<% end %>
-
-<ul>
-  <%= render(partial: 'comments/comment', collection: @person.comments) %>
-</ul>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="font-weight-bold">Rate <%= User.find(@person.user_id).name %></h2>
+      <h6 class="font-weight-bold text-secondary"> How was your XChange experience with this user? Giving a detailed review helps the 
+      XChange community. </h6>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <%# Use form_for %>
+      <%= form_for [@person, Comment.new] do |f| %> 
+      <%= f.text_area :body, placeholder: "Add a comment", data: {toggle:"tooltip", placement:"right", title:"How timely were their reponses? Did they meet at the expected time? Any detail about your experience helps."} %><br/>
+      <%= f.number_field :rating, placeholder: "Add rating", data: {toggle:"tooltip", placement:"right", title:"Rate the user from 1 to 5, one being not so great and 5 being awesome!"}%><br/>
+      <%= f.submit "Add Review", class:"btn db-browse-btn font-weight-bold p-3 mt-2", style:"color:white!important;" %>
+      <% end %>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+  <div class="row">
+    <%= link_to "View #{ User.find(@person.user_id).name}'s profile", user_path(@person.user_id) %>
+  </div>
+</div>
