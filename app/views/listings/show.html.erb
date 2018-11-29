@@ -172,9 +172,10 @@ $(function(){
   var start_lending = document.getElementById("listing_start_date").innerHTML.split(' ')[0];
   var end_lending = document.getElementById("listing_end_date").innerHTML.split(' ')[0];
   // console.log(start_lending, end_lending)
+  // For some reason when i do -1 it shows up all of the dates
   $('[data-behavior=daterangepicker]').daterangepicker({
-    startDate: start_lending,
-    minDate: start_lending,
+    // startDate: start_lending,
+    // minDate: start_lending,
     endDate: end_lending,
     maxDate: end_lending,
     locale: { format: 'YYYY/MM/DD'},
