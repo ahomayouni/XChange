@@ -10,3 +10,4 @@ When I click the login button
 Then I should see a login modal with neccessary fields
 When I input my correct login credentials
 Then I should be able to login and see my dashboard
+And I should be able to see notifications

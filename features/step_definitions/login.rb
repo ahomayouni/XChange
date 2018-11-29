@@ -10,7 +10,8 @@ Given("that I have already signed up and activated my account") do
 				              phone_number: '6471678732',
 				              description: 'I am a bot created by the master Peter Tanugraha'
 				             ))
-			normal_user.save
+	normal_user.save
+	Notification.create(recipient: normal_user,actor: normal_user,action:"created_new_account",notifiable:normal_user)
 end
 
 Then("I should see a login button") do
@@ -34,4 +35,12 @@ end
 
 Then("I should be able to login and see my dashboard") do
   expect(page).to have_content('Dashboard')
+end
+
+Then("I should be able to see notifications") do
+	# expect(page).to have_link("notification_important")
+	page.all(:css, "a[id='dropdownMenu1']").last().click()
+	expect(Notification.all.count).to eq(1)
+	page.all(:css, "a[id='welcometoexchange']").last()
+	# expect(page).to have_link('Welcome to XChange! Here is where you can find all then notifications.')
 end
