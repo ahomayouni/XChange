@@ -22,15 +22,14 @@
                          <%= button_to "Not Interested Anymore", borrow_delete_path(borrow_request.id), class:"card-link btn btn-primary mt-1", :method => :delete %>
                     </div>
                     <% end %>
-                    <% if borrow_request.status == "borrowed" && User.find(Listing.find(borrow_request.listing_id).user_id).id == current_user.id%>
-                    <div class="col-sm-6">
-                         <%= button_to "Declare Returned", borrow_update_path(borrow_request.id), class:"card-link btn btn-primary mt-1", :method => :put %>
-                    </div>
-                    <% end %>
+                    <% if borrow_request.status == "returned" %>
+                         <%= link_to "Rate #{listing.user.name}", person_path(listing.user_id), class: 'btn db-browse-btn', style:"color:white!important"%> 
+                    <% end %>   
                     <!-- If the status is returned then, ask the owner to either update/delete item -->
                 </div>
                 <% pill_color = get_pill_color_from_status(borrow_request.status) %>
                 <span class="badge badge-pill badge-<%= pill_color %> float-right mt-2 mr-2"><%= borrow_request.status.camelize %> </span>
+                
                 <button type="button" class="btn db-browse-btn mt-2 font-weight-secondary" style="color:white!important;" data-toggle="modal" data-target="#exampleModal">
                     Send a message!
                 </button>

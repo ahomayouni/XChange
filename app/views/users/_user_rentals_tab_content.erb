@@ -25,6 +25,7 @@
                                 </div>
                             </div>
                         <%end%>
+                     
                 </div>
                 <div id="lending" style="display:none;">
                      <h2 class="p-3"> Items out for loan:</h2> 
@@ -61,7 +62,7 @@
                             </div>
                         </div>
                     <%end%>
-                  <h2 class="p-3"> Your Returned Rentals</h2>
+                  <h2 class="p-3" data-toggle="tooltip" data-placement="right" title="Here you can view your history of completed Rentals. You can rate the borrower, and take next steps for your listing. " > Your Returned Rentals</h2>
                          <% @count = 0 %>
                         <% @user.listings.each do |u| %>
                         <% @count += u.borrow_requests.where(status: "returned").count %>
