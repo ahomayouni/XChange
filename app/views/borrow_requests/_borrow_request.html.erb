@@ -23,7 +23,9 @@
                     </div>
                     <% end %>
                     <% if borrow_request.status == "returned" %>
+                        <div class="col-sm-6">
                          <%= link_to "Rate #{listing.user.name}", person_path(listing.user_id), class: 'btn db-browse-btn', style:"color:white!important"%> 
+                         </div>
                     <% end %>   
                     <!-- If the status is returned then, ask the owner to either update/delete item -->
                 </div>
