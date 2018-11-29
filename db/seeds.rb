@@ -230,7 +230,7 @@ def seed_listing(title, description, category, userid, image_name, image_type, a
   listing.latitude = lat_long[0]
   listing.longitude = lat_long[1]
   if listing.save
-    puts "Successfully created Listing id: #{listing.id} with user_id: #{listing.user_id}"
+    puts "LISTINGS: Successfully created Listing id: #{listing.id} with user_id: #{listing.user_id}"
   else
     listing.errors.full_messages.each do |message|
     puts message
@@ -282,9 +282,9 @@ def create_group (name,desc, isPublic, owner_name)
     owner_id: User.find_by(name:owner_name).id
   )
     if group.save
-    puts "Successfully created group with id: #{group.id}"
+    puts "GROUPS: Successfully created group with id: #{group.id}"
   else
-    puts "Failed to create group"
+    puts "**ERROR: Failed to create group"
   end
 end
 
@@ -292,9 +292,29 @@ def add_to_group(group_name, user_name)
   membership = Membership.new(group_id: Group.find_by(name:group_name).id,
                                 user_id: User.find_by(name:user_name).id)
   if membership.save
-    puts "Added user '#{user_name}' to group '#{group_name}'"
+    puts "MEMBERSHIPS: Added user '#{user_name}' to group '#{group_name}'"
   else
-   puts "failed to add'#{user_name}' to group '#{group_name}'"
+   puts "**ERROR:failed to add'#{user_name}' to group '#{group_name}'"
+  end
+end
+
+def rate_listing(name, rating)
+  listing = Listing.find_by(title:name)
+  listing.rating = rating
+  if listing.save
+    puts "LISTING RATINGS: Rated listing '#{name}' with value: #{rating}"
+  else
+    puts "**ERROR: failed to rate listings"
+  end
+end
+
+def rate_user(name, rating)
+  user = User.find_by(name:name)
+  user.person.rating = rating
+  if user.person.save
+    puts "USER RATINGS: Rated user '#{name}' with value: #{rating}"
+  else
+    puts "**ERROR: failed to rate user"
   end
 end
 
@@ -352,9 +372,9 @@ else
   seed_user("Neil deGrasse Tyson", "neil@gmail.com", "12345", "65 High Park Ave Toronto", 'The Space Guy', 'neil.jpg', 'image/jpeg')
   seed_user("Chandler Bing", "chandler@gmail.com", "12345", "2 Aberfoyle Cres Toronto", "I'm not great at advice. Can I interest you in a sarcastic comment?", 'chandler.jpg', 'image/jpeg')
   seed_user("Donald Knuth", "donald@gmail.com", "12345", "52 Milverton Blvd Toronto", "An algorithm must be seen to be believed.", 'donald.jpg', 'image/jpeg')
-  # Seeding istings
+  # Seeding Listings
   seed_listing("Canon FX Camera", "35 mm SLR Camera", "Film & Photography", User.find_by(name:"Arash").id, 'camera-seed.jpeg', 'image/jpeg', "710 Trethewey Dr Toronto")
-  seed_listing("Saw for carpenting", "Traditional style saw", "Home / Office / Garden", User.find_by(name:"Peter").id, 'saw.jpg', 'image/jpeg', "2925 Dufferin St Toronto")
+  seed_listing("Saw", "Traditional style saw for carpenting.", "Home / Office / Garden", User.find_by(name:"Peter").id, 'saw.jpg', 'image/jpeg', "2925 Dufferin St Toronto")
   seed_listing("HP Office Printer", "Not used. Message for details", "Home / Office / Garden", User.find_by(name:"Adi").id, 'printer.jpg', 'image/jpeg', "36 Thorncliffe Ave Toronto")
   seed_listing("Drone with Camera", "Comes with a 4K Camera", "Drones", User.find_by(name:"Arnav").id, 'drone.jpg', 'image/jpeg', "1830 Bloor St W Toronto")
   seed_listing("DJ studio", "Available for daily rentals", "DJ Equipment", User.find_by(name:"Maru").id, 'dj.jpg', 'image/jpeg', "82 Woodside Ave Toronto")
@@ -364,10 +384,33 @@ else
   seed_listing("OLD Home Phone", "Old collectible", "Home / Office / Garden", User.find_by(name:"Chandler Bing").id, 'phone.png', 'image/png', "103 The Queensway Toronto")
   seed_listing("The Art of Computer Programming", "Collection by Donald Knuth", "Home / Office / Garden", User.find_by(name:"Donald Knuth").id, 'dbook.jpg', 'image/jpg', "989 Logan Ave Toronto")
 
+  # Seed ratings for listings
+  rate_listing("Canon FX Camera", 3.4)
+  rate_listing("Saw", 2)
+  rate_listing("HP Office Printer", 5)
+  rate_listing("Drone with Camera", 4)
+  rate_listing("DJ studio", 4)
+  rate_listing("Bicycle", 3)
+  rate_listing("Trump's Tower", 1)
+  rate_listing("Cosmos DVD set", 4.2)
+  rate_listing("OLD Home Phone", 1.4)
+  rate_listing("The Art of Computer Programming", 4.7)
+   
+  # Seed ratings for users
+  rate_user("Arash", 5)
+  rate_user("Peter", 5)
+  rate_user("Maru", 5)
+  rate_user("Adi", 5)
+  rate_user("KC", 5)
+  rate_user("Donald Trump", 1)
+  rate_user("Neil deGrasse Tyson", 4)
+  rate_user("Chandler Bing", 2)
+  rate_user("Donald Knuth", 5)
+  
   # Seeding groups
   create_group("UofT Alumni","Open to all students and alumni at the University of Toronto", true, "Arash")
   create_group("Residents near Yonge and Sheppard","Open to everyone near Yonge and Sheppard", true, "Peter")
-  create_group("Colleagues at Snapchat","Open to employees of the Toronto location", true, "KC")
+  create_group("Colleagues at Snapchat","For the employees of the Toronto location", true, "KC")
   create_group("Fans of Cosmos","If you are a fan of 'Neil deGrasse Tyson', this group is for you!", true, "Maru")
 
   add_to_group("UofT Alumni", "Arash")
@@ -407,39 +450,11 @@ User.all.each_with_index do |u,index|
   longitude:long)
 
   if u.save
-    puts "Updated location info for user with id: #{u.id}"
+    puts "LOCATIONS: Updated location info for user with id: #{u.id}"
   else
      "Could not update location info of user_id: #{u.id}"
   end
 
-#  5.times do |i|
-#
-#    listing = Listing.new
-#    listing.title = "#{u.name}'s listing"
-#    listing.description = Faker::Friends.quote
-#    listing.category = listing_categories.sample
-#    listing.start_lending = Faker::Date.forward(1)
-#    listing.end_lending = Faker::Date.forward(365)
-#    listing.price_per_day = 2
-#    listing.user_id = u.id
-
-    # 1 Image for all users for now
-#    listing.images.attach(
-#    io: File.open(File.join(Rails.root, "/app/assets/images/books.jpg")),
-#    filename: 'books.jpg',
-#    content_type: 'image/jpeg',
-#    )
-
-#    if listing.save
-#      puts "Successfully created Listing id: #{listing.id} with user_id: #{listing.user_id}"
-#    else
-#      listing.errors.full_messages.each do |message|
-#        puts message
-#      end
-#    end
-
- # end
-  
 end
 
 # seeds to add commetns to all people; This also changes the ratings of the respective epople
