@@ -36,6 +36,14 @@
             <script>
               $('#approveModal').modal('show');
             </script>
+          <% elsif message_type == "borrow_success"%>
+            <script>
+            alert("successfuly marked as borrowed");
+            </script>
+          <%elsif message_type == "return_success"%>
+            <script>
+            alert("successfuly marked as returned");
+            </script>
           <% else %>
               <div class="alert alert-<%= message_type %>"><%= message %></div>
           <% end %>
