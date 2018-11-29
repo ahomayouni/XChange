@@ -11,10 +11,26 @@
                             <% if borrow_request.status == "requested"%>
                                 <div class="card mx-2 mb-2">
                                     <div class="card-body">
-                                        <h4> Borrower's Name: <%= User.find_by(id: borrow_request.user_id).name %></h4>
+                                      <h5> Requester's Name:  <%=link_to User.find_by(id: borrow_request.user_id).name, user_path(borrow_request.user_id) %></h5>
+                                         <div class="d-flex flex-row mb-3">
+                                            <h6 class="font-weight-bold text-secondary mb-3" data-toggle="tooltip" data-placement="top" title="A user's rating is the best way to verify a smooth rental experience!"> <%= User.find_by(id: borrow_request.user_id).name %>'s Rating:</h6>
+                                            <h6 class="ml-3 font-weight-bold">
+                                                <% if get_rounded_user_rating(borrow_request.user_id) == 0 %>
+                                                    <p class="card-text"> No ratings yet </p>
+                                                <% else %>
+                                                    <% for i in 1..get_rounded_user_rating(borrow_request.user_id) do %>
+                                                    <i class="material-icons" style="color:#f2a900!important;">
+                                                    grade
+                                                    </i>
+                                                    <%end%>
+                                                <% end %>
+                                            </h6>
+                                        </div>
                                         <h4> Listing name:   <%= listing.title %> </h4>
                                         <h4 style="color:blue;"> From <%= borrow_request.start_borrowing.strftime("%d/%m/%Y") %> To <%= borrow_request.end_borrowing.strftime("%d/%m/%Y") %></h4>
-                                        <%= link_to "Approve", borrow_approve_path(borrow_request.id), method: :patch, class: 'btn btn-outline-info mt-2' , data: {toggle:"tooltip", placement:"right", title:"After you approve a request, schedule to drop off the item. Once you've given the item, go to the Mark as Lent tab and mark the item as borrowed."}%>
+                                        <%= link_to "Send a message!", borrow_chatroom_path(borrow_request.id), class:"btn db-browse-btn mt-2 font-weight-secondary", style:"color:white!important;", data: {toggle:"tooltip", placement:"right", title:"Send a message to the borrower!"},:method => :post %>
+
+                                        <%= link_to "Approve", borrow_approve_path(borrow_request.id), method: :patch, class: 'btn btn-outline-info mt-2' , data: {toggle:"tooltip", placement:"right", title:"Before approving, have you talked to #{User.find_by(id: borrow_request.user_id).name}? If you haven't, send a message!"}%>
                                         <%= link_to "Decline", borrow_decline_path(borrow_request.id), method: :get, class: 'btn btn-danger mt-2'%>
                                     </div>
                                 </div >

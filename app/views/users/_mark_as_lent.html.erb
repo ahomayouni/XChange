@@ -13,7 +13,7 @@
                                         <h4> Borrower's Name: <%= User.find_by(id: borrow_request.user_id).name %></h4>
                                         <h4> Listing name:   <%= listing.title %> </h4>
                                         <h4 style="color:blue;"> From <%= borrow_request.start_borrowing.strftime("%d/%m/%Y") %> To <%= borrow_request.end_borrowing.strftime("%d/%m/%Y") %></h4>
-                                           <%= button_to "Mark as Borrowed", borrow_update_path(borrow_request.id), class:"btn btn-outline-info", :method => :put %>             
+                                           <%= button_to "Mark as Borrowed", borrow_update_path(borrow_request.id), class:"btn btn-outline-info",data: {toggle:"tooltip", placement:"right", title:"Only press this button if you've given the item to #{User.find_by(id: borrow_request.user_id).name}. If not, send a message to #{User.find_by(id: borrow_request.user_id).name} and coordinate to meet up!"}, :method => :put %>             
                                     </div>
                                 </div >
                             <% end %>
