@@ -12,8 +12,14 @@
                     <div class="col-sm-6">
                         <%= button_to "View Listing", listing_path(listing), class:"card-link btn btn-primary", :method => :get %>
                     </div>
+                    <% if borrow_request.status == "requested"%>
                     <div class="col-sm-6">
                          <%= button_to "Delete Request", borrow_delete_path(borrow_request.id), class:"card-link btn btn-primary mt-1", :method => :delete %>
+                    </div>
+                    <% end %>
+                    <% if borrow_request.status == "approved"%>
+                    <div class="col-sm-6">
+                         <%= button_to "Not Interested Anymore", borrow_delete_path(borrow_request.id), class:"card-link btn btn-primary mt-1", :method => :delete %>
                     </div>
                     <div class="col-sm-6">
                         <% if borrow_request.status == "borrowed"%>
