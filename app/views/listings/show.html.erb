@@ -95,9 +95,7 @@
         <div class="row justify-content-center">
           <% if is_listing_owner %>
               <%= link_to "Edit", edit_listing_path(@listing), class: 'btn btn-outline-info'%>
-          <% else %>
-              <%= link_to "Report this listing", report_listing_path(@listing), class: 'btn btn-danger btn-outline-info mt-2'%>
-          <% end %>
+         <%end%>
         </div>
         <div class="row justify-content-center">
           <h5 class="mt-3 font-weight-bold"> Who's lending this out? </h5>
@@ -121,7 +119,7 @@
                 
         </div>
         <div class="row justify-content-center">
-         <button type="button" class="btn db-browse-btn font-weight-bold ml-3 my-2" style="color:white!important;" data-toggle="modal" data-target="#listingUserReviewsModal">
+         <button type="button" class="btn db-create-btn font-weight-bold ml-3 my-2" style="color:white!important;" data-toggle="modal" data-target="#listingUserReviewsModal">
                     See <%= @listing.user.name%>'s Reviews
                 </button>
         </div>
@@ -137,15 +135,19 @@
         <div class="row justify-content-center">
               <%= button_to "View Profile", user_path(@listing.user),params: {active_tab: "dashboardTab"}, class:"btn btn-primary", :method => :get %>
         </div>
+    
+        <div id='user-lat' style="display: none"><%if @listing %><%= @listing.latitude%><%else%><%="N/A"%><%end%></div>
+        <div id='user-long' style="display: none"><%if @listing %><%= @listing.longitude%><%else%><%="N/A"%><%end%></div>
+        <%if @listing.latitude and @listing.longitude and @listing.address %> <!-- If listing location is valid-->
+          <br><p class="card-text"> Meetup Location:<br><%= @listing.address %></p>
+          <div id="user_map"></div>
+        <% end %>
 
-
-
-            <div id='user-lat' style="display: none"><%if @listing %><%= @listing.latitude%><%else%><%="N/A"%><%end%></div>
-            <div id='user-long' style="display: none"><%if @listing %><%= @listing.longitude%><%else%><%="N/A"%><%end%></div>
-            <%if @listing.latitude and @listing.longitude and @listing.address %> <!-- If listing location is valid-->
-              <br><p class="card-text"> Meetup Location:<br><%= @listing.address %></p>
-              <div id="user_map"></div>
-            <% end %>
+        <div class="row justify-content-center">
+          <% if !is_listing_owner%>
+                <%= link_to "Report this listing", report_listing_path(@listing), class: 'btn btn-danger btn-outline-info mt-2', data: {toggle:"tooltip", placement:"right", title:"Report this listing if you find inappropriate, offensive, or irrelevant content. Our admin will then review the listing and take further action."}%>
+          <%end%>
+        </div>
       </div>
 
      </div>
