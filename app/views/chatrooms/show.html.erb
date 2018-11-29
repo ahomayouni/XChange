@@ -1,5 +1,6 @@
-<div class="chatroom-container w-50 m-auto p-4">
+<div class="container chatroom-container m-auto p-4">
   <h1><%= @chatroom.title %></h1>
+  <%= link_to "Back to your messages", user_path(current_user.id, active_tab: "messagesTab"), class:"btn btn-outline-info" %>
   <div class="chatroom-messages">
     <% @messages.each do |msg| %>
       <% if msg.content.present? %>
