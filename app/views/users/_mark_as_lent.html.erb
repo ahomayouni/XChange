@@ -13,7 +13,7 @@
                                         <h4> Borrower's Name: <%= User.find_by(id: borrow_request.user_id).name %></h4>
                                         <h4> Listing name:   <%= listing.title %> </h4>
                                         <h4 style="color:blue;"> From <%= borrow_request.start_borrowing.strftime("%d/%m/%Y") %> To <%= borrow_request.end_borrowing.strftime("%d/%m/%Y") %></h4>
-                                         <%= button_to "Mark as Borrowed", borrowed_path(borrow_request.id), class:"btn btn-outline-info", data: {toggle:"tooltip", placement:"right", title:"Only mark this item as Borrowed if you've met up with the borrower and lent the item!"}, :method => :put %>       
+                                           <%= button_to "Mark as Borrowed", borrow_update_path(borrow_request.id), class:"btn btn-outline-info", :method => :put %>             
                                     </div>
                                 </div >
                             <% end %>
@@ -25,7 +25,8 @@
              <div class="col-md-12">
                     <div class="card d-flex p-5 mb-5">
                         <div class="card-text p-5 d-flex justify-content-center align-items-center text-secondary">
-                         You currently have no rental requests
+                         You currently have no rental requests to mark as lent out. Have you checked the Pending Approvals tab to see 
+                         if there are any items that you've approved for a rental, but  that you have yet to lend out? 
                         </div>
                     </div>
                 </div>

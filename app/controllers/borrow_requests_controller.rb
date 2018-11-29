@@ -83,20 +83,18 @@ class BorrowRequestsController < ApplicationController
     @new_notif.save
     redirect_to user_path(current_user,active_tab: "actionItems")
   end
-
-  def borrowed
+  
+  def update
     @borrow_request = BorrowRequest.find_by(id: params[:id])
-    @borrow_request.update_attribute(:status, "borrowed")
-    if @borrow_request.save
+    if @borrow_request.status == "approved"
+      @borrow_request.update_attribute(:status, "borrowed")
+      redirect_to user_path(current_user, active_tab: "borrowRequests")
+    elsif @borrow_request.status == "borrowed"
+      @borrow_request.update_attribute(:status, "returned")
     end
+    
+    @borrow_request.save
   end
 
-  def returned
-    @borrow_request = BorrowRequest.find_by(id: params[:id])
-    @borrow_request.update_attribute(:status, "returned")
-    if @borrow_request.save
-      
-    end
-  end
 
 end
