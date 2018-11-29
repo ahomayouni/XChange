@@ -14,7 +14,7 @@
                         <h4> Reporter's Name: <%= user.name %></h4>
                         <h4> Listing name:   <%= listing.title %> </h4>
                         <%= link_to "View Listing", listing_path(listing.id),  class: 'btn btn-outline-info mt-2'%>
-                        <%= link_to "Delete Request", delete_report_request_path(report.id), data: {confirm: "Delete this report request?"} ,class:'btn btn-danger btn-outline-info mt-2'%>
+                        <%= link_to "Mark as Resolved", delete_report_request_path(report.id), data: {confirm: "Delete this report request?"} ,class:'btn btn-success btn-outline-info mt-2'%>
                         <%= link_to 'Delete Listing', delete_report_listing_path(report.id), data: {confirm: "Delete this listing?"}, class:'btn btn-danger btn-outline-info mt-2' %>
                     </div>
                 </div >
