@@ -45,9 +45,6 @@
                                         <%= listing.title %> <br />
                                         <h6 style="color:blue;"> From <%= borrow_request.start_borrowing.strftime("%d/%m/%Y") %> To <%= borrow_request.end_borrowing.strftime("%d/%m/%Y") %></h6>
                                         <span class="badge badge-pill status-pill float-right mt-2 mr-2" style="background-color:green;"><%= borrow_request.status.camelize %> </span> <br/>
-                                        <% if borrow_request.status == "approved"%>
-                                        <%= button_to "Mark as Borrowed", borrow_update_path(borrow_request.id), class:"btn btn-outline-info", :method => :put %>       
-                                        <% end %>
                                     </div>
                                 </div>
                             </div>

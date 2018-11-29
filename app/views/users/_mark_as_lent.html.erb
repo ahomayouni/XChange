@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-md-6 py-3">
+            <% @count = 0 %>
+            <% @user.listings.each do |u| %>
+                <% @count += u.borrow_requests.where(status: "approved").count %>
+            <% end %>
+            <% if @count > 0%>
+                <% @user.listings.each do |listing| %>
+                    <% listing.borrow_requests.each do |borrow_request| %>
+                            <% if borrow_request.status == "approved"%>
+                                <div class="card mx-2 mb-2">
+                                    <div class="card-body">
+                                        <h4> Borrower's Name: <%= User.find_by(id: borrow_request.user_id).name %></h4>
+                                        <h4> Listing name:   <%= listing.title %> </h4>
+                                        <h4 style="color:blue;"> From <%= borrow_request.start_borrowing.strftime("%d/%m/%Y") %> To <%= borrow_request.end_borrowing.strftime("%d/%m/%Y") %></h4>
+                                         <%= button_to "Mark as Borrowed", borrowed_path(borrow_request.id), class:"btn btn-outline-info", data: {toggle:"tooltip", placement:"right", title:"Only mark this item as Borrowed if you've met up with the borrower and lent the item!"}, :method => :put %>       
+                                    </div>
+                                </div >
+                            <% end %>
+                    <% end %>
+                <% end %>
+            <% end %>  
+        </div>
+        <%if @count == 0%>
+             <div class="col-md-12">
+                    <div class="card d-flex p-5 mb-5">
+                        <div class="card-text p-5 d-flex justify-content-center align-items-center text-secondary">
+                         You currently have no rental requests
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+    </div>
