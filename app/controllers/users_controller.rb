@@ -80,6 +80,28 @@ class UsersController < ApplicationController
       }
     end
   end
+
+  def report
+    if params[:id].present? and User.exists?(id: params[:id])
+      @user = User.find(params[:id])
+      if UserReport.exists?(requester_id: current_user.id, reported_id: @user.id)
+        flash[:danger] = "You have already submitted a report for this listing"
+      else
+        @report = UserReport.new
+        @report.requester_id = @current_user.id
+        @report.reported_id = @user.id
+        if @report.save
+          flash.now[:success] = "successfully Reported this user"
+        else
+          flash.now[:danger] = "Could not report this user" 
+        end
+      end
+      render 'show'
+    else
+      @listings = Listing.all
+      render 'listings#index'
+    end
+  end
   
   private
 

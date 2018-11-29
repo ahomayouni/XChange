@@ -1,32 +1,61 @@
- <div class="col-md-6 mx-4">
-        <div class="d-flex flex-row mt-3 py-3">
-            <h2> Reported Listings</h2>
+<div class="d-flex flex-row mt-3 py-3">
+    <h2> Reported Listings</h2>
+</div>
+<% if Report.all.count > 0 %>
+<% Report.all.each do |report|%>
+<% if Listing.exists?(id: report.listing_id) and User.exists?(id: report.user_id)%>
+<div class="col-md-6">
+    <div class="card mx-2 mb-2">
+        <div class="card-body">     
+            <%listing = Listing.find_by(id: report.listing_id)%>
+            <%user = User.find_by(id: report.user_id)%>
+            <h4> Reporter's Name: <%= user.name %></h4>
+            <h4> Listing name:   <%= listing.title %> </h4>
+            <%= link_to "View Listing", listing_path(listing.id),  class: 'btn btn-outline-info mt-2'%>
+            <%= link_to "I'll take it offline", delete_report_request_path(report.id), data: {confirm: "Delete this report request?"} ,class:'btn btn-success btn-outline-info mt-2'%>
+            <%= link_to 'Delete Listing', delete_report_listing_path(report.id), data: {confirm: "Delete this listing?"}, class:'btn btn-danger btn-outline-info mt-2' %>
         </div>
+    </div >
+</div>
+<%end%>
+<% end %>
+<% else %>
+<div class="col-md-12">
+    <div class="card d-flex p-5 mb-5">
+        <div class="card-text p-5 d-flex justify-content-center align-items-center text-secondary">
+            You don't have any awating submitted listing reports
         </div>
-        <% if Report.all.count > 0 %>
-        <% Report.all.each do |report|%>
-        <% if Listing.exists?(id: report.listing_id) and User.exists?(id: report.user_id)%>
-            <div class="col-md-6">
-                <div class="card mx-2 mb-2">
-                    <div class="card-body">     
-                        <%listing = Listing.find_by(id: report.listing_id)%>
-                        <%user = User.find_by(id: report.user_id)%>
-                        <h4> Reporter's Name: <%= user.name %></h4>
-                        <h4> Listing name:   <%= listing.title %> </h4>
-                        <%= link_to "View Listing", listing_path(listing.id),  class: 'btn btn-outline-info mt-2'%>
-                        <%= link_to "Mark as Resolved", delete_report_request_path(report.id), data: {confirm: "Delete this report request?"} ,class:'btn btn-success btn-outline-info mt-2'%>
-                        <%= link_to 'Delete Listing', delete_report_listing_path(report.id), data: {confirm: "Delete this listing?"}, class:'btn btn-danger btn-outline-info mt-2' %>
-                    </div>
-                </div >
-            </div>
-        <%end%>
-        <% end %>
-        <% else %>
-            <div class="col-md-12">
-                <div class="card d-flex p-5 mb-5">
-                    <div class="card-text p-5 d-flex justify-content-center align-items-center text-secondary">
-                        You don't have any awating submitted reports
-                    </div>
-                </div>
-            </div>
-        <% end %>
+    </div>
+</div>
+<% end %>
+
+<div class="d-flex flex-row mt-3 py-3">
+    <h2> Reported Users</h2>
+</div>
+
+<% if UserReport.all.count > 0 %>
+<% UserReport.all.each do |report|%>
+<% if User.exists?(id: report.reported_id) and User.exists?(id: report.requester_id)%>
+<div class="col-md-6">
+    <div class="card mx-2 mb-2">
+        <div class="card-body">     
+            <%reported_user = User.find_by(id: report.reported_id)%>
+            <%requester_user = User.find_by(id: report.requester_id)%>
+            <h4> Requester's Name: <%= requester_user.name %></h4>
+            <h4> Reported User's name:   <%= reported_user.name %> </h4>
+            <%= link_to "View Reported User", user_path(reported_user.id),  class: 'btn btn-outline-info mt-2'%>
+            <%= link_to "I'll take it offline", delete_user_report_request_path(report.id) ,class:'btn btn-success btn-outline-info mt-2'%>
+        </div>
+    </div >
+</div>
+<%end%>
+<% end %>
+<% else %>
+<div class="col-md-12">
+    <div class="card d-flex p-5 mb-5">
+        <div class="card-text p-5 d-flex justify-content-center align-items-center text-secondary">
+            You don't have any awating submitted user reports
+        </div>
+    </div>
+</div>
+<% end %>
