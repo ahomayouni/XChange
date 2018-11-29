@@ -13,10 +13,11 @@ class MessagesController < ApplicationController
         ActionCable.server.broadcast 'messages',
           message: @message.content,
           user: @message.user.name
+          redirect_back fallback_location: request.referrer
           respond_to do |format|
             format.js 
           end
-        #redirect_back fallback_location: request.referrer
+        
       else 
         redirect_back fallback_location: request.referrer, notice: @message.errors.full_messages[0]
       end
