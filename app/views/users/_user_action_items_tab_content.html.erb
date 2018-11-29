@@ -11,6 +11,11 @@
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#markAsReturned">Items to Mark as Returned</a>
                         </li>
+                        <% if current_user.admin? %>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#reportings">Reports</a>
+                        </li>
+                        <% end %>
                     </ul>
                 </div>
             </div>
@@ -26,6 +31,11 @@
                         <div id="markAsReturned" class="tab-pane fade">
                             <%= render 'mark_as_returned'%> 
                         </div>
+                        <% if current_user.admin? %>
+                         <div id="reportings" class="tab-pane fade">
+                            <%= render 'admin_reports'%> 
+                        </div>
+                        <% end %>
                     </div>
                 </div>
             </div>
