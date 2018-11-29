@@ -15,6 +15,16 @@ When I go to the home page
 Then I should see a signup button
 When I click the signup button
 Then I should see a modal with neccessary fields
-When I input my wrong information
+When I input my wrong password confirmation
 Then I should an error message telling me to try signup again
+
+Scenario: User tries to create a new account with no name
+When I go to the home page
+Then I should see a signup button
+When I click the signup button
+Then I should see a modal with neccessary fields
+When I input my wrong fields with no name
+Then I should an error message telling me to try signup again
+
+
 
