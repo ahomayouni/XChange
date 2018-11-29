@@ -8,8 +8,8 @@ module UsersHelper
         end
     end
 
-    def get_rounded_user_rating
-       @user = User.find(params[:id])
+    def get_rounded_user_rating(user_id)
+       @user = User.find(user_id)
        if @user.person.rating.nil?
            return 0
        else
