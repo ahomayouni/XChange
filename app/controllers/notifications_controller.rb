@@ -3,7 +3,6 @@ class NotificationsController < ApplicationController
 	before_action :verify_logged_in_user
 
 	def index
-		puts "CALLLLLEEEEDDDDD @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 		@all_notifications = Notification.where(recipient: current_user).recent
 
 		# Clean Broken notifications if any
@@ -15,7 +14,6 @@ class NotificationsController < ApplicationController
 		@notifications = Notification.where(recipient: current_user).recent
 	end
 	def mark_as_read
-		puts "CALLLLLEEEEDDDDD $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
 		@notifications = Notification.where(recipient: current_user).unread
 		@notifications.update_all(read_at: Time.now)
 		render json: {success:true}

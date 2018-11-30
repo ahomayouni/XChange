@@ -41,7 +41,9 @@ Then("I should be able to see notifications") do
 	page.all(:css, "a[id='dropdownMenu1']").last().click()
 	expect(Notification.all.count).to eq(1)
 	page.should have_css('a#welcometoexchange')
-	# Element not found (?)
+	page.all(:css, "a[id='welcometoexchange']").last().click()
+end
 
-	 page.all(:css, "a[id='welcometoexchange']")
+When("I wait for {string} seconds") do |string|
+  sleep(string.to_i)
 end
