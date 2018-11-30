@@ -1,5 +1,5 @@
 Feature: Main Listing Feature
-As a user I would like to be able to view,create,borrow,lend listings.
+As a user I would like to be able to view,create listings.
 
 Scenario: User should be able to see all the available listings when browsing through listings
 Given that I am able to login as a user and view my dashboard
