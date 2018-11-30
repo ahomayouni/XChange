@@ -57,7 +57,7 @@ def seed_user (name, email, pw, addr, desc, image_name, image_type)
 end
 
 
-Given("that I am able to login as a user and view my dashboard") do
+Given("that I am able to login as `cucumber_tester` and view my dashboard") do
   normal_user = User.new(name:  "cucumber_tester",
 								 email: "valid_user@gmail.com",
 					             password:              "111111",
@@ -75,8 +75,8 @@ Given("that I am able to login as a user and view my dashboard") do
 		expect(page).to have_content('Log In')
 		click_link 'Log In'
 		expect(page).to have_content('Email')
-	  	expect(page).to have_content('Password')
-	  	fill_in 'session_email', with: 'valid_user@gmail.com'
+	  expect(page).to have_content('Password')
+	  fill_in 'session_email', with: 'valid_user@gmail.com'
 		fill_in 'session_password', with: '111111'
 		click_button 'Log in'
 		expect(page).to have_content('Dashboard')
