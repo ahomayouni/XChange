@@ -30,6 +30,8 @@ class Comment < ApplicationRecord
             user_borrowed = true
         end
         #finds all of the users borrow requests made on the replying listing
+        puts "PRINTING COMMENTER_ID"
+        puts commenter_id
         BorrowRequest.where(user_id: commenter_id).each do |request|
             if request.status == "borrowed" || request.status == "returned"
                 # find out who's listing it is
