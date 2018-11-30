@@ -318,7 +318,7 @@ def rate_user(name, rating)
   end
 end
 
-# Create 100 Fake users. Also Template in how we can prepopulate the database.
+# Create Fake Users
 @admin_user = User.new(name:  "admin",
              email: "admin@admin.com",
              password:              "admin",

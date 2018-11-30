@@ -38,9 +38,7 @@ Then("I should be able to login and see my dashboard") do
 end
 
 Then("I should be able to see notifications") do
-	# expect(page).to have_link("notification_important")
 	page.all(:css, "a[id='dropdownMenu1']").last().click()
 	expect(Notification.all.count).to eq(1)
 	page.all(:css, "a[id='welcometoexchange']").last()
-	# expect(page).to have_link('Welcome to XChange! Here is where you can find all then notifications.')
 end
