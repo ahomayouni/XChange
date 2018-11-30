@@ -74,11 +74,13 @@ Given("that I am able to login as `cucumber_tester` and view my dashboard") do
 		visit root_path
 		expect(page).to have_content('Log In')
 		click_link 'Log In'
+    sleep(3) #for the javascript tester to work
 		expect(page).to have_content('Email')
 	  expect(page).to have_content('Password')
 	  fill_in 'session_email', with: 'valid_user@gmail.com'
 		fill_in 'session_password', with: '111111'
 		click_button 'Log in'
+    sleep(3)
 		expect(page).to have_content('Dashboard')
 		expect(page).to have_content('cucumber_tester')
 end
