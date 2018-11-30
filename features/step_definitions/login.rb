@@ -42,5 +42,6 @@ Then("I should be able to see notifications") do
 	expect(Notification.all.count).to eq(1)
 	page.should have_css('a#welcometoexchange')
 	# Element not found (?)
-	# page.all(:css, "a[id='welcometoexchange']").last().click()
+
+	 page.all(:css, "a[id='welcometoexchange']")
 end
