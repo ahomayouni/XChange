@@ -119,3 +119,19 @@ end
 Then("I should see an item `HP Office Printer` as it was already previously seeded") do
   expect(page).to have_content('HP Office Printer')
 end
+
+When("I click the button view listing to view the item saw") do
+  click_button 'saw' #I've made an ID for each button containing the title of the item .. Its okay for now
+end
+
+Then("I should be able to see descriptive information about the saw") do
+  expect(page).to have_content("Traditional style saw for carpenting")
+end
+
+Then("Who is lending the item") do
+  expect(page).to have_content("Who's lending this out?")
+end
+
+Then("The rating of the lender of the item") do
+  expect(page).to have_content("Rating:")
+end
