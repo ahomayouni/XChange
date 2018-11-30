@@ -11,31 +11,31 @@
 		</button>
 			<div class="collapse navbar-collapse" id="listings-toolbar">
 				<ul class="navbar-nav">
-                    <li>
-                        <%= form_tag listings_path, :method => 'get', html: {class: "form-inline"} do %>  
-                            <%= select_tag :filter,
-                                options_for_select(["All", "Film & Photography","Audio Visual Equipment","Projectors & Screens","Drones","DJ Equipment","Transport","Storage","Electronics","Party & Events","Sports","Musical Instruments","Home / Office / Garden","Kids & Baby","Holiday & Travel","Clothing"]),
-                                 class: "form-control w-100" 
-                                 %>
-                            <%= submit_tag 'Filter by Category', class: 'btn btn-outline-info' %>       
-                        <% end %>
-                    </li>
-				</ul>
+          <li>
+              <%= form_tag listings_path, :method => 'get', html: {class: "form-inline"} do %>
+                  <%= select_tag :filter,
+                      options_for_select(["All", "Film & Photography","Audio Visual Equipment","Projectors & Screens","Drones","DJ Equipment","Transport","Storage","Electronics","Party & Events","Sports","Musical Instruments","Home / Office / Garden","Kids & Baby","Holiday & Travel","Clothing"]),
+                       class: "form-control w-100"
+                       %>
+                  <%= submit_tag 'Filter by Category', class: 'btn btn-outline-info' %>
+              <% end %>
+          </li>
+    		</ul>
 				<ul class="navbar-nav ml-auto">
-                    <li>
-                        <%= link_to "Create new listing", new_listing_path, class: "btn btn-outline-info mr-2" %>
-					</li>
+          <li>
+            <%= link_to "Create new listing", new_listing_path, class: "btn btn-outline-info mr-2" %>
+  				</li>
 					<li>
 						<%= form_with url: search_listings_path, local: true, method: :get, html: {class: "form-inline"} do |form| %>
-                            <%= form.text_field :listings_q, placeholder: "Search for a listing..", data: { behaviour: "autocomplete_listings" }, class: "form-control w-100" %>
-                            <%= form.button "Search", class: "btn btn-outline-success" %>
-                        <% end %>
+              <%= form.text_field :listings_q, placeholder: "Search for a listing..", data: { behaviour: "autocomplete_listings" }, class: "form-control w-100" %>
+              <%= form.button "Search", class: "btn btn-outline-success" %>
+            <% end %>
 					</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-  
+
     <div class="row mt-4">
         <% if @listings.count > 0%>
             <%= render @listings %>
@@ -43,7 +43,7 @@
             <div class="col-md-12">
                 <div class="card d-flex p-5 mb-5">
                     <div class="card-text p-5 d-flex justify-content-center align-items-center text-secondary">
-                      No listings found 
+                      No listings found
                     </div>
                 </div>
             </div>
