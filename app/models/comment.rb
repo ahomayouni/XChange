@@ -24,18 +24,29 @@ class Comment < ApplicationRecord
     end
                 
     def has_borrowed
-        # we we are replying to a person and the commenter has on borrow request
-        # if reply_type == "Person"
-        #     user_borrowed = false
-        #     for BorrowRequest.where(user_id: user_id, status: :approved).each do |request|
-        #         owner_id = Listing.find(request.listing_id).user_id
-        #         if owner_id == reply_id
-        #             user_borrowed = true
-        #         end
-        #     end
-        #     if !user_borrowed
-        #         errors.add(:reply, "must have something borrowed from them")
-        #     end
-        # end
+        user_borrowed = false
+        # make it so that any comment can reply to anything
+        if reply_type == "Comment"
+            user_borrowed = true
+        end
+        #finds all of the users borrow requests made on the replying listing
+        BorrowRequest.where(user_id: commenter_id).each do |request|
+            if request.status == "borrowed" || request.status == "returned"
+                # find out who's listing it is
+                listing = Listing.find(request.listing_id)
+                # when we are reviewing the same person who's listing we might have borrowed once
+                if reply_type == "Person" && listing.user_id == reply_id
+                    user_borrowed = true
+                end
+                # when we are reviewing an item which we have borrwed in the past
+                if reply_type == "Listing" && listing.id == reply_id
+                    user_borrowed = true
+                end
+            end
+        end
+        
+        if !user_borrowed
+            errors.add(:reply, "must have something borrowed from poster")
+        end
     end  
 end
