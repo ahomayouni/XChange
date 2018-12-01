@@ -9,4 +9,9 @@ class UserMailer < ApplicationMailer
     @user = user 
     mail to: user.email, subject: "Password Reset"
   end
+
+  def late_reminder(user)
+  	@user = user 
+  	mail to: user.email, subject: "Late Item Due"
+  end
 end

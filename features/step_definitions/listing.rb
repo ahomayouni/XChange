@@ -23,10 +23,10 @@ def seed_listing(title, description, category, userid, image_name, image_type, a
       content_type: image_type,
   )
   listing.address = address
-  lat_long = geo_code(listing.address)
-  listing.latitude = lat_long[0]
-  listing.longitude = lat_long[1]
-  if listing.save
+  # lat_long = geo_code(listing.address)
+  # listing.latitude = lat_long[0]
+  # listing.longitude = lat_long[1]
+  if listing.save(validate: false)
     puts "LISTINGS: Successfully created Listing id: #{listing.id} with user_id: #{listing.user_id}"
   else
     listing.errors.full_messages.each do |message|
