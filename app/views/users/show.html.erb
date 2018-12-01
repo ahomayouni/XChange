@@ -25,11 +25,25 @@
                             <%end%>
                         </li>
                         <li class="nav-item">
+                            <% @count = 0 %>
+                            <% current_user.listings.each do |u| %>
+                                <% @count += u.borrow_requests.count %>
+                                <% @count -= u.borrow_requests.where(status: "returned").count %>
+                            <% end %>
                             <%if params[:active_tab]=="actionItems"%>
-                            <a class="nav-link active" data-toggle="tab" href="#actionItems">Action Items </a>
+                            <a class="nav-link active" data-toggle="tab" href="#actionItems">Action Items
+                                <% if @count > 0 %>
+                                    <span class="dot"> <%= @count %></span>
+                                <%end%>
+                            </a>
                             <%else%>
-                            <a class="nav-link" data-toggle="tab" href="#actionItems">Action Items </a>
+                            <a class="nav-link" data-toggle="tab" href="#actionItems">Action Items 
+                                <% if @count > 0 %>
+                                    <span class="dot"> <%= @count %></span>
+                                <%end%>
                             <%end%>
+                            </a>
+                            
                         </li>
                         <li class="nav-item">
                             <%if params[:active_tab]=="messagesTab"%>
