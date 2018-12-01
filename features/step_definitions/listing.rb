@@ -72,6 +72,7 @@ Given("that I am able to login as `cucumber_tester` and view my dashboard") do
 		normal_user.save
 		Notification.create(recipient: normal_user,actor: normal_user,action:"created_new_account",notifiable:normal_user)
 		visit root_path
+    sleep(2)
 		expect(page).to have_content('Log In')
 		click_link 'Log In'
     sleep(4) #for the javascript tester to work
