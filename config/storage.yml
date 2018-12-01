@@ -7,19 +7,19 @@ local:
   root: <%= Rails.root.join("storage") %>
 
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
-amazon:
-  service: S3
-  access_key_id: AKIAIUPINSKRRVFCXIMQ
-  secret_access_key: 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
-  region: us-east-1
-  bucket: active-storage-xchange
+#amazon:
+#  service: S3
+#  access_key_id: AKIAIUPINSKRRVFCXIMQ
+#  secret_access_key: Iaq3d1Ptn7mHuTXzjF4U1FSYUHLI0J5DKy9aaXXb
+#  region: us-east-1
+#  bucket: active-storage-xchange
 
 # Remember not to checkin your GCS keyfile to a repository
-# google:
-#   service: GCS
-#   project: your_project
-#   credentials: <%= Rails.root.join("path/to/gcs.keyfile") %>
-#   bucket: your_own_bucket
+google:
+  service: GCS
+  project: xchange
+  credentials: AIzaSyAqZLweUwP2FNRzZQ--hsrY7s6O7TpCIAg
+  bucket: xchangecsc444
 
 # Use rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
 # microsoft:
