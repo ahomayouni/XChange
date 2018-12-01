@@ -18,8 +18,7 @@ local:
 google:
   service: GCS
   project: xchange
-  credentials: 
-  {
+  credentials: {
     provider: 'Google',
     google_storage_access_key_id: 'GOOGOB4BLCGQCXA6W5AOKIEL',
     google_storage_secret_access_key: 'ONKV09fpjebsVRIGgSNm6P/lcS958cPJBs4nrwwy'
