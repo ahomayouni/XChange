@@ -6,6 +6,7 @@ at https://xchange-csc444.herokuapp.com
 Scenario: User tries to login to his/her account with correct credentials
 Given that I have already signed up and activated my account 
 When I go to the home page
+And I wait for "2" seconds 
 Then I should see a login button
 When I click the login button
 And I wait for "3" seconds 
