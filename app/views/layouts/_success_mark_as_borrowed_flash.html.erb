@@ -8,6 +8,12 @@
             Wait until the expected date of return to receive the item back. Then, come back to Mark as Returned tab to successfully complete the transaction. <br/>
            <div style="color:grey;">  You'll be notified repeatedly to make sure you get your item back, and to mark it as returned.</div> 
         </div>
+        <div class="modal-footer">
+            <% if !current_user.nil? %>
+             <%= button_to "Okay!", user_path(current_user.id),params: {active_tab: "actionItems"}, class:"btn db-create-btn mt-2 font-weight-bold", :method => :get, :style => {color:"white!important;"} %>
+             <%else%>
+             <%end%>
+        </div>
         </div>
     </div>
 </div>
