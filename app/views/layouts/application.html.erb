@@ -11,8 +11,11 @@
          media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag    'application',"https://fonts.googleapis.com/css?family=Karla",
          media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application',"https://unpkg.com/aos@2.3.1/dist/aos.css",
+         media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+    <%= javascript_include_tag "https://unpkg.com/aos@2.3.1/dist/aos.js" %>
     <!-- javascript_include_tag('application.js') -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
@@ -57,3 +60,7 @@
     </div>
   </body>
 </html>
+
+<script>
+  AOS.init();
+</script>
