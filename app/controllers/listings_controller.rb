@@ -1,7 +1,7 @@
 class ListingsController < ApplicationController
   before_action :verify_logged_in_user
   before_action :find_user
-  before_action :verify_correct_user, only: [:edit,:update]
+  #before_action :verify_correct_user, only: [:edit,:update]
   before_action :force_json, only: :autocomplete_listings
 
   def index
@@ -94,7 +94,7 @@ class ListingsController < ApplicationController
         if @report.save
           flash.now[:success] = "successfully Reported this listing"
         else
-          flash.now[:danger] = "Could not report this item" 
+          flash.now[:danger] = "Could not report this item"
         end
       end
       render 'show'

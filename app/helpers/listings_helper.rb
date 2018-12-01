@@ -8,14 +8,14 @@ module ListingsHelper
       end
   end
 
-  def is_listing_owner
+	def is_listing_owner
     @current_listing = Listing.find(params[:id])
     if(@current_listing.user.id == current_user.id)
       return true
     else
       return false
     end
-  end
+  end 
 
   def is_listing_owner_with_params(listing_id)
     @current_listing = Listing.find(listing_id)
@@ -38,16 +38,16 @@ module ListingsHelper
   def has_user_already_requested_to_borrow_listing
     current_listing = Listing.find(params[:id])
     if current_listing.borrow_requests.nil? || current_listing.borrow_requests.count == 0
-      return true 
-    end 
-    
+      return true
+    end
+
     borrow_request = current_listing.borrow_requests.where(listing_id: current_listing.id)
-    
-    if borrow_request.first.user_id == current_user.id 
-      return false 
+
+    if borrow_request.first.user_id == current_user.id
+      return false
     else
       return true
-    end 
-  end 
+    end
+  end
 
 end

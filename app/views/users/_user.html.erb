@@ -1,12 +1,16 @@
-<div class="col-xs-4 user-card ">
+<div class="col-xs-4">
 	<div class="card mb-2 mx-1">
 		<div class="card-body mt-5">
 		<!--Was thinking we should put a profile picture around. need to look for placeholder images -->
 		<!--<img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" 
 		alt="Generic placeholder image" width="50" height="50">-->
+			 <%if user.person.image.attachment != nil and user.person.image.content_type.in?(%('image/jpeg image/png')) %>
+          			<%= image_tag(user.thumbnail, :class => "img-thumbnail rounded-circle")%>
+             <% else %>
+          			<%= image_tag("empty-user-icon.png", :class=> "img-thumbnail rounded-circle")%>
+			 <%end%>
 			<h5 class="card-title"><%= user.name%></h5>
-				<%= button_to "View Profile", user_path(user), class:"card-link btn btn-primary", :method => :get %>
-				<%= button_to "View Reviews", person_path(user.person), class:"card-link btn btn-primary", :method => :get %> <!-- change to people -->
+			<%= button_to "View Profile", user_path(user), class:"card-link btn btn-primary",  params: {active_tab: "dashboardTab"}, :method => :get %>
 			<% if current_user.admin? && !current_user?(user) %>
 			<%= button_to 'DELETE', user, method: :delete, data: {confirm: "Are You sure you want to delete #{user.name}? "},
 			class: "card-link btn btn-danger" %>
