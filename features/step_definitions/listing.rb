@@ -23,10 +23,10 @@ def seed_listing(title, description, category, userid, image_name, image_type, a
       content_type: image_type,
   )
   listing.address = address
-  # lat_long = geo_code(listing.address)
-  # listing.latitude = lat_long[0]
-  # listing.longitude = lat_long[1]
-  if listing.save(validate: false)
+  lat_long = geo_code(listing.address)
+  listing.latitude = lat_long[0]
+  listing.longitude = lat_long[1]
+  if listing.save
     puts "LISTINGS: Successfully created Listing id: #{listing.id} with user_id: #{listing.user_id}"
   else
     listing.errors.full_messages.each do |message|
@@ -74,13 +74,13 @@ Given("that I am able to login as `cucumber_tester` and view my dashboard") do
 		visit root_path
 		expect(page).to have_content('Log In')
 		click_link 'Log In'
-    sleep(2) #for the javascript tester to work
+    sleep(4) #for the javascript tester to work
 		expect(page).to have_content('Email')
 	  expect(page).to have_content('Password')
 	  fill_in 'session_email', with: 'valid_user@gmail.com'
 		fill_in 'session_password', with: '111111'
 		click_button 'Log in'
-    sleep(2)
+    sleep(4)
 		expect(page).to have_content('Dashboard')
 		expect(page).to have_content('cucumber_tester')
 end
