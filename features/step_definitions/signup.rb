@@ -3,19 +3,21 @@ When("I go to the home page") do
 end
 
 Then("I should see a signup button") do
-	expect(page).to have_content('Sign Up')
+	expect(page).to have_link('signupHomeButton')
 end
 
 When("I click the signup button") do
-  click_link 'Sign Up'
+  click_link 'signupHomeButton'
 end
 
 Then("I should see a modal with neccessary fields") do
-  expect(page).to have_content('Sign up')
-  expect(page).to have_content('Name')
-  expect(page).to have_content('Email')
-  expect(page).to have_content('Password')
-  expect(page).to have_content('Confirm Password')
+  within('#signupModal') do 
+    expect(page).to have_content('Sign up')
+    expect(page).to have_content('Name')
+    expect(page).to have_content('Email')
+    expect(page).to have_content('Password')
+    expect(page).to have_content('Confirm Password')
+  end
 end
 
 When("I input my correct information") do
@@ -28,9 +30,6 @@ When("I input my correct information") do
   	end
 end
 
-Then("I should see an account being created") do
-  expect(page).to have_content('Thanks for signing up with XChange!')
-end
 
 When("I input my wrong password confirmation") do
   within('#signupModal') do 
@@ -42,9 +41,6 @@ When("I input my wrong password confirmation") do
   	end
 end
 
-Then("I should an error message telling me to try signup again") do
-  expect(page).to have_content('The signup form was put in incorrectly')
-end
 
 When("I input my wrong fields with no name") do 
 	within('#signupModal') do 

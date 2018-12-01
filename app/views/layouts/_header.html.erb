@@ -56,10 +56,10 @@
 			<div class="collapse navbar-collapse">
 				<ul class="navbar-nav ml-auto">
 					<li>
-						<%= link_to "Log In", login_path, class: "btn btn-outline-primary mr-2", data: {toggle:"modal", target:"#loginModal"}  %>
+						<%= link_to "Log In", login_path,id:"loginHomeButton",class: "btn btn-outline-primary mr-2", data: {toggle:"modal", target:"#loginModal"}  %>
 					</li>
 					<li>
-						<%= link_to "Sign Up", new_user_path, class: "btn btn-outline-primary", data: {toggle:"modal", target:"#signupModal"} %>
+						<%= link_to "Sign Up", new_user_path,id:"signupHomeButton",class: "btn btn-outline-primary", data: {toggle:"modal", target:"#signupModal"} %>
 					</li>
 				</ul>
 			</div>

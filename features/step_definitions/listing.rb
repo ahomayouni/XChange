@@ -73,17 +73,19 @@ Given("that I am able to login as `cucumber_tester` and view my dashboard") do
 		Notification.create(recipient: normal_user,actor: normal_user,action:"created_new_account",notifiable:normal_user)
 		visit root_path
     sleep(2)
-		expect(page).to have_content('Log In')
-		click_link 'Log In'
-    sleep(4) #for the javascript tester to work
-		expect(page).to have_content('Email')
-	  expect(page).to have_content('Password')
-	  fill_in 'session_email', with: 'valid_user@gmail.com'
-		fill_in 'session_password', with: '111111'
-		click_button 'Log in'
+		click_link 'loginHomeButton'
+    sleep(2) #for the javascript tester to work
+    within('#loginModal') do 
+        expect(page).to have_content('Email')
+        expect(page).to have_content('Password')
+        fill_in 'session_email', with: 'valid_user@gmail.com'
+        fill_in 'session_password', with: '111111'
+        click_button 'Log in'
+      end
     sleep(4)
-		expect(page).to have_content('Dashboard')
-		expect(page).to have_content('cucumber_tester')
+    within(".xchange-header") do 
+        expect(page).to have_content('cucumber_tester')
+    end
 end
 
 Given("that I already have listings and other users seeded") do
@@ -111,16 +113,22 @@ Given("that I already have listings and other users seeded") do
 end
 
 When("I click listings in the top header") do
-  expect(page).to have_content("Listings")
-  click_link 'Listings'
+  within(".xchange-header") do 
+    expect(page).to have_content("Listings")
+    click_link 'Listings'
+  end
 end
 
-Then("I should see an item `saw` as it was already previously seeded") do
-  expect(page).to have_content('Saw')
+Then("I should see an item `saw` as it was already previously seeded") do 
+  within(".container-fluid") do
+    expect(page).to have_content('Saw')
+  end
 end
 
 Then("I should see an item `HP Office Printer` as it was already previously seeded") do
-  expect(page).to have_content('HP Office Printer')
+  within(".container-fluid") do 
+    expect(page).to have_content('HP Office Printer')
+  end
 end
 
 When("I click the button view listing to view the item saw") do
@@ -128,13 +136,19 @@ When("I click the button view listing to view the item saw") do
 end
 
 Then("I should be able to see descriptive information about the saw") do
-  expect(page).to have_content("Traditional style saw for carpenting")
+  within(".container-fluid") do 
+    expect(page).to have_content("Traditional style saw for carpenting")
+  end
 end
 
 Then("Who is lending the item") do
-  expect(page).to have_content("Who's lending this out?")
+  within(".container-fluid") do 
+    expect(page).to have_content("Who's lending this out?")
+  end
 end
 
 Then("The rating of the lender of the item") do
-  expect(page).to have_content("Rating:")
+  within(".container-fluid") do
+    expect(page).to have_content("Rating:")
+  end
 end

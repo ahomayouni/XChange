@@ -17,7 +17,9 @@ RSpec.feature "Users", type: :feature do
 				fill_in 'user_password_confirmation', with: '111111'
 				click_button 'Submit'
 			end
-			expect(page).to have_content('Thanks for signing up with XChange!')
+			within('div.alert') do 
+				page.should have_content('Thanks for signing up with XChange!')
+			end
 		end
 
 		it 'should fail when there is a different password confirmation' do 
@@ -35,7 +37,9 @@ RSpec.feature "Users", type: :feature do
 				fill_in 'user_password_confirmation', with: '111555'
 				click_button 'Submit'
 			end
-			expect(page).to have_content('The signup form was put in incorrectly')
+			within('#error_explanation') do
+				expect(page).to have_content('The form contains 1 error')
+			end
 		end
 	end
 
@@ -77,7 +81,9 @@ RSpec.feature "Users", type: :feature do
 				fill_in 'session_password', with: '111111'
 				click_button 'Log in'
 			end
-			expect(page).to have_content('Dashboard')
+			within(".xchange-header") do 
+				expect(page).to have_content('valid user')
+			end
 		end
 
 		it 'should be not successfull when the user is not activated' do 
@@ -89,7 +95,9 @@ RSpec.feature "Users", type: :feature do
 				fill_in 'session_password', with: '111111'
 				click_button 'Log in'
 			end
-			expect(page).to have_content('Account not activated')
+			within("div.alert") do 
+				expect(page).to have_content('Account not activated')
+			end
 		end
 
 		it 'should not be successfull when the user is not registered in the application' do 
@@ -101,7 +109,9 @@ RSpec.feature "Users", type: :feature do
 				fill_in 'session_password', with: '123456'
 				click_button 'Log in'
 			end
-			expect(page).to have_content('Invalid email/password combination')
+			within('div.alert') do
+				expect(page).to have_content('Invalid email/password combination')
+			end
 		end
 	end
 end
