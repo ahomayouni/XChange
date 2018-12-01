@@ -46,7 +46,14 @@ class Comment < ApplicationRecord
                 end
             end
         end
-        
+        Listing.where(user_id: commenter_id).each do |list|
+            list.borrow_requests.each do |req|
+                if req.status == "borrowed" || req.status == "returned"
+                    user_borrowed = true
+                end
+            end
+        end
+                    
         if !user_borrowed
             errors.add(:reply, "must have something borrowed from poster")
         end

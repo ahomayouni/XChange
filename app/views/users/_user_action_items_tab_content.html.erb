@@ -1,15 +1,36 @@
 <div class="container">
             <div class="row">
+                <% @count_req = 0 %>
+                <% @count_approved = 0 %>
+                <% @count_borrowed = 0 %>
+                <% current_user.listings.each do |u| %>
+                    <% @count_req += u.borrow_requests.where(status: "requested").count %>
+                    <% @count_approved += u.borrow_requests.where(status: "approved").count %>
+                    <% @count_borrowed += u.borrow_requests.where(status: "borrowed").count %>
+                <% end %>
                 <div class="col-md-12 p-3">
                     <ul class="nav nav-tabs nav-justified">
                         <li class="nav-item active">
-                            <a class="nav-link active" data-toggle="tab" href="#pendingApprovals">Pending Approvals</a>
+                            
+                            <a class="nav-link active" data-toggle="tab" href="#pendingApprovals">Pending Approvals
+                            <% if @count_req > 0 %>
+                                <span class="dot"> <%= @count_req %></span>
+                            <%end%>
+                            </a>
                         </li>
                         <li class="nav-item active">
-                           <a class="nav-link" data-toggle="tab" href="#markAsLent">Items to Mark as Lent</a>
+                           <a class="nav-link" data-toggle="tab" href="#markAsLent">Items to Mark as Lent
+                           <% if @count_approved > 0 %>
+                                <span class="dot"> <%= @count_approved %></span>
+                            <%end%>
+                           </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#markAsReturned">Items to Mark as Returned</a>
+                            <a class="nav-link" data-toggle="tab" href="#markAsReturned">Items to Mark as Returned
+                            <% if @count_borrowed > 0 %>
+                                <span class="dot"> <%= @count_borrowed %></span>
+                            <%end%>
+                            </a>
                         </li>
                         <% if current_user.admin? %>
                         <li class="nav-item">
