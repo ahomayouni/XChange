@@ -1,3 +1,4 @@
+<% if ((controller.controller_name == "listings") && (listing.user_id != current_user.id)) || (controller.controller_name != "listings") %>
 <div class="col-md-4">
   <div class="card mx-2 mb-2">
     <div id="carouselExampleFade" data-interval="2000" class="carousel slide" data-ride="carousel">
@@ -41,3 +42,4 @@
     </div>
   </div>
 </div>
+<%end%>
