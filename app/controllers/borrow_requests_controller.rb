@@ -1,10 +1,5 @@
 class BorrowRequestsController < ApplicationController
   def send_request
-    # puts ">>>>>>>>>>>>>>>>>>>>>>>>"
-    # puts params[:borrow_request][:date_range].split(" - ")[0]
-    # puts params[:borrow_request][:date_range].split(" - ")[1]
-    # puts ">>>>>>>>>>>>>>>>>>>>>>>>"
-
       if BorrowRequest.exists?(listing_id: params[:listing_id], user_id: current_user.id)
         flash[:danger] = "Already requested"
         redirect_to listings_path
@@ -40,7 +35,7 @@ class BorrowRequestsController < ApplicationController
     end
     # TODO: change the redirect to a more approproate listing
     redirect_to user_path(current_user,active_tab: "borrowRequests")
-    
+
   end
 
   def approve
@@ -87,10 +82,10 @@ class BorrowRequestsController < ApplicationController
     elsif @borrow_request.status == "borrowed"
       @borrow_request.update_attribute(:status, "returned")
     end
-    
+
     @borrow_request.save
     if @borrow_request.status == "borrowed"
-      flash[:borrow_success] = "Sucessfully borrowed something!"
+      flash[:borrow_success] = "Sucessfully borrowed!"
     else
       flash[:return_success] = "Sucessfully marked as returned"
     end
