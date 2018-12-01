@@ -78,6 +78,10 @@ Then("I should see a modal on successfull of approval") do
   page.should have_css('div#approveModal') #This is not the name of the flash . 
 end
 
+Then("I should see a modal on successfull of borrowed") do
+  page.should have_css('div#markAsBorrowedModal') 
+end
+
 Then("I click the my rentals button") do 
 	click_button "My Rentals"
 end
