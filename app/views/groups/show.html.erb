@@ -1,45 +1,37 @@
-<div class="container-fluid">
-    <!-- layout 1 -->
-    <div class="row">
+<div class="container">
+	<div class="row">
 		<div class="col-md-12">
 			<%= form_with url: search_add_to_groups_path, local: true, method: :get, html: {class: "form-inline"} do |form| %>
-		    	<%= form.text_field :add_to_groups_q, placeholder: "Add users to this group..", data: { behaviour: "autocomplete_add_to_groups" }, class: "form-control mt-3 mx-2" %>
-		        <%= form.button "Search", class: "btn btn-outline-success mt-3 mx-3" %>
-		    <% end %>	
+				<%= form.text_field :add_to_groups_q, placeholder: "Add users to this group..", data: { behaviour: "autocomplete_add_to_groups" }, class: "form-control mt-3 mx-2" %>
+				<%= form.button "Add", class: "btn btn-outline-success mt-3 mx-3" %>
+			<% end %>	
 		</div>	
 	</div>
-    <div class="row">
-        <div class="col-md-9 py-3 px-3">
-            <h1 style="white-space: nowrap ; overflow: hidden; text-overflow: ellipsis;">  '<%=@group.name%>'</h1>
-            <h3 style="white-space: nowrap ; overflow: hidden; text-overflow: ellipsis;">  <%=@group.description%></h3>
+	<div class="row justify-content-center p-3">
+            <h1 class="font-weight-bold" style="color:#b2003b;">  <%=@group.name%> </h1>
+            <h4 class="font-weight-bold text-secondary mt-2 text-center">  <%=@group.description%></h3>
+	</div>
+	<div class="row p-3">
+		<h4 class="font-weight-bold">Who Owns this group?: <%= User.find_by(id:@group.owner_id).name %></h4>
+	</div>
+	<div class="row p-3">
+		 <% if !@group.member_exists(current_user) %>
+			<%= button_to "Join Group", {:controller => "group", :action => "join", :group => @group, :user => current_user }, :method => :post, class:"card-link btn btn-success mr-2" %>
+		<% else %>
+			<%= button_to "Leave Group", {:controller => "group", :action => "leave", :group => @group, :user => current_user }, :method => :post, class:"card-link btn btn-warning mr-2" %>
+		<% end %>
 
-			<% if @group.owner_id %>
-				<h4 class="card-text">Owner: <%= User.find_by(id:@group.owner_id).name %></h4>
-			<% else %>
-				<h4 class="card-text">Owner: Anonymous</h4>
-			<% end %>
-            <h4><%= @group.users.count %> members </h4>
-            <!--<h4> Privacy: <% if @group.isPublic %>Public<% else %>Private<%end%></p> </h4><--></-->
-            <% if !@group.member_exists(current_user) %>
-				<p class="card-text"><%= button_to "Join Group", {:controller => "group", :action => "join", :group => @group, :user => current_user }, :method => :post, class:"card-link btn btn-success" %></p>
-			<% else %>
-				<p class="card-text"><%= button_to "Leave Group", {:controller => "group", :action => "leave", :group => @group, :user => current_user }, :method => :post, class:"card-link btn btn-warning" %></p>
-			<% end %>
-			
-			<% if current_user.admin? or current_user.id == @group.owner_id %>
-				<%= button_to 'Delete Group', @group, method: :delete, data: {confirm: "Are You sure you want to delete #{@group.name}? "},
-				class: "card-link btn btn-danger" %>
-			<% end %>
-       </div>
-    </div>
-
-	
-    <h4>Users in this group:</h4>	
+		<% if current_user.admin? or current_user.id == @group.owner_id %>
+			<%= button_to 'Delete Group', @group, method: :delete, data: {confirm: "Are You sure you want to delete #{@group.name}? "},
+			class: "card-link btn btn-danger" %>
+		<% end %>
+	</div>
+	<h4 class="font-weight-bold" style="">Group Members:</h4>	
 	<div class="row">
       	<%= render @group.users , {class:"justify-content-center"}%>
 	</div>
-	
-	<h4>Listings offered from all the users in this group:</h4>	
+
+	<h4 class="font-weight-bold">Listings offered from all the users in this group:</h4>	
 	<div class="row">
 		<% @group.users.each do |user|%>
 			<% if user.listings %>
