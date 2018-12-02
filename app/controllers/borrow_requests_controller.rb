@@ -28,7 +28,10 @@ class BorrowRequestsController < ApplicationController
     if BorrowRequest.exists?(id: params[:id])
       @borrow_request = BorrowRequest.find_by(id: params[:id])
       @borrow_request.destroy
-      Chatroom.find_by(borrow_request_id: @borrow_request.id).destroy
+      # special case, when borrow request is being deleted before any chatroom is created
+      if Chatroom.find_by(borrow_request_id: @borrow_request.id) != nil
+        Chatroom.find_by(borrow_request_id: @borrow_request.id).destroy
+      end
       flash[:success] = "Borrow Request Deleted"
     else
       flash[:danger] = "Borrow Request could not be deleted"
