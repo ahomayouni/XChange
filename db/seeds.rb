@@ -384,6 +384,12 @@ end
 
   # Seed ratings for listings
   rate_listing("Canon FX Camera", 3.4)
+  rate_listing("Espresso Coffee Maker", 4)
+  rate_listing("BMW Original Rims", 5)
+  rate_listing("Shure SM58 Microphone", 1)
+  rate_listing("Sony PlayStation 4", 3)
+  rate_listing("Electronic Drum Kit",2)
+  rate_listing("Knife Block Set", 4)
   rate_listing("Saw", 2)
   rate_listing("HP Office Printer", 5)
   rate_listing("Drone with Camera", 4)
@@ -395,10 +401,10 @@ end
   rate_listing("The Art of Computer Programming", 4.7)
    
   # Seed ratings for users
-  rate_user("Arash", 5)
-  rate_user("Peter", 5)
-  rate_user("Maru", 5)
-  rate_user("Adi", 5)
+  rate_user("Arash", 1)
+  rate_user("Peter", 3)
+  rate_user("Maru", 2)
+  rate_user("Adi", 1)
   rate_user("KC", 5)
   rate_user("Donald Trump", 1)
   rate_user("Neil deGrasse Tyson", 4)
