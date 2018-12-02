@@ -12,5 +12,28 @@
 	<% end %>
 	</div>
 <% else %>
-	<h1>Please log in to view the listings</h1>
+		<!-- Modal -->
+		<div class="modal fade" id="makeSureYouSignUpModal" tabindex="-1" role="dialog" aria-labelledby="makeSureYouSignUpModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title font-weight-bold" id="makeSureYouSignUpModalLabel" style="color:purple!important;">Sign up to see Listings</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body font-weight-bold">
+					Nice! You've already started searching for listings, sign up!
+					</div>
+					<div class="modal-footer">						
+					    <%= link_to "Home", root_path ,id:"signupHomeButton",class: "btn btn-outline-primary" %>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+		     $('#makeSureYouSignUpModal').modal('show');
+		</script>
+
 <% end%>	
