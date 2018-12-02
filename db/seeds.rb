@@ -353,15 +353,6 @@ Notification.create(recipient: @admin_user,actor: @admin_user,action:"created_ne
   Notification.create(recipient: @current_user,actor: @current_user,action:"created_new_account",notifiable:@current_user)
 
 end
-
-if Rails.env == "production"
-  seed_user_production("Arash", "arash@gmail.com", "12345", "262 Rhodes Ave Toronto", 'Developer at XChange')
-  seed_user_production("Peter", "peter@gmail.com", "12345", "15 Pape Ave Toronto", 'Developer at XChange')
-  seed_user_production("Maru", "maru@gmail.com", "12345", "1830 Bloor St W Toronto", 'Developer at XChange')
-  seed_user_production("Adi", "adi@gmail.com", "12345", "260 Carlaw Ave Toronto", 'Developer at XChange')
-  seed_user_production("Arnav", "arnav@gmail.com", "12345", "62 Hiltz Ave Toronto", 'Developer at XChange')
-  seed_user_production("KC", "KC@gmail.com", "12345", "67 Curzon St Toronto", 'Developer at XChange')
-else
   seed_user("Arash", "arash@gmail.com", "12345", "262 Rhodes Ave Toronto", 'Developer at XChange',"arash.jpg", 'image/jpeg')
   seed_user("Peter", "peter@gmail.com", "12345", "15 Pape Ave Toronto", 'Developer at XChange','peter.jpeg', 'image/jpeg')
   seed_user("Maru", "maru@gmail.com", "12345", "1830 Bloor St W Toronto", 'Developer at XChange','maru.jpg', 'image/jpeg')
@@ -431,7 +422,6 @@ else
   add_to_group("Fans of Cosmos", "Maru")
   add_to_group("Fans of Cosmos", "Arash")
   add_to_group("Fans of Cosmos", "Donald Knuth")
-end 
 
 # Get corresponding longitude and latitude from user.peron.address and fill the location model
 User.all.each_with_index do |u,index|
