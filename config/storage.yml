@@ -18,7 +18,11 @@ local:
 google:
   service: GCS
   project: xchange
-  credentials: AIzaSyAqZLweUwP2FNRzZQ--hsrY7s6O7TpCIAg
+  credentials: {
+    provider: 'Google',
+    google_storage_access_key_id: 'GOOGOB4BLCGQCXA6W5AOKIEL',
+    google_storage_secret_access_key: 'ONKV09fpjebsVRIGgSNm6P/lcS958cPJBs4nrwwy'
+  }
   bucket: xchangecsc444
 
 # Use rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
