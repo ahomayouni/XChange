@@ -1,5 +1,5 @@
 class ListingsController < ApplicationController
-  before_action :verify_logged_in_user
+  before_action :verify_logged_in_user, except: [:search_listings, :autocomplete_listings]
   before_action :find_user
   #before_action :verify_correct_user, only: [:edit,:update]
   before_action :force_json, only: :autocomplete_listings
