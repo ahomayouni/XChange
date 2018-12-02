@@ -150,5 +150,4 @@ Then I click the button "Okay!"
 And I wait for "2" seconds
 When I logout
 And I wait for "5" seconds
-
 # Verify that the borrower request status is also switched to borrowed
