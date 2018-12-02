@@ -88,9 +88,11 @@
 }
 
 .dot {
-  height: 25px;
-  width: 25px;
-  background-color: 	#FF0000;
+  width: 30px;
+  color: red;
+  padding-right: 1px;
+  border-style: groove;
+  border-color: red;
   border-radius: 50%;
   display: inline-block;
 }

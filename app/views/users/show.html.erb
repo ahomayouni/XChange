@@ -29,6 +29,7 @@
                             <% current_user.listings.each do |u| %>
                                 <% @count += u.borrow_requests.count %>
                                 <% @count -= u.borrow_requests.where(status: "returned").count %>
+                                <% @count -= u.borrow_requests.where(status: "declined").count %>
                             <% end %>
                             <%if params[:active_tab]=="actionItems"%>
                             <a class="nav-link active" data-toggle="tab" href="#actionItems">Action Items
