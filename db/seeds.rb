@@ -361,19 +361,25 @@ end
   seed_user("KC", "KC@gmail.com", "12345", "67 Curzon St Toronto", 'Developer at XChange', 'KC.jpg', 'image/jpeg')
   seed_user("Donald Trump", "trump@gmail.com", "12345", "156 Colbeck St Toronto", 'President of the United States', 'trump.jpg', 'image/jpeg')
   seed_user("Neil deGrasse Tyson", "neil@gmail.com", "12345", "65 High Park Ave Toronto", 'The Space Guy', 'neil.jpg', 'image/jpeg')
-  seed_user("Chandler Bing", "chandler@gmail.com", "12345", "2 Aberfoyle Cres Toronto", "I'm not great at advice. Can I interest you in a sarcastic comment?", 'chandler.jpg', 'image/jpeg')
+  seed_user("Chandler Bing", "chandler@gmail.com", "12345", "2 Aberfoyle Cres Toronto", "I'm not great at advice. Can I interest you in a sarcastic comment?", 'chandler.png', 'image/jpeg')  
   seed_user("Donald Knuth", "donald@gmail.com", "12345", "52 Milverton Blvd Toronto", "An algorithm must be seen to be believed.", 'donald.jpg', 'image/jpeg')
   # Seeding Listings
   seed_listing("Canon FX Camera", "35 mm SLR Camera", "Film & Photography", User.find_by(name:"Arash").id, 'camera-seed.jpeg', 'image/jpeg', "710 Trethewey Dr Toronto")
+  seed_listing("Espresso Coffee Maker", "Krups Calvi XP3410, 1460W, 15 bar", "Home / Office / Garden", User.find_by(name:"Arash").id, 'coffee.jpg', 'image/jpeg', "49 Thorncliffe Park Dr Toronto")
+  seed_listing("BMW Original Rims", "17 inch. Contact for details", "Transport", User.find_by(name:"Arash").id, 'rims.jpg', 'image/jpeg', "102 Goodwood Park Crt Toronto")
+  seed_listing("The Art of Computer Programming", "Collection by Donald Knuth", "Home / Office / Garden", User.find_by(name:"Donald Knuth").id, 'dbook.jpg', 'image/jpg', "989 Logan Ave Toronto")
   seed_listing("Saw", "Traditional style saw for carpenting.", "Home / Office / Garden", User.find_by(name:"Peter").id, 'saw.jpg', 'image/jpeg', "2925 Dufferin St Toronto")
+  seed_listing("Shure SM58 Microphone", "Shure SM58 Dynamic Cardioid Vocal Microphone", "Audio Visual Equipment", User.find_by(name:"Peter").id, 'mic.jpg', 'image/jpeg', "51 Wolverleigh Blvd Toronto")
   seed_listing("HP Office Printer", "Not used. Message for details", "Home / Office / Garden", User.find_by(name:"Adi").id, 'printer.jpg', 'image/jpeg', "36 Thorncliffe Ave Toronto")
+  seed_listing("Sony PlayStation 4", "1TB. not used.", "Electronics", User.find_by(name:"Adi").id, 'ps4.jpg', 'image/jpeg', "52 Newmarket Ave Toronto")
   seed_listing("Drone with Camera", "Comes with a 4K Camera", "Drones", User.find_by(name:"Arnav").id, 'drone.jpg', 'image/jpeg', "1830 Bloor St W Toronto")
+  seed_listing("Electronic Drum Kit", "Yamaha DTX430K Electronic Drum Set", "Musical Instruments", User.find_by(name:"Arnav").id, 'drum.jpg', 'image/jpeg', "56 Woodycrest Ave Toronto")
   seed_listing("DJ studio", "Available for daily rentals", "DJ Equipment", User.find_by(name:"Maru").id, 'dj.jpg', 'image/jpeg', "82 Woodside Ave Toronto")
+  seed_listing("Knife Block Set", "Stainless Steel Kitchen Cutlery 12 Piece Professional", "Home / Office / Garden", User.find_by(name:"Maru").id, 'knives.jpg', 'image/jpeg', "153 Donlea Dr Toronto")
   seed_listing("Bicycle", "Sport. Never used.", "Sports", User.find_by(name:"KC").id, 'bike.jpeg', 'image/jpeg', "111 Pacific Ave Toronto")
   seed_listing("Trump's Tower", "My humble tower.", "Holiday & Travel", User.find_by(name:"Donald Trump").id, 'tower.jpg', 'image/jpeg', "325 Bay St, Toronto")
   seed_listing("Cosmos DVD set", "My very own TV show", "Film & Photography", User.find_by(name:"Neil deGrasse Tyson").id, 'cosmos.jpg', 'image/jpeg', "81 Lemonwood Dr Toronto")
-  seed_listing("OLD Home Phone", "Old collectible", "Home / Office / Garden", User.find_by(name:"Chandler Bing").id, 'phone.png', 'image/png', "103 The Queensway Toronto")
-  seed_listing("The Art of Computer Programming", "Collection by Donald Knuth", "Home / Office / Garden", User.find_by(name:"Donald Knuth").id, 'dbook.jpg', 'image/jpg', "989 Logan Ave Toronto")
+  seed_listing("Home Phone", "Old collectible", "Home / Office / Garden", User.find_by(name:"Chandler Bing").id, 'phone.png', 'image/png', "103 The Queensway Toronto")
 
   # Seed ratings for listings
   rate_listing("Canon FX Camera", 3.4)
@@ -384,7 +390,7 @@ end
   rate_listing("Bicycle", 3)
   rate_listing("Trump's Tower", 1)
   rate_listing("Cosmos DVD set", 4.2)
-  rate_listing("OLD Home Phone", 1.4)
+  rate_listing("Home Phone", 1.4)
   rate_listing("The Art of Computer Programming", 4.7)
    
   # Seed ratings for users
