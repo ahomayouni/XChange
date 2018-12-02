@@ -66,6 +66,7 @@ $(document).on('turbolinks:load', function() {
 		if (!$(".navbar-toggler").is(":visible")){
 			$(".side-menu").hide();
 		}
+		$( ".monetization-container" ).css("height", $( ".monetization-container" ).width()*1.2);
 	});
 
 	//Toggle buttons on dashboard page
@@ -77,4 +78,7 @@ $(document).on('turbolinks:load', function() {
         $('#lending').fadeIn();
     	$('#borrowing').hide();
     });
+
+	// monetization
+	$( ".monetization-container" ).css("height", $( ".monetization-container" ).width()*1.2);
 });

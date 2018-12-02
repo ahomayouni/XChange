@@ -43,21 +43,34 @@
       <hr>
       <div class="home-details m-auto">
         <div class="main-text text-center m-auto">XChange's philosophy is based on the idea that we often purchase things that we only use once. We want to help you save clutter and money in your home by
-              connecting you with the people who are willing to lend what you need.
+              connecting you with the people who are willing to lend what you need. Choose your plan to fit what is best for you!
         </div>
       </div>
-      <div class="about-icons m-3">
+      <div class="about-icons mx-3 mt-3">
         <div class="row">
           <div class="col">
           </div>
-          <div class="col-2">
-            <%= image_tag("about-1.png")%>
+          <div class="col-4 col-md-3">
+            <div class="monetization-container mon-1">
+              <div class="monetization-top" style="background-color:#ff5b57;">
+                <div class="monetization-content m-3">
+                  <div class="monetization-price"> Free </div>
+                  <hr>
+                  <div class="monetization-description"> get your free trial for a week! </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="col-2">
-            <%= image_tag("about-2.png")%>
-          </div>
-          <div class="col-2">
-            <%= image_tag("about-3.png")%>
+          <div class="col-4 col-md-3">
+            <div class="monetization-container mon-2">
+              <div class="monetization-top" style="background-color:#c24bf7;">
+                <div class="monetization-content m-3">
+                  <div class="monetization-price"> $7/year </div>
+                  <hr>
+                  <div class="monetization-description"> You'll be able to borrow anything, just one time fee once a year!</div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="col">
           </div>
@@ -185,6 +198,7 @@
   <% end %>
 
   <%# No matter if user is logged in, this will show %>
+  <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="700">
   <div class="fake-reviews-container">
     <div class="fake-reviews px-3">
       <div class="row py-4">
@@ -253,6 +267,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 
   <div class="news-container px-5 pt-4">
