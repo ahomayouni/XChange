@@ -1,0 +1,26 @@
+<% @borrowed_items = BorrowRequest.where(status:"borrowed") %>
+
+<h1> XChange </h1>
+
+<p> Hello <%= @user.name %>,
+
+This is a friendly reminder that you have an item <b> Past Due </b>. 
+<br> 
+
+More information of the item that is past due:
+<ul>
+	<li> Item Name:  <%= @late_item.title%> </li>
+	<li> Item Description:  <%= @late_item.description%> </li>
+	<li> Item Owner:  <%= @item_owner.name%> </li>
+	<li> Owner's Email address:  <%= @item_owner.email%> </li>
+	<li> <strong> DUE DEADLINE </strong>: <%= @borrow_request.end_borrowing %> </li>
+</ul>
+
+<li>
+Please login to your account for more information. Or contact the owner via email.
+Administrative steps will be taken if no action is taken within the next 48 hours.
+</li>
+
+<%= link_to "Click here to go to Xchange", root_url %> 
+
+</p>
