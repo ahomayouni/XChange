@@ -257,6 +257,7 @@ def seed_user (name, email, pw, addr, desc, image_name, image_type)
       content_type: image_type,
   )
   @temp_user.save
+  Notification.create(recipient: @temp_user,actor: @temp_user,action:"created_new_account",notifiable:@temp_user)
 end
 
 def seed_user_production (name, email, pw, addr, desc)
