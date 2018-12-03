@@ -76,6 +76,18 @@
               Where: <%= live_search.where %>
               <% if live_search.user_id == current_user.id%>
                 <%= button_to 'Edit', edit_live_search_path(live_search), class: 'btn btn-outline-info', :method => :get %>
+              <% else %>
+                  <% @l = current_user.listings.find_all {|x| x.title == live_search.title}%>
+                  <% if @l.empty? %>
+                  <div>
+                    <h5> You must have an item listed to do this, list one below in just a few clicks: </h5>
+                    <%= button_to "List an Item", new_listing_path, :method => :get %>
+                  </div>
+                  <% else %>
+                  <div>
+                    <h5> You do have a matching listing </h5>
+                  </div>
+                  <% end %>
               <% end %>
             </div>
           </div>
