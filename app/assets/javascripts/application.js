@@ -54,11 +54,11 @@ $(document).on('turbolinks:load', function() {
 	});
 
 	// collapsible side bar
-	$(document).on('click tap', '.collapse-menu-button', function(){
+	$(document).on('click tap touchstart', '.collapse-menu-button', function(){
 		$('.side-menu').show();
 	});
 
-	$(document).on('click tap', '.side-menu-bg', function(){
+	$(document).on('click tap touchstart', '.side-menu-bg', function(){
 		$(".side-menu").hide();
 	});
 
