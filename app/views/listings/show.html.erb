@@ -121,17 +121,17 @@
 
         </div>
         <div class="row justify-content-center">
-         <button type="button" class="btn db-create-btn font-weight-bold ml-3 my-2" style="color:white!important;" data-toggle="modal" data-target="#listingUserReviewsModal">
+         <button type="button" class="btn db-create-btn font-weight-bold my-2" style="color:white!important;" data-toggle="modal" data-target="#listingUserReviewsModal">
                     See <%= @listing.user.name%>'s Reviews
                 </button>
         </div>
 
         <div class="row justify-content-center">
-              <%if @listing.user.person.image.attachment != nil and @listing.user.person.image.content_type.in?(%('image/jpeg image/png')) %>
-                <%= image_tag(@listing.user.thumbnail, :class => "img-thumbnail rounded-circle")%>
-              <% else %>
-                <%= image_tag("empty-user-icon.png", :class => "user-icon rounded") %>
-              <%end%>
+          <%if @listing.user.person.image.attachment != nil and @listing.user.person.image.content_type.in?(%('image/jpeg image/png')) %>
+          <%= image_tag(@listing.user.thumbnail, :class => "img-thumbnail rounded-circle my-3")%>
+          <% else %>
+          <%= image_tag("empty-user-icon.png", :class => "img-thumbnail rounded-circle my-3") %>
+          <%end%>
         </div>
 
         <div class="row justify-content-center">

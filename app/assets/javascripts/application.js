@@ -66,7 +66,6 @@ $(document).on('turbolinks:load', function() {
 		if (!$(".navbar-toggler").is(":visible")){
 			$(".side-menu").hide();
 		}
-		$( ".monetization-container" ).css("height", $( ".monetization-container" ).width()*1.2);
 	});
 
 	//Toggle buttons on dashboard page
@@ -78,9 +77,6 @@ $(document).on('turbolinks:load', function() {
         $('#lending').fadeIn();
     	$('#borrowing').hide();
     });
-
-	// monetization
-	$( ".monetization-container" ).css("height", $( ".monetization-container" ).width()*1.2);
 
 	// live searches' search
 	$( "#live-item-search-input" ).keyup(function() {
@@ -107,7 +103,6 @@ $(document).on('turbolinks:load', function() {
 		star_value = $(this).attr("star-value");
 		$("#stars-rating").attr("clicked-value", star_value);
 		$("#comment_rating").val(star_value);
-		console.log($("#comment_rating").val())
 		for (i = 0; i < star_value; i++) {
 			$(".star-rating").eq(i).css("color", "#f2a900");
 		}

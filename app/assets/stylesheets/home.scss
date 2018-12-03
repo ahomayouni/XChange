@@ -76,6 +76,11 @@
 
 .page-content {
   text-align: center;
+  hr {
+    border: 2px solid rgb(104,214,205);
+    width: 15%; 
+    margin-top: 0;
+  }
   .home-title {
     // font-size: 3.5vw !important;
     letter-spacing: 1.3vw !important;
@@ -84,68 +89,14 @@
   .main-text {
     // font-size: 1.7vw !important;
   }
-  hr {
-    border: 1.5px solid rgb(104,214,205);
-    width: 10%;
-    margin-top: 0;
-  }
   .small-hr {
     border: 0.5px solid rgb(104,214,205) !important;
     width: 10%;
   }
   .monetization-container {
-    position: relative;
-    width: 100%;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    hr {
-      height: 30px;
-      width: 0;
-      margin-bottom: 5px;
-      -webkit-transition: all 0.5s ease;
-      -moz-transition: all 0.5s ease;
-      -o-transition: all 0.5s ease;
-      transition: all 0.5s ease;
-      background-color: white;
-      border: 0;
+    .btn {
+      color: white!important;
     }
-  }
-  .monetization-container:hover hr {
-    width: 70%;
-  	height: 3px;
-  }
-  .monetization-container.mon-1 {
-    background-image: asset_url('monetization-1.jpg');
-  }
-  .monetization-container.mon-2 {
-    background-image: asset_url('monetization-2.jpg');
-  }
-  .monetization-top {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 0;
-    opacity: 0;
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    transition: all 1s ease;
-  }
-  .monetization-container:hover .monetization-top {
-    height: 100%;
-    opacity: 1;
-  }
-  .monetization-content {
-    color: white;
-    .monetization-price {
-      font-size: 3vw;
-    }
-    .monetization-description {
-      font-size: 2vw;
-    } 
   }
   .main-text {
     width: 80%;
