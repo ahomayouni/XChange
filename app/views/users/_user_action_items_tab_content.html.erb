@@ -8,7 +8,7 @@
                     <% @count_approved += u.borrow_requests.where(status: "approved").count %>
                     <% @count_borrowed += u.borrow_requests.where(status: "borrowed").count %>
                 <% end %>
-                <div class="col-md-12 p-3">
+                <div class="col-md-12 p-3" id="userActionItemsTabHeaderID">
                     <ul class="nav nav-tabs nav-justified">
                         <li class="nav-item active">
                             
