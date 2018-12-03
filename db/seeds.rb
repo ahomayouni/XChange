@@ -309,6 +309,37 @@ def rate_listing(name, rating)
   end
 end
 
+def borrow_and_review_listing(name, listing_name, status, review, rating)
+  user = User.find_by(name:name)
+  listing = Listing.find_by(title:listing_name)
+  borrow_req = BorrowRequest.create(listing_id: listing.id, user_id: user.id, status: status, start_borrowing: listing.start_lending, end_borrowing: listing.end_lending)
+  if borrow_req.save
+    puts "Request create for listing '#{listing_name}' "
+  end
+  if status == "borrowed" || status == "returned"
+    comment = Comment.create(body: review, rating: rating, reply_id: listing.id, reply_type: "Listing", commenter_id: user.id, subject_id: listing.id)
+    if comment.save
+      puts "Review created for listing '#{listing_name}' with rating '#{rating}' "
+
+    else
+      puts "**ERROR: failed to review listings"
+    end
+  end
+end
+
+def review_person(name, person_name, review, rating)
+  user = User.find_by(name:name)
+  person = User.find_by(name:person_name).person
+  comment = Comment.create(body: review, rating: rating, reply_id: person.id, reply_type: "Person", commenter_id: user.id, subject_id: person.id)
+  if comment.save
+    puts "Review created for person '#{person_name}' with rating '#{rating}' "
+  else
+    puts "**ERROR: failed to review user"
+  end
+end
+    
+
+
 def rate_user(name, rating)
   user = User.find_by(name:name)
   user.person.rating = rating
@@ -383,33 +414,127 @@ end
   seed_listing("Home Phone", "Old collectible", "Home / Office / Garden", User.find_by(name:"Chandler Bing").id, 'phone.png', 'image/png', "103 The Queensway Toronto")
 
   # Seed ratings for listings
-  rate_listing("Canon FX Camera", 3.4)
-  rate_listing("Espresso Coffee Maker", 4)
-  rate_listing("BMW Original Rims", 5)
-  rate_listing("Shure SM58 Microphone", 1)
-  rate_listing("Sony PlayStation 4", 3)
-  rate_listing("Electronic Drum Kit",2)
+  # rate_listing("Canon FX Camera", 3.4)
+  # rate_listing("Espresso Coffee Maker", 4)
+  # rate_listing("BMW Original Rims", 5)
+  # rate_listing("Shure SM58 Microphone", 1)
+  # rate_listing("Sony PlayStation 4", 3)
+  # rate_listing("Electronic Drum Kit",2)
+  # rate_listing("Knife Block Set", 4)
+  # rate_listing("Saw", 2)
+  # rate_listing("HP Office Printer", 5)
+  # rate_listing("Drone with Camera", 4)
+  # rate_listing("DJ studio", 4)
+  # rate_listing("Bicycle", 3)
+  # rate_listing("Trump's Tower", 1)
+  # rate_listing("Cosmos DVD set", 4.2)
+  # rate_listing("Home Phone", 1.4)
+  # rate_listing("The Art of Computer Programming", 4.7)
+  borrow_and_review_listing("Maru", "Canon FX Camera", "returned", "Wow I loved this camera.", 4)
+  borrow_and_review_listing("Peter", "Canon FX Camera", "returned", "This camera really bad.", 2)
+  rate_listing("Canon FX Camera", 3)
+  review_person("Peter", "Arash", "Super flexible on meetup times.", 5)
+  borrow_and_review_listing("Maru", "Espresso Coffee Maker", "returned", "This was the best coffee maker ever! Loveeed it.", 5)
+  rate_listing("Espresso Coffee Maker", 5)
+  review_person("Maru", "Arash", "Arash got really mad at me when I returned his coffee maker.", 3)
+
+  borrow_and_review_listing("Adi", "Shure SM58 Microphone", "borrowed", "This really was the worst microphone ever.", 1)
+  borrow_and_review_listing("KC", "Shure SM58 Microphone", "borrowed", "It's an average microphone.", 3)
+  rate_listing("Shure SM58 Microphone", 2)
+  review_person("Adi", "Peter", "Even his item's were bad, he was a nice person", 4)
+  review_person("KC", "Peter", "He was alright.", 3)
+  rate_user("Peter", 3.5)
+
+  borrow_and_review_listing("Donald Trump", "BMW Original Rims", "returned", "Too low energy for me!", 1)
+  borrow_and_review_listing("Neil deGrasse Tyson", "BMW Original Rims", "returned", "It's average rims. Not the best look for astronomers.", 3)
+  rate_listing("BMW Original Rims", 2)
+  review_person("Donald Trump", "Arash", "Super High Energy. Good Lad.", 4)
+  rate_user("Arash", 4)
+
+  borrow_and_review_listing("Chandler Bing", "Sony PlayStation 4", "borrowed", "Wow I wish I could keep this for ever but Monica will kill me.", 5)
+  borrow_and_review_listing("Maru", "Sony PlayStation 4", "borrowed", "Wooooww the quality of this is like pretty much new.", 5)
+  rate_listing("Sony PlayStation 4", 5)
+  review_person("Chandler Bing", "Adi", "He gave a free game with the ps4!!!", 5)
+
+  borrow_and_review_listing("Peter", "Electronic Drum Kit", "borrowed", "Wow I can finally drop out and become a drummer. The qulity was not so great.", 3)
+  borrow_and_review_listing("KC", "Electronic Drum Kit", "returned", "Wow, maybe I can start a k-pop band with this. Quality was great.", 4)
+  rate_listing("Electronic Drum Kit",3.5)
+  review_person("KC", "Arnav", "OMG, so annoying! Won't stop talking when I met him!!", 1)
+  rate_user("Arnav", 1)
+
+  borrow_and_review_listing("Adi", "Knife Block Set", "returned", "Not bad at all.", 3)
+  borrow_and_review_listing("Arash", "Knife Block Set", "returned", "Wow it's so sharp. I can even make sushi with it.", 5)
   rate_listing("Knife Block Set", 4)
-  rate_listing("Saw", 2)
+  review_person("Adi", "Maru", "Good interaction. Shot and quick.", 4)
+
+  borrow_and_review_listing("Arnav", "Saw", "returned", "Amazing, the quality is great. I can cut so many trees.", 5)
+  borrow_and_review_listing("Adi", "Saw", "returned", "Meh I found it a bit worn out compared to another saw.", 3)
+  rate_listing("Saw", 4)
+  review_person("Adi", "Peter", "Peter left the saw I wanted to borrow in his backyard. He never met me in person.", 3)
+  rate_user("Peter", 3)
+
+  borrow_and_review_listing("Donald Trump", "HP Office Printer", "returned", "Wow, high energy printer! No fake new printed!", 5)
+  borrow_and_review_listing("Donald Knuth", "HP Office Printer", "returned", "Perfect for me since I hate reading emails. Good quality", 5)
   rate_listing("HP Office Printer", 5)
+  review_person("Donald Knuth", "Adi", "We can a very intellectual conversation in our meetup", 5)
+  rate_user("Adi", 5)
+
+
+  borrow_and_review_listing("Chandler Bing", "Drone with Camera", "returned", "Wow the quality is so good I can take pics from 100m away.", 4)
+  borrow_and_review_listing("KC", "Drone with Camera", "returned", "Wow I just love how easy the remove controls are.", 4)
   rate_listing("Drone with Camera", 4)
-  rate_listing("DJ studio", 4)
+  review_person("Chandler Bing", "Arnav", "From our meeting, he seems like an upstanding fellow.", 5)
+  rate_user("Arnav", 3)
+
+
+  borrow_and_review_listing("KC", "DJ studio", "returned", "Wooow I play a git new single at my friends party with this. Great quality.", 5)
+  borrow_and_review_listing("Neil deGrasse Tyson", "DJ studio", "returned", "This was very easy to operate and learn.", 5)
+  rate_listing("DJ studio", 5)
+  review_person("Neil deGrasse Tyson", "Maru", "She is going to be the future of computer science. She is also very nice.", 5)
+  rate_user("Maru", 4)
+
+  borrow_and_review_listing("Donald Knuth", "Bicycle", "returned", "Great Condition. I can finally put algorithms to use.", 4)
+  borrow_and_review_listing("Donald Trump", "Bicycle", "returned", "Wow! Terrible Experince! Make a wall around this listing", 2)
   rate_listing("Bicycle", 3)
-  rate_listing("Trump's Tower", 1)
-  rate_listing("Cosmos DVD set", 4.2)
-  rate_listing("Home Phone", 1.4)
-  rate_listing("The Art of Computer Programming", 4.7)
+  review_person("Donald Trump", "KC", "When I went to her place, she had HUGE walls for bike proection. Now, that's a HIGH enegy person.", 5)
+  rate_user("KC", 4)
+
+  borrow_and_review_listing("Arnav", "Trump's Tower", "returned", "Wow, this tower was in perfect condition. Much better than the ones I previously borrowed", 5)
+  rate_listing("Trump's Tower", 5)
+  review_person("Arnav", "Donald Trump", "He kept on trying to detain me in my own country when I first me him.", 1)
+  rate_user("Donald Trump", 1)
+
+  borrow_and_review_listing("Adi", "Cosmos DVD set", "returned", "This is the worst collection of DVD's I have watched", 1)
+  borrow_and_review_listing("Arash", "Cosmos DVD set", "returned", "Big fan of Niel. Some dvds were scratched though.", 3)
+  rate_listing("Cosmos DVD set", 4)
+  review_person("Adi", "Neil deGrasse Tyson", "He kept on trying to get me to join his sketchy organization.", 1)
+  rate_user("Neil deGrasse Tyson", 1)
+
+  borrow_and_review_listing("Peter", "Home Phone", "returned", "Wow, this is the greatest phone ever!", 5)
+  borrow_and_review_listing("Maru", "Home Phone", "returned", "Meh, I didn't like the color. Not too bad.", 3)
+  rate_listing("Home Phone", 4)
+  review_person("Maru", "Chandler Bing", "He is just as nice in real life, as he is in Friends.", 5)
+  rate_user("Chandler Bing", 5)
+
+
+  borrow_and_review_listing("Arash", "The Art of Computer Programming", "returned", "This book has enlightened me. It was in great condition too.", 5)
+  rate_listing("The Art of Computer Programming", 5)
+  review_person("Arash", "Donald Knuth", "WOW, the legend him self was amazing to meet.", 5)
+  rate_user("Donald Knuth", 5)
+
+
+
    
   # Seed ratings for users
-  rate_user("Arash", 1)
-  rate_user("Peter", 3)
-  rate_user("Maru", 2)
-  rate_user("Adi", 1)
-  rate_user("KC", 5)
-  rate_user("Donald Trump", 1)
-  rate_user("Neil deGrasse Tyson", 4)
-  rate_user("Chandler Bing", 2)
-  rate_user("Donald Knuth", 5)
+  # rate_user("Arash", 1)
+  # rate_user("Peter", 3)
+  # rate_user("Maru", 2)
+  # rate_user("Adi", 1)
+  # rate_user("KC", 5)
+  # rate_user("Donald Trump", 1)
+  # rate_user("Neil deGrasse Tyson", 4)
+  # rate_user("Chandler Bing", 2)
+  # rate_user("Donald Knuth", 5)
   
   # Seeding groups
   create_group("UofT Alumni","Open to all students and alumni at the University of Toronto", true, "Arash")
