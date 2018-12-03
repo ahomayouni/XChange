@@ -98,13 +98,13 @@ $(document).on('turbolinks:load', function() {
 
 	// reponsive star ratings
 	$(".star-rating").mouseenter(function() {
-		let star_value = $(this).attr("star-value");
+		star_value = $(this).attr("star-value");
 		for (i = 0; i < star_value; i++) {
 			$(".star-rating").eq(i).css("color", "#f2a900");
 		}
 	});
 	$(".star-rating").click(function() {
-		let star_value = $(this).attr("star-value");
+		star_value = $(this).attr("star-value");
 		$("#stars-rating").attr("clicked-value", star_value);
 		$("#comment_rating").val(star_value);
 		console.log($("#comment_rating").val())
@@ -116,7 +116,7 @@ $(document).on('turbolinks:load', function() {
 		}
 	});
 	$(".star-rating").mouseleave(function() {
-		let star_value = $("#stars-rating").attr("clicked-value");
+		star_value = $("#stars-rating").attr("clicked-value");
 		for (i = star_value; i < 5; i++) {
 			$(".star-rating").eq(i).css("color", "rgb(161, 161, 161)");
 		}
