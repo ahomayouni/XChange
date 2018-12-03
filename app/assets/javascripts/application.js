@@ -103,7 +103,6 @@ $(document).on('turbolinks:load', function() {
 		star_value = $(this).attr("star-value");
 		$("#stars-rating").attr("clicked-value", star_value);
 		$("#comment_rating").val(star_value);
-		console.log($("#comment_rating").val())
 		for (i = 0; i < star_value; i++) {
 			$(".star-rating").eq(i).css("color", "#f2a900");
 		}
