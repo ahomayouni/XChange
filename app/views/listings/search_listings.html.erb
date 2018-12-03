@@ -12,7 +12,7 @@
 						<div class="card-text p-5 justify-content-center text-center align-items-center text-secondary">
 							Didn't find any mathing listings <br>
 							<h5 class="modal-title font-weight-bold">Be the first one to request this item. </h5> <br>
-							<h5 class="modal-title font-weight-bold"><%= link_to "Request "+params[:listings_q], new_live_search_path, class:'btn btn-outline-info h-25 ml-4 mt-2' %></h5>
+							<h5 class="modal-title font-weight-bold"><%= link_to "Request "+params[:listings_q], new_live_search_path, class:'btn btn-outline-info h-25', data: {toggle:"modal", target:"#liveSearchModal"} %></h5>
 						</div>
 					</div>
 			</div>
@@ -22,6 +22,8 @@
 	<% end %>
 	</div>
 	</div>
+<%# modal %>
+<%= render 'live_searches/new_modal' %>
 <% else %>
 		<!-- Modal -->
 		<div class="modal fade" id="makeSureYouSignUpModal" tabindex="-1" role="dialog" aria-labelledby="makeSureYouSignUpModalLabel" aria-hidden="true">
