@@ -80,12 +80,13 @@
                   <% @l = current_user.listings.find_all {|x| x.title == live_search.title}%>
                   <% if @l.empty? %>
                   <div>
-                    <h5> You must have an item listed to do this, list one below in just a few clicks: </h5>
+                    <h5> You must have an item listed, list one below in just a few clicks: </h5>
                     <%= button_to "List an Item", new_listing_path, :method => :get %>
                   </div>
                   <% else %>
                   <div>
                     <h5> You do have a matching listing </h5>
+                    <%= button_to "Your Listing", listing_path(@l), :method => :get %>
                   </div>
                   <% end %>
               <% end %>
