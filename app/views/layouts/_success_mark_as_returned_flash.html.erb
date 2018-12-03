@@ -7,6 +7,12 @@
             <div style="color:purple;">What's next?</div>
             Rate your experience with the borrower! You can rate users in My Rentals -> Lending toggle <br/>
         </div>
+        <div class="modal-footer">
+            <% if !current_user.nil? %>
+             <%= button_to "Okay!", user_path(current_user.id),params: {active_tab: "actionItems"}, class:"btn db-create-btn mt-2 font-weight-bold", :method => :get, :style => {color:"white!important;"} %>
+             <%else%>
+             <%end%>
+        </div>
         </div>
     </div>
 </div>

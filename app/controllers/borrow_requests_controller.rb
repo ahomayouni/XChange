@@ -82,7 +82,7 @@ class BorrowRequestsController < ApplicationController
     @borrow_request = BorrowRequest.find_by(id: params[:id])
     if @borrow_request.status == "approved"
       @borrow_request.update_attribute(:status, "borrowed")
-    elsif @borrow_request.status == "borrowed"
+    elsif @borrow_request.status == "borrowed" or @borrow_request.status == "late"
       @borrow_request.update_attribute(:status, "returned")
     end
 
