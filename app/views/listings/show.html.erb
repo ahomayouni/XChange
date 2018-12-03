@@ -55,7 +55,7 @@
                     <%= f.text_area :body, placeholder: "Add a comment", class:'form-group' %><br/>
                     <%= f.hidden_field :rating %>
                     <div id="stars-rating" clicked-value="0">
-                      <i class="material-icons star-rating" star-value="1">grade</i> <i class="material-icons star-rating" star-value="2">grade</i> <i class="material-icons star-rating" star-value="3">grade</i> <i class="material-icons star-rating" star-value="4">grade</i> <i class="material-icons star-rating" star-value="5">grade</i>
+                      <i class="material-icons star-rating" id="star-rating-1" star-value="1">grade</i> <i class="material-icons star-rating" id="star-rating-2" star-value="2">grade</i> <i class="material-icons star-rating" id="star-rating-3" star-value="3">grade</i> <i class="material-icons star-rating" id="star-rating-4" star-value="4">grade</i> <i class="material-icons star-rating" id="star-rating-1" star-value="5">grade</i>
                     </div>
                     <%= f.submit "Add Comment", class:'btn btn-outline-info mt-2' %>
                   <% end %>
