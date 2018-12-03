@@ -38,7 +38,7 @@ class LiveSearchesController < ApplicationController
       else
         respond_to do |format|
           if @live_search.save
-            format.html { redirect_to @live_search}
+            format.html { redirect_to action: "index" }
             format.json { render :show, status: :created, location: @live_search }
           else
             format.html { render :new }
