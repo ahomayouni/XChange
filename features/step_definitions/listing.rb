@@ -120,7 +120,8 @@ When("I click listings in the top header") do
 end
 
 Then("I should see an item `saw` as it was already previously seeded") do 
-  within(".container-fluid") do
+  sleep(3)
+  within("#listingsObjectDivUniqueId") do
     expect(page).to have_content('Saw')
   end
 end

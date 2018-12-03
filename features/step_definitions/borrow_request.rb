@@ -4,6 +4,7 @@ end
 
 When("I fill in the borrow request date range with string: {string}") do |string|
   fill_in "borrow_request_date_range", with: string #This is the id of the input field. 
+  sleep(4)
   click_button "Apply"
 end
 
@@ -59,7 +60,10 @@ When("I click the notification with id {string}") do |string|
 end
 
 Then("I will be redirected to pending approvals tab and see the listing item `saw` over there") do
-  expect(page).to have_content("Pending Approvals")
+  sleep(2)
+  within("#userActionItemsTabHeaderID") do 
+  	expect(page).to have_content("Pending Approvals")
+  end
 end
 
 When ("I click the {string} tab from the dashboard") do |string|
