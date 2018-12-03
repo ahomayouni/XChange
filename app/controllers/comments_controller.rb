@@ -85,7 +85,7 @@ before_action :find_reply
         redirect_back fallback_location: request.referrer
         else
         
-        flash[:danger] = @comment.errors.full_messages[0] 
+        flash[:comments_error] = @comment.errors.full_messages[0] 
         redirect_back(fallback_location: listings_path)
         end
     end

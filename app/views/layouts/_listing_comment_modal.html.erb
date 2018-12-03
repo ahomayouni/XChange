@@ -1,0 +1,18 @@
+<%# Modal for Successful Mark as borrowed. %>
+<div class="modal fade" id="listingCommentModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-body font-weight-bold">
+           Uh Oh! <br />
+            <div style="color:purple;">
+            You're either missing some fields to your rating OR you haven't borrowed this item yet.  </div>
+        </div>
+        <div class="modal-footer">
+            <% if !current_user.nil? %>
+             <button type="button" class="btn db-create-btn" data-dismiss="modal">Close</button>
+             <%else%>
+             <%end%>
+        </div>
+        </div>
+    </div>
+</div>
