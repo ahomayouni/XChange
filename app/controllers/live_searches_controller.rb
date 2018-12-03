@@ -27,17 +27,25 @@ class LiveSearchesController < ApplicationController
   def create
     #@live_search = LiveSearch.new(user_id: current_user.id, title: params[:title], category: params[:category], from_when: params[:from_when], to_when: params[:to_when], where: params[:where])
     #@live_search = current_user.live_searches.build(user_id: current_user.id, title: params[:title], category: params[:category], from_when: params[:from_when], to_when: params[:to_when], where: params[:where])
-    @live_search = current_user.live_searches.build(live_search_params)
-    @live_search.user_id = current_user.id
-    respond_to do |format|
-      if @live_search.save
-        format.html { redirect_to @live_search}
-        format.json { render :show, status: :created, location: @live_search }
+      @live_search = current_user.live_searches.build(live_search_params)
+      @live_search.user_id = current_user.id
+      if Listing.where(title: @live_search.title).count != 0
+        # link = "<a href=\"#{listing_path(Listing.find_by(title: @live_search.title))}\">here</a>"
+        # flash[:error] = "#{link}".html_safe
+        # flash[:error] = "Listing exists already #{view_context.link_to('here', listing_path(Listing.find_by(title: @live_search.title)))}".html_safe
+        #flash[:error] = "Item exists already #{link_to Listing.find_by(title: @live_search.title).id, :controller => 'listing_controller', :action => 'get'}."
+        flash[:error] = %Q[ Listing already exists #{view_context.link_to("here", listing_path(Listing.find_by(title: @live_search.title)))}]
       else
-        format.html { render :new }
-        format.json { render json: @live_search.errors, status: :unprocessable_entity }
+        respond_to do |format|
+          if @live_search.save
+            format.html { redirect_to @live_search}
+            format.json { render :show, status: :created, location: @live_search }
+          else
+            format.html { render :new }
+            format.json { render json: @live_search.errors, status: :unprocessable_entity }
+          end
+        end
       end
-    end
   end
 
   # PATCH/PUT /live_searches/1
