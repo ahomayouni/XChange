@@ -39,3 +39,12 @@
 //     float: left;
 //     color: #999;
 // }
+
+#stars-rating {
+    i {
+        color: rgb(161, 161, 161);
+    }
+    i:hover {
+        cursor: pointer;
+    }
+}

@@ -38,7 +38,7 @@ function show_password(){
 
 //PSA: If you want to do any jquery, do it in this block of code.
 $(document).on('turbolinks:load', function() {
-	
+
 	$(function () {
 		$('[data-toggle="tooltip"]').tooltip()
 	});
@@ -81,7 +81,7 @@ $(document).on('turbolinks:load', function() {
 
 	// monetization
 	$( ".monetization-container" ).css("height", $( ".monetization-container" ).width()*1.2);
-	
+
 	// live searches' search
 	$( "#live-item-search-input" ).keyup(function() {
 		var search_input = $( "#live-item-search-input" ).val().trim();
@@ -94,5 +94,31 @@ $(document).on('turbolinks:load', function() {
 				$(this).hide();
 			}
 		});
+	});
+
+	// reponsive star ratings
+	$(".star-rating").mouseenter(function() {
+		let star_value = $(this).attr("star-value");
+		for (i = 0; i < star_value; i++) {
+			$(".star-rating").eq(i).css("color", "#f2a900");
+		}
+	});
+	$(".star-rating").click(function() {
+		let star_value = $(this).attr("star-value");
+		$("#stars-rating").attr("clicked-value", star_value);
+		$("#comment_rating").val(star_value);
+		console.log($("#comment_rating").val())
+		for (i = 0; i < star_value; i++) {
+			$(".star-rating").eq(i).css("color", "#f2a900");
+		}
+		for (i = star_value; i < 5; i++) {
+			$(".star-rating").eq(i).css("color", "rgb(161, 161, 161)");
+		}
+	});
+	$(".star-rating").mouseleave(function() {
+		let star_value = $("#stars-rating").attr("clicked-value");
+		for (i = star_value; i < 5; i++) {
+			$(".star-rating").eq(i).css("color", "rgb(161, 161, 161)");
+		}
 	});
 });
