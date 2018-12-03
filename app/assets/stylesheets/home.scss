@@ -137,6 +137,9 @@
     background-position: center;
     background-image: asset_url('carousel-pattern.jpg');
     background-attachment: fixed !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   .get-involved {
