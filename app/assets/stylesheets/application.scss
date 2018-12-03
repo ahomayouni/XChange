@@ -206,6 +206,12 @@ html {
 
 // modals for footer
 .footer-modal {
+  #aboutModal {
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
   #contactUsModal {
     img {
       height: 30px;
