@@ -70,28 +70,36 @@
               </button>
             </div>
             <div class="modal-body">
-              Title: <%= live_search.title %> <br>
-              Category: <%= live_search.category %> <br>
-              When: <%= live_search.from_when.strftime("%e %b %y") %> - <%= live_search.to_when.strftime("%e %b %y") %> <br>
-              Where: <%= live_search.where %>
+              <div class="m-4">
+              <%= User.find(live_search.user_id).name %> needs a 
+              <span class="font-weight-bold" style="color:#602bff;"> <%= live_search.title %> </span> <br>
+              <div class="mt-1 ml-3" style="color:#9b9b9b;">
+                Category: <%= live_search.category %> <br>
+                When: <%= live_search.from_when.strftime("%e %b %y") %> - <%= live_search.to_when.strftime("%e %b %y") %> <br>
+                Where: <%= live_search.where %>
+              </div>
               <% if live_search.user_id == current_user.id%>
                 <%= button_to 'Edit', edit_live_search_path(live_search), class: 'btn btn-outline-info', :method => :get %>
 
                 <%= button_to 'Delete', live_search_path(live_search), class:"card-link btn btn-primary mt-1", method: :delete, data: {confirm: "Are you sure?"} %>
               <% else %>
+              <hr>
+                <div class="text-center mt-4">
                   <% @l = current_user.listings.find_all {|x| x.title == live_search.title}%>
                   <% if @l.empty? %>
                   <div>
-                    <h5> You must have an item listed, list one below in just a few clicks: </h5>
-                    <%= button_to "List an Item", new_listing_path, :method => :get %>
+                    <h5 class="text-center"> You must have an item listed, list one below in just a few clicks: </h5>
+                    <%= button_to "List an Item", new_listing_path, :method => :get, :class => "btn show-modal-btn w-75 mt-2" %>
                   </div>
                   <% else %>
                   <div>
-                    <h5> You do have a matching listing </h5>
-                    <%= button_to "Your Listing", listing_path(@l), :method => :get %>
+                    <h5 class="text-center"> You do have a matching listing </h5>
+                    <%= button_to "Your Listing", listing_path(@l), :method => :get,  :class => "btn show-modal-btn w-75 mt-2" %>
                   </div>
                   <% end %>
+                </div>
               <% end %>
+              </div>
             </div>
           </div>
         </div>
