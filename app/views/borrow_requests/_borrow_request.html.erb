@@ -14,7 +14,7 @@
                     </div>
                     <% if borrow_request.status == "requested"%>
                     <div class="col-sm-6">
-                         <%= button_to "Delete Request", borrow_delete_path(borrow_request.id), class:"card-link btn btn-primary mt-1", :method => :delete %>
+                         <%= button_to "Delete Request", borrow_delete_path(borrow_request.id), class:"card-link btn btn-primary mt-1 float-right", :method => :delete %>
                     </div>
                     <% end %>
                     <% if borrow_request.status == "approved"%>
