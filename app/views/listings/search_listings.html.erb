@@ -6,8 +6,17 @@
 			<h4> Found <%= @listings_found.count %> listing(s) containing "<%= params[:listings_q] %>": </h4>
 			<%= render @listings_found %> <br>
 		<% else %>
-			<h3> No listings found for "<%= params[:listings_q] %>" </h3>
-			<%= link_to 'Request this item!', new_live_search_path %>
+			<div class="col-md-12">
+					<div class="card d-flex p-5 mb-5">
+							<div class="card-text p-5 d-flex justify-content-center align-items-center text-secondary">
+								Didn't find any mathing listings 
+							<h5 class="modal-title font-weight-bold">Be the first one to request this item. </h5>
+							<h5 class="modal-title font-weight-bold"><%= link_to "Request "+params[:listings_q], new_live_search_path, class:'btn btn-outline-info h-25 ml-4 mt-2' %></h5>
+						</div>
+					</div>
+			</div>
+			<!-- <h3> No listings found for "<%= params[:listings_q] %>" </h3>
+			<%= link_to 'Request this item!', new_live_search_path %> -->
 		<% end %>
 	<% end %>
 	</div>
@@ -25,7 +34,7 @@
 					<div class="modal-body font-weight-bold">
 					Nice! You've already started searching for listings, sign up!
 					</div>
-					<div class="modal-footer">						
+					<div class="modal-footer">
 					    <%= link_to "Home", root_path ,id:"signupHomeButton",class: "btn btn-outline-primary" %>
 					</div>
 				</div>
@@ -36,4 +45,4 @@
 		     $('#makeSureYouSignUpModal').modal('show');
 		</script>
 
-<% end%>	
+<% end%>
