@@ -84,9 +84,7 @@
         <%if @user.person.comments.count == 0%>
         No reviews yet
         <%else %>
-            <ul>
-                <%= render(partial: 'comments/comment', collection: @user.person.comments) %>
-            </ul>
+            <%= render(partial: 'comments/comment', collection: @user.person.comments) %>
         <%end%>
       </div>
       <div class="modal-footer">
