@@ -84,9 +84,9 @@ $(document).on('turbolinks:load', function() {
 
 	// live searches' search
 	$( "#live-item-search-input" ).keyup(function() {
-		var search_input = $( "#live-item-search-input" ).val().trim();
+		var search_input = $( "#live-item-search-input" ).val().trim().toLowerCase();
 		$(".live-search-container").each(function() {
-			var item_title = $(this).find(".item-title").text().trim();
+			var item_title = $(this).find(".item-title").text().trim().toLowerCase();
 			if (item_title.indexOf(search_input) >= 0 || search_input == "") {
 				$(this).show();
 			}
