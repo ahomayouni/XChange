@@ -3,11 +3,12 @@
             <% @count = 0 %>
             <% current_user.listings.each do |u| %>
                 <% @count += u.borrow_requests.where(status: "borrowed").count %>
+                <% @count += u.borrow_requests.where(status: "late").count %>
             <% end %>
             <% if @count > 0%>
                 <% current_user.listings.each do |listing| %>
                     <% listing.borrow_requests.each do |borrow_request| %>
-                            <% if borrow_request.status == "borrowed"%>
+                            <% if borrow_request.status == "borrowed" or borrow_request.status == "late"%>
                                 <div class="card mx-2 mb-2">
                                     <div class="card-body">
                                         <h4> Borrower's Name: <%= User.find_by(id: borrow_request.user_id).name %></h4>
