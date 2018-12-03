@@ -385,16 +385,16 @@ Notification.create(recipient: @admin_user,actor: @admin_user,action:"created_ne
   Notification.create(recipient: @current_user,actor: @current_user,action:"created_new_account",notifiable:@current_user)
 
 end
-  seed_user("Arash", "arash@gmail.com", "12345", "262 Rhodes Ave Toronto", 'Developer at XChange',"arash.jpg", 'image/jpeg')
-  seed_user("Peter", "peter@gmail.com", "12345", "15 Pape Ave Toronto", 'Developer at XChange','peter.jpeg', 'image/jpeg')
-  seed_user("Maru", "maru@gmail.com", "12345", "1830 Bloor St W Toronto", 'Developer at XChange','maru.jpg', 'image/jpeg')
-  seed_user("Adi", "adi@gmail.com", "12345", "260 Carlaw Ave Toronto", 'Developer at XChange','adi.jpeg', 'image/jpeg')
-  seed_user("Arnav", "arnav@gmail.com", "12345", "62 Hiltz Ave Toronto", 'Developer at XChange','arnav.jpg', 'image/jpeg')
-  seed_user("KC", "KC@gmail.com", "12345", "67 Curzon St Toronto", 'Developer at XChange', 'KC.jpg', 'image/jpeg')
-  seed_user("Donald Trump", "trump@gmail.com", "12345", "156 Colbeck St Toronto", 'President of the United States', 'trump.jpg', 'image/jpeg')
-  seed_user("Neil deGrasse Tyson", "neil@gmail.com", "12345", "65 High Park Ave Toronto", 'The Space Guy', 'neil.jpg', 'image/jpeg')
-  seed_user("Chandler Bing", "chandler@gmail.com", "12345", "2 Aberfoyle Cres Toronto", "I'm not great at advice. Can I interest you in a sarcastic comment?", 'chandler.png', 'image/jpeg')  
-  seed_user("Donald Knuth", "donald@gmail.com", "12345", "52 Milverton Blvd Toronto", "An algorithm must be seen to be believed.", 'donald.jpg', 'image/jpeg')
+  seed_user("Arash", "arash@xchange.com", "12345", "262 Rhodes Ave Toronto", 'Developer at XChange',"arash.jpg", 'image/jpeg')
+  seed_user("Peter", "peter@xchange.com", "12345", "15 Pape Ave Toronto", 'I love dogs. Im also a Developer at XChange','peter.jpeg', 'image/jpeg')
+  seed_user("Maru", "maru@xchange.com", "12345", "1830 Bloor St W Toronto", 'I love dogs! Im also a Developer at XChange','maru.jpg', 'image/jpeg')
+  seed_user("Adi", "adi@xchange.com", "12345", "260 Carlaw Ave Toronto", 'Developer at XChange','adi.jpeg', 'image/jpeg')
+  seed_user("Arnav", "arnav@xchange.com", "12345", "62 Hiltz Ave Toronto", 'Developer at XChange','arnav.jpg', 'image/jpeg')
+  seed_user("KC", "KC@xchange.com", "12345", "67 Curzon St Toronto", 'Developer at XChange', 'KC.jpg', 'image/jpeg')
+  seed_user("Donald Trump", "trump@xchange.com", "12345", "156 Colbeck St Toronto", 'President of the United States', 'trump.jpg', 'image/jpeg')
+  seed_user("Neil deGrasse Tyson", "neil@xchange.com", "12345", "65 High Park Ave Toronto", 'The Space Guy', 'neil.jpg', 'image/jpeg')
+  seed_user("Chandler Bing", "chandler@xchange.com", "12345", "2 Aberfoyle Cres Toronto", "I'm not great at advice. Can I interest you in a sarcastic comment?", 'chandler.png', 'image/jpeg')  
+  seed_user("Donald Knuth", "donald@xchange.com", "12345", "52 Milverton Blvd Toronto", "An algorithm must be seen to be believed. I have 35 dogs sorted by age with bubble sort", 'donald.jpg', 'image/jpeg')
   # Seeding Listings
   seed_listing("Canon FX Camera", "35 mm SLR Camera", "Film & Photography", User.find_by(name:"Arash").id, 'camera-seed.jpeg', 'image/jpeg', "710 Trethewey Dr Toronto")
   seed_listing("Espresso Coffee Maker", "Krups Calvi XP3410, 1460W, 15 bar", "Home / Office / Garden", User.find_by(name:"Arash").id, 'coffee.jpg', 'image/jpeg', "49 Thorncliffe Park Dr Toronto")
@@ -412,7 +412,10 @@ end
   seed_listing("Trump's Tower", "My humble tower.", "Holiday & Travel", User.find_by(name:"Donald Trump").id, 'tower.jpg', 'image/jpeg', "325 Bay St, Toronto")
   seed_listing("Cosmos DVD set", "My very own TV show", "Film & Photography", User.find_by(name:"Neil deGrasse Tyson").id, 'cosmos.jpg', 'image/jpeg', "81 Lemonwood Dr Toronto")
   seed_listing("Home Phone", "Old collectible", "Home / Office / Garden", User.find_by(name:"Chandler Bing").id, 'phone.png', 'image/png', "103 The Queensway Toronto")
-
+  seed_listing("Dog Leash", "Available in 3 different colors", "Clothing", User.find_by(name:"Donald Knuth").id, 'leash.jpg', 'image/jpeg', "117 Upper Humber Dr Toronto")
+  seed_listing("Dog Shoes", "Red shoes for dogs", "Clothing", User.find_by(name:"Donald Knuth").id, 'dog-shoes.jpg', 'image/jpeg', "30 Humberline Dr Toronto")
+  seed_listing("Bowl for Dogs", "Dogs love this bowl", "Home / Office / Garden", User.find_by(name:"Peter").id, 'bowl.jpg', 'image/jpeg', "31 Fielding Ave Toronto")
+  seed_listing("Toys for Dogs", "Collection of toys for dogs", "Home / Office / Garden", User.find_by(name:"Peter").id, 'toy.jpg', 'image/jpeg', "921 Millwood Rd Toronto")
   # Seed ratings for listings
   # rate_listing("Canon FX Camera", 3.4)
   # rate_listing("Espresso Coffee Maker", 4)
