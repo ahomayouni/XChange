@@ -28,7 +28,7 @@
 	                 <% else %>
 	          				<%= image_tag("empty-user-icon.png", :class=> "img-thumbnail rounded-circle")%>
 					 <%end%>
-						<h5><%= @user.name%> </h5>
+						<h5 class="text-center"><%= @user.name%> </h5>
 					</div>
 					<div class="col-md-9 p-5">
 						<%= form_for @user do |f| %>
