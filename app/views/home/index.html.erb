@@ -47,19 +47,52 @@
         </div>
       </div>
       <div class="monetization-container mx-3 mt-3">
-        <%= link_to 'Choose Your Plan', "#monetizationModal", "data-toggle" => "modal", "class" => "btn"%>
+        <%= link_to 'Subscription', "#monetizationModal", "data-toggle" => "modal", "class" => "btn"%>
         <%# modal %>
         <div class="modal fade" id="monetizationModal" tabindex="-1" role="dialog" aria-labelledby="monetizationModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="monetizationModalLabel">Plans</h5>
+                <h5 class="modal-title" id="monetizationModalLabel">Choose your plan</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
-                Preview
+                <div class="monetization-body-container m-auto">
+                  <div class="monetization-plan-container m-auto">
+                    <div class="monetization-plan-top w-100" style="background-color:black;">
+                      <div class="row m-auto">
+                        <div class="col-6 text-left mt-3">
+                          <span class="big-text"> Free Trial.</span>
+                        </div>
+                        <div class="col-6 text-right mt-3">
+                          <span class="big-text">$0</span><span class="small-text">/Yr</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="monetization-plan-bottom w-100 text-left">
+                      <div class="p-4"> You can get started with a <b><i>free</i></b> plan for one week. <br><br> Start your free trial today! <br></span> 
+                      </div>
+                    </div>
+                  </div>
+                  <div class="monetization-plan-container mx-auto my-3">
+                    <div class="monetization-plan-top w-100" style="background-color:rgb(3,15,80);">
+                      <div class="row m-auto">
+                        <div class="col-6 text-left mt-3">
+                          <span class="big-text"> Yearly Plan.</span>
+                        </div>
+                        <div class="col-6 text-right mt-3">
+                          <span class="big-text">$7</span><span class="small-text">/Yr</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="monetization-plan-bottom w-100 text-left">
+                      <div class="p-4"> Get ready for an <b><i>unlimited</i></b> borrowing. <br><br> Do not miss out! <br></span> 
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

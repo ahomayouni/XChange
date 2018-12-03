@@ -101,6 +101,30 @@
       color: rgb(3,15,80) !important;
     }
   }
+  #monetizationModal {
+    .monetization-plan-container {
+      width: 80%;
+      height: 250px;
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0px 0px 8px #cecece;
+      overflow: hidden;
+    }
+    .monetization-plan-top {
+      height: 70px;
+      color: white;
+    }
+    .big-text {
+      font-size: 32px !important;
+    }
+    .small-text {
+      font-size: 15px !important;
+    }
+    .monetization-plan-bottom {
+      height: 180px;
+      color: rgb(88, 88, 88);
+    }
+  }
   .main-text {
     width: 80%;
   }
