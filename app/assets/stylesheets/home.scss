@@ -24,28 +24,8 @@
       background-color: white;
       color: rgb(104,214,205) !important;
     }
-    .notification-container {
-      position:relative;
-      .notification-inner, .notification-inner:hover {
-        font-size: 0.9rem;
-        position: absolute;
-        top: 3.1px;
-        left: 10px;
-        color:  rgb(104,214,205) !important;
-      }
-      .no-select {
-        -webkit-user-select: none; /* Safari */
-        -khtml-user-select: none; /* Konqueror HTML */
-        -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-        user-select: none;
-      }
-      i, i:hover {
-        color: white !important;
-        font-size: 1.7rem;
-      }
-    }
-    .notification-container:hover {
+    .notification-white, .notification-white:hover, i, i:hover{
+      color: white !important;
       cursor: pointer;
     }
 }

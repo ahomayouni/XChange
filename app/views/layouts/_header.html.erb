@@ -8,13 +8,11 @@
 		</button>
 			<div class="collapse navbar-collapse">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-link btn-group" data-behavior="notifications" data-notifications='<%= render template: "notifications/index", formats: [:json] %>'>
-						<div class="notification-container no-select" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<a class="notification-inner" data-behavior="unread-count" > </a>
-							<a>
-								<i class="material-icons"> notifications </i>
-							</a>
-						</div>
+					<li class="nav-item btn-group" data-behavior="notifications" data-notifications='<%= render template: "notifications/index", formats: [:json] %>'>
+						<a class="nav-link notification-white" data-behavior="unread-count" > </a>
+						<a class="nav-link notification-white" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="tiny material-icons"> notification_important </i>
+						</a>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items"> 
 						<!-- Dropdown Itemshere will be placed by the notification-items given by the javascript file in the form of html.erb -->
 						</div>
