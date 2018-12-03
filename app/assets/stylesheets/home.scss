@@ -76,6 +76,10 @@
 
 .page-content {
   text-align: center;
+  hr {
+    border: 1px solid rgb(104,214,205);
+    width: 15%; 
+  }
   .home-title {
     // font-size: 3.5vw !important;
     letter-spacing: 1.3vw !important;
@@ -83,11 +87,6 @@
   }
   .main-text {
     // font-size: 1.7vw !important;
-  }
-  hr {
-    border: 1.5px solid rgb(104,214,205) !important;
-    width: 10%;
-    margin-top: 0;
   }
   .small-hr {
     border: 0.5px solid rgb(104,214,205) !important;
