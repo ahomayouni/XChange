@@ -39,10 +39,10 @@
     <%= f.file_field :images, multiple: true , class: 'form-control'%>
   </p>
   <p>
-    <%= f.submit 'Create Listing', :class => "btn btn-primary"%>
+    <%= f.submit 'Create Listing', :class => "btn btn-primary w-100"%>
   </p>
   <% end %>
-  <%= link_to 'Back', listings_path %>
+  <%= link_to 'Back', listings_path, :class => "btn btn-back w-100" %>
 </div>
 
 <script async src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAG4tWx7kUqZymglhMc6mRstD_RXXTEeMY"></script>

@@ -39,10 +39,10 @@
   </p>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "New Item", :class => "btn btn-primary w-100"  %>
   </div>
 <% end %>
-<%= link_to 'Back', live_searches_path %>
+<%= link_to 'Back', live_searches_path, :class => "btn btn-back w-100 mt-2"  %>
 
 
 <script>

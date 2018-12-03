@@ -9,11 +9,11 @@
 
 <%= form_for @group do |f| %>
 	<p>
-		<%= f.label :name %>
+		<%= f.label :name, style:"color:#9a00bc;", class:"font-weight-bold" %>
 		<%= f.text_field :name, placeholder:"eg. Friends, Colleagues", class: 'form-control' %>
 	</p>
  	<p>
-		<%= f.label :description%>
+		<%= f.label :description, style:"color:#9a00bc;", class:"font-weight-bold"%>
 		<%= f.text_area :description, placeholder:"eg. A group of trusted friends", class: 'form-control' %>
  	</p>
  	<p>
@@ -22,8 +22,8 @@
 
  	</p>
 	<p>
-		<%= f.submit 'Create Group', :class => "btn btn-outline-info" %>
+		<%= f.submit 'Create Group', :class => "btn btn-outline-info w-100" %>
 	</p>
 <% end %>
 
-<%= link_to 'Back', user_path(@current_user,active_tab: "dashboardTab") %>
+<%= link_to 'Back', user_path(@current_user,active_tab: "dashboardTab"), :class => "btn btn-back w-100"  %>
