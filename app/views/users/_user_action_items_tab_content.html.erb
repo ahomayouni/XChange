@@ -14,21 +14,21 @@
                             
                             <a class="nav-link active" data-toggle="tab" href="#pendingApprovals">Pending Approvals
                             <% if @count_req > 0 %>
-                                <span class="dot"> <%= @count_req %></span>
+                                <div class="dot"> <%= @count_req %></div>
                             <%end%>
                             </a>
                         </li>
                         <li class="nav-item active">
                            <a class="nav-link" data-toggle="tab" href="#markAsLent">Items to Mark as Lent
                            <% if @count_approved > 0 %>
-                                <span class="dot"> <%= @count_approved %></span>
+                                <div class="dot"> <%= @count_approved %></div>
                             <%end%>
                            </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#markAsReturned">Items to Mark as Returned
                             <% if @count_borrowed > 0 %>
-                                <span class="dot"> <%= @count_borrowed %></span>
+                                <div class="dot"> <%= @count_borrowed %></div>
                             <%end%>
                             </a>
                         </li>
