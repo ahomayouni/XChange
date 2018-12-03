@@ -1,14 +1,14 @@
 <div class="container">
-  <div class="row">
+  <div class="row pt-4">
     <div class="col-md-12">
-      <h2 class="font-weight-bold">Rate <%= User.find(@person.user_id).name %></h2>
-      <h6 class="font-weight-bold text-secondary"> How was your XChange experience with this user? Giving a detailed review helps the
+      <h2 class="font-weight-bold text-center">Rate <%= User.find(@person.user_id).name %></h2>
+      <h6 class="font-weight-bold text-secondary text-center"> How was your XChange experience with this user? Giving a detailed review helps the
       XChange community. </h6>
     </div>
   </div>
-  <div class="row mt-5">
+  <div class="row mt-3">
     <div class="col-md-4"></div>
-    <div class="col-md-4">
+    <div class="col-md-4 text-center">
       <%# Use form_for %>
       <%= form_for [@person, Comment.new] do |f| %>
       <%= f.text_area :body, placeholder: "Add a comment", data: {toggle:"tooltip", placement:"right", title:"How timely were their reponses? Did they meet at the expected time? Any detail about your experience helps."} %><br/>
@@ -16,12 +16,12 @@
       <div id="stars-rating" clicked-value="0" data-toggle="tooltip" data-placement="right" title="Rate the user from 1 to 5, one being not so great and 5 being awesome!">
         <i class="material-icons star-rating" id="star-rating-1" star-value="1">grade</i> <i class="material-icons star-rating" id="star-rating-2" star-value="2">grade</i> <i class="material-icons star-rating" id="star-rating-3" star-value="3">grade</i> <i class="material-icons star-rating" id="star-rating-4" star-value="4">grade</i> <i class="material-icons star-rating" id="star-rating-1" star-value="5">grade</i>
       </div>
-      <%= f.submit "Add Review", class:"btn db-browse-btn font-weight-bold p-3 mt-2", style:"color:white!important;" %>
+      <%= f.submit "Add Review", class:"btn db-browse-btn font-weight-bold mt-2", style:"color:white!important;" %>
       <% end %>
     </div>
     <div class="col-md-4"></div>
   </div>
   <div class="row">
-    <%= link_to "View #{ User.find(@person.user_id).name}'s profile", user_path(@person.user_id) %>
+    <%= link_to "View #{ User.find(@person.user_id).name}'s profile", user_path(@person.user_id), class:"btn btn-back mx-auto mt-3" %>
   </div>
 </div>
