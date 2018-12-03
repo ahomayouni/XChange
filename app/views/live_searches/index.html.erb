@@ -40,18 +40,17 @@
                   <div class="col-3 search-detail item-title">
                     <%= live_search.title %>
                   </div>
-                  <div class="col-6 search-detail">
+                  <div class="col-5 search-detail">
                     <%= live_search.from_when.strftime("%e %b %y") %> - <%= live_search.to_when.strftime("%e %b %y") %>
                   </div>
-                  <div class="col-3 search-detail">
+                  <div class="col-4 search-detail">
                     <%= live_search.where %>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-12">
-                    <div class="float-right">
-                       <%= link_to 'Show', "#liveSearch#{live_search.id}Modal", "data-toggle" => "modal"%>
-                    </div>
+                <div class="row mt-1">
+                  <div class="col-9"></div>
+                  <div class="col-3">
+                       <%= link_to 'Show', "#liveSearch#{live_search.id}Modal", "data-toggle" => "modal", class: "btn btn-border-purple w-100"%>
                   </div>
                 </div>
               </div>

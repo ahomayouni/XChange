@@ -197,16 +197,18 @@ textarea {
   border-color: black;
   color: white !important;
 }
-.btn-solid-purple {
+.btn-solid-purple, .btn-border-purple:hover {
   background-color: #602bff;
   border-color: #602bff;
   color: white !important;
 }
-.btn-solid-purple:hover {
+.btn-solid-purple:hover, .btn-border-purple {
   background-color: transparent;
   border-color: #602bff;
   color: #602bff !important;
 }
+
+
 
 .footer {
   //position: absolute;
