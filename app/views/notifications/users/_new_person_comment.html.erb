@@ -5,6 +5,5 @@
       <% else %>
           <%= image_tag("empty-user-icon.png", :class=> "rounded-circle ml-2 mt-1", :style=> "width:50px;height:50px")%>
      <%end%>
-    <%= link_to " #{@actor.name} has commented on your recent post.", listing_path(notification.notifiable), 
-    class:"dropdown-item" %>
+    <%= link_to " #{@actor.name} has recently commented on your profile.", user_path(notification.notifiable,active_tab: "dashboardTab"), id:"new_person_comment_notification",class:"dropdown-item" %>
 </div>

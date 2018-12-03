@@ -36,6 +36,11 @@ before_action :find_reply
 
             if @comment.reply_type == "Person"
                 @person = Person.find(@comment.subject_id)
+                
+                @notif_recipient = User.find(@person.user_id) #This should exist.
+                @new_notif = Notification.new(recipient: @notif_recipient, actor_id: current_user.id ,action: "new_person_comment",notifiable: @notif_recipient)
+                @new_notif.save
+                
                 if @person.rating != nil
                     old_review = @person.rating
                     total_reviews = Comment.where(subject_id: @comment.subject_id, reply_type: "Person").length
