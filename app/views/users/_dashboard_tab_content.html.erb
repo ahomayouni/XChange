@@ -6,13 +6,13 @@
         </div>
     </div>
     <div class="row mb-5">
-        <div class="col-md-3">
+        <div class="col-md-3 m-auto text-center">
              <%if @user.person.image.attachment != nil and @user.person.image.content_type.in?(%('image/jpeg image/png')) %>
           			<%= image_tag(@user.thumbnail, :class => "img-thumbnail rounded-circle")%>
              <% else %>
           			<%= image_tag("empty-user-icon.png", :class=> "img-thumbnail rounded-circle")%>
              <%end%>
-            <%= link_to "Edit Profile", user_settings_path(current_user), class:'btn btn-outline-info ml-5 mt-3 w-75 font-weight-bold'%>
+            <%= link_to "Edit Profile", user_settings_path(current_user), class:'btn btn-outline-info mt-2 w-75 font-weight-bold'%>
         </div>
          <div class="col-md-9">
            <div class="d-flex flex-row ml-3 mb-3">
