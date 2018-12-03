@@ -7,9 +7,9 @@
 			<% end %>	
 		</div>	
 	</div>
-	<div class="row justify-content-center p-3">
-            <h1 class="font-weight-bold" style="color:#b2003b;">  <%=@group.name%> </h1>
-            <h4 class="font-weight-bold text-secondary mt-2 text-center">  <%=@group.description%></h3>
+	<div class="row p-3">
+            <h1 class="font-weight-bold col-12 text-center" style="color:#b2003b;">  <%=@group.name%> </h1> <br>
+            <h4 class="font-weight-bold col-12 text-secondary mt-2 text-center">  <%=@group.description%></h4>
 	</div>
 	<div class="row p-3">
 		<h4 class="font-weight-bold">Who Owns this group?: <%= User.find_by(id:@group.owner_id).name %></h4>
