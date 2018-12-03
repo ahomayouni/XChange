@@ -36,6 +36,7 @@ def seed_listing(title, description, category, userid, image_name, image_type, a
   if listing.save
     puts "Successfully created Listing id: #{listing.id} with user_id: #{listing.user_id}"
   else
+  	puts "UH OH ERRORR"
     listing.errors.full_messages.each do |message|
     puts message
     end
@@ -85,7 +86,7 @@ RSpec.describe NotificationsController, type: :controller do
 			user.save
 			login(user)
 
-			seed_listing("Saw for carpenting", "Traditional style saw", "Home / Office / Garden", user.id, 'saw.jpg', 'image/jpeg', "2925 Dufferin St Toronto")
+			seed_listing("Saw for carpenting", "Traditional style saw", "Home / Office / Garden", user.id, 'saw.jpg', 'image/jpeg', "1710 Bayview Ave Toronto ON")
 			expect(Listing.all.count).to eq(1)
 
 			@start_borrowing = DateTime.now 

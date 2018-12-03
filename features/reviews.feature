@@ -62,7 +62,7 @@ Then I click the link "Rate Peter"
 And I wait for "4" seconds
 When I fill in the text area "comment_body" with: "Thanks for the item! Always in good condition"
 And I wait for "2" seconds
-When I fill in the text area "comment_rating" with: "5"
+When I give a rating of "3" using the star icon dragger
 And I wait for "2" seconds
 Then I click the button "Add Review"
 And I wait for "2" seconds

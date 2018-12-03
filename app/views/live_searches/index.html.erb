@@ -1,13 +1,13 @@
 <div class="live-search-wrapper m-auto p-3">
   <div class="title">Wanted Items</div>
   <div class="live-item-search-container m-auto">
-    <input type="text" class="live-item-search" id="live-item-search-input" placeholder="Enter an item name..."/> 
+    <input type="text" class="live-item-search" id="live-item-search-input" placeholder="Enter an item name..."/>
     <i class="material-icons">search</i>
   </div>
   <hr>
-  <div class="mt-3 button-new w-100">
+  <!-- <div class="mt-3 button-new w-100">
       <%= link_to '+', new_live_search_path, class:"btn btn-default btn-new w-100" %>
-  </div>
+  </div> -->
   <div class="live-search-inquiry m-auto">
     <% @live_searches.each do |live_search| %>
       <div class="live-search-container">
@@ -38,7 +38,7 @@
               <div class="search-info my-auto mx-3 w-100">
                 <div class="row w-100">
                   <div class="col-3 search-detail item-title">
-                    <%= live_search.title %> 
+                    <%= live_search.title %>
                   </div>
                   <div class="col-6 search-detail">
                     <%= live_search.from_when.strftime("%e %b %y") %> - <%= live_search.to_when.strftime("%e %b %y") %>
@@ -74,6 +74,24 @@
               Category: <%= live_search.category %> <br>
               When: <%= live_search.from_when.strftime("%e %b %y") %> - <%= live_search.to_when.strftime("%e %b %y") %> <br>
               Where: <%= live_search.where %>
+              <% if live_search.user_id == current_user.id%>
+                <%= button_to 'Edit', edit_live_search_path(live_search), class: 'btn btn-outline-info', :method => :get %>
+
+                <%= button_to 'Delete', live_search_path(live_search), class:"card-link btn btn-primary mt-1", method: :delete, data: {confirm: "Are you sure?"} %>
+              <% else %>
+                  <% @l = current_user.listings.find_all {|x| x.title == live_search.title}%>
+                  <% if @l.empty? %>
+                  <div>
+                    <h5> You must have an item listed, list one below in just a few clicks: </h5>
+                    <%= button_to "List an Item", new_listing_path, :method => :get %>
+                  </div>
+                  <% else %>
+                  <div>
+                    <h5> You do have a matching listing </h5>
+                    <%= button_to "Your Listing", listing_path(@l), :method => :get %>
+                  </div>
+                  <% end %>
+              <% end %>
             </div>
           </div>
         </div>

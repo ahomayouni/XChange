@@ -7,7 +7,7 @@
       <h2><%= pluralize(live_search.errors.count, "error") %> prohibited this live_search from being saved:</h2>
       <ul>
       <% live_search.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <li><%= sanitize(message) %></li>
       <% end %>
       </ul>
     </div>
@@ -42,7 +42,7 @@
     <%= form.submit %>
   </div>
 <% end %>
-<%= link_to 'Back', live_searches_path %> 
+<%= link_to 'Back', live_searches_path %>
 
 
 <script>

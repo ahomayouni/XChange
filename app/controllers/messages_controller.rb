@@ -19,7 +19,8 @@ class MessagesController < ApplicationController
           end
         
       else 
-        redirect_back fallback_location: request.referrer, notice: @message.errors.full_messages[0]
+        flash[:danger] = @message.errors.full_messages[0]
+        redirect_back fallback_location: request.referrer 
       end
     end
   
