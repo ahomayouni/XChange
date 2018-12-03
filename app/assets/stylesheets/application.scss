@@ -148,7 +148,9 @@ html {
     min-height: 100%;
 }
 
-
+textarea {
+  border-radius: 5px;
+}
 /*input:not([type='submit']), textarea.form-control {
   outline: 0;
   border: 0;
