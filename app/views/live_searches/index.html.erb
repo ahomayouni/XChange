@@ -1,5 +1,5 @@
 <div class="live-search-wrapper m-auto p-3">
-  <div class="title">Live Searches</div>
+  <div class="title">Wanted Items</div>
   <div class="live-item-search-container m-auto">
     <input type="text" class="live-item-search"/> 
     <i class="material-icons">search</i>
@@ -49,11 +49,30 @@
                 <div class="row">
                   <div class="col-12">
                     <div class="float-right">
-                      <%= link_to 'Show', live_search %>
+                       <%= link_to 'Show', "#liveSearch#{live_search.id}Modal", "data-toggle" => "modal"%>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%# modal to show things here %>
+      <div class="modal fade" id="liveSearch<%= live_search.id %>Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="liveSearch<%= live_search.id %>ModalLabel">Item Wanted</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Title: <%= live_search.title %> <br>
+              Category: <%= live_search.category %> <br>
+              When: <%= live_search.from_when.strftime("%e %b %y") %> - <%= live_search.to_when.strftime("%e %b %y") %> <br>
+              Where: <%= live_search.where %>
             </div>
           </div>
         </div>
