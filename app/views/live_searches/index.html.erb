@@ -1,7 +1,7 @@
 <div class="live-search-wrapper m-auto p-3">
   <div class="title">Wanted Items</div>
   <div class="live-item-search-container m-auto">
-    <input type="text" class="live-item-search" id="live-item-search-input"/> 
+    <input type="text" class="live-item-search" id="live-item-search-input" placeholder="Enter an item name..."/> 
     <i class="material-icons">search</i>
   </div>
   <hr>
@@ -10,7 +10,8 @@
   </div>
   <div class="live-search-inquiry m-auto">
     <% @live_searches.each do |live_search| %>
-      <div class="d-flex flex-row mt-3 mx-auto live-search-container">
+      <div class="live-search-container">
+      <div class="d-flex flex-row mt-3 mx-auto">
         <div class="user-detail-container">
           <div class="user-detail">
             <div class="row">
@@ -76,6 +77,7 @@
             </div>
           </div>
         </div>
+      </div>
       </div>
     <% end %>
   </div>
