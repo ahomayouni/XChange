@@ -46,33 +46,22 @@
               connecting you with the people who are willing to lend what you need. Choose your plan to fit what is best for you!
         </div>
       </div>
-      <div class="about-icons mx-3 mt-3">
-        <div class="row">
-          <div class="col">
-          </div>
-          <div class="col-4 col-md-3">
-            <div class="monetization-container mon-1">
-              <div class="monetization-top" style="background-color:#ff5b57;">
-                <div class="monetization-content m-3">
-                  <div class="monetization-price"> Free </div>
-                  <hr>
-                  <div class="monetization-description"> get your free trial for a week! </div>
-                </div>
+      <div class="monetization-container mx-3 mt-3">
+        <%= link_to 'Choose Your Plan', "#monetizationModal", "data-toggle" => "modal", "class" => "btn"%>
+        <%# modal %>
+        <div class="modal fade" id="monetizationModal" tabindex="-1" role="dialog" aria-labelledby="monetizationModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="monetizationModalLabel">Plans</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                Preview
               </div>
             </div>
-          </div>
-          <div class="col-4 col-md-3">
-            <div class="monetization-container mon-2">
-              <div class="monetization-top" style="background-color:#c24bf7;">
-                <div class="monetization-content m-3">
-                  <div class="monetization-price"> $7/year </div>
-                  <hr>
-                  <div class="monetization-description"> You'll be able to borrow anything, just one time fee once a year!</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
           </div>
         </div>
       </div>
