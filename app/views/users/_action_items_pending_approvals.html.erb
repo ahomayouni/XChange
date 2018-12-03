@@ -4,7 +4,7 @@
             <% current_user.listings.each do |u| %>
                 <% @count += u.borrow_requests.where(status: "requested").count %>
             <% end %>
-            
+
             <% if @count > 0%>
                 <% current_user.listings.each do |listing| %>
                     <% listing.borrow_requests.each do |borrow_request| %>
@@ -30,14 +30,14 @@
                                         <h4 style="color:blue;"> From <%= borrow_request.start_borrowing.strftime("%d/%m/%Y") %> To <%= borrow_request.end_borrowing.strftime("%d/%m/%Y") %></h4>
                                         <%= link_to "Send a message!", borrow_chatroom_path(borrow_request.id), class:"btn db-browse-btn mt-2 font-weight-secondary", style:"color:white!important;", data: {toggle:"tooltip", placement:"right", title:"Send a message to the borrower!"},:method => :post %>
 
-                                        <%= link_to "Approve", borrow_approve_path(borrow_request.id), method: :patch, class: 'btn btn-outline-info mt-2' , data: {toggle:"tooltip", placement:"right", title:"Before approving, have you talked to #{User.find_by(id: borrow_request.user_id).name}? If you haven't, send a message!"}%>
+                                        <%= link_to "Approve", borrow_approve_path(borrow_request.id), method: :patch, class: 'btn btn-outline-info mt-2' , data: {toggle:"tooltip", placement:"right", title:"Approving this will delete other borrow requests for this item"}%>
                                         <%= link_to "Decline", borrow_decline_path(borrow_request.id), method: :get, class: 'btn btn-danger mt-2'%>
                                     </div>
                                 </div >
                             <% end %>
                     <% end %>
                 <% end %>
-            <% end %>  
+            <% end %>
         </div>
         <%if @count == 0%>
              <div class="col-md-12">
