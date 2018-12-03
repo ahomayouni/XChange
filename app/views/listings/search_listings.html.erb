@@ -1,6 +1,7 @@
 <div class="container-fluid">
 <% if logged_in? %>
-	<h1>Listings Search Results</h1>
+	<div class="m-4">
+	<h1 class="text-center">Listings Search Results</h1>
 	<% if params[:listings_q] and params[:listings_q] != "" %>
 		<% if @listings_found.count > 0 %>
 			<h4> Found <%= @listings_found.count %> listing(s) containing "<%= params[:listings_q] %>": </h4>
@@ -8,9 +9,9 @@
 		<% else %>
 			<div class="col-md-12">
 					<div class="card d-flex p-5 mb-5">
-							<div class="card-text p-5 d-flex justify-content-center align-items-center text-secondary">
-								Didn't find any mathing listings 
-							<h5 class="modal-title font-weight-bold">Be the first one to request this item. </h5>
+						<div class="card-text p-5 justify-content-center text-center align-items-center text-secondary">
+							Didn't find any mathing listings <br>
+							<h5 class="modal-title font-weight-bold">Be the first one to request this item. </h5> <br>
 							<h5 class="modal-title font-weight-bold"><%= link_to "Request "+params[:listings_q], new_live_search_path, class:'btn btn-outline-info h-25 ml-4 mt-2' %></h5>
 						</div>
 					</div>
@@ -19,6 +20,7 @@
 			<%= link_to 'Request this item!', new_live_search_path %> -->
 		<% end %>
 	<% end %>
+	</div>
 	</div>
 <% else %>
 		<!-- Modal -->
