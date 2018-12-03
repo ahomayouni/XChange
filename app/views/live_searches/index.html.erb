@@ -1,16 +1,16 @@
 <div class="live-search-wrapper m-auto p-3">
   <div class="title">Wanted Items</div>
   <div class="live-item-search-container m-auto">
-    <input type="text" class="live-item-search"/> 
+    <input type="text" class="live-item-search" id="live-item-search-input"/> 
     <i class="material-icons">search</i>
   </div>
   <hr>
   <div class="mt-3 button-new w-100">
-      <%= link_to '+', new_live_search_path, class:"btn btn-default btn-new w-100", data: {toggle:"modal", target:"#liveSearchModal"}%>
+      <%= link_to '+', new_live_search_path, class:"btn btn-default btn-new w-100" %>
   </div>
   <div class="live-search-inquiry m-auto">
     <% @live_searches.each do |live_search| %>
-      <div class="d-flex flex-row mt-3 mx-auto">
+      <div class="d-flex flex-row mt-3 mx-auto live-search-container">
         <div class="user-detail-container">
           <div class="user-detail">
             <div class="row">
@@ -36,7 +36,7 @@
               <div class="text-bubble-left-fill"></div>
               <div class="search-info my-auto mx-3 w-100">
                 <div class="row w-100">
-                  <div class="col-3 search-detail">
+                  <div class="col-3 search-detail item-title">
                     <%= live_search.title %> 
                   </div>
                   <div class="col-6 search-detail">
