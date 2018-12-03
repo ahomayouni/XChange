@@ -79,9 +79,10 @@
                 Where: <%= live_search.where %>
               </div>
               <% if live_search.user_id == current_user.id%>
-                <%= button_to 'Edit', edit_live_search_path(live_search), class: 'btn btn-outline-info', :method => :get %>
-
-                <%= button_to 'Delete', live_search_path(live_search), class:"card-link btn btn-primary mt-1", method: :delete, data: {confirm: "Are you sure?"} %>
+                <div class="text-center mt-4">
+                  <%= button_to 'Edit', edit_live_search_path(live_search), class: 'btn btn-solid-purple w-75', :method => :get %>
+                  <%= button_to 'Delete', live_search_path(live_search), class:"card-link btn btn-solid-purple mt-1 w-75", method: :delete, data: {confirm: "Are you sure?"} %>
+                </div>
               <% else %>
               <hr>
                 <div class="text-center mt-4">
