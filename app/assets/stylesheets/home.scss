@@ -78,7 +78,7 @@
   text-align: center;
   hr {
     border: 2px solid rgb(104,214,205);
-    width: 15%; 
+    width: 10%; 
     margin-top: 0;
   }
   .home-title {
@@ -96,6 +96,9 @@
   .monetization-container {
     .btn {
       color: white!important;
+    }
+    .btn:hover {
+      color: rgb(3,15,80) !important;
     }
   }
   .main-text {
