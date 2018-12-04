@@ -128,9 +128,9 @@
 
         <div class="row justify-content-center">
           <%if @listing.user.person.image.attachment != nil and @listing.user.person.image.content_type.in?(%('image/jpeg image/png')) %>
-          <%= image_tag(@listing.user.thumbnail, :class => "img-thumbnail rounded-circle my-3")%>
+          <%= image_tag(@listing.user.thumbnail, :class => "img-thumbnail my-3")%>
           <% else %>
-          <%= image_tag("empty-user-icon.png", :class => "img-thumbnail rounded-circle my-3") %>
+          <%= image_tag("empty-user-icon.png", :class => "img-thumbnail my-3") %>
           <%end%>
         </div>
 

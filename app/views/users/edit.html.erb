@@ -24,9 +24,9 @@
 				<div class="row">
 					<div class="col-md-3 p-4">	
 					 <%if @user.person.image.attachment != nil and @user.person.image.content_type.in?(%('image/jpeg image/png')) %>
-	          				<%= image_tag(@user.thumbnail, :class => "img-thumbnail rounded-circle")%>
+	          				<%= image_tag(@user.thumbnail, :class => "img-thumbnail")%>
 	                 <% else %>
-	          				<%= image_tag("empty-user-icon.png", :class=> "img-thumbnail rounded-circle")%>
+	          				<%= image_tag("empty-user-icon.png", :class=> "img-thumbnail")%>
 					 <%end%>
 						<h5 class="text-center"><%= @user.name%> </h5>
 					</div>

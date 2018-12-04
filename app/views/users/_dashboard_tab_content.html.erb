@@ -8,9 +8,9 @@
     <div class="row mb-5">
         <div class="col-md-3 m-auto text-center">
              <%if @user.person.image.attachment != nil and @user.person.image.content_type.in?(%('image/jpeg image/png')) %>
-          			<%= image_tag(@user.thumbnail, :class => "img-thumbnail rounded-circle")%>
+          			<%= image_tag(@user.thumbnail, :class => "img-thumbnail")%>
              <% else %>
-          			<%= image_tag("empty-user-icon.png", :class=> "img-thumbnail rounded-circle")%>
+          			<%= image_tag("empty-user-icon.png", :class=> "img-thumbnail")%>
              <%end%>
             <div class="mb-3">
                 <h6 class="font-weight-bold text-secondary mb-1">Rating:</h6>
