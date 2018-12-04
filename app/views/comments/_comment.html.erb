@@ -1,21 +1,24 @@
 <div class="card my-2">
     <div class="card-text ml-2 mb-2">
-      <div class="font-weight-bold"><%= User.find(comment.commenter_id).name %> said: </div> <br />
-      <%= comment.body %>
-      <br />
-      <% if comment.rating != nil %>
-        Rating:
-        <% for i in 1..comment.rating do %>
-          <i class="material-icons">
-          grade
-          </i> 
-        <%end%>
-      <% end %> <br />
-      <span class="badge padge-pill badge-info time-right"> Submitted <%= time_ago_in_words(comment.created_at) %> ago </span> 
-      <%= form_for [comment, Comment.new] do |f| %>
-          <%= f.text_area :body, placeholder: "Add a Reply" %><br/>
-          <%= f.submit "Reply", class:"btn btn-outline-info" %>
-        <% end %>
-      <%= render partial: 'comments/comment', collection: comment.comments %>
+      <div class="font-weight-bold"><%= User.find(comment.commenter_id).name %> said: </div> 
+      <div class="ml-3 mt-2">
+        <%= comment.body %>
+        <div>
+        <% if comment.rating != nil %>
+          Rating:
+          <% for i in 1..comment.rating do %>
+            <i class="material-icons">
+            grade
+            </i> 
+          <%end%>
+        <% end %> 
+        </div>
+        <div class="badge padge-pill badge-info time-right"> Submitted <%= time_ago_in_words(comment.created_at) %> ago </div> 
+        <%= form_for [comment, Comment.new] do |f| %>
+            <%= f.text_area :body, placeholder: "Add a Reply", class:"mt-2" %><br/>
+            <%= f.submit "Reply", class:"btn btn-outline-info" %>
+          <% end %>
+        <%= render partial: 'comments/comment', collection: comment.comments %>
+      </div>
     </div>
 </div>
