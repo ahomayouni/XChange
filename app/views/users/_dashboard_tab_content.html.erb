@@ -12,12 +12,9 @@
              <% else %>
           			<%= image_tag("empty-user-icon.png", :class=> "img-thumbnail rounded-circle")%>
              <%end%>
-            <%= link_to "Edit Profile", user_settings_path(current_user), class:'btn btn-outline-info mt-2 w-75 font-weight-bold'%>
-        </div>
-         <div class="col-md-9">
-           <div class="d-flex flex-row ml-3 mb-3">
-                <h6 class="font-weight-bold text-secondary mb-3">Rating:</h6>
-                <h6 class="ml-3 font-weight-bold">
+            <div class="mb-3">
+                <h6 class="font-weight-bold text-secondary mb-1">Rating:</h6>
+                <h6 class="font-weight-bold">
                     <% if get_rounded_user_rating(@user.id) == 0 %>
                         <p class="card-text"> No ratings yet </p>
                     <% else %>
@@ -29,10 +26,14 @@
                     <% end %>
                  </h6>
 
-                <button type="button" class="btn db-browse-btn font-weight-bold ml-3" style="color:white!important;" data-toggle="modal" data-target="#userReviewsModal">
+                <button type="button" class="btn db-browse-btn font-weight-bold" style="color:white!important;" data-toggle="modal" data-target="#userReviewsModal">
                     See Reviews
                 </button>
             </div>
+            <%= link_to "Edit Profile", user_settings_path(current_user), class:'btn btn-outline-info mt-2 w-75 font-weight-bold'%>
+        </div>
+         <div class="col-md-9">
+           
               <div class="d-flex flex-row ml-3 mb-3">
                 <h6 class="font-weight-bold text-secondary">Name:</h6>
                 <h6 class="ml-3 font-weight-bold"><%= @user.name%> </h6>

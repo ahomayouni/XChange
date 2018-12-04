@@ -103,36 +103,37 @@
         <!-- Profile -->
         <div class="row mt-2"> 
             <div class="col-md-12"> 
-                <h1 class="font-weight-bold ml-4"> <%= @user.name %>'s Profile </h1>
+                <h1 class="font-weight-bold mt-3 ml-4"> <%= @user.name %>'s Profile </h1>
             </div>
         </div>
         <div class="row mb-5">
             <div class="col-md-3">
+                <div class="text-center">
                  <%if @user.person.image.attachment != nil and @user.person.image.content_type.in?(%('image/jpeg image/png')) %>
               			<%= image_tag(@user.thumbnail, :class => "img-thumbnail rounded-circle")%>
                  <% else %>
               			<%= image_tag("empty-user-icon.png", :class=> "img-thumbnail rounded-circle")%>
                  <%end%>
+                </div>
+                <div class="my-3 text-center">
+                    <h6 class="font-weight-bold text-secondary mb-3">Rating:</h6>
+                    <h6 class="font-weight-bold">
+                        <% if get_rounded_user_rating(@user.id) == 0 %>
+                            <p class="card-text"> No ratings yet </p>
+                        <% else %>
+                            <% for i in 1..get_rounded_user_rating(@user.id)do %>
+                            <i class="material-icons" style="color:#f2a900!important;">
+                            grade
+                            </i>
+                            <%end%>
+                        <% end %>
+                    </h6>
+                    <button type="button" class="btn db-browse-btn font-weight-bold" style="color:white!important;" data-toggle="modal" data-target="#anotherUserReviewsModal">
+                        See Reviews
+                    </button>
+                </div>
             </div>
             <div class="col-md-9">
-             <div class="d-flex flex-row ml-3 mb-3">
-                <h6 class="font-weight-bold text-secondary mb-3">Rating:</h6>
-                <h6 class="ml-3 font-weight-bold">
-                    <% if get_rounded_user_rating(@user.id) == 0 %>
-                        <p class="card-text"> No ratings yet </p>
-                    <% else %>
-                        <% for i in 1..get_rounded_user_rating(@user.id)do %>
-                        <i class="material-icons" style="color:#f2a900!important;">
-                        grade
-                        </i>
-                        <%end%>
-                    <% end %>
-                 </h6>
-
-                <button type="button" class="btn db-browse-btn font-weight-bold ml-3" style="color:white!important;" data-toggle="modal" data-target="#anotherUserReviewsModal">
-                    See Reviews
-                </button>
-            </div>
                   <div class="d-flex flex-row ml-3 mb-3">
                     <h6 class="font-weight-bold text-secondary">Name:</h6>
                     <h6 class="ml-3 font-weight-bold"><%= @user.name%> </h6>
