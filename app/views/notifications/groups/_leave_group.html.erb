@@ -1,2 +1,2 @@
 <% @actor = User.find(notification.actor_id) %>
-<%= link_to " #{@actor.name} has left the group: #{notification.notifiable.name}", group_path(notification.notifiable) %>
+<%= link_to " #{@actor.name} has left the group: #{notification.notifiable.name}", group_path(notification.notifiable), class:'dropdown-item' %>
